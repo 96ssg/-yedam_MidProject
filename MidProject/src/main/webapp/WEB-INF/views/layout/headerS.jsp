@@ -10,7 +10,7 @@
 <div align="center">
 	<div>
 		<h1>헤더 부분</h1>
-		<li><A href=".do"
+		<li><A href=".do"></A></li>
 		<hr>
 	</div>
 </div>

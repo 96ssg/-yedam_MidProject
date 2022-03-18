@@ -1,3 +1,7 @@
+로그인--
+loginForm.do
+login.do
+
 메인 화면 - 시간표(강의명) 학과공지사항
 
 ==학생==
@@ -6,8 +10,8 @@ timeTable.do
 courseListSemester.do
 checkPassword.do
 MyPage.do
-changepasswordForm.do
-changepassword.do
+changepasswordForm.do--
+changepassword.do--
 
 성적관리 -  이수성적, 취득학점
 courseListAll.do
@@ -28,6 +32,7 @@ insertLecture.do
 메인화면 - 시간표(강의명), 학과공지사항
 timeTable.do
 courseListSemester.do
+--
 boardList.do
 boardDetail.do
 boardInsertForm.do
@@ -52,7 +57,7 @@ gradeUpdateForm.do
 gradeUpdate.do
 
  
-학적관리 - 학과 내 학생 및 교수 목록(등록, 조회 및 수정)
+학적관리 - 학과 내 학생 및 교수 목록(등록, 조회 및 수정)--
 memberList.do
 studentInsertForm.do
 studentInsert.do

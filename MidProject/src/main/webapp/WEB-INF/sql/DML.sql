@@ -116,7 +116,7 @@ INSERT ALL
     INTO course VALUES (8,'2012002002',2020,2,90,90,'A')
 SELECT * FROM dual;
 
---SELECT * FROM department;
+--SELECT * FROM department;	
 --SELECT * FROM student;
 --SELECT * FROM professor;
 --SELECT * FROM board;
@@ -125,3 +125,7 @@ SELECT * FROM dual;
 --SELECT * FROM course;
 
 --TRUNCATE TABLE charge;
+
+--수강 / 강의 테이블 데이터 삭제
+DELETE TABLE course;
+DELETE FROM lecutre;

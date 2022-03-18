@@ -23,7 +23,18 @@ public class FrontController extends HttpServlet {
     }
 
 	public void init(ServletConfig config) throws ServletException {
-		map.put("/home.do", new HomeCommand());						// 처음 들어오는 페이지32321321
+		map.put("/home.do", new HomeCommand());						// 처음 들어오는 페이지
+		
+		// 성환
+		
+		
+		// 승교
+		
+		
+		// 진환
+		
+		
+		// 우준
 		
 	}
 

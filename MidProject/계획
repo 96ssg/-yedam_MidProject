@@ -22,10 +22,10 @@ lectureList.do
 AjaxSearchLecture.do
 
 수강신청 - 과목조회, 수강신청(동일 과목에 대해 2명이상 교수가 강의할 경우 도 있음 == 동일 학과에서 어떤 교수 과목을 들을지 선택가능함) 
-enrollLectureForm.do
+courseInsertForm.do
+courseInsert.do
 AjaxSearchLecture.do
 AjaxLectureMaxCapacity.do
-insertLecture.do
 
 
 ==교수==

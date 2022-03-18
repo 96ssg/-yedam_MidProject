@@ -4,14 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>home.jsp</title>
-
+<title>Insert title here</title>
 </head>
 <body>
-	<div align="center">
-		<div><h1>홈화면</h1></div>
-		<a href="">메뉴</a><p/>
-		<h1>test2222</h1>
+<div align="center">
+	<div>
+		<h1>헤더 부분</h1>
+		
+		<hr>
 	</div>
+</div>
 </body>
 </html>

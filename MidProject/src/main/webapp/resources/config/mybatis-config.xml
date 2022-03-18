@@ -20,7 +20,6 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="co/yedam/prj/member/service/member-map.xml" />
-		<mapper resource="co/yedam/prj/border/service/border-map.xml" />
+<!-- 		<mapper resource="co/yedam/prj/member/service/member-map.xml" /> -->
 	</mappers>
 </configuration>

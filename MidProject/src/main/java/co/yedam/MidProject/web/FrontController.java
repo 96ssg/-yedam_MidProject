@@ -19,11 +19,22 @@ public class FrontController extends HttpServlet {
 	
     public FrontController() {
         super();
-        // TODO Auto-generated constructor stub4566666
+        // TODO Auto-generated constructor stub
     }
 
 	public void init(ServletConfig config) throws ServletException {
 		map.put("/home.do", new HomeCommand());						// 처음 들어오는 페이지
+		
+		// 성환
+		
+		
+		// 승교
+		
+		
+		// 진환
+		
+		
+		// 우준
 		
 	}
 

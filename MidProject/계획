@@ -1,0 +1,74 @@
+로그인--
+loginForm.do
+login.do
+
+메인 화면 - 시간표(강의명) 학과공지사항
+
+==학생==
+마이페이지 - 개인정보 표시, 비밀번호 수정, 시간표
+timeTable.do
+courseListSemester.do
+checkPassword.do
+MyPage.do
+changepasswordForm.do--
+changepassword.do--
+
+성적관리 -  이수성적, 취득학점
+courseListAll.do
+courseListSemester.do
+
+강의 정보 - 수강 중인 수업 목록 및 정보
+lectureList.do
+AjaxSearchLecture.do
+
+수강신청 - 과목조회, 수강신청(동일 과목에 대해 2명이상 교수가 강의할 경우 도 있음 == 동일 학과에서 어떤 교수 과목을 들을지 선택가능함) 
+courseInsertForm.do
+courseInsert.do
+AjaxSearchLecture.do
+AjaxLectureMaxCapacity.do
+
+
+==교수==
+메인화면 - 시간표(강의명), 학과공지사항
+timeTable.do
+courseListSemester.do
+--
+boardList.do
+boardDetail.do
+boardInsertForm.do
+boardInsert.do
+boardUpdateForm.do
+boardUpdate.do
+boardDelete.do
+
+강의 정보 - 강의 중인 수업 목록 및 정보
+lectureList.do
+AjaxSearchLecture.do
+lectureInsertForm.do
+lectureInsert.do
+lectureUpdateForm.do
+lectureUpdate.do
+lectureDelete.do
+
+성적관리 - 성적입력(수정)
+gradeInsertForm.do
+gradeInsert.do
+gradeUpdateForm.do
+gradeUpdate.do
+
+ 
+학적관리 - 학과 내 학생 및 교수 목록(등록, 조회 및 수정)--
+memberList.do
+studentInsertForm.do
+studentInsert.do
+studentUpdateForm.do
+studentUpdate.do
+professorInsertForm.do
+professorInsert.do
+professorUpdateForm.do
+ProfessorUpdate.do
+
+
+
+
+

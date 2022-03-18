@@ -125,7 +125,6 @@ SELECT * FROM dual;
 --SELECT * FROM course;
 
 --TRUNCATE TABLE charge;
-
 --수강 / 강의 테이블 데이터 삭제
 DELETE TABLE course;
 DELETE FROM lecutre;

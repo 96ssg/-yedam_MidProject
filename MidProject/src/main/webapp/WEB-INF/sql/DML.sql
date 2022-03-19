@@ -53,17 +53,17 @@ SELECT * FROM dual;
 
 -- 강의
 INSERT ALL
-    INTO lecture VALUES ('1','국문학총론',3,'MON','5','7','인문대학 1호관 201호','001001')
-    INTO lecture VALUES ('2','국문학각론',3,'TUE','2','4','인문대학 1호관 302호','001002')
+    INTO lecture VALUES ('1','국문학총론',3,'MON','5','7','인문대학 1호관 201호','001001',30)
+    INTO lecture VALUES ('2','국문학각론',3,'TUE','2','4','인문대학 1호관 302호','001002',30)
     
-    INTO lecture VALUES ('3','재배학개론',3,'WED','1','3','농업생명과학대학 4호관 423호','002001')
-    INTO lecture VALUES ('4','기초생화학',3,'FRI','5','7','자연과학대학 2호관 202호','002002')
+    INTO lecture VALUES ('3','재배학개론',3,'WED','1','3','농업생명과학대학 4호관 423호','002001',30)
+    INTO lecture VALUES ('4','기초생화학',3,'FRI','5','7','자연과학대학 2호관 202호','002002',30)
 
-    INTO lecture VALUES ('5','기초전자실험 및 설계',3,'TUE','1','3','공과대학 1호관 303호','003001')
-    INTO lecture VALUES ('6','공학수학1',3,'THR','1','3','공과대학 3호관 507호','003002')
+    INTO lecture VALUES ('5','기초전자실험 및 설계',3,'TUE','1','3','공과대학 1호관 303호','003001',30)
+    INTO lecture VALUES ('6','공학수학1',3,'THR','1','3','공과대학 3호관 507호','003002',30)
     
-    INTO lecture VALUES ('7','대학글쓰기',3,'WED','2','4','제4합동강의동 101호','004001')
-    INTO lecture VALUES ('8','논리와 비판적 사고',3,'THR','5','7','인문한국진흥관 205호','004002')
+    INTO lecture VALUES ('7','대학글쓰기',3,'WED','2','4','제4합동강의동 101호','004001',30)
+    INTO lecture VALUES ('8','논리와 비판적 사고',3,'THR','5','7','인문한국진흥관 205호','004002',30)
 SELECT * FROM dual;
 
 -- 담당
@@ -116,6 +116,8 @@ INSERT ALL
     INTO course VALUES (8,'2012002002',2020,2,90,90,'A')
 SELECT * FROM dual;
 
+commit;
+
 --SELECT * FROM department;
 --SELECT * FROM student;
 --SELECT * FROM professor;
@@ -124,7 +126,3 @@ SELECT * FROM dual;
 --SELECT * FROM charge;
 --SELECT * FROM course;
 
---TRUNCATE TABLE charge;
---수강 / 강의 테이블 데이터 삭제
-DELETE TABLE course;
-DELETE FROM lecutre;

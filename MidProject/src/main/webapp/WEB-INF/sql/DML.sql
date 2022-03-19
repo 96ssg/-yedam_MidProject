@@ -23,17 +23,17 @@ SELECT * FROM dual;
 
 -- 교수
 INSERT ALL
-    INTO professor VALUES ('001001','김교수','19600101','010-0000-0001',NULL,'1')
-    INTO professor VALUES ('001002','이교수','19650515','010-0000-0002',NULL,'1')
+    INTO professor VALUES ('001001','김교수','1234','19600101','010-0000-0001',NULL,'1')
+    INTO professor VALUES ('001002','이교수','1234','19650515','010-0000-0002',NULL,'1')
     
-    INTO professor VALUES ('002001','박교수','19700828','010-0000-0003',NULL,'2')
-    INTO professor VALUES ('002002','최교수','19751006','010-0000-0004',NULL,'2')
+    INTO professor VALUES ('002001','박교수','1234','19700828','010-0000-0003',NULL,'2')
+    INTO professor VALUES ('002002','최교수','1234','19751006','010-0000-0004',NULL,'2')
     
-    INTO professor VALUES ('003001','서교수','19800319','010-0000-0005',NULL,'3')
-    INTO professor VALUES ('003002','주교수','19850724','010-0000-0006',NULL,'3')
+    INTO professor VALUES ('003001','서교수','1234','19800319','010-0000-0005',NULL,'3')
+    INTO professor VALUES ('003002','주교수','1234','19850724','010-0000-0006',NULL,'3')
     
-    INTO professor VALUES ('004001','양교수','19900319','010-0000-0007',NULL,'4')
-    INTO professor VALUES ('004002','신교수','19950724','010-0000-0008',NULL,'4')
+    INTO professor VALUES ('004001','양교수','1234','19900319','010-0000-0007',NULL,'4')
+    INTO professor VALUES ('004002','신교수','1234','19950724','010-0000-0008',NULL,'4')
 SELECT * FROM dual;
 
 --공지

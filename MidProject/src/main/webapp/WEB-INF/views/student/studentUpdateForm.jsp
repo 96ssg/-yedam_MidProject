@@ -12,6 +12,8 @@
 				<table border="1">
 					
 					<tr>
+					
+					<tr>
 						<th width="150">패스워드</th>
 						<td width="300"><input type="password" id="sPassword" name="sPassword"></td>
 					</tr>

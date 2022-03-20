@@ -12,6 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.MidProject.common.Command;
 import co.yedam.MidProject.home.command.HomeCommand;
+import co.yedam.MidProject.lecture.command.AjaxLectureSearch;
+import co.yedam.MidProject.lecture.command.LectureDelete;
+import co.yedam.MidProject.lecture.command.LectureInsert;
+import co.yedam.MidProject.lecture.command.LectureInsertForm;
+import co.yedam.MidProject.lecture.command.LectureList;
+import co.yedam.MidProject.lecture.command.LectureUpdateForm;
 
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -29,8 +35,12 @@ public class FrontController extends HttpServlet {
 		
 		
 		// 승교
-		
-		
+		map.put("/lectureList.do", new LectureList()); //강의목록
+		map.put("/ajaxLectureSearch.do", new AjaxLectureSearch()); //강의 검색
+		map.put("/lectureInsertForm.do", new LectureInsertForm()); //강의 등록폼 호출
+		map.put("/lectureInsert.do", new LectureInsert()); //강의 등록
+		map.put("/lectureUpdateForm.do", new LectureUpdateForm()); //강의 수정폼 호출
+		map.put("/lectureDelete.do", new LectureDelete()); //강의 삭제
 		// 진환
 		
 		

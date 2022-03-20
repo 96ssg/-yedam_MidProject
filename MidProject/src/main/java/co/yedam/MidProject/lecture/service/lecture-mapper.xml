@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.yedam.MidProject.lecture.service.LectureMapper">
+<!-- resultMap 설정 -->
+<resultMap type="co.yedam.MidProject.lecture.service.LectureVO" id="lectureMap">
+	<id property="LId" column="L_ID"/>
+	<result property="LName" column="L_NAME"/>
+	<result property="LCredit" column="L_CREDIT"/>
+	<result property="LDay" column="L_DAY"/>
+	<result property="LStart" column="L_START"/>
+	<result property="LEnd" column="L_END"/>
+	<result property="LRoom" column="L_ROOM"/>
+	<result property="PId" column="P_ID"/>
+	<result property="LCapacity" column="L_CAPACITY"/>
+</resultMap>
+
+<!-- 강의전체리스트 -->
+<select id="selectLectureList" resultMap="lectureMap">
+	SELECT * FROM LECTURE ORDER BY L_ID
+</select>
+
+<!-- 강의 단건 조회 -->
+<select id="selectLecture" parameterType="co.yedam.MidProject.lecture.service.LectureVO" resultMap="lectureMap">
+	SELECT * FROM LECTURE WHERE L_ID = #{lId}
+</select>
+
+<!-- 강의 등록 -->
+<insert id="insertLecture" parameterType="co.yedam.MidProject.lecture.service.LectureVO">
+<selectKey keyProperty="lId" resultType="String" order="BEFORE">
+SELECT CASE WHEN MAX(L_ID)IS NULL THEN 1 ELSE MAX(L_ID)+1 END AS ID FROM LECTURE
+</selectKey>
+INSERT INTO LECTURE VALUES(#{lId},#{lName},#{lCredit},#{lDay},#{lStart},#{lEnd},#{lRoom},#{pId},#{lCapacity})
+</insert>
+
+<!-- 강의 수정 -->
+<update id="updateLecture" parameterType="co.yedam.MidProject.lecture.service.LectureVO">
+UPDATE LECTURE <set>
+<if test="lName != null">SET L_NAME = #{lId},</if>
+<if test="lCredit != null">SET L_CREDIT = #{lCredit},</if>
+<if test="lDay != null">SET L_DAY = #{lDay},</if>
+<if test="lStart != null">SET L_START = #{lStart},</if>
+<if test="lEnd != null">SET L_END = #{lEnd},</if>
+<if test="lRoom != null">SET L_ROOM = #{lRoom},</if>
+<if test="pId != null">SET P_ID = #{pId},</if>
+<if test="lCapacity != null">SET L_CAPACITY = #{lCapacity}</if>
+</set>
+WHERE ID = #{lId}
+</update>
+
+<!-- 강의 삭제 -->
+<delete id="deleteLecture" parameterType="co.yedam.MidProject.lecture.service.LectureVO">
+	DELETE FROM LECTURE WHERE L_ID = #{lId}
+</delete>
+
+<!-- 강의 검색 -->
+<select id="selectLectureSearchList" resultMap="lectureMap">
+SELECT * FROM LECTURE
+WHERE
+	<if test ='key == "전체"'>
+	1 = 1
+	</if>
+	<if test ='key == "강의번호"'>
+	L_ID LIKE '%'||#{val}||'%'
+	</if>
+	<if test ='key == "교수번호"'>
+	P_ID LIKE '%'||#{val}||'%'
+	</if>
+	<if test ='key == "강의명"'>
+	L_NAME LIKE '%'||#{val}||'%'
+	</if>
+	
+ORDER BY L_ID 
+</select>
+
+</mapper>

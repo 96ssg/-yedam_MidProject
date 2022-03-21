@@ -13,9 +13,16 @@
 	</select>
 	 -->
 	
-	<insert id="insertStudent" parameterType="co.yedam.MidProject.student.service.StudentVO"></insert>
+	<insert id="insertStudent" parameterType="co.yedam.MidProject.student.service.StudentVO">
+	INSERT INTO STUDENT VALUES (SUBSTR(#{s_Birth}, -4)||00||#{d_Id}||00||#{s_Id}, #{s_Name}, #{s_Password}, #{s_Birth}, #{s_Grade}, #{s_Phone}, #(s_Score), #(s_Semster) ,#{s_Img}, #{d_Id}) 
+											
+	</insert>
 	
-	<update id="updateStudent" parameterType="co.yedam.MidProject.student.service.StudentVO"></update>
+	<update id="updateStudent" parameterType="co.yedam.MidProject.student.service.StudentVO">
+	UPDATE STUDENT SET
+    	s_Password = #{s_Password}
+  WHERE s_Id = #{s_Id}
+	</update>
 	
 	<delete id="deleteStudent" parameterType="co.yedam.MidProject.student.service.StudentVO"></delete>
 	<!-- 중복체크 -->

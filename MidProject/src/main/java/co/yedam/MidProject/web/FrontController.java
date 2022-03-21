@@ -21,6 +21,7 @@ import co.yedam.MidProject.lecture.command.LectureUpdateForm;
 import co.yedam.MidProject.professor.web.ProfessorInsert;
 import co.yedam.MidProject.professor.web.ProfessorInsertForm;
 import co.yedam.MidProject.professor.web.ProfessorList;
+import co.yedam.MidProject.professor.web.ProfessorUpdate;
 import co.yedam.MidProject.professor.web.ProfessorUpdateForm;
 import co.yedam.MidProject.student.web.StudentInsertForm;
 import co.yedam.MidProject.student.web.StudentList;
@@ -49,6 +50,7 @@ public class FrontController extends HttpServlet {
 		map.put("/professorList.do", new ProfessorList());
 		map.put("/professorInsert.do", new ProfessorInsert());
 		map.put("/professorUpdateForm.do", new ProfessorUpdateForm()); 
+		map.put("/professorUpdate.do", new ProfessorUpdate());
 		// 승교
 		map.put("/lectureList.do", new LectureList()); //강의목록
 		map.put("/ajaxLectureSearch.do", new AjaxLectureSearch()); //강의 검색

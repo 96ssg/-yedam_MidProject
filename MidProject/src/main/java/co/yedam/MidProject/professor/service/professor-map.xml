@@ -18,7 +18,11 @@
 	<!-- SELECT D_ID FROM DEPARTMENT INNER JOIN TABLE_1 B ON 1=1 -->
 	</insert>
 
-	<update id="updateProfessor" parameterType="co.yedam.MidProject.professor.service.ProfessorVO"></update>
+	<update id="updateProfessor" parameterType="co.yedam.MidProject.professor.service.ProfessorVO">
+	UPDATE PROFESSOR 
+	SET p_Password = #{p_Password}
+ 	 WHERE p_Id = #{p_Id}
+	</update>
 	
 	<delete id="deleteProfessor" parameterType="co.yedam.MidProject.professor.service.ProfessorVO"></delete>
 	<!-- 중복체크 -->

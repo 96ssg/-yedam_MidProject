@@ -18,6 +18,13 @@ import co.yedam.MidProject.lecture.command.LectureInsert;
 import co.yedam.MidProject.lecture.command.LectureInsertForm;
 import co.yedam.MidProject.lecture.command.LectureList;
 import co.yedam.MidProject.lecture.command.LectureUpdateForm;
+import co.yedam.MidProject.professor.web.ProfessorInsert;
+import co.yedam.MidProject.professor.web.ProfessorInsertForm;
+import co.yedam.MidProject.professor.web.ProfessorList;
+import co.yedam.MidProject.professor.web.ProfessorUpdateForm;
+import co.yedam.MidProject.student.web.StudentInsertForm;
+import co.yedam.MidProject.student.web.StudentList;
+import co.yedam.MidProject.student.web.StudentUpdateForm;
 
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -32,8 +39,16 @@ public class FrontController extends HttpServlet {
 		map.put("/home.do", new HomeCommand());						// 처음 들어오는 페이지
 		
 		// 성환
-		
-		
+		//학생 등록 수정 조회
+		map.put("/studentList.do", new StudentList());
+		map.put("/studentInsertForm.do", new StudentInsertForm());
+		map.put("/studentUpdateForm.do", new StudentUpdateForm());
+
+		//교수 등록 수정 조회
+		map.put("/professorInsertForm.do", new ProfessorInsertForm());
+		map.put("/professorList.do", new ProfessorList());
+		map.put("/professorInsert.do", new ProfessorInsert());
+		map.put("/professorUpdateForm.do", new ProfessorUpdateForm()); 
 		// 승교
 		map.put("/lectureList.do", new LectureList()); //강의목록
 		map.put("/ajaxLectureSearch.do", new AjaxLectureSearch()); //강의 검색
@@ -65,7 +80,7 @@ public class FrontController extends HttpServlet {
 				response.getWriter().append(viewPage.substring(5));
 				return;
 			} else {
-//				viewPage = "WEB-INF/views/" + viewPage + ".jsp";
+				//viewPage = "WEB-INF/views/" + viewPage + ".jsp";
 				viewPage = viewPage + ".tiles";
 			}
 		}

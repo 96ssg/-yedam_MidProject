@@ -8,18 +8,22 @@ import co.yedam.MidProject.lecture.service.LectureService;
 import co.yedam.MidProject.lecture.service.LectureVO;
 import co.yedam.MidProject.lecture.serviceImpl.LectureServiceImpl;
 
-public class LectureDelete implements Command {
+public class LectureView implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
+		
+
 		LectureVO vo = new LectureVO();
 		vo.setLId(Integer.parseInt(request.getParameter("lId")));
 
-		LectureService lectureDAO = new LectureServiceImpl();
-		lectureDAO.deleteLecture(vo);
+		LectureService service = new LectureServiceImpl();
+		vo = service.selectLecture(vo);
 
-		return "lectureList.do";
+		request.setAttribute("vo", vo);
+
+		return "lecture/lectureView";
 	}
 
 }

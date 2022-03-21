@@ -20,8 +20,8 @@
 		</environment>
 	</environments>
 	<mappers>
-<mapper resource="co/yedam/MidProject/lecture/service/lecture-mapper.xml" />
-	<!--         <mapper resource="co/yedam/prj/member/service/member-map.xml" /> -->
+		<mapper resource="co/yedam/MidProject/board/service/board-map.xml" />
+		<mapper resource="co/yedam/MidProject/lecture/service/lecture-mapper.xml" />
 		<mapper resource="co/yedam/MidProject/student/service/student-map.xml" />
 		<mapper resource="co/yedam/MidProject/professor/service/professor-map.xml" />
 	</mappers>

@@ -13,6 +13,7 @@
 		<ul>
 			<li><a href="home.do">home</a></li>
 			<li><a href="boardList.do">board</a></li>
+			<li><a href="loginForm.do">login</a></li>
 		</ul>
 		<hr>
 	</div>

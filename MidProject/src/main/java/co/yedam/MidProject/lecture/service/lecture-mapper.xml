@@ -26,7 +26,7 @@
 
 <!-- 강의 등록 -->
 <insert id="insertLecture" parameterType="co.yedam.MidProject.lecture.service.LectureVO">
-<selectKey keyProperty="lId" resultType="String" order="BEFORE">
+<selectKey keyProperty="lId" resultType="int" order="BEFORE">
 SELECT CASE WHEN MAX(L_ID)IS NULL THEN 1 ELSE MAX(L_ID)+1 END AS ID FROM LECTURE
 </selectKey>
 INSERT INTO LECTURE VALUES(#{lId},#{lName},#{lCredit},#{lDay},#{lStart},#{lEnd},#{lRoom},#{pId},#{lCapacity})
@@ -34,17 +34,9 @@ INSERT INTO LECTURE VALUES(#{lId},#{lName},#{lCredit},#{lDay},#{lStart},#{lEnd},
 
 <!-- 강의 수정 -->
 <update id="updateLecture" parameterType="co.yedam.MidProject.lecture.service.LectureVO">
-UPDATE LECTURE <set>
-<if test="lName != null">SET L_NAME = #{lId},</if>
-<if test="lCredit != null">SET L_CREDIT = #{lCredit},</if>
-<if test="lDay != null">SET L_DAY = #{lDay},</if>
-<if test="lStart != null">SET L_START = #{lStart},</if>
-<if test="lEnd != null">SET L_END = #{lEnd},</if>
-<if test="lRoom != null">SET L_ROOM = #{lRoom},</if>
-<if test="pId != null">SET P_ID = #{pId},</if>
-<if test="lCapacity != null">SET L_CAPACITY = #{lCapacity}</if>
-</set>
-WHERE ID = #{lId}
+UPDATE LECTURE 
+SET L_ROOM = #{lRoom}
+WHERE L_ID = #{lId}
 </update>
 
 <!-- 강의 삭제 -->

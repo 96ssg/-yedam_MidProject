@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 
 public class LectureVO {
-	private String lId;
+	private int lId;
 	private String lName;
 	private int lCredit;
 	private String lDay;

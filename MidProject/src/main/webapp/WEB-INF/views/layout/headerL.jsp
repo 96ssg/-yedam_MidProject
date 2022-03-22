@@ -1,18 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div align="center">
 	<div>
 		<h1>헤더 부분</h1>
-		<li><A href=".do"></A></li>
+		<ul>
+			<li><a href="home.do">home</a></li>
+			<li><a href="boardList.do">board</a></li>
+			<li><a href="courseList.do">course</a></li>
+			<c:choose>
+				<c:when test="${user eq null }">
+					<li><a href="loginForm.do">login</a></li>
+				</c:when>			
+				<c:otherwise>
+					<li><a href="logout.do">logout</a></li>
+				</c:otherwise>
+			</c:choose>
+		</ul>
 		<hr>
 	</div>
 </div>
-</body>
-</html>

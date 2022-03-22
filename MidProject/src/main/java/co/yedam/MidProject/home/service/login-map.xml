@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.yedam.MidProject.home.service.LoginMapper">
+	<resultMap type="co.yedam.MidProject.home.service.UserVO" id="loginMap">
+		<id property="userId" column="s_id"/>
+		<result property="userPassword" column="s_password"/> 
+	</resultMap>
+
+	<select id="fetchUser" resultMap="loginMap">
+		select s_id, s_password from student where s_id=#{userId}
+		union
+		select p_id, p_password from professor where p_id=#{userId}
+	</select>
+</mapper>

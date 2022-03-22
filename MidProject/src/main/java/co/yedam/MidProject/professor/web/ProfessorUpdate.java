@@ -8,7 +8,7 @@ import co.yedam.MidProject.professor.service.ProfessorService;
 import co.yedam.MidProject.professor.service.ProfessorVO;
 import co.yedam.MidProject.professor.serviceImpl.ProfessorServiceImpl;
 
-public class ProfessorInsert implements Command {
+public class ProfessorUpdate implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
@@ -35,7 +35,7 @@ public class ProfessorInsert implements Command {
 		
 		request.setAttribute("professors", professor);
 		System.out.println(professor);
-		return "professor/professorInsert";
+		return null;
 	}
 
 }

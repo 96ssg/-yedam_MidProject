@@ -1,12 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<script type="text/javascript">
-function register(){
-document.frm.submit();
 
-}
-</script>
 <div align="center">
 	<div>
 		<h1>교수등록</h1>
@@ -49,11 +44,6 @@ document.frm.submit();
 
 					<tr>
 						<th width="150">학과</th>
-						<td width="300"><input type="text" id="dId" name="dId"></td>
-					</tr>
-												
-						<!-- <tr>
-						<th width="150">학과</th>
 							<td width="300">
 								<select id="dId" name="dId">
 		   						 	<option value="1" selected>국어국문학과</option>
@@ -62,11 +52,12 @@ document.frm.submit();
 		    						<option value="4">자율전공학부</option>
 								</select>
 							</td>
-					</tr> -->
+					</tr>
+					
 				</table>
 			</div><br />
 			<div>
-				<button type="submit" onclick="register()">교수 등록</button>&nbsp;&nbsp;&nbsp;
+				<button type="submit" onclick="location.href='professorList.do'">교수 등록</button>&nbsp;&nbsp;&nbsp;
 				<button type="reset">취 소</button>&nbsp;&nbsp;&nbsp;
 				<button type="button" onclick="location.href='main.do'">홈</button>
 			</div>

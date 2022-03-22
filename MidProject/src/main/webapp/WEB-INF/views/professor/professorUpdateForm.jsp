@@ -18,17 +18,17 @@ document.frm.submit();
 			<div>
 				<table border="1">
 					
-					<tr>
+				<!-- 	<tr>
 						<th width="150">이름</th>
 						<td width="300"><input type="text" id="pName" name="pName"></td>
-					</tr>
+					</tr> -->
 					
 					<tr>
 						<th width="150">패스워드</th>
-						<td width="300"><input type="password" id="pPassword" name="pPassword"></td>
+						<td width="300"><input type="password" id="pPassword" name="pPassword">#{p_Password}</td>
 					</tr>
 					
-					<tr>
+					<!-- <tr>
 						<th width="150">휴대폰 번호</th>
 						<td width="300"><input type="number" id="pPhone" name="pPhone"></td>
 					</tr>
@@ -42,7 +42,7 @@ document.frm.submit();
 						<th width="150">학과</th>
 						<td width="300"><input type="text" id="dId" name="dId"></td>
 					</tr>
-												
+ -->												
 						
 				</table>
 			</div><br />

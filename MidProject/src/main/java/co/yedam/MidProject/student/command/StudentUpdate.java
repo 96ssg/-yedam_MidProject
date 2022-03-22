@@ -1,14 +1,17 @@
-package co.yedam.MidProject.student.web;
+package co.yedam.MidProject.student.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.MidProject.common.Command;
+import co.yedam.MidProject.professor.service.ProfessorService;
+import co.yedam.MidProject.professor.service.ProfessorVO;
+import co.yedam.MidProject.professor.serviceImpl.ProfessorServiceImpl;
 import co.yedam.MidProject.student.service.StudentService;
 import co.yedam.MidProject.student.service.StudentVO;
 import co.yedam.MidProject.student.serviceImpl.StudentServiceImpl;
 
-public class StudentInsert implements Command {
+public class StudentUpdate implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
@@ -36,12 +39,12 @@ public class StudentInsert implements Command {
 		student.setD_Id(did);
 		
 		StudentService service = new StudentServiceImpl();
-		service.insertStudent(student);
+		service.updateStudent(student);
 		
 		
 		request.setAttribute("students", student);
-		System.out.println(student);
-		return "student/studentInsert";
+		
+		return "student/studentUpdate";
 	}
 
 }

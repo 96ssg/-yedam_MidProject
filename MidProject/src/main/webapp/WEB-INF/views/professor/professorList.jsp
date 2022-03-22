@@ -9,9 +9,9 @@
 </head>
 <body>
 	
-	<c:forEach items="${professors }" var="professor">
 		<table border="1" align="center">
-		<tr onClick="location.href='professorUpdateForm.do'">
+	<c:forEach items="${professors }" var="professor">
+		<tr onClick="location.href='professorUpdateForm.do?id=${professor.p_Id }'">
 		
 		<td>${professor.p_Id }</td> 
 		
@@ -28,8 +28,8 @@
 		<td>${professor.d_Id }</td>
 		
 		</tr>
-	</table>
 	</c:forEach>
+	</table>
 	
 </body>
 </html>

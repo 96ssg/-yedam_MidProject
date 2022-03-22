@@ -37,5 +37,10 @@
 	</table>
 	</c:forEach>
 	
+	<script>
+		const sList = '<c:out value="${students }"/>';
+		console.log(sList);
+	</script>
+	
 </body>
 </html>

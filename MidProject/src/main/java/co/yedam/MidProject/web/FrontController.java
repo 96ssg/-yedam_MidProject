@@ -18,14 +18,14 @@ import co.yedam.MidProject.lecture.command.LectureInsert;
 import co.yedam.MidProject.lecture.command.LectureInsertForm;
 import co.yedam.MidProject.lecture.command.LectureList;
 import co.yedam.MidProject.lecture.command.LectureUpdateForm;
-import co.yedam.MidProject.professor.web.ProfessorInsert;
-import co.yedam.MidProject.professor.web.ProfessorInsertForm;
-import co.yedam.MidProject.professor.web.ProfessorList;
-import co.yedam.MidProject.professor.web.ProfessorUpdate;
-import co.yedam.MidProject.professor.web.ProfessorUpdateForm;
-import co.yedam.MidProject.student.web.StudentInsertForm;
-import co.yedam.MidProject.student.web.StudentList;
-import co.yedam.MidProject.student.web.StudentUpdateForm;
+import co.yedam.MidProject.professor.command.ProfessorInsert;
+import co.yedam.MidProject.professor.command.ProfessorInsertForm;
+import co.yedam.MidProject.professor.command.ProfessorList;
+import co.yedam.MidProject.professor.command.ProfessorUpdate;
+import co.yedam.MidProject.professor.command.ProfessorUpdateForm;
+import co.yedam.MidProject.student.command.StudentInsertForm;
+import co.yedam.MidProject.student.command.StudentList;
+import co.yedam.MidProject.student.command.StudentUpdateForm;
 
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

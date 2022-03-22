@@ -1,26 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="co.yedam.MidProject.professor.service.ProfessorMapper">
-	<select id="selectProfessorList" resultType="co.yedam.MidProject.professor.service.ProfessorVO">
+<mapper
+	namespace="co.yedam.MidProject.professor.service.ProfessorMapper">
+	<select id="selectProfessorList"
+		resultType="co.yedam.MidProject.professor.service.ProfessorVO">
 		SELECT * FROM PROFESSOR
 	</select>
-	
+
 	<!-- 로그인 -->
-	<select id="selectProfessor" parameterType="co.yedam.MidProject.professor.service.ProfessorVO"
+	<select id="selectProfessor"
+		parameterType="co.yedam.MidProject.professor.service.ProfessorVO"
 		resultType="co.yedam.MidProject.professor.service.ProfessorVO">
-		 SELECT * FROM PROFESSOR WHERE p_Id = #{p_Id}
-		 <if test = "password != null">AND p_Password = #{p_Password}</if>
+		SELECT * FROM professor WHERE p_id = #{p_Id}
 	</select>
 
-	
-	<insert id="insertProfessor" parameterType="co.yedam.MidProject.professor.service.ProfessorVO">
-		INSERT INTO PROFESSOR VALUES (#{p_Id}, #{p_Name}, #{p_Password}, #{p_Birth}, #{p_Phone}, #{p_Img}, #{d_Id})
-	<!-- SELECT D_ID FROM DEPARTMENT INNER JOIN TABLE_1 B ON 1=1 -->
+
+	<insert id="insertProfessor"
+		parameterType="co.yedam.MidProject.professor.service.ProfessorVO">
+		INSERT INTO PROFESSOR VALUES (#{p_Id}, #{p_Name}, #{p_Password},
+		#{p_Birth}, #{p_Phone}, #{p_Img}, #{d_Id})
+		<!-- SELECT D_ID FROM DEPARTMENT INNER JOIN TABLE_1 B ON 1=1 -->
 	</insert>
 
-	<update id="updateProfessor" parameterType="co.yedam.MidProject.professor.service.ProfessorVO"></update>
-	
-	<delete id="deleteProfessor" parameterType="co.yedam.MidProject.professor.service.ProfessorVO"></delete>
+	<update id="updateProfessor"
+		parameterType="co.yedam.MidProject.professor.service.ProfessorVO"></update>
+
+	<delete id="deleteProfessor"
+		parameterType="co.yedam.MidProject.professor.service.ProfessorVO"></delete>
 	<!-- 중복체크 -->
 	<!-- <select id="isIdCheck" parameterType="String"></select> -->
 </mapper>

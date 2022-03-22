@@ -22,38 +22,26 @@ public class HomeCommand implements Command {
 		// 로그인 하지 않은 경우
 		if (userId == null) return "home/home";
 		
-//		if (userId.length() > 6) {
-//			// 로그인 한 유저가 학생일 경우
-//			HttpSession session = request.getSession();
-//			StudentVO user = new StudentVO();
-//			user.setS_Id(userId);
-//			StudentService sDao = new StudentServiceImpl();
-//			
-//			session.setAttribute("user", sDao.selectStudent(user));
-//			
-//		} else {
-//			// 로그인 한 유저가 교수일 경우
-//			HttpSession session = request.getSession();
-//			ProfessorVO user = new ProfessorVO();
-//			user.setP_Id(userId);
-//			ProfessorService pDao = new ProfessorServiceImpl();
-//			
-//			session.setAttribute("user", pDao.selectProfessor(user));
-//		}
+		if (userId.length() > 6) {
+			// 로그인 한 유저가 학생일 경우
+			HttpSession session = request.getSession();
+			StudentVO user = new StudentVO();
+			user.setS_Id(userId);
+			StudentService sDao = new StudentServiceImpl();
+			
+			session.setAttribute("user", sDao.selectStudent(user));
+			
+		} else {
+			// 로그인 한 유저가 교수일 경우
+			HttpSession session = request.getSession();
+			ProfessorVO user = new ProfessorVO();
+			user.setP_Id(userId);
+			ProfessorService pDao = new ProfessorServiceImpl();
+			
+			session.setAttribute("user", pDao.selectProfessor(user));
+		}
 		
 		return "home/home";
 	}
 
 }
-
-
-
-//<select id="selectStudent" parameterType="co.yedam.MidProject.student.service.StudentVO"
-//resultType="co.yedam.MidProject.student.service.StudentVO">
-// SELECT * FROM student WHERE s_id = #{s_Id}
-//</select>
-//
-//<select id="selectProfessor" parameterType="co.yedam.MidProject.professor.service.ProfessorVO"
-//resultType="co.yedam.MidProject.professor.service.ProfessorVO">
-// SELECT * FROM professor WHERE p_id = #{p_Id}
-//</select>

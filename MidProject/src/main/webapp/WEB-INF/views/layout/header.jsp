@@ -10,6 +10,9 @@
 <div align="center">
 	<div>
 		<h1>헤더 부분</h1>
+		<ul>
+			<li><a href="home.do">home</a></li>
+		</ul>
 		<hr>
 	</div>
 </div>

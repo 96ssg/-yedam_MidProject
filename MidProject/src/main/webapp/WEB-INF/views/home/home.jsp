@@ -9,9 +9,9 @@
 </head>
 <body>
 	<div align="center">
-		<div><h1>홈화면</h1></div>
-		<a href="">메뉴</a><p/>
-		<h1>test2222</h1>
+		<div>
+			<h1>홈화면</h1>
+		</div>
 	</div>
 </body>
 </html>

@@ -23,7 +23,9 @@
 	</insert>
 
 	<update id="updateProfessor"
-		parameterType="co.yedam.MidProject.professor.service.ProfessorVO"></update>
+		parameterType="co.yedam.MidProject.professor.service.ProfessorVO">
+		
+		</update>
 
 	<delete id="deleteProfessor"
 		parameterType="co.yedam.MidProject.professor.service.ProfessorVO"></delete>

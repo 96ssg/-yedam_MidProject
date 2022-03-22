@@ -26,12 +26,12 @@ document.frm.submit();
 					
 					<tr>
 						<th width="150">이름</th>
-						<td width="300"><input type="text" id="pName" name="pName"></td>
+						<td width="300"><input type="text" id="pName" name="pName" ${professor.p_Name }></td>
 					</tr>
 					
 					<tr>
 						<th width="150">패스워드</th>
-						<td width="300"><input type="password" id="pPassword" name="pPassword"></td>
+						<td width="300"><input type="password" id="pPassword" name="pPassword" ${professor.p_Password }></td>
 					</tr>
 					
 					<tr>
@@ -41,25 +41,15 @@ document.frm.submit();
 					
 					<tr>
 						<th width="150">휴대폰 번호</th>
-						<td width="300"><input type="number" id="pPhone" name="pPhone"></td>
+						<td width="300"><input type="number" id="pPhone" name="pPhone" value="${professor.p_Name }"></td>
 					</tr>
 					
 					<tr>
 						<th width="150">사진</th>
-						<td width="300"><input type="text" id="pImg" name="pImg">${professor.p_Img }</td>
+						<td width="300"><input type="text" id="pImg" name="pImg" value="${professor.p_Name }"></td>
 					</tr>
-
-					<tr>
-						<th width="150">학과</th>
-							<td width="300">
-								<select id="dId" name="dId">
-		   						 	<option value="1" selected>국어국문학과</option>
-		    						<option value="2">응용생명과학부</option>
-		    						<option value="3">전자공학과</option>
-		    						<option value="4">자율전공학부</option>
-								</select>
-							</td>
-					</tr>
+ 
+					
 				</table>
 			</div><br />
 			<div>

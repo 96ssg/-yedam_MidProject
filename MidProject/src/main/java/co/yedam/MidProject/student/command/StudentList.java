@@ -1,6 +1,5 @@
 package co.yedam.MidProject.student.command;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 

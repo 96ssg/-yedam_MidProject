@@ -7,6 +7,7 @@
 		<ul>
 			<li><a href="home.do">home</a></li>
 			<li><a href="boardList.do">board</a></li>
+			<li><a href="courseList.do">course</a></li>
 			<c:choose>
 				<c:when test="${user eq null }">
 					<li><a href="loginForm.do">login</a></li>

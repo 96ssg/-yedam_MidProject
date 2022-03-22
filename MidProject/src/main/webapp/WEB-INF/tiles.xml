@@ -4,15 +4,15 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
        
 <tiles-definitions>
-  <definition name="myWebsite" template="/WEB-INF/views/layout/template.jsp">
-    <put-attribute name="title" value="My Website" />
+  
+  <definition name="home/loginForm" template="/WEB-INF/views/home/loginForm.jsp"/>
+  
+  <definition name="WILDCARD:*/*" template="/WEB-INF/views/layout/template.jsp">
+    <put-attribute name="title" value="MidProject Title" />
     <put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
     <put-attribute name="menu" value="/WEB-INF/views/layout/menu.jsp" />
-    <put-attribute name="body" value="" />
+    <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"/>
     <put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
   </definition>
   
-  <definition name="WILDCARD:*/*" extends="myWebsite">
-    <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"/>
-</definition>
 </tiles-definitions>

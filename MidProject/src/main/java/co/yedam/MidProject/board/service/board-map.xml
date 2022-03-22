@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.yedam.MidProject.board.service.BoardMapper">
+	<resultMap type="co.yedam.MidProject.board.service.BoardVO" id="boardMap">
+		<id property="boardId" column="bd_id"/>
+		<result property="boardWriter" column="bd_writer"/> 
+		<result property="boardDate" column="bd_date"/> 
+		<result property="boardTitle" column="bd_title"/> 
+		<result property="boardContent" column="bd_content"/> 
+	</resultMap>
+
+	<select id="boardList" resultMap="boardMap">
+		SELECT * FROM board ORDER BY bd_id DESC
+	</select>
+	
+	<select id="boardSelect" parameterType="co.yedam.MidProject.board.service.BoardVO" resultMap="boardMap">
+		SELECT * FROM board WHERE bd_id = #{boardId}
+	</select>
+	
+	<insert id="boardInsert" parameterType="co.yedam.MidProject.board.service.BoardVO">
+		<selectKey keyProperty="boardId" resultType="int" order="BEFORE">
+			SELECT CASE WHEN MAX(bd_id) IS NULL THEN 1 ELSE MAX(bd_id) + 1 END AS id FROM board
+		</selectKey>
+		INSERT INTO board 
+		VALUES(#{boardId},#{boardTitle},#{boardContent},SYSDATE,#{boardWriter})
+	</insert>
+	
+	<update id="boardUpdate" parameterType="co.yedam.MidProject.board.service.BoardVO">
+		UPDATE board SET bd_date = SYSDATE, bd_title = #{boardTitle}, bd_content = #{boardContent} WHERE bd_id = #{boardId}
+	</update>
+	
+	<delete id="boardDelete" parameterType="co.yedam.MidProject.board.service.BoardVO">
+		DELETE FROM board WHERE bd_id = #{boardId}
+	</delete>
+	
+	<select id="boardSearchList" resultMap="boardMap">
+		SELECT * FROM board 
+		WHERE
+		<if test='key eq "1"'>bd_title LIKE '%'||#{val}||'%' OR bd_content LIKE '%'||#{val}||'%'</if>
+		<if test='key eq "2"'>bd_title LIKE '%'||#{val}||'%'</if>
+		<if test='key eq "3"'>bd_content LIKE '%'||#{val}||'%'</if>
+	</select>
+	
+</mapper>

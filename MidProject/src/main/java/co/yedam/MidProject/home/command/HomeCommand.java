@@ -45,15 +45,3 @@ public class HomeCommand implements Command {
 	}
 
 }
-
-
-
-//<select id="selectStudent" parameterType="co.yedam.MidProject.student.service.StudentVO"
-//resultType="co.yedam.MidProject.student.service.StudentVO">
-// SELECT * FROM student WHERE s_id = #{s_Id}
-//</select>
-//
-//<select id="selectProfessor" parameterType="co.yedam.MidProject.professor.service.ProfessorVO"
-//resultType="co.yedam.MidProject.professor.service.ProfessorVO">
-// SELECT * FROM professor WHERE p_id = #{p_Id}
-//</select>

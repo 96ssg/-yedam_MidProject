@@ -1,17 +1,18 @@
-package co.yedam.MidProject.professor.web;
+package co.yedam.MidProject.student.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.MidProject.common.Command;
 
-public class ProfessorInsertForm implements Command {
+public class StudentInsertForm implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		//교수 등록폼.	
+		//학생등록폼.
 		
-		return "professor/professorInsertForm.tiles";
+		
+		return "student/studentInsertForm";
 	}
 
 }

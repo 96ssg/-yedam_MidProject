@@ -1,4 +1,4 @@
-package co.yedam.MidProject.professor.web;
+package co.yedam.MidProject.professor.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

@@ -1,30 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="co.yedam.MidProject.student.service.StudentMapper">
-	<select id="selectStudentList" resultType="co.yedam.MidProject.student.service.StudentVO">
+<mapper
+	namespace="co.yedam.MidProject.student.service.StudentMapper">
+	<select id="selectStudentList"
+		resultType="co.yedam.MidProject.student.service.StudentVO">
 		SELECT * FROM STUDENT
 	</select>
-	
+
 	<!-- 로그인 -->
-	<select id="selectStudent" parameterType="co.yedam.MidProject.student.service.StudentVO"
+	<select id="selectStudent"
+		parameterType="co.yedam.MidProject.student.service.StudentVO"
 		resultType="co.yedam.MidProject.student.service.StudentVO">
-		 SELECT * FROM MEMBER WHERE S_ID = #{id}
-		 <if test = "password != null">AND S_PASSWORD = #{password}</if>
+		SELECT * FROM student WHERE s_id = #{s_Id}
 	</select>
-	
-	
-	<insert id="insertStudent" parameterType="co.yedam.MidProject.student.service.StudentVO">
-	INSERT INTO STUDENT VALUES (SUBSTR(#{s_Birth}, -4)||00||#{d_Id}||00||#{s_Id}, #{s_Name}, #{s_Password}, #{s_Birth}, #{s_Grade}, #{s_Phone}, #(s_Score), #(s_Semster) ,#{s_Img}, #{d_Id}) 
-											
+
+
+	<insert id="insertStudent"
+		parameterType="co.yedam.MidProject.student.service.StudentVO">
+		INSERT INTO STUDENT VALUES (SUBSTR(#{s_Birth}, 0, 4)'||'00'||'#{d_Id}'||'00'||'#{s_Id}, #{s_Name}, #{s_Password}, #{s_Birth},
+		#{s_Grade}, #{s_Phone}, #(s_Score), #(s_Semster) ,#{s_Img}, #{d_Id})
+
 	</insert>
-	
-	<update id="updateStudent" parameterType="co.yedam.MidProject.student.service.StudentVO">
-	UPDATE STUDENT SET
-    	s_Password = #{s_Password}
-  WHERE s_Id = #{s_Id}
+
+	<update id="updateStudent"
+		parameterType="co.yedam.MidProject.student.service.StudentVO">
+		UPDATE STUDENT SET s_Password = #{s_Password} WHERE s_Id = #{s_Id}
 	</update>
-	
-	<delete id="deleteStudent" parameterType="co.yedam.MidProject.student.service.StudentVO"></delete>
+
+	<delete id="deleteStudent"
+		parameterType="co.yedam.MidProject.student.service.StudentVO"></delete>
 	<!-- 중복체크 -->
 	<!-- <select id="isIdCheck" parameterType="String"></select> -->
 </mapper>

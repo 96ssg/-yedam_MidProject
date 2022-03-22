@@ -41,10 +41,8 @@
 						<th width="150">학기</th>
 							<td>
 								<select>
-		   						 	<option value="" selected>1학기</option>
-		    						<option value="">2학기</option>
-		    						<option value="">계절학기(여름)</option>
-		    						<option value="">계절학기(겨울)</option>
+		   						 	<option value="1" selected>1학기</option>
+		    						<option value="2">2학기</option>
 								</select>
 							</td>
 					</tr>
@@ -68,7 +66,7 @@
 				</table>
 			</div><br />
 			<div>
-				<button type="button" onclick="formCheck()">학생 등록</button>&nbsp;&nbsp;&nbsp;
+				<button type="submit" onclick="">학생 등록</button>&nbsp;&nbsp;&nbsp;
 				<button type="reset">취 소</button>&nbsp;&nbsp;&nbsp;
 				<button type="button" onclick="location.href='main.do'">홈</button>
 			</div>

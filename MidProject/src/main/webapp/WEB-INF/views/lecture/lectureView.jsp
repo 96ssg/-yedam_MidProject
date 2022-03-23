@@ -23,7 +23,7 @@
 						</tr>
 						<tr>
 							<th>교수명</th>
-							<td colspan="3">${p.p_Name }</td>
+							<td colspan="3">${p.profName }</td>
 						</tr>
 						<tr>
 							<th>요일</th>
@@ -32,6 +32,10 @@
 						<tr>
 							<th>강의실</th>
 							<td colspan="3">${vo.lectureRoom}</td>
+						</tr>
+						<tr>
+							<th>교수번호</th>
+							<td colspan="3">${p.profId}</td>
 						</tr>
 					</table>
 		</div><br>

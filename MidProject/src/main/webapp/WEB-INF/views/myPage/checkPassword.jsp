@@ -7,8 +7,26 @@
 <title>본인확인</title>
 </head>
 <body>
-	<form name="passwordForm" action="myPage.do" method="post">
-		<table>
+<script type="text/javascript">
+	window.onload = function() {
+		frm.s_password.focus();
+	}
+	
+	function passwdCheck(form){
+		if(form.s_password.value == "") {
+			alert("비밀번호를 입력해주세요");
+			frm.s_password.focus();
+			return false;
+		}
+		
+		frm.method="post";
+		frm.action="myPage.do";
+		frm.submit();
+	}
+</script>
+
+	<form id="frm" name="frm">
+		<table align="center">
 			<tr>
 				<td align="center">:::비밀번호 확인:::</td>
 			</tr>
@@ -26,16 +44,12 @@
 			</tr>
 			<tr>
 				<td>
-					<button type="button" onclick="passwordForm(s_password);">확인</button>
+					<div align="center">
+						<button type="button" onclick="passwdCheck(frm);">확인</button>
+					</div>
 				</td>
 			</tr>
 		</table>
 	</form>
-	
-	<div align="center">
-		<div>
-			${message}
-		</div>
-	</div>
 </body>
 </html>

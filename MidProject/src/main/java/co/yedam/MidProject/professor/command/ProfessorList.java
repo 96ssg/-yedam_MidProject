@@ -15,7 +15,6 @@ public class ProfessorList implements Command {
 		
 		ProfessorService professorDao = new ProfessorServiceImpl();
 		request.setAttribute("professors", professorDao.selectProfessorList());
-		System.out.println(professorDao.selectProfessorList());
 		
 		return "professor/professorList";
 		

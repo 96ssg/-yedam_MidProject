@@ -21,7 +21,7 @@ public class ProfessorUpdateForm implements Command {
 		professor = professorDao.selectProfessor(professor);
 		
 		request.setAttribute("professors", professor);
-		
+		System.out.println(professor.getProfName());
 
 		return "professor/professorUpdateForm";
 	}

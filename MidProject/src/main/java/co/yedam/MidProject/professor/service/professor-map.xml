@@ -22,7 +22,7 @@
 	<!-- 로그인 -->
 	<select id="selectProfessor"
 		parameterType="co.yedam.MidProject.professor.service.ProfessorVO"
-		resultType="co.yedam.MidProject.professor.service.ProfessorVO">
+		resultMap="professorMap">
 		SELECT * FROM PROFESSOR WHERE p_Id = #{profId}
 	</select>
 
@@ -39,7 +39,7 @@
 	
 	<update id="updateProfessor"
 		parameterType="co.yedam.MidProject.professor.service.ProfessorVO">
-				UPDATE STUDENT SET p_Password = #{profPassword},  WHERE p_Id = #{profId}
+				UPDATE PROFESSOR SET p_password = #{profPassword} WHERE p_id = #{profId}
 		</update>
 
 	<delete id="deleteProfessor"

@@ -26,7 +26,7 @@ public class LectureView implements Command {
 		
 		
 		ProfessorVO p = new ProfessorVO();
-		p.setP_Id(request.getParameter("professorId"));
+		p.setProfId(request.getParameter("professorId"));
 		
 		ProfessorService pDao = new ProfessorServiceImpl();
 		p = pDao.selectProfessor(p);

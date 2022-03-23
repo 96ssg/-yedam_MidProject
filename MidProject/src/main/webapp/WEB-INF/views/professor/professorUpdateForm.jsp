@@ -35,16 +35,6 @@ document.frm.submit();
 					</tr>
 					
 					<tr>
-						<th width="150">생년월일</th>
-						<td width="300"><input type="date" id="pBirth" name="pBirth" value="2022-03-19" min="1980-01-01" max="2022-12-31"></td>
-					</tr>
-					
-					<tr>
-						<th width="150">휴대폰 번호</th>
-						<td width="300"><input type="number" id="pPhone" name="pPhone" value="${professors.profPhone }"></td>
-					</tr>
-					
-					<tr>
 						<th width="150">사진</th>
 						<td width="300"><input type="text" id="pImg" name="pImg" value="${professors.profImg }"></td>
 					</tr>

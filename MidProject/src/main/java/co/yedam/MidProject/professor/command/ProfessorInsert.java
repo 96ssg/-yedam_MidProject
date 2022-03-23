@@ -22,13 +22,13 @@ public class ProfessorInsert implements Command {
 		String did = request.getParameter("dId");
 		
 		ProfessorVO professor = new ProfessorVO();
-		professor.setP_Id(id);
-		professor.setP_Name(name);
-		professor.setP_Password(pass);
-		professor.setP_Phone(phone);
-		professor.setP_Birth(birth);
-		professor.setP_Img(img);
-		professor.setD_Id(did);
+		professor.setProfId(id);
+		professor.setProfName(name);
+		professor.setProfPassword(pass);
+		professor.setProfPhone(phone);
+		professor.setProfBirth(birth);
+		professor.setProfImg(img);
+		professor.setDeptId(did);
 		
 		ProfessorService service = new ProfessorServiceImpl();
 		service.insertProfessor(professor);

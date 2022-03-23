@@ -1,7 +1,12 @@
 package co.yedam.MidProject.student.command;
 
+import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import co.yedam.MidProject.common.Command;
 import co.yedam.MidProject.student.service.StudentService;
@@ -13,34 +18,32 @@ public class StudentUpdate implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 
-
-		
-		String id = request.getParameter("sId");
-		String name = request.getParameter("sName");
-		String pass = request.getParameter("sPassword");
-		String phone = request.getParameter("sPhone");
-		String birth = request.getParameter("sBirth");
-		String img = request.getParameter("sImg");
-		int grade = Integer.parseInt(request.getParameter("sGrade"));
-		int score = Integer.parseInt(request.getParameter("sScore"));
-		int semster = Integer.parseInt(request.getParameter("sSemster"));
-		String did = request.getParameter("did");
-		
-		StudentVO student = new StudentVO();
-		student.setS_Id(id);
-		student.setS_Name(name);
-		student.setS_Password(pass);
-		student.setS_Phone(phone);
-		student.setS_Birth(birth);
-		student.setS_Img(img);
-		student.setS_Grade(grade);
-		student.setS_Score(score);
-		student.setS_Semster(semster);
-		student.setD_Id(did);
+		/*
+		 * StudentService studentDao = new StudentServiceImpl();
+		 * 
+		 * ObjectMapper mapper = new ObjectMapper(); List<StudentVO> list =
+		 * studentDao.selectStudentList(); String jsonInString = ""; try { jsonInString
+		 * = new ObjectMapper().writeValueAsString(list); } catch (IOException e) { //
+		 * TODO Auto-generated catch block e.printStackTrace(); }
+		 * 
+		 * request.setAttribute("students", jsonInString);
+		 */
 		
 		StudentService service = new StudentServiceImpl();
-		service.updateStudent(student);
 		
+		StudentVO student = new StudentVO();
+		student.setStudentId(request.getParameter("studentId"));
+		student.setStudentName(request.getParameter("studentName"));
+		student.setStudentPassword(request.getParameter("studentPassword"));
+		student.setStudentPhone(request.getParameter("studentPhone"));
+		student.setStudentBirth(request.getParameter("studentBirth"));
+		student.setStudentImg(request.getParameter("studentImg"));
+		student.setStudentGrade(Integer.parseInt("studentGrade"));
+		student.setStudentScore(Integer.parseInt("studentScore"));
+		student.setStudentSemster(Integer.parseInt("studentSemster"));
+		student.setDeptId(request.getParameter("deptId"));
+		
+		service.updateStudent(student);
 		
 		request.setAttribute("students", student);
 		

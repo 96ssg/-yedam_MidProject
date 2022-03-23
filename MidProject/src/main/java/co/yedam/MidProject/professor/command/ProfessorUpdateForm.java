@@ -14,14 +14,13 @@ public class ProfessorUpdateForm implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		// UpdateForm으로 넘어갔을 때 값을 넘겨줘야하니까 여기에 셋시켜둬야함.
 		ProfessorService professorDao = new ProfessorServiceImpl();
-		ProfessorVO professor = new ProfessorVO();
-		professor.setP_Id(request.getParameter("id"));
-		professor.setP_Password(request.getParameter("password"));
-		professor.setP_Img(request.getParameter("img"));
-		professor.setP_Birth(request.getParameter("birth"));
-		professor.setP_Phone(request.getParameter("phone"));
+		String professorId = request.getParameter("professorId");
 		
-		request.setAttribute("professor", professorDao.selectProfessor(professor));
+		ProfessorVO professor = new ProfessorVO();
+		professor.setProfId(professorId);
+		professor = professorDao.selectProfessor(professor);
+		
+		request.setAttribute("professors", professor);
 		
 
 		return "professor/professorUpdateForm";

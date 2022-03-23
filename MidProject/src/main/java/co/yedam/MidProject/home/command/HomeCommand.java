@@ -26,7 +26,7 @@ public class HomeCommand implements Command {
 			// 로그인 한 유저가 학생일 경우
 			HttpSession session = request.getSession();
 			StudentVO user = new StudentVO();
-			user.setS_Id(userId);
+			user.setStudentId(userId);
 			StudentService sDao = new StudentServiceImpl();
 			
 			session.setAttribute("user", sDao.selectStudent(user));
@@ -35,7 +35,7 @@ public class HomeCommand implements Command {
 			// 로그인 한 유저가 교수일 경우
 			HttpSession session = request.getSession();
 			ProfessorVO user = new ProfessorVO();
-			user.setP_Id(userId);
+			user.setProfId(userId);
 			ProfessorService pDao = new ProfessorServiceImpl();
 			
 			session.setAttribute("user", pDao.selectProfessor(user));

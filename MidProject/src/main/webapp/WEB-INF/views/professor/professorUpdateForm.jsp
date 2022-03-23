@@ -14,24 +14,24 @@ document.frm.submit();
 		<h1>교수수정</h1>
 	</div>
 	<div>
-		<form id="frm" name="frm" action="professorUpdate.do" method="post">
+		<form action="professorUpdate.do" method="post">
 			<div>
 				<table border="1">
 					
 					<tr>
 						<th width="150">교번</th>
-						<td width="300"><input type="text" id="pId" name="pId" value="${professor.p_Id }">
+						<td width="300"><input type="text" id="pId" name="pId" value="${professors.profId }">
 						</td>
 					</tr>
 					
 					<tr>
 						<th width="150">이름</th>
-						<td width="300"><input type="text" id="pName" name="pName"></td>
+						<td width="300"><input type="text" id="pName" name="pName" value=${professors.profName }></td>
 					</tr>
 					
 					<tr>
 						<th width="150">패스워드</th>
-						<td width="300"><input type="password" id="pPassword" name="pPassword"></td>
+						<td width="300"><input type="password" id="pPassword" name="pPassword" value=${professors.profPassword }></td>
 					</tr>
 					
 					<tr>
@@ -41,25 +41,15 @@ document.frm.submit();
 					
 					<tr>
 						<th width="150">휴대폰 번호</th>
-						<td width="300"><input type="number" id="pPhone" name="pPhone"></td>
+						<td width="300"><input type="number" id="pPhone" name="pPhone" value="${professors.profPhone }"></td>
 					</tr>
 					
 					<tr>
 						<th width="150">사진</th>
-						<td width="300"><input type="text" id="pImg" name="pImg">${professor.p_Img }</td>
+						<td width="300"><input type="text" id="pImg" name="pImg" value="${professors.profImg }"></td>
 					</tr>
-
-					<tr>
-						<th width="150">학과</th>
-							<td width="300">
-								<select id="dId" name="dId">
-		   						 	<option value="1" selected>국어국문학과</option>
-		    						<option value="2">응용생명과학부</option>
-		    						<option value="3">전자공학과</option>
-		    						<option value="4">자율전공학부</option>
-								</select>
-							</td>
-					</tr>
+ 
+					
 				</table>
 			</div><br />
 			<div>

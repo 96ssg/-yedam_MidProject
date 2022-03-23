@@ -13,7 +13,22 @@ public class ProfessorUpdate implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		return null;
+		ProfessorService service = new ProfessorServiceImpl();
+		ProfessorVO professor = new ProfessorVO();
+		professor.setProfId(request.getParameter("profId"));
+		professor.setProfName(request.getParameter("profName"));
+		professor.setProfPassword(request.getParameter("profPassword"));
+		professor.setProfBirth(request.getParameter("prof"));
+		professor.setProfPhone(request.getParameter("profphone"));
+		professor.setProfImg(request.getParameter("profimg"));
+		professor.setDeptId(request.getParameter("profdid"));
+		
+		service.updateProfessor(professor);
+		
+		
+		request.setAttribute("professors", professor);
+		System.out.println(professor);
+		return "professor/professor";
 	}
 
 }

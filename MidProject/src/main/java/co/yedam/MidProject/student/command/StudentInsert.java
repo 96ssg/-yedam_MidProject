@@ -24,16 +24,16 @@ public class StudentInsert implements Command {
 		String did = request.getParameter("did");
 		
 		StudentVO student = new StudentVO();
-		student.setS_Id(id);
-		student.setS_Name(name);
-		student.setS_Password(pass);
-		student.setS_Phone(phone);
-		student.setS_Birth(birth);
-		student.setS_Img(img);
-		student.setS_Grade(grade);
-		student.setS_Score(score);
-		student.setS_Semster(semster);
-		student.setD_Id(did);
+		student.setStudentId(id);
+		student.setStudentName(name);
+		student.setStudentPassword(pass);
+		student.setStudentPhone(phone);
+		student.setStudentBirth(birth);
+		student.setStudentImg(img);
+		student.setStudentGrade(grade);
+		student.setStudentScore(score);
+		student.setStudentSemster(semster);
+		student.setDeptId(did);
 		
 		StudentService service = new StudentServiceImpl();
 		service.insertStudent(student);

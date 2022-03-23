@@ -1,4 +1,4 @@
-package co.yedam.MidProject.student.web;
+package co.yedam.MidProject.student.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,8 +13,10 @@ public class StudentList implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		//학생리스트.
 		
+
 		StudentService studentDao = new StudentServiceImpl();
 		request.setAttribute("students", studentDao.selectStudentList());
+		System.out.println(studentDao.selectStudentList());
 		
 		return "student/studentList";
 		

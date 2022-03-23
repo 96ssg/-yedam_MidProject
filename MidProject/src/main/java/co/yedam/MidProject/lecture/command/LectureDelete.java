@@ -14,7 +14,7 @@ public class LectureDelete implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		LectureVO vo = new LectureVO();
-		vo.setLId(Integer.parseInt(request.getParameter("lId")));
+		vo.setLectureId(Integer.parseInt(request.getParameter("lectureId")));
 
 		LectureService lectureDAO = new LectureServiceImpl();
 		lectureDAO.deleteLecture(vo);

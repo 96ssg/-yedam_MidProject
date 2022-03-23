@@ -53,16 +53,16 @@
 								<c:forEach items="${lectures }" var="l">
 									<tr onmouseover='this.style.background="#fcecae";'
 										onmouseleave='this.style.background="#FFFFFF";'
-										onclick="lectureContents(${l.LId})">
-										<td>${l.LId }<button type="submit" formaction="lectureDelete.do">삭제</button></td>
-										<td>${l.LName}</td>
-										<td>${l.LCredit}</td>
-										<td>${l.LDay}</td>
-										<td>${l.LStart}</td>
-										<td>${l.LEnd}</td>
-										<td>${l.LRoom}</td>
-										<td>${l.PId}</td>
-										<td>${l.LCapacity}&nbsp;&nbsp;&nbsp;</td>
+										onclick='lectureContents(${l.lectureId},"${l.professorId }")'>
+										<td>${l.lectureId }<c:if test=""><button type="submit" formaction="lectureDelete.do">삭제</button></c:if></td>
+										<td>${l.lectureName}</td>
+										<td>${l.lectureCredit}</td>
+										<td>${l.lectureDay}</td>
+										<td>${l.lectureStart}</td>
+										<td>${l.lectureEnd}</td>
+										<td>${l.lectureRoom}</td>
+										<td>${l.professorId}</td>
+										<td>${l.lectureCapacity}&nbsp;&nbsp;&nbsp;</td>
 									</tr>
 								</c:forEach>
 							</c:if>
@@ -74,13 +74,15 @@
 					<button type="button"
 						onclick="location.href='lectureInsertForm.do'">강의등록</button>
 				</div>
-				<input type="hidden" id="lId" name="lId">
+				<input type="hidden" id="lectureId" name="lectureId">
+				<input type="hidden" id="professorId" name="professorId">
 			</form>
 		</div>
 	</div>
 	<script type="text/javascript">
-function lectureContents(n){
-		frm.lId.value = n;
+function lectureContents(n,m){
+		frm.lectureId.value = n;
+		frm.professorId.value = m;
 		frm.action = "lectureView.do";
 		frm.submit();
 	}
@@ -109,17 +111,17 @@ function searchResult(data){
 		var html = $("<tr />").attr({
 			'onmouseover' : 'this.style.background="#fcecae";',
 			'onmouseleave' : 'this.style.background="#FFFFFF";',
-			'onclick' : 'lectureContents('+ item.lid +')'
+			'onclick' : 'lectureContents('+ item.lectureId +')'
 		}).append(
-				$("<td />").text(item.lid),
-				$("<td />").text(item.lname),
-				$("<td />").text(item.lcredit),
-				$("<td />").text(item.lday),
-				$("<td />").text(item.lstart),
-				$("<td />").text(item.lend),
-				$("<td />").text(item.lroom),
-				$("<td />").text(item.pid),
-				$("<td />").text(item.lcapacity)
+				$("<td />").text(item.lectureId),
+				$("<td />").text(item.lectureName),
+				$("<td />").text(item.lectureCredit),
+				$("<td />").text(item.lectureDay),
+				$("<td />").text(item.lectureStart),
+				$("<td />").text(item.lectureEnd),
+				$("<td />").text(item.lectureRoom),
+				$("<td />").text(item.professorId),
+				$("<td />").text(item.lectureCapacity)
 				);
 		tb.append(html)
 	});

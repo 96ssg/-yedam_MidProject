@@ -7,6 +7,9 @@ import co.yedam.MidProject.common.Command;
 import co.yedam.MidProject.lecture.service.LectureService;
 import co.yedam.MidProject.lecture.service.LectureVO;
 import co.yedam.MidProject.lecture.serviceImpl.LectureServiceImpl;
+import co.yedam.MidProject.professor.service.ProfessorService;
+import co.yedam.MidProject.professor.service.ProfessorVO;
+import co.yedam.MidProject.professor.serviceImpl.ProfessorServiceImpl;
 
 public class LectureView implements Command {
 
@@ -15,13 +18,21 @@ public class LectureView implements Command {
 		// TODO Auto-generated method stub
 		
 
-		LectureVO vo = new LectureVO();
-		vo.setLId(Integer.parseInt(request.getParameter("lId")));
+		LectureVO lecture = new LectureVO();
+		lecture.setLectureId(Integer.parseInt(request.getParameter("lectureId")));
 
 		LectureService service = new LectureServiceImpl();
-		vo = service.selectLecture(vo);
-
-		request.setAttribute("vo", vo);
+		lecture = service.selectLecture(lecture);
+		
+		
+		ProfessorVO p = new ProfessorVO();
+		p.setP_Id(request.getParameter("professorId"));
+		
+		ProfessorService pDao = new ProfessorServiceImpl();
+		p = pDao.selectProfessor(p);
+		
+		request.setAttribute("vo", lecture);
+		request.setAttribute("p", p);
 
 		return "lecture/lectureView";
 	}

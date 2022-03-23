@@ -3,15 +3,15 @@
 <mapper namespace="co.yedam.MidProject.lecture.service.LectureMapper">
 <!-- resultMap 설정 -->
 <resultMap type="co.yedam.MidProject.lecture.service.LectureVO" id="lectureMap">
-	<id property="LId" column="L_ID"/>
-	<result property="LName" column="L_NAME"/>
-	<result property="LCredit" column="L_CREDIT"/>
-	<result property="LDay" column="L_DAY"/>
-	<result property="LStart" column="L_START"/>
-	<result property="LEnd" column="L_END"/>
-	<result property="LRoom" column="L_ROOM"/>
-	<result property="PId" column="P_ID"/>
-	<result property="LCapacity" column="L_CAPACITY"/>
+	<id property="lectureId" column="L_ID"/>
+	<result property="lectureName" column="L_NAME"/>
+	<result property="lectureCredit" column="L_CREDIT"/>
+	<result property="lectureDay" column="L_DAY"/>
+	<result property="lectureStart" column="L_START"/>
+	<result property="lectureEnd" column="L_END"/>
+	<result property="lectureRoom" column="L_ROOM"/>
+	<result property="professorId" column="P_ID"/>
+	<result property="lectureCapacity" column="L_CAPACITY"/>
 </resultMap>
 
 <!-- 강의전체리스트 -->
@@ -21,27 +21,27 @@
 
 <!-- 강의 단건 조회 -->
 <select id="selectLecture" parameterType="co.yedam.MidProject.lecture.service.LectureVO" resultMap="lectureMap">
-	SELECT * FROM LECTURE WHERE L_ID = #{lId}
+	SELECT * FROM LECTURE WHERE L_ID = #{lectureId}
 </select>
 
 <!-- 강의 등록 -->
 <insert id="insertLecture" parameterType="co.yedam.MidProject.lecture.service.LectureVO">
-<selectKey keyProperty="lId" resultType="int" order="BEFORE">
+<selectKey keyProperty="lectureId" resultType="int" order="BEFORE">
 SELECT CASE WHEN MAX(L_ID)IS NULL THEN 1 ELSE MAX(L_ID)+1 END AS ID FROM LECTURE
 </selectKey>
-INSERT INTO LECTURE VALUES(#{lId},#{lName},#{lCredit},#{lDay},#{lStart},#{lEnd},#{lRoom},#{pId},#{lCapacity})
+INSERT INTO LECTURE VALUES(#{lectureId},#{lectureName},#{lectureCredit},#{lectureDay},#{lectureStart},#{lectureEnd},#{lectureRoom},#{professorId},#{lectureCapacity})
 </insert>
 
 <!-- 강의 수정 -->
 <update id="updateLecture" parameterType="co.yedam.MidProject.lecture.service.LectureVO">
 UPDATE LECTURE 
-SET L_ROOM = #{lRoom}
-WHERE L_ID = #{lId}
+SET L_ROOM = #{lectureRoom}
+WHERE L_ID = #{lectureId}
 </update>
 
 <!-- 강의 삭제 -->
 <delete id="deleteLecture" parameterType="co.yedam.MidProject.lecture.service.LectureVO">
-	DELETE FROM LECTURE WHERE L_ID = #{lId}
+	DELETE FROM LECTURE WHERE L_ID = #{lectureId}
 </delete>
 
 <!-- 강의 검색 -->

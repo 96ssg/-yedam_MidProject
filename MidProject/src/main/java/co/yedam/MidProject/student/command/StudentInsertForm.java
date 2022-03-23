@@ -1,4 +1,4 @@
-package co.yedam.MidProject.student.web;
+package co.yedam.MidProject.student.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

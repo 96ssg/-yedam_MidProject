@@ -8,34 +8,39 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forEach items="${students }" var="student">
 	
-	<table border="1" align="center">
+	<table border="1">
+	<c:forEach items="${students }" var="s">
 		<tr onClick="location.href='studentUpdateForm.do'">
 		
-		<td>${student.s_Id }</td> 
+		<td>${s.studentId }</td> 
 		
-		<td>${student.s_Name }</td> 
+		<td>${s.studentName }</td> 
 		
-		<td>${student.s_Password }</td>
+		<td>${s.studentPassword }</td>
 		
-		<td>${student.s_Birth }</td>
+		<td>${s.studentBirth }</td>
 		
-		<td>${student.s_Grade }</td>
+		<td>${s.studentGrade }</td>
 		
-		<td>${student.s_Semster }</td>
+		<td>${s.studentSemster }</td>
 		
-		<td>${student.s_Phone}</td>
+		<td>${s.studentPhone}</td>
 		
-		<td>${student.s_Img }</td>
+		<td>${s.studentImg }</td>
 		
-		<td>${student.s_Score }</td>
+		<td>${s.studentScore }</td>
 		
-		<td>${student.d_Id }</td>
+		<td>${s.deptId }</td>
 		
 		</tr>
-	</table>
 	</c:forEach>
+	</table>
+	
+	<script>
+		const sList = '<c:out value="${students }"/>';
+		console.log(sList);
+	</script>
 	
 </body>
 </html>

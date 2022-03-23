@@ -19,6 +19,8 @@ import co.yedam.MidProject.board.command.BoardList;
 import co.yedam.MidProject.board.command.BoardUpdate;
 import co.yedam.MidProject.board.command.BoardUpdateForm;
 import co.yedam.MidProject.common.Command;
+import co.yedam.MidProject.course.command.CourseDetail;
+import co.yedam.MidProject.course.command.CourseList;
 import co.yedam.MidProject.home.command.HomeCommand;
 import co.yedam.MidProject.home.command.Login;
 import co.yedam.MidProject.home.command.LoginForm;
@@ -31,14 +33,14 @@ import co.yedam.MidProject.lecture.command.LectureList;
 import co.yedam.MidProject.lecture.command.LectureUpdate;
 import co.yedam.MidProject.lecture.command.LectureUpdateForm;
 import co.yedam.MidProject.lecture.command.LectureView;
-import co.yedam.MidProject.professor.web.ProfessorInsert;
-import co.yedam.MidProject.professor.web.ProfessorInsertForm;
-import co.yedam.MidProject.professor.web.ProfessorList;
-import co.yedam.MidProject.professor.web.ProfessorUpdate;
-import co.yedam.MidProject.professor.web.ProfessorUpdateForm;
-import co.yedam.MidProject.student.web.StudentInsertForm;
-import co.yedam.MidProject.student.web.StudentList;
-import co.yedam.MidProject.student.web.StudentUpdateForm;
+import co.yedam.MidProject.professor.command.ProfessorInsert;
+import co.yedam.MidProject.professor.command.ProfessorInsertForm;
+import co.yedam.MidProject.professor.command.ProfessorList;
+import co.yedam.MidProject.professor.command.ProfessorUpdate;
+import co.yedam.MidProject.professor.command.ProfessorUpdateForm;
+import co.yedam.MidProject.student.command.StudentInsertForm;
+import co.yedam.MidProject.student.command.StudentList;
+import co.yedam.MidProject.student.command.StudentUpdateForm;
 
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -92,6 +94,11 @@ public class FrontController extends HttpServlet {
 		map.put("/boardUpdateForm.do", new BoardUpdateForm());		// 공지사항 수정 폼
 		map.put("/boardUpdate.do", new BoardUpdate());				// 공지사항 수정
 		map.put("/boardDelete.do", new BoardDelete());				// 공지사항 사제
+		
+		// course
+		map.put("/courseList.do", new CourseList());				// 수강정보 목록
+		map.put("/courseDetail.do", new CourseDetail());				// 수강정보 상세
+		
 		
 	}
 

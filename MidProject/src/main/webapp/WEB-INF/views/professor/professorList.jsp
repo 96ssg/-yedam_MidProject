@@ -9,27 +9,27 @@
 </head>
 <body>
 	
-	<c:forEach items="${professors }" var="professor">
 		<table border="1" align="center">
-		<tr onClick="location.href='professorUpdateForm.do'">
+	<c:forEach items="${professors }" var="professor">
+		<tr onClick="location.href='professorUpdateForm.do?id=${professor.profId }'">
 		
-		<td>${professor.p_Id }</td> 
+		<td>${professor.profId }</td> 
 		
-		<td>${professor.p_Name }</td> 
+		<td>${professor.profName }</td> 
 		
-		<td>${professor.p_Password }</td>
+		<td>${professor.profPassword }</td>
 		
-		<td>${professor.p_Birth }</td>
+		<td>${professor.profBirth }</td>
 		
-		<td>${professor.p_Phone}</td>
+		<td>${professor.profPhone}</td>
 		
-		<td>${professor.p_Img }</td>
+		<td>${professor.profImg }</td>
 		
-		<td>${professor.d_Id }</td>
+		<td>${professor.deptId }</td>
 		
 		</tr>
-	</table>
 	</c:forEach>
+	</table>
 	
 </body>
 </html>

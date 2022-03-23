@@ -1,30 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="co.yedam.MidProject.student.service.StudentMapper">
-	<select id="selectStudentList" resultType="co.yedam.MidProject.student.service.StudentVO">
+<mapper
+	namespace="co.yedam.MidProject.student.service.StudentMapper">
+		<resultMap type="co.yedam.MidProject.student.service.StudentVO" id="studentMap">
+		<id property="studentId" column="s_id"/>
+		<result property="studentName" column="s_name"/> 
+		<result property="studentPassword" column="s_birth"/> 
+		<result property="studentPhone" column="s_phone"/> 
+		<result property="studentImg" column="s_img"/>
+		<result property="studentGrade" column="s_grade"/> 
+		<result property="studentSemster" column="s_semster"/>
+		<result property="studentScore" column="s_score"/>
+		<result property="deptId" column="d_id"/>
+	</resultMap>
+	<select id="selectStudentList"
+		resultMap="studentMap">
 		SELECT * FROM STUDENT
 	</select>
 	
+	<!-- <select id="selectStudent" parameterType="co.yedam.MidProject.professor.service.ProfessorVO" resultMap="studentMap">
+		SELECT * FROM STUDENT WHERE s_id = #{studentId}
+	</select> -->
+	
 	<!-- 로그인 -->
-	<select id="selectStudent" parameterType="co.yedam.MidProject.student.service.StudentVO"
+	<select id="selectStudent"
+		parameterType="co.yedam.MidProject.student.service.StudentVO"
 		resultType="co.yedam.MidProject.student.service.StudentVO">
-		 SELECT * FROM MEMBER WHERE S_ID = #{id}
-		 <if test = "password != null">AND S_PASSWORD = #{password}</if>
+		SELECT * FROM student WHERE s_id = #{studentId}
 	</select>
-	
-	
-	<insert id="insertStudent" parameterType="co.yedam.MidProject.student.service.StudentVO">
-	INSERT INTO STUDENT VALUES (SUBSTR(#{s_Birth}, -4)||00||#{d_Id}||00||#{s_Id}, #{s_Name}, #{s_Password}, #{s_Birth}, #{s_Grade}, #{s_Phone}, #(s_Score), #(s_Semster) ,#{s_Img}, #{d_Id}) 
-											
+
+
+	<insert id="insertStudent"
+		parameterType="co.yedam.MidProject.student.service.StudentVO">
+		INSERT INTO STUDENT VALUES (#{studentId}, #{studentName}, #{studentPassword}, #{studentBirth},
+		#{studentGrade}, #{studentPhone}, #(studentScore), #(studentSemster) ,#{studentImg}, #{deptId})
+
 	</insert>
-	
-	<update id="updateStudent" parameterType="co.yedam.MidProject.student.service.StudentVO">
-	UPDATE STUDENT SET
-    	s_Password = #{s_Password}
-  WHERE s_Id = #{s_Id}
+
+	<update id="updateStudent"
+		parameterType="co.yedam.MidProject.student.service.StudentVO">
+		UPDATE STUDENT SET s_Password = #{studentPassword} WHERE s_Id = #{studentId}
 	</update>
-	
-	<delete id="deleteStudent" parameterType="co.yedam.MidProject.student.service.StudentVO"></delete>
+
+	<delete id="deleteStudent"
+		parameterType="co.yedam.MidProject.student.service.StudentVO"></delete>
 	<!-- 중복체크 -->
 	<!-- <select id="isIdCheck" parameterType="String"></select> -->
 </mapper>

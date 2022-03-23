@@ -14,7 +14,6 @@ public class LectureList implements Command {
 		// 강의 전체 리스트
 		LectureService lectureDAO = new LectureServiceImpl();
 		request.setAttribute("lectures", lectureDAO.selectLectureList());
-		System.out.println(lectureDAO.selectLectureList());
 		return "lecture/lectureList";
 	}
 

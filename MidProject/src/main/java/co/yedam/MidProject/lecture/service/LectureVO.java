@@ -7,13 +7,13 @@ import lombok.Setter;
 @Getter
 
 public class LectureVO {
-	private int lId;
-	private String lName;
-	private int lCredit;
-	private String lDay;
-	private String lStart;
-	private String lEnd;
-	private String lRoom;
-	private String pId;
-	private int lCapacity;
+	private int lectureId;
+	private String lectureName;
+	private int lectureCredit;
+	private String lectureDay;
+	private String lectureStart;
+	private String lectureEnd;
+	private String lectureRoom;
+	private String professorId;
+	private int lectureCapacity;
 }

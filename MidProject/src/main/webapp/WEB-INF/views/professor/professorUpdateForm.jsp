@@ -14,36 +14,42 @@ document.frm.submit();
 		<h1>교수수정</h1>
 	</div>
 	<div>
-		<form id="frm" name="frm" action="professorUpdate.do" method="post">
+		<form action="professorUpdate.do" method="post">
 			<div>
 				<table border="1">
 					
-				<!-- 	<tr>
+					<tr>
+						<th width="150">교번</th>
+						<td width="300"><input type="text" id="pId" name="pId" value="${professors.profId }">
+						</td>
+					</tr>
+					
+					<tr>
 						<th width="150">이름</th>
-						<td width="300"><input type="text" id="pName" name="pName"></td>
-					</tr> -->
+						<td width="300"><input type="text" id="pName" name="pName" value=${professors.profName }></td>
+					</tr>
 					
 					<tr>
 						<th width="150">패스워드</th>
-						<td width="300"><input type="password" id="pPassword" name="pPassword">#{p_Password}</td>
+						<td width="300"><input type="password" id="pPassword" name="pPassword" value=${professors.profPassword }></td>
 					</tr>
 					
-					<!-- <tr>
+					<tr>
+						<th width="150">생년월일</th>
+						<td width="300"><input type="date" id="pBirth" name="pBirth" value="2022-03-19" min="1980-01-01" max="2022-12-31"></td>
+					</tr>
+					
+					<tr>
 						<th width="150">휴대폰 번호</th>
-						<td width="300"><input type="number" id="pPhone" name="pPhone"></td>
+						<td width="300"><input type="number" id="pPhone" name="pPhone" value="${professors.profPhone }"></td>
 					</tr>
 					
 					<tr>
 						<th width="150">사진</th>
-						<td width="300"><input type="text" id="pImg" name="pImg"></td>
+						<td width="300"><input type="text" id="pImg" name="pImg" value="${professors.profImg }"></td>
 					</tr>
-
-					<tr>
-						<th width="150">학과</th>
-						<td width="300"><input type="text" id="dId" name="dId"></td>
-					</tr>
- -->												
-						
+ 
+					
 				</table>
 			</div><br />
 			<div>

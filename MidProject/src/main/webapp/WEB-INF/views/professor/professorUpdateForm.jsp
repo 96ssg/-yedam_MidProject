@@ -4,10 +4,6 @@
 <script type="text/javascript">
 
 
-function register(){
-document.frm.submit();
-
-}
 </script>
 <div align="center">
 	<div>
@@ -43,7 +39,7 @@ document.frm.submit();
 				</table>
 			</div><br />
 			<div>
-				<button type="submit" onclick="register()">교수 수정</button>&nbsp;&nbsp;&nbsp;
+				<button type="submit">교수 수정</button>&nbsp;&nbsp;&nbsp;
 				<button type="reset">취 소</button>&nbsp;&nbsp;&nbsp;
 				<button type="button" onclick="location.href='main.do'">홈</button>
 			</div>

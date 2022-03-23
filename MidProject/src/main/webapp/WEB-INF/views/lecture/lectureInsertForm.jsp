@@ -45,7 +45,7 @@
 <td width="100"><input type="text" id="professorId" name="professorId" required="required">
 <select>
 	<c:forEach items="${list }" var="pr">
-		<option>${pr.profName}</option>
+		<option>${pr.ProfName}</option>
 	</c:forEach>
 </select>
 </td>

@@ -19,10 +19,10 @@
 		SELECT * FROM PROFESSOR
 	</select>
 
-	<!-- 로그인 -->
+	
 	<select id="selectProfessor"
 		parameterType="co.yedam.MidProject.professor.service.ProfessorVO"
-		resultType="co.yedam.MidProject.professor.service.ProfessorVO">
+		resultMap="professorMap">
 		SELECT * FROM PROFESSOR WHERE p_Id = #{profId}
 	</select>
 

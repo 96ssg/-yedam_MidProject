@@ -24,7 +24,7 @@ public class StudentHome implements Command {
 		// 새로 로그인 한 경우
 		if (user != null) {
 			user = new StudentVO();
-			user.setS_Id(request.getParameter("userId"));
+			user.setStudentId(request.getParameter("userId"));
 
 			StudentService sDao = new StudentServiceImpl();
 			session.setAttribute("user", sDao.selectStudent(user));

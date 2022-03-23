@@ -24,13 +24,13 @@ public class ProfessorHome implements Command {
 		// 새로 로그인 한 경우
 		if (user != null) {
 			user = new ProfessorVO();
-			user.setP_Id(request.getParameter("userId"));
+			user.setProfId(request.getParameter("userId"));
 
 			ProfessorService pDao = new ProfessorServiceImpl();
 			session.setAttribute("user", pDao.selectProfessor(user));
 
 			// 학과장(admin)은 번호가 001
-			role = (user.getP_Id().endsWith("001"))? "admin" : "professor";
+			role = (user.getProfId().endsWith("001"))? "admin" : "professor";
 			session.setAttribute("role", role);
 		}
 				

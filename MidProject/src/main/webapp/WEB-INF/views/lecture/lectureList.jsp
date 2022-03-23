@@ -54,7 +54,7 @@
 									<tr onmouseover='this.style.background="#fcecae";'
 										onmouseleave='this.style.background="#FFFFFF";'
 										onclick="lectureContents(${l.lectureId})">
-										<td>${l.lectureId }<button type="submit" formaction="lectureDelete.do">삭제</button></td>
+										<td>${l.lectureId }<c:if test=""><button type="submit" formaction="lectureDelete.do">삭제</button></c:if></td>
 										<td>${l.lectureName}</td>
 										<td>${l.lectureCredit}</td>
 										<td>${l.lectureDay}</td>
@@ -75,12 +75,14 @@
 						onclick="location.href='lectureInsertForm.do'">강의등록</button>
 				</div>
 				<input type="hidden" id="lectureId" name="lectureId">
+				<input type="hidden" id="professorId" name="professorId">
 			</form>
 		</div>
 	</div>
 	<script type="text/javascript">
-function lectureContents(n){
+function lectureContents(n,m){
 		frm.lectureId.value = n;
+		frm.professorId.value = m;
 		frm.action = "lectureView.do";
 		frm.submit();
 	}

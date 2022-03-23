@@ -10,8 +10,13 @@
 <body>
 	<div align="center">
 		<div>
-			<h1>교수 홈</h1>
+			<h1>홈</h1>
 		</div>
 	</div>
+	
+	<script>
+	
+// 		fetch('')
+	</script>
 </body>
 </html>

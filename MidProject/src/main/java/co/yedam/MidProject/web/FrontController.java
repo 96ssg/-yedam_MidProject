@@ -21,11 +21,12 @@ import co.yedam.MidProject.board.command.BoardUpdateForm;
 import co.yedam.MidProject.common.Command;
 import co.yedam.MidProject.course.command.CourseDetail;
 import co.yedam.MidProject.course.command.CourseList;
+import co.yedam.MidProject.home.command.AjaxProfessorHome;
+import co.yedam.MidProject.home.command.AjaxStudentHome;
+import co.yedam.MidProject.home.command.HomeCommand;
 import co.yedam.MidProject.home.command.Login;
 import co.yedam.MidProject.home.command.LoginForm;
 import co.yedam.MidProject.home.command.Logout;
-import co.yedam.MidProject.home.command.ProfessorHome;
-import co.yedam.MidProject.home.command.StudentHome;
 import co.yedam.MidProject.lecture.command.AjaxLectureSearch;
 import co.yedam.MidProject.lecture.command.LectureDelete;
 import co.yedam.MidProject.lecture.command.LectureInsert;
@@ -84,8 +85,10 @@ public class FrontController extends HttpServlet {
 		map.put("/loginForm.do", new LoginForm());					// 로그인 폼
 		map.put("/login.do", new Login());							// 로그인
 		map.put("/logout.do", new Logout());						// 로그아웃
-		map.put("/studentHome.do", new StudentHome());				// 학생 홈
-		map.put("/professorHome.do", new ProfessorHome());			// 교수 홈
+		map.put("/home.do", new HomeCommand());						// 홈 화면
+		map.put("/studentHome.do", new AjaxStudentHome());			// 학생 홈 정보 fetch
+		map.put("/professorHome.do", new AjaxProfessorHome());		// 교수 홈 정보 fetch
+		
 		
 		// board
 		map.put("/boardList.do", new BoardList());					// 공지사항

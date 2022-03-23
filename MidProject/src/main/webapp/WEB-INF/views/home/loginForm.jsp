@@ -10,7 +10,7 @@
 <body>
 	<h1>로그인 화면</h1>
 	
-	<form method="post" id="frm">
+	<form action="home.do" method="post" id="frm">
 		<ul>
 			<li>아이디 : <input type="text" name="loginId" id="loginId"></li>
 			<li>비밀번호 : <input type="password" name="loginPassword" id="loginPassword"></li>
@@ -19,7 +19,7 @@
 	<input type="button" value="로그인" id="loginBtn">
 	
 	<h1>테스트</h1>
-	<input type="button" value="학생 2011001001 로그인" onclick="location.href='studentHome.do?loginId=2011001001'">
+	<input type="button" value="학생 2011001001 로그인" onclick="location.href='home.do?loginId=2011001001'">
 	<input type="button" value="교수 001001 로그인" onclick="location.href='professorHome.do?loginId=001001'">
 	
 		
@@ -51,17 +51,7 @@
 				
 				// 로그인 성공
 				alert('로그인 성공');
-				if (loginId.value.length === 10) {
-					frm.setAttribute("action", "studentHome.do");
-					frm.submit();
-					
-				} else if (loginId.value.length === 6) {
-					frm.setAttribute("action", "professorHome.do");
-					frm.submit();
-					
-				} else {
-					alert('오류');
-				}
+				frm.submit();
 			})
 		}
 		

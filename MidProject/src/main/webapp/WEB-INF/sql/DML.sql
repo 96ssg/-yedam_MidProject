@@ -116,8 +116,6 @@ INSERT ALL
     INTO course VALUES (8,'2012002002',2020,2,90,90,'A')
 SELECT * FROM dual;
 
-commit;
-
 --SELECT * FROM department;
 --SELECT * FROM student;
 --SELECT * FROM professor;

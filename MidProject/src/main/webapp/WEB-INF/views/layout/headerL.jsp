@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div align="center">
 	<div>
-		<h1>헤더 부분</h1>
 		<ul>
 			<c:choose>
 				<c:when test='${role eq "student" }'>

@@ -21,8 +21,8 @@ import co.yedam.MidProject.board.command.BoardUpdateForm;
 import co.yedam.MidProject.common.Command;
 import co.yedam.MidProject.course.command.CourseDetail;
 import co.yedam.MidProject.course.command.CourseList;
-import co.yedam.MidProject.home.command.AjaxProfessorHome;
-import co.yedam.MidProject.home.command.AjaxStudentHome;
+import co.yedam.MidProject.home.command.AjaxProfessorInfo;
+import co.yedam.MidProject.home.command.AjaxStudentInfo;
 import co.yedam.MidProject.home.command.HomeCommand;
 import co.yedam.MidProject.home.command.Login;
 import co.yedam.MidProject.home.command.LoginForm;
@@ -86,8 +86,9 @@ public class FrontController extends HttpServlet {
 		map.put("/login.do", new Login());							// 로그인
 		map.put("/logout.do", new Logout());						// 로그아웃
 		map.put("/home.do", new HomeCommand());						// 홈 화면
-		map.put("/studentHome.do", new AjaxStudentHome());			// 학생 홈 정보 fetch
-		map.put("/professorHome.do", new AjaxProfessorHome());		// 교수 홈 정보 fetch
+		map.put("/studentInfo.do", new AjaxStudentInfo());			// 학생 홈 정보 fetch
+		map.put("/professorInfo.do", new AjaxProfessorInfo());		// 교수 홈 정보 fetch
+		map.put("/adminInfo.do", new AjaxProfessorInfo());			// 교수 홈 정보 fetch
 		
 		
 		// board

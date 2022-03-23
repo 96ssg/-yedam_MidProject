@@ -25,6 +25,11 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
+	public List<CourseVO> myCourse(String role, String userId) {
+		return map.myCourse(role, userId);
+	}
+
+	@Override
 	public int courseInsert(CourseVO vo) {
 		return map.courseInsert(vo);
 	}

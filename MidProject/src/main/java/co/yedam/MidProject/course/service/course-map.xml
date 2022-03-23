@@ -1,32 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="co.yedam.MidProject.course.service.CourseMapper">
-	<resultMap type="co.yedam.MidProject.course.service.CourseVO" id="CourseMap">
-		<result property="lectureId" column="l_id"/>
-		<result property="studentId" column="s_id"/>
-		<result property="courseYear" column="c_year"/>
-		<result property="courseSemester" column="c_semester"/>
-		<result property="courseMid" column="c_mid"/>
-		<result property="courseFinal" column="c_final"/>
-		<result property="courseScore" column="c_score"/>
+<mapper
+	namespace="co.yedam.MidProject.course.service.CourseMapper">
+	<resultMap type="co.yedam.MidProject.course.service.CourseVO"
+		id="CourseMap">
+		<result property="lectureId" column="l_id" />
+		<result property="studentId" column="s_id" />
+		<result property="courseYear" column="c_year" />
+		<result property="courseSemester" column="c_semester" />
+		<result property="courseMid" column="c_mid" />
+		<result property="courseFinal" column="c_final" />
+		<result property="courseScore" column="c_score" />
 	</resultMap>
 
 	<select id="courseSelectList" resultMap="CourseMap">
 		SELECT * FROM course
 	</select>
 	<select id="courseSelect" resultMap="CourseMap">
-		SELECT * FROM course WHERE l_id=#{lectureId} AND s_id=#{studentId}
+		SELECT * FROM course WHERE
+		l_id=#{lectureId} AND s_id=#{studentId}
 	</select>
-	<insert id="courseInsert" parameterType="co.yedam.MidProject.course.service.CourseVO">
-		INSERT INTO course 
+	<select id="myCourse"
+		resultMap="CourseMap">
+		SELECT * FROM course
+		WHERE
+		<if test='role == "student"'> s_id=#{userId}</if>
+		<if test='role == "professor"'> p_id=#{userId}</if>
+	</select>
+	<insert id="courseInsert"
+		parameterType="co.yedam.MidProject.course.service.CourseVO">
+		INSERT INTO course
 		VALUES(#{lectureId},#{studentId},#{courseYear},#{courseSemester},#{courseMid},#{courseFinal},#{courseScore})
 	</insert>
-	<update id="courseUpdate" parameterType="co.yedam.MidProject.course.service.CourseVO">
-		UPDATE course 
-		SET c_mid=#{courseMid}, c_final=#{courseFinal} 
+	<update id="courseUpdate"
+		parameterType="co.yedam.MidProject.course.service.CourseVO">
+		UPDATE course
+		SET c_mid=#{courseMid}, c_final=#{courseFinal}
 		WHERE l_id=#{lectureId} AND s_id=#{studentId}
 	</update>
-	<delete id="courseDelete" parameterType="co.yedam.MidProject.course.service.CourseVO">
-		DELETE FROM course WHERE l_id=#{lectureId} AND s_id=#{studentId}
+	<delete id="courseDelete"
+		parameterType="co.yedam.MidProject.course.service.CourseVO">
+		DELETE FROM course WHERE l_id=#{lectureId} AND
+		s_id=#{studentId}
 	</delete>
 </mapper>

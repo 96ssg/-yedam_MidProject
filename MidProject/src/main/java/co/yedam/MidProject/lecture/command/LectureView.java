@@ -18,19 +18,20 @@ public class LectureView implements Command {
 		// TODO Auto-generated method stub
 		
 
-		LectureVO vo = new LectureVO();
-		vo.setLectureId(Integer.parseInt(request.getParameter("lectureId")));
+		LectureVO lecture = new LectureVO();
+		lecture.setLectureId(Integer.parseInt(request.getParameter("lectureId")));
 
 		LectureService service = new LectureServiceImpl();
-		vo = service.selectLecture(vo);
-
-		vo.getProfessorId();
+		lecture = service.selectLecture(lecture);
+		
+		
+		ProfessorVO p = new ProfessorVO();
+		p.setP_Id(request.getParameter("professorId"));
 		
 		ProfessorService pDao = new ProfessorServiceImpl();
-		ProfessorVO p = new ProfessorVO();
 		p = pDao.selectProfessor(p);
 		
-		request.setAttribute("vo", vo);
+		request.setAttribute("vo", lecture);
 		request.setAttribute("p", p);
 
 		return "lecture/lectureView";

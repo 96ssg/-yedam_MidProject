@@ -53,7 +53,7 @@
 								<c:forEach items="${lectures }" var="l">
 									<tr onmouseover='this.style.background="#fcecae";'
 										onmouseleave='this.style.background="#FFFFFF";'
-										onclick="lectureContents(${l.lectureId})">
+										onclick='lectureContents(${l.lectureId},"${l.professorId }")'>
 										<td>${l.lectureId }<c:if test=""><button type="submit" formaction="lectureDelete.do">삭제</button></c:if></td>
 										<td>${l.lectureName}</td>
 										<td>${l.lectureCredit}</td>

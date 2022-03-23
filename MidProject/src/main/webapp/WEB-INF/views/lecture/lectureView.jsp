@@ -23,7 +23,7 @@
 						</tr>
 						<tr>
 							<th>교수명</th>
-							<td colspan="3">${p.professorName }</td>
+							<td colspan="3">${p.p_Name }</td>
 						</tr>
 						<tr>
 							<th>요일</th>

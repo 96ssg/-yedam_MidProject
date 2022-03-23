@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +42,13 @@
 </tr>
 <tr>
 <th width="100">교수번호</th>
-<td width="100"><input type="text" id="professorId" name="professorId" required="required"></td>
+<td width="100"><input type="text" id="professorId" name="professorId" required="required">
+<select>
+	<c:forEach items="${list }" var="pr">
+		<option>${pr.profName}</option>
+	</c:forEach>
+</select>
+</td>
 </tr>
 <tr>
 <th width="100">최대인원</th>

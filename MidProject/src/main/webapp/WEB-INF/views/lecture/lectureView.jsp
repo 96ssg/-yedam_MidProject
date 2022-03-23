@@ -41,14 +41,16 @@
 		</div><br>
 		<div>
 			<button type="button" onclick="location.href='lectureList.do'">목록가기</button>&nbsp;&nbsp;
-			<input type="button" onclick="lectureUpdate(${vo.lectureId})" value="강의수정">&nbsp;&nbsp;
+			<input type="button" onclick='lectureUpdate(${vo.lectureId},"${vo.professorId }")' value="강의수정">&nbsp;&nbsp;
 		</div>
 	</div>
 	<input type="hidden" id="lectureId" name="lectureId">
+	<input type="hidden" id="professorId" name="professorId">
 	</form>
 	<script type="text/javascript">
-	function lectureUpdate(n){
+	function lectureUpdate(n,m){
 		frm.lectureId.value = n;
+		frm.professorId.value = m;
 		frm.action = "lectureUpdateForm.do";
 		frm.submit();
 	}

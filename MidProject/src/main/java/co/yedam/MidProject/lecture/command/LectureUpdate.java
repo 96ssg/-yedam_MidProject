@@ -16,7 +16,13 @@ public class LectureUpdate implements Command {
 		LectureService service = new LectureServiceImpl();
 		LectureVO vo = new LectureVO();
 		vo.setLectureId(Integer.parseInt(request.getParameter("lectureId")));
+		vo.setLectureName(request.getParameter("lectureName"));
+		vo.setLectureCredit(Integer.parseInt(request.getParameter("lectureCredit")));
+		vo.setLectureDay(request.getParameter("lectureDay"));
+		vo.setLectureStart(request.getParameter("lectureStart"));
+		vo.setLectureEnd(request.getParameter("lectureEnd"));
 		vo.setLectureRoom(request.getParameter("lectureRoom"));
+		vo.setLectureCapacity(Integer.parseInt(request.getParameter("lectureCapacity")));
 		service.updateLecture(vo);
 
 		return "lectureList.do";

@@ -34,8 +34,15 @@ INSERT INTO LECTURE VALUES(#{lectureId},#{lectureName},#{lectureCredit},#{lectur
 
 <!-- 강의 수정 -->
 <update id="updateLecture" parameterType="co.yedam.MidProject.lecture.service.LectureVO">
-UPDATE LECTURE 
-SET L_ROOM = #{lectureRoom}
+UPDATE LECTURE
+SET 
+L_NAME = #{lectureName},
+L_CREDIT = #{lectureCredit},
+L_DAY = #{lectureDay},
+L_START = #{lectureStart}, 
+L_END = #{lectureEnd},
+L_ROOM = #{lectureRoom},
+L_CAPACITY = #{lectureCapacity}
 WHERE L_ID = #{lectureId}
 </update>
 

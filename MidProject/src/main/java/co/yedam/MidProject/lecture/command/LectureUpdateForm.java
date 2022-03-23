@@ -16,20 +16,21 @@ public class LectureUpdateForm implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		LectureVO vo = new LectureVO();
-		vo.setLectureId(Integer.parseInt(request.getParameter("lectureId")));
+		LectureVO lecture = new LectureVO();
+		lecture.setLectureId(Integer.parseInt(request.getParameter("lectureId")));
 
 		LectureService service = new LectureServiceImpl();
-		vo = service.selectLecture(vo);
-
-		vo.getProfessorId();
+		lecture = service.selectLecture(lecture);
 		
-		ProfessorService pDao = new ProfessorServiceImpl();
+		
 		ProfessorVO p = new ProfessorVO();
+		p.setProfId(request.getParameter("professorId"));
+		ProfessorService pDao = new ProfessorServiceImpl();
 		p = pDao.selectProfessor(p);
 		
-		request.setAttribute("vo", vo);
+		request.setAttribute("vo", lecture);
 		request.setAttribute("p", p);
+		
 		return "lecture/lectureUpdateForm";
 	}
 

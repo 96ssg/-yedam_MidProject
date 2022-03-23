@@ -17,35 +17,35 @@
 <table border="1">
 <tr>
 <th width="100">강의명</th>
-<td width="100"><input type="text" id="lName" name="lName" required="required"></td>
+<td width="100"><input type="text" id="lectureName" name="lectureName" required="required"></td>
 </tr>
 <tr>
 <th width="100">학점</th>
-<td width="100"><input type="text" id="lCredit" name="lCredit" required="required"></td>
+<td width="100"><input type="text" id="lectureCredit" name="lectureCredit" required="required"></td>
 </tr>
 <tr>
 <th width="100">요일</th>
-<td width="100"><input type="text" id="lDay" name="lDay" required="required"></td>
+<td width="100"><input type="text" id="lectureDay" name="lectureDay" required="required"></td>
 </tr>
 <tr>
 <th width="100">시작시간</th>
-<td width="100"><input type="text" id="lStart" name="lStart" required="required"></td>
+<td width="100"><input type="text" id="lectureStart" name="lectureStart" required="required"></td>
 </tr>
 <tr>
 <th width="100">종료시간</th>
-<td width="100"><input type="text" id="lEnd" name="lEnd" required="required"></td>
+<td width="100"><input type="text" id="lectureEnd" name="lectureEnd" required="required"></td>
 </tr>
 <tr>
 <th width="100">강의실</th>
-<td width="100"><input type="text" id="lRoom" name="lRoom" required="required"></td>
+<td width="100"><input type="text" id="lectureRoom" name="lectureRoom" required="required"></td>
 </tr>
 <tr>
 <th width="100">교수번호</th>
-<td width="100"><input type="text" id="pId" name="pId" required="required"></td>
+<td width="100"><input type="text" id="professorId" name="professorId" required="required"></td>
 </tr>
 <tr>
 <th width="100">최대인원</th>
-<td width="100"><input type="text" id="lCapacity" name="lCapacity" required="required"></td>
+<td width="100"><input type="text" id="lectureCapacity" name="lectureCapacity" required="required"></td>
 </tr>
 
 </table>

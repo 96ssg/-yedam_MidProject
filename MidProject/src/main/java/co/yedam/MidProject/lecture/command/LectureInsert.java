@@ -15,14 +15,14 @@ public class LectureInsert implements Command {
 		// TODO Auto-generated method stub
 		LectureService lectureDAO = new LectureServiceImpl();
 		LectureVO vo = new LectureVO();
-		vo.setLName(request.getParameter("lName"));
-		vo.setLCredit(Integer.parseInt(request.getParameter("lCredit")));
-		vo.setLDay(request.getParameter("lDay"));
-		vo.setLStart(request.getParameter("lStart"));
-		vo.setLEnd(request.getParameter("lEnd"));
-		vo.setLRoom(request.getParameter("lRoom"));
-		vo.setPId(request.getParameter("pId"));
-		vo.setLCapacity(Integer.parseInt(request.getParameter("lCapacity")));
+		vo.setLectureName(request.getParameter("lectureName"));
+		vo.setLectureCredit(Integer.parseInt(request.getParameter("lectureCredit")));
+		vo.setLectureDay(request.getParameter("lectureDay"));
+		vo.setLectureStart(request.getParameter("lectureStart"));
+		vo.setLectureEnd(request.getParameter("lectureEnd"));
+		vo.setLectureRoom(request.getParameter("lectureRoom"));
+		vo.setProfessorId(request.getParameter("professorId"));
+		vo.setLectureCapacity(Integer.parseInt(request.getParameter("lectureCapacity")));
 		
 		
 		int r = lectureDAO.insertLecture(vo);

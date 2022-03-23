@@ -17,17 +17,17 @@
 			<table border="1">
 						<tr>
 							<th width="100">강의번호</th>
-							<td width="150"><input type="number" name="lId" id="lId" value="${vo.LId}"></td>
+							<td width="150"><input type="number" name="lectureId" id="lectureId" value="${vo.lectureId}"></td>
 							<th width="100">강의명</th>
-							<td width="150">${vo.LName }</td>
+							<td width="150">${vo.lectureName }</td>
 						</tr>
 						<tr>
 							<th>요일</th>
-							<td colspan="3">${vo.LDay }</td>
+							<td colspan="3">${vo.lectureDay }</td>
 						</tr>
 						<tr>
 							<th>강의실</th>
-							<td colspan="3"><input type="text" name="lRoom" id="lRoom" value="${vo.LRoom}"></td>
+							<td colspan="3"><input type="text" name="lectureRoom" id="lectureRoom" value="${vo.lectureRoom}"></td>
 						</tr>
 					</table>
 		</div><br>

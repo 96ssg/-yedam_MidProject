@@ -32,7 +32,7 @@
 			})
 			.then(response => response.json())
 			.then(result => {
-
+				console.log(result)
 				// 아이디 오류
 				if (result == null) {
 					alert('아이디가 존재하지 않습니다.');

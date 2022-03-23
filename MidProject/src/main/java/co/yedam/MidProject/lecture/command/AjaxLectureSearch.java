@@ -24,7 +24,6 @@ public class AjaxLectureSearch implements Command {
 		System.out.println(val);
 		List<LectureVO> list = lectureDAO.selectLectureSearchList(key, val) ;
 		String data = null;
-		System.out.println(list.toString());
 		try {
 			data = new ObjectMapper().writeValueAsString(list);
 		}catch (Exception e) {

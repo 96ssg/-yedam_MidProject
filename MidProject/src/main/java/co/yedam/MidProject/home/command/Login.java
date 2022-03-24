@@ -58,7 +58,7 @@ public class Login implements Command {
 			user = pDao.selectProfessor(user);
 			
 			System.out.println("new login : prof " + user.getProfName());
-
+			System.out.println(user.getDeptId());
 			session.setAttribute("user", user);
 			
 			return "ajax:success";

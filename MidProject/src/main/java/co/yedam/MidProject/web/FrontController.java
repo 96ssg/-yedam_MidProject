@@ -21,6 +21,8 @@ import co.yedam.MidProject.board.command.BoardUpdateForm;
 import co.yedam.MidProject.common.Command;
 import co.yedam.MidProject.course.command.CourseDetail;
 import co.yedam.MidProject.course.command.CourseList;
+import co.yedam.MidProject.course.command.SemesterGrade;
+import co.yedam.MidProject.course.command.TotalGrade;
 import co.yedam.MidProject.home.command.AjaxProfessorInfo;
 import co.yedam.MidProject.home.command.AjaxStudentInfo;
 import co.yedam.MidProject.home.command.HomeCommand;
@@ -103,7 +105,10 @@ public class FrontController extends HttpServlet {
 		
 		// course
 		map.put("/courseList.do", new CourseList());				// 수강정보 목록
-		map.put("/courseDetail.do", new CourseDetail());				// 수강정보 상세
+		map.put("/courseDetail.do", new CourseDetail());			// 수강정보 상세
+		map.put("/totalGrade.do", new TotalGrade());				// 전체성적 조회
+		map.put("/semesterGrade.do", new SemesterGrade());			// 학기성적 조회
+		
 		
 		
 	}
@@ -133,5 +138,39 @@ public class FrontController extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 	}
+	
+/*
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		String uri = request.getRequestURI();
+		String contextPath = request.getContextPath();
+		String page = uri.substring(contextPath.length());
+		
+		Command command = map.get(page);
+		String viewPage = "home/loginForm";
+		try {
+			viewPage = command.execute(request, response);
+		} catch(NullPointerException e) {
+			System.out.println("command.execute NPE");
+		} finally {
+		
+			// view resolve
+			if (!viewPage.endsWith(".do")) {
+				if(viewPage.startsWith("ajax:")) {
+					// ajax 처리
+					response.setContentType("text/html; charset=UTF-8");
+					response.getWriter().append(viewPage.substring(5));
+					return;
+				} else {
+					//viewPage = "WEB-INF/views/" + viewPage + ".jsp";
+					viewPage = viewPage + ".tiles";
+				}
+			}
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+			dispatcher.forward(request, response);
+		}
+	}
+*/
 
 }

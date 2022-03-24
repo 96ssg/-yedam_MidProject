@@ -21,11 +21,12 @@ import co.yedam.MidProject.board.command.BoardUpdateForm;
 import co.yedam.MidProject.common.Command;
 import co.yedam.MidProject.course.command.CourseDetail;
 import co.yedam.MidProject.course.command.CourseList;
+import co.yedam.MidProject.home.command.AjaxProfessorInfo;
+import co.yedam.MidProject.home.command.AjaxStudentInfo;
+import co.yedam.MidProject.home.command.HomeCommand;
 import co.yedam.MidProject.home.command.Login;
 import co.yedam.MidProject.home.command.LoginForm;
 import co.yedam.MidProject.home.command.Logout;
-import co.yedam.MidProject.home.command.ProfessorHome;
-import co.yedam.MidProject.home.command.StudentHome;
 import co.yedam.MidProject.lecture.command.AjaxLectureSearch;
 import co.yedam.MidProject.lecture.command.LectureDelete;
 import co.yedam.MidProject.lecture.command.LectureInsert;
@@ -39,11 +40,13 @@ import co.yedam.MidProject.professor.command.ProfessorInsertForm;
 import co.yedam.MidProject.professor.command.ProfessorList;
 import co.yedam.MidProject.professor.command.ProfessorUpdate;
 import co.yedam.MidProject.professor.command.ProfessorUpdateForm;
+import co.yedam.MidProject.professor.command.ProfessorDelete;
 import co.yedam.MidProject.student.command.StudentInsert;
 import co.yedam.MidProject.student.command.StudentInsertForm;
 import co.yedam.MidProject.student.command.StudentList;
 import co.yedam.MidProject.student.command.StudentUpdate;
 import co.yedam.MidProject.student.command.StudentUpdateForm;
+import co.yedam.MidProject.student.command.StudentDelete;
 
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -63,14 +66,14 @@ public class FrontController extends HttpServlet {
 		map.put("/studentUpdateForm.do", new StudentUpdateForm());
 		map.put("/studentinsert.do", new StudentInsert());
 		map.put("/studentUpdate.do", new StudentUpdate());
-		
+		map.put("/studentDelete.do", new StudentDelete());
 		//교수 등록 수정 조회
 		map.put("/professorInsertForm.do", new ProfessorInsertForm());
 		map.put("/professorList.do", new ProfessorList());
 		map.put("/professorInsert.do", new ProfessorInsert());
 		map.put("/professorUpdateForm.do", new ProfessorUpdateForm()); 
 		map.put("/professorUpdate.do", new ProfessorUpdate());
-
+		map.put("/professorDelete.do", new ProfessorDelete());
 		// 승교
 		map.put("/lectureList.do", new LectureList()); //강의목록
 		map.put("/ajaxLectureSearch.do", new AjaxLectureSearch()); //강의 검색
@@ -88,8 +91,11 @@ public class FrontController extends HttpServlet {
 		map.put("/loginForm.do", new LoginForm());					// 로그인 폼
 		map.put("/login.do", new Login());							// 로그인
 		map.put("/logout.do", new Logout());						// 로그아웃
-		map.put("/studentHome.do", new StudentHome());				// 학생 홈
-		map.put("/professorHome.do", new ProfessorHome());			// 교수 홈
+		map.put("/home.do", new HomeCommand());						// 홈 화면
+		map.put("/studentInfo.do", new AjaxStudentInfo());			// 학생 홈 정보 fetch
+		map.put("/professorInfo.do", new AjaxProfessorInfo());		// 교수 홈 정보 fetch
+		map.put("/adminInfo.do", new AjaxProfessorInfo());			// 교수 홈 정보 fetch
+		
 		
 		// board
 		map.put("/boardList.do", new BoardList());					// 공지사항

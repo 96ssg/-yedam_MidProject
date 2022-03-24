@@ -5,8 +5,7 @@
 		<resultMap type="co.yedam.MidProject.student.service.StudentVO" id="studentMap">
 		<id property="studentId" column="s_id"/>
 		<result property="studentName" column="s_name"/> 
-		<result property="studentPassword" column="s_password"/>
-		<result property="studentBirth" column="s_birth"/> 
+		<result property="studentPassword" column="s_birth"/> 
 		<result property="studentPhone" column="s_phone"/> 
 		<result property="studentImg" column="s_img"/>
 		<result property="studentGrade" column="s_grade"/> 
@@ -27,7 +26,7 @@
 	<select id="selectStudent"
 		parameterType="co.yedam.MidProject.student.service.StudentVO"
 		resultMap="studentMap">
-		SELECT * FROM STUDENT WHERE s_id = #{studentId}
+		SELECT * FROM student WHERE s_id = #{studentId}
 	</select>
 
 
@@ -45,7 +44,9 @@
 	</update>
 
 	<delete id="deleteStudent"
-		parameterType="co.yedam.MidProject.student.service.StudentVO"></delete>
+		parameterType="co.yedam.MidProject.student.service.StudentVO">
+		 DELETE FROM student WHERE s_Id = #{studentId}
+		</delete>
 	<!-- 중복체크 -->
 	<!-- <select id="isIdCheck" parameterType="String"></select> -->
 </mapper>

@@ -38,6 +38,7 @@
 			<div>
 				<button type="submit">교수 수정</button>&nbsp;&nbsp;&nbsp;
 				<button type="reset">취 소</button>&nbsp;&nbsp;&nbsp;
+				<button type="submit" formaction='professorDelete.do'>삭제</button>						
 				<button type="button" onclick="location.href='main.do'">홈</button>
 			</div>
 		</form>

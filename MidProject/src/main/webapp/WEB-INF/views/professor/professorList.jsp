@@ -28,7 +28,7 @@
 		<td>${professor.deptId }</td>
 		
 		</tr>
-		<button type="button" ></button>
+
 	</c:forEach>
 	</table>
 	

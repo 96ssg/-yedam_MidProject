@@ -23,15 +23,15 @@ public class ProfessorList implements Command {
 		String deptId;
 		
 		if (role.equals("student")) {
-			StudentVO user = (StudentVO) request.getAttribute("user");
+			StudentVO user = (StudentVO) session.getAttribute("user");
 			deptId = user.getDeptId();
 		} else {
-			ProfessorVO user = (ProfessorVO) request.getAttribute("user");
+			ProfessorVO user = (ProfessorVO) session.getAttribute("user");
 			deptId = user.getDeptId();
 		}
 		
 		
-		//학생리스트.
+		//교수리스트.
 		
 		ProfessorService professorDao = new ProfessorServiceImpl();
 		List<ProfessorVO> list = professorDao.selectProfessorList();

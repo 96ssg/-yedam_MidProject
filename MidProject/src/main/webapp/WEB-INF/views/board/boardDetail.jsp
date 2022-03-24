@@ -21,7 +21,7 @@
 	
 	<div>
 		<form method="post" id="frm">
-			<input type="hidden" name="num" value ="${board.boardId }">
+			<input type="hidden" name="boardId" value ="${board.boardId }">
 			<input type="button" value="수정" id="updateBtn">
 			<input type="button" value="삭제" id="deleteBtn">
 		</form>

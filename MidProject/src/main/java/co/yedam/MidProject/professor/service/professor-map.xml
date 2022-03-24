@@ -43,7 +43,9 @@
 		</update>
 
 	<delete id="deleteProfessor"
-		parameterType="co.yedam.MidProject.professor.service.ProfessorVO"></delete>
+		parameterType="co.yedam.MidProject.professor.service.ProfessorVO">
+			 DELETE FROM PROFESSOR WHERE p_Id = #{profId}
+		</delete>
 	<!-- 중복체크 -->
 	<!-- <select id="isIdCheck" parameterType="String"></select> -->
 </mapper>

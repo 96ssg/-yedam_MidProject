@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.yedam.MidProject.common.Command;
 import co.yedam.MidProject.professor.service.ProfessorService;
@@ -18,10 +19,11 @@ public class LectureInsertForm implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 
-		ProfessorVO user = new ProfessorVO();
-		user.setProfId(request.getParameter("loginId"));
+		HttpSession session = request.getSession();
+		ProfessorVO user = (ProfessorVO) session.getAttribute("user");
+		
 		ProfessorService pDao = new ProfessorServiceImpl();
-		user = pDao.selectProfessor(user);
+		
 		List<ProfessorVO> list = pDao.selectProfessorList();
 		List<ProfessorVO> profs = new ArrayList<>();
 		for (ProfessorVO p : list) {

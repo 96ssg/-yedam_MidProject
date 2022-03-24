@@ -16,7 +16,6 @@ public class LectureList implements Command {
 		
 		HttpSession session = request.getSession();
 		ProfessorVO p = (ProfessorVO) session.getAttribute("user");
-		System.out.println("lectureList : " + p.getProfName());
 		
 		// 강의 전체 리스트
 		LectureService lectureDAO = new LectureServiceImpl();

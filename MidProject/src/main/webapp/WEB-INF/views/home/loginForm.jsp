@@ -10,7 +10,7 @@
 <body>
 	<h1>로그인 화면</h1>
 	
-	<form method="post" id="frm">
+	<form action="home.do" method="post" id="frm">
 		<ul>
 			<li>아이디 : <input type="text" name="loginId" id="loginId"></li>
 			<li>비밀번호 : <input type="password" name="loginPassword" id="loginPassword"></li>
@@ -19,55 +19,40 @@
 	<input type="button" value="로그인" id="loginBtn">
 	
 	<h1>테스트</h1>
-	<input type="button" value="학생 2011001001 로그인" onclick="location.href='studentHome.do?loginId=2011001001'">
-	<input type="button" value="교수 001001 로그인" onclick="location.href='professorHome.do?loginId=001001'">
+	<input type="button" value="학생 2011001001 로그인" onclick="login('2011001001', '1234')">
+	<input type="button" value="교수 001001 로그인" onclick="login('001001', '1234')">
 	
 		
 	<script>
-		function login() {
+		function login(id, pw) {
 			fetch('login.do?', {
 				method: 'post',
 				headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-				body: 'id=' + loginId.value
+				body: 'id=' + id + '&password=' + pw
 			})
-			.then(response => response.json())
+			.then(response => response.text())
 			.then(result => {
-				console.log(result)
-				// 아이디 오류
-				if (result == null) {
+				if (result === 'id') {
 					alert('아이디가 존재하지 않습니다.');
 					loginId.value = '';
 					loginId.focus();
 					return;
 				}
-
-				// 비밀번호 오류
-				if (loginPassword.value != result.userPassword) {
-					alert('비밀번호가 일치하지 않습니다.');
+				
+				if (result === 'password') {
+					alert('비밀번호를 확인하세요.');
 					loginPassword.value = '';
 					loginPassword.focus();
 					return;
 				}
 				
-				// 로그인 성공
-				alert('로그인 성공');
-				if (loginId.value.length === 10) {
-					frm.setAttribute("action", "studentHome.do");
-					frm.submit();
-					
-				} else if (loginId.value.length === 6) {
-					frm.setAttribute("action", "professorHome.do");
-					frm.submit();
-					
-				} else {
-					alert('오류');
-				}
+				if (result === 'success') location.href='home.do';
 			})
 		}
 		
-		loginBtn.addEventListener('click', login)
+		loginBtn.addEventListener('click', login);
 		frm.addEventListener('keydown', event => {
-			if (event.key === 'Enter') login();
+			if (event.key === 'Enter') login(loginId.value, loginPassword.value);
 		})
 	</script>
 

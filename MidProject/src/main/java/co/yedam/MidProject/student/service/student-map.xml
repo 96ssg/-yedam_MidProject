@@ -25,7 +25,7 @@
 	<!-- 로그인 -->
 	<select id="selectStudent"
 		parameterType="co.yedam.MidProject.student.service.StudentVO"
-		resultType="co.yedam.MidProject.student.service.StudentVO">
+		resultMap="studentMap">
 		SELECT * FROM student WHERE s_id = #{studentId}
 	</select>
 

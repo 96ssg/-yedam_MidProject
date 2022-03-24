@@ -41,6 +41,7 @@
 								<th width="300">강의실</th>
 								<th width="100">교수번호</th>
 								<th width="100">최대인원</th>
+								<th width="100">비고</th>
 							</tr>
 						</thead>
 						<tbody id="lectureBody">
@@ -54,7 +55,7 @@
 									<tr onmouseover='this.style.background="#fcecae";'
 										onmouseleave='this.style.background="#FFFFFF";'
 										onclick='lectureContents(${l.lectureId},"${l.professorId }")'>
-										<td>${l.lectureId }<c:if test=""><button type="submit" formaction="lectureDelete.do">삭제</button></c:if></td>
+										<td>${l.lectureId }</td>
 										<td>${l.lectureName}</td>
 										<td>${l.lectureCredit}</td>
 										<td>${l.lectureDay}</td>
@@ -62,7 +63,10 @@
 										<td>${l.lectureEnd}</td>
 										<td>${l.lectureRoom}</td>
 										<td>${l.professorId}</td>
-										<td>${l.lectureCapacity}&nbsp;&nbsp;&nbsp;</td>
+										<td>${l.lectureCapacity}</td>
+										<td align="center"><c:if test="${sessionScope.role eq 'admin' }">
+												<button type="submit" formaction="lectureDelete.do">삭제</button>
+											</c:if></td>
 									</tr>
 								</c:forEach>
 							</c:if>
@@ -71,11 +75,13 @@
 				</div>
 				<br />
 				<div>
-					<button type="button"
-						onclick="location.href='lectureInsertForm.do'">강의등록</button>
+					<c:if test="${sessionScope.role eq 'admin' }">
+						<button type="button"
+							onclick="location.href='lectureInsertForm.do'">강의등록</button>
+					</c:if>
 				</div>
-				<input type="hidden" id="lectureId" name="lectureId">
-				<input type="hidden" id="professorId" name="professorId">
+				<input type="hidden" id="lectureId" name="lectureId"> <input
+					type="hidden" id="professorId" name="professorId">
 			</form>
 		</div>
 	</div>

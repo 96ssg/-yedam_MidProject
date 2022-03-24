@@ -16,6 +16,7 @@
 			<li><a href="studentHome.do">student home</a></li>
 			<li><a href="professorHome.do">professor home</a></li>
 			<li><a href="logout.do">logout</a></li>
+			<li><a href="checkpassword.do">myPage</a></li>
 		</ul>
 		<hr>
 	</div>

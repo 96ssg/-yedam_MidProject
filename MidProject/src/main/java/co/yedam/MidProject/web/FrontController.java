@@ -3,45 +3,17 @@ package co.yedam.MidProject.web;
 import java.io.IOException;
 import java.util.HashMap;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.*;
+import javax.servlet.http.*;
 
-import co.yedam.MidProject.board.command.AjaxBoardSearch;
-import co.yedam.MidProject.board.command.BoardDelete;
-import co.yedam.MidProject.board.command.BoardDetail;
-import co.yedam.MidProject.board.command.BoardInsert;
-import co.yedam.MidProject.board.command.BoardInsertForm;
-import co.yedam.MidProject.board.command.BoardList;
-import co.yedam.MidProject.board.command.BoardUpdate;
-import co.yedam.MidProject.board.command.BoardUpdateForm;
+import co.yedam.MidProject.board.command.*;
 import co.yedam.MidProject.common.Command;
-import co.yedam.MidProject.course.command.CourseDetail;
-import co.yedam.MidProject.course.command.CourseList;
-import co.yedam.MidProject.home.command.Login;
-import co.yedam.MidProject.home.command.LoginForm;
-import co.yedam.MidProject.home.command.Logout;
-import co.yedam.MidProject.home.command.ProfessorHome;
-import co.yedam.MidProject.home.command.StudentHome;
-import co.yedam.MidProject.lecture.command.AjaxLectureSearch;
-import co.yedam.MidProject.lecture.command.LectureDelete;
-import co.yedam.MidProject.lecture.command.LectureInsert;
-import co.yedam.MidProject.lecture.command.LectureInsertForm;
-import co.yedam.MidProject.lecture.command.LectureList;
-import co.yedam.MidProject.lecture.command.LectureUpdate;
-import co.yedam.MidProject.lecture.command.LectureUpdateForm;
-import co.yedam.MidProject.lecture.command.LectureView;
-import co.yedam.MidProject.professor.command.ProfessorInsert;
-import co.yedam.MidProject.professor.command.ProfessorInsertForm;
-import co.yedam.MidProject.professor.command.ProfessorList;
-import co.yedam.MidProject.professor.command.ProfessorUpdate;
-import co.yedam.MidProject.professor.command.ProfessorUpdateForm;
-import co.yedam.MidProject.student.command.StudentInsertForm;
-import co.yedam.MidProject.student.command.StudentList;
-import co.yedam.MidProject.student.command.StudentUpdateForm;
+import co.yedam.MidProject.course.command.*;
+import co.yedam.MidProject.home.command.*;
+import co.yedam.MidProject.lecture.command.*;
+import co.yedam.MidProject.myPage.common.*;
+import co.yedam.MidProject.professor.command.*;
+import co.yedam.MidProject.student.command.*;
 
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -76,8 +48,13 @@ public class FrontController extends HttpServlet {
 		map.put("/lectureDelete.do", new LectureDelete()); //강의 삭제
 		map.put("/lectureView.do", new LectureView()); //강의 상세정보
 		map.put("/lectureUpdate.do", new LectureUpdate()); //강의 정보수정
+
 		// 진환
-		
+		map.put("/checkpassword.do", new CheckPassword()); // 본인확인
+		map.put("/ajaxCheckPassword.do", new AjaxCheckPassword()); // 본인확인 비밀번호 체크
+		map.put("/myPage.do", new MyPage()); // 마이페이지
+		map.put("/changePasswordForm.do", new ChangePasswordForm()); // 비밀번호 변경폼 호출
+		map.put("/changePassword.do", new ChangePassword()); // 비밀번호 변경
 		
 		// 우준
 		// home

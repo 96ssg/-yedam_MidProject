@@ -5,70 +5,45 @@
 <head>
 <meta charset="UTF-8">
 <title>마이페이지 - 비밀번호 변경</title>
+
+<script type="text/javascript">
+	window.onload = function() {
+		$("#password").focus();
+	}
+	
+	function passwordCheck() {
+
+		if ($("#password").value != $("#password2").value) {
+			alert("새 비밀번호와 새 비밀번호 확인이 일치하지 않습니다.");
+			$("#password").val('');
+			$("#password2").val('');
+			$("#password2").focus();
+
+			return false;
+		}
+	}
+</script>
 </head>
 <body>
 	<div>
 		<h3>비밀번호 변경</h3>
 	</div>
-	<form name="PasswordChangeForm">
+	<form id="PasswordChangeForm" method="post" action="changePassword.do" onclick="return passwordCheck()">
 		<table>
 			<tr>
 				<td align="center" colspan="2">:: 비밀번호 변경 ::</td>
 			</tr>
 			<tr>
-				<td>사용중인 비밀번호</td>
-				<td><input type="password" name="currpassword"></td>
-			</tr>
-			<tr>
 				<td>새 비밀번호</td>
-				<td><input type="password" name="password"></td>
+				<td><input type="password" id="password" required="required"></td>
 			</tr>
 			<tr>
 				<td>새 비밀번호 확인</td>
-				<td><input type="password" name="password2"></td>
+				<td><input type="password" id="password2" required="required"></td>
 			</tr>
 		</table>
-		<button type="button" onclick="passwordCheck(PasswordChangeForm)">변경하기</button>
+		<input type="submit" value="변경하기" />
 		<button type="button" onclick="location.href='myPage.do'">변경취소</button>
 	</form>
-	
-	<script type="text/javascript">
-	window.onload = function() {
-		PasswordChangeForm.currpassword.focus();
-	}
-	function passwordCheck(form) {
-		if(form.currpassword.value="") {
-			alert("현재 비밀번호를 입력해주세요.");
-			form.currpassword.focus();
-			
-			return false;
-		}
-		
-		if(form.password.value=="") {
-			alert("변경하실 비밀번호를 입력해주세요.");
-			form.password.focus();
-			return false;
-		}
-		
-		if(form.password2.value == "") {
-			alert("새 비밀번호 확인을 입력해주세요.");
-			form.password.focus();
-			return false;
-		}
-		
-		if(form.password.value != form.password2.value) {
-			alert("새 비밀번호와 새 비밀번호 확인이 일치하지 않습니다.");
-			form.password.value ="";
-			form.password2.value ="";
-			form.password.focus();
-			
-			return false;
-		}
-		
-		form.method = "post";
-		form.action = "changePassword.do";
-		form.submit();
-	}
-	</script>
 </body>
 </html>

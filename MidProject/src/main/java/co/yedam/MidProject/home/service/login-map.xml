@@ -11,4 +11,15 @@
 		union
 		select p_id, p_password from professor where p_id=#{userId}
 	</select>
+	
+	<!-- 본인확인 -->
+	<select id="ispwCheck" resultMap="loginMap">
+		SELECT S_POSSWORD
+		FROM STUDENT
+		WHERE S_ID = #{userId}
+		UNION
+		SELECT S_POSSWORD
+		FROM PROFESSOR
+		WHERE P_ID = #{userId}
+	</select>
 </mapper>

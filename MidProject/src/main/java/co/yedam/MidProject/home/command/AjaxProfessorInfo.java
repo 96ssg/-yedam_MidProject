@@ -9,6 +9,9 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
+import co.yedam.MidProject.board.service.BoardService;
+import co.yedam.MidProject.board.service.BoardVO;
+import co.yedam.MidProject.board.serviceImpl.BoardServiceImpl;
 import co.yedam.MidProject.common.Command;
 import co.yedam.MidProject.lecture.service.LectureService;
 import co.yedam.MidProject.lecture.service.LectureVO;
@@ -22,6 +25,9 @@ public class AjaxProfessorInfo implements Command {
 		
 		HttpSession session = request.getSession();
 		ProfessorVO user = (ProfessorVO) session.getAttribute("user");
+		Gson gson = new Gson();
+		
+		String data = "";
 		
 		// 강의 정보
 		LectureService lDao = new LectureServiceImpl();
@@ -34,6 +40,18 @@ public class AjaxProfessorInfo implements Command {
 			}
 		}
 		
+		String lectures = gson.toJson(myLectureList);
+		data = data + lectures;
+		
+		// 공지사항
+		BoardService bDao = new BoardServiceImpl();
+		List<BoardVO> boardList = bDao.boardList();
+		List<BoardVO> noticeList = new ArrayList<>();
+		
+		for (int i=0; i < 5; i++) noticeList.add(boardList.get(i));
+		
+		String notice = gson.toJson(noticeList);
+		data = data + "~" + notice;
 		
 		
 		
@@ -41,10 +59,7 @@ public class AjaxProfessorInfo implements Command {
 		
 		
 		
-		Gson gson = new Gson();
-		String list = gson.toJson(myLectureList);
-		
-		return "ajax:" + list;
+		return "ajax:" + data;
 		
 	}
 

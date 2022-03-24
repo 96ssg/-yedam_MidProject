@@ -6,10 +6,10 @@
 		<ul>
 			<c:choose>
 				<c:when test='${role eq "student" }'>
-					<li><a href="studentHome.do">student home</a></li>
+					<li><a href="home.do">student home</a></li>
 				</c:when>			
 				<c:otherwise>
-					<li><a href="professorHome.do">professor home</a></li>
+					<li><a href="home.do">professor home</a></li>
 				</c:otherwise>
 			</c:choose>
 			<li><a href="boardList.do">board</a></li>

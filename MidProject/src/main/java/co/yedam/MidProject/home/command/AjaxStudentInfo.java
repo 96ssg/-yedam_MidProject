@@ -29,7 +29,7 @@ public class AjaxStudentInfo implements Command {
 		HttpSession session = request.getSession();
 		StudentVO user = (StudentVO) session.getAttribute("user");
 		String role = (String) session.getAttribute("role");
-
+		Gson gson = new Gson();
 		
 		String data = "";
 		
@@ -46,7 +46,7 @@ public class AjaxStudentInfo implements Command {
 			}
 		}
 
-		Gson gson = new Gson();
+		
 		String lectures = gson.toJson(myLectureList);
 		data = data + lectures;
 

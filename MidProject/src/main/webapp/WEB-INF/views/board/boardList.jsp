@@ -51,7 +51,7 @@
 		// 글쓰기 후 새로고침 시 글쓰기 중복 수행 방지를 위한 url 변경
 		history.pushState(null, null, 'boardList.do');
 		
-		// 클릭한 행에 대한 공지사항 상세 페이지로 이동하는 eventListener
+		// 클릭한 행에 대한 공지사항의 상세 페이지로 이동
 		const boards = document.querySelectorAll('.board');
 		boards.forEach((element)=>{
 			element.addEventListener('click', () => {

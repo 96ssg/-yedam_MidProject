@@ -34,6 +34,7 @@ public class Login implements Command {
 		
 		// 로그인 성공
 		HttpSession session = request.getSession();
+		session.setAttribute("userId", userId);
 		
 		String role = (userId.length() == 10)? "student" : (userId.endsWith("001"))? "admin" : "professor";
 		session.setAttribute("role", role);

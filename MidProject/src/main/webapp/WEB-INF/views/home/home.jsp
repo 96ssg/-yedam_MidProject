@@ -59,18 +59,25 @@
 				p = document.createElement('p');
 				p.innerText = element.lectureRoom;
 				timetable.append(p);
+				
+				
 			})
 			
 			const noticeList = JSON.parse(homeInfo[1]);
 			noticeList.forEach(element =>{
 				let p = document.createElement('p');
-				p.innerText = element.boardTitle;
+				p.innerText = element.boardDate;
 				notice.append(p);
 				
 				p = document.createElement('p');
 				p.innerText = element.boardTitle;
 				notice.append(p);
 			})
+			
+			
+			
+			
+			
 		})
 	</script>
 </body>

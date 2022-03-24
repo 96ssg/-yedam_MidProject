@@ -12,28 +12,20 @@ public class StudentInsert implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		String id = request.getParameter("sId");
-		String name = request.getParameter("sName");
-		String pass = request.getParameter("sPassword");
-		String phone = request.getParameter("sPhone");
-		String birth = request.getParameter("sBirth");
-		String img = request.getParameter("sImg");
-		int grade = Integer.parseInt(request.getParameter("sGrade"));
-		int score = Integer.parseInt(request.getParameter("sScore"));
-		int semster = Integer.parseInt(request.getParameter("sSemster"));
-		String did = request.getParameter("did");
+
 		
 		StudentVO student = new StudentVO();
-		student.setStudentId(id);
-		student.setStudentName(name);
-		student.setStudentPassword(pass);
-		student.setStudentPhone(phone);
-		student.setStudentBirth(birth);
-		student.setStudentImg(img);
-		student.setStudentGrade(grade);
-		student.setStudentScore(score);
-		student.setStudentSemster(semster);
-		student.setDeptId(did);
+		
+		student.setStudentId(request.getParameter("sId"));
+		student.setStudentName(request.getParameter("sName"));
+		student.setStudentPassword(request.getParameter("sPassword"));
+		student.setStudentPhone(request.getParameter("sPhone"));
+		student.setStudentBirth(request.getParameter("sBirth"));
+		student.setStudentImg(request.getParameter("sImg"));
+		student.setStudentGrade(Integer.parseInt(request.getParameter("sGrade")));
+		student.setStudentScore(Integer.parseInt(request.getParameter("sScore")));
+		student.setStudentSemster(Integer.parseInt(request.getParameter("sSemster")));
+		student.setDeptId(request.getParameter("dId"));
 		
 		StudentService service = new StudentServiceImpl();
 		service.insertStudent(student);
@@ -41,7 +33,7 @@ public class StudentInsert implements Command {
 		
 		request.setAttribute("students", student);
 		System.out.println(student);
-		return "student/studentInsert";
+		return "studentList.do";
 	}
 
 }

@@ -29,25 +29,28 @@ public class StudentUpdate implements Command {
 		 * request.setAttribute("students", jsonInString);
 		 */
 		
-		StudentService service = new StudentServiceImpl();
 		
+		/* student.setStudentName(request.getParameter("studentName")); */
+		/*
+		 * student.setStudentPhone(request.getParameter("studentPhone"));
+		 * student.setStudentBirth(request.getParameter("studentBirth"));
+		 * student.setStudentImg(request.getParameter("studentImg"));
+		 * student.setStudentGrade(Integer.parseInt("studentGrade"));
+		 * student.setStudentScore(Integer.parseInt("studentScore"));
+		 * student.setStudentSemster(Integer.parseInt("studentSemster"));
+		 * student.setDeptId(request.getParameter("deptId"));
+		 */
+		StudentService service = new StudentServiceImpl();
 		StudentVO student = new StudentVO();
 		student.setStudentId(request.getParameter("studentId"));
-		student.setStudentName(request.getParameter("studentName"));
 		student.setStudentPassword(request.getParameter("studentPassword"));
-		student.setStudentPhone(request.getParameter("studentPhone"));
-		student.setStudentBirth(request.getParameter("studentBirth"));
-		student.setStudentImg(request.getParameter("studentImg"));
-		student.setStudentGrade(Integer.parseInt("studentGrade"));
-		student.setStudentScore(Integer.parseInt("studentScore"));
-		student.setStudentSemster(Integer.parseInt("studentSemster"));
-		student.setDeptId(request.getParameter("deptId"));
+
+		
 		
 		service.updateStudent(student);
 		
-		request.setAttribute("students", student);
 		
-		return "student/studentUpdate";
+		return "studentList.do";
 	}
 
 }

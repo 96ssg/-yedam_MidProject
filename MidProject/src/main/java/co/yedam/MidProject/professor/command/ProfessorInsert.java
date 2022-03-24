@@ -36,7 +36,7 @@ public class ProfessorInsert implements Command {
 		
 		request.setAttribute("professors", professor);
 		System.out.println(professor);
-		return "professor/professorInsert";
+		return "professorList.do";
 	}
 
 }

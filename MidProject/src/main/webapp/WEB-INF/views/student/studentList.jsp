@@ -11,7 +11,7 @@
 	
 	<table border="1">
 	<c:forEach items="${students }" var="s">
-		<tr onClick="location.href='studentUpdateForm.do'">
+		<tr onClick="location.href='studentUpdateForm.do?studentId=${s.studentId }'">
 		
 		<td>${s.studentId }</td> 
 		

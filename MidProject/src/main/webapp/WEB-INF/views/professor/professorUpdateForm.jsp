@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<script type="text/javascript">
 
-
-</script>
 <div align="center">
 	<div>
 		<h1>교수수정</h1>
@@ -16,7 +13,7 @@
 					
 					<tr>
 						<th width="150">교번</th>
-						<td width="300"><input type="text" id="pId" name="pId" value="${professors.profId }">
+						<td width="300"><input type="text" id="profId" name="profId" value="${professors.profId }">
 						</td>
 					</tr>
 					
@@ -27,7 +24,7 @@
 					
 					<tr>
 						<th width="150">패스워드</th>
-						<td width="300"><input type="password" id="pPassword" name="pPassword" value=${professors.profPassword }></td>
+						<td width="300"><input type="password" id="profPassword" name="profPassword" value=${professors.profPassword }></td>
 					</tr>
 					
 					<tr>

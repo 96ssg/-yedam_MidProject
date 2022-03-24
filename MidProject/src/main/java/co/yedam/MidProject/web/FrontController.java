@@ -39,8 +39,10 @@ import co.yedam.MidProject.professor.command.ProfessorInsertForm;
 import co.yedam.MidProject.professor.command.ProfessorList;
 import co.yedam.MidProject.professor.command.ProfessorUpdate;
 import co.yedam.MidProject.professor.command.ProfessorUpdateForm;
+import co.yedam.MidProject.student.command.StudentInsert;
 import co.yedam.MidProject.student.command.StudentInsertForm;
 import co.yedam.MidProject.student.command.StudentList;
+import co.yedam.MidProject.student.command.StudentUpdate;
 import co.yedam.MidProject.student.command.StudentUpdateForm;
 
 public class FrontController extends HttpServlet {
@@ -59,7 +61,9 @@ public class FrontController extends HttpServlet {
 		map.put("/studentList.do", new StudentList());
 		map.put("/studentInsertForm.do", new StudentInsertForm());
 		map.put("/studentUpdateForm.do", new StudentUpdateForm());
-
+		map.put("/studentinsert.do", new StudentInsert());
+		map.put("/studentUpdate.do", new StudentUpdate());
+		
 		//교수 등록 수정 조회
 		map.put("/professorInsertForm.do", new ProfessorInsertForm());
 		map.put("/professorList.do", new ProfessorList());

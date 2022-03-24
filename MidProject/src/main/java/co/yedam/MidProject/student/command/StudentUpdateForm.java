@@ -22,6 +22,8 @@ public class StudentUpdateForm implements Command {
 		student = studentDao.selectStudent(student);
 		
 		request.setAttribute("students", student);
+		
+		System.out.println(student);
 		return "student/studentUpdateForm";
 	}
 

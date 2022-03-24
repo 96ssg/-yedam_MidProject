@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="js/jquery.min.js"></script>
 </head>
 <body>
 <div align="center">
@@ -42,10 +43,11 @@
 </tr>
 <tr>
 <th width="100">교수번호</th>
-<td width="100"><input type="text" id="professorId" name="professorId" required="required">
-<select>
+<td width="100"><input type="text" id="professorId" name="professorId" required="required"></td>
+<td width="100">
+<select id="sel" onchange="selectBoxChange(this.value)">
 	<c:forEach items="${list }" var="pr">
-		<option>${pr.ProfName}</option>
+		<option value="${pr.profId }">${pr.profName}</option>
 	</c:forEach>
 </select>
 </td>
@@ -65,5 +67,11 @@
 </form>
 </div>
 </div>
+<script type="text/javascript">
+var selectBoxChange = function(value){
+	console.log(value);
+	$("#professorId").val(value);
+}
+</script>
 </body>
 </html>

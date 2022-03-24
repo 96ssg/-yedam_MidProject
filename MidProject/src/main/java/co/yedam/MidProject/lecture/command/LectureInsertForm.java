@@ -1,7 +1,9 @@
 package co.yedam.MidProject.lecture.command;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,18 +22,13 @@ public class LectureInsertForm implements Command {
 		user.setProfId(request.getParameter("loginId"));
 		ProfessorService pDao = new ProfessorServiceImpl();
 		user = pDao.selectProfessor(user);
-		System.out.println("유저:"+user.getProfName());
 		List<ProfessorVO> list = pDao.selectProfessorList();
 		List<ProfessorVO> profs = new ArrayList<>();
 		for (ProfessorVO p : list) {
-			System.out.println(p);
-			if (p.getDeptId() == user.getDeptId()) {
+			if (p.getDeptId().equals(user.getDeptId())) {
 				profs.add(p);
-				System.out.println(p);
 			}
-			System.out.println("profs:"+profs.toString());
 		}
-
 		request.setAttribute("list", profs);
 
 		return "lecture/lectureInsertForm";

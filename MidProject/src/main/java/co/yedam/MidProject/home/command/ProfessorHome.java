@@ -24,7 +24,8 @@ public class ProfessorHome implements Command {
 		// 새로 로그인 한 경우
 		if (user != null) {
 			user = new ProfessorVO();
-			user.setProfId(request.getParameter("userId"));
+			System.out.println(request.getParameter("loginId"));
+			user.setProfId(request.getParameter("loginId"));
 
 			ProfessorService pDao = new ProfessorServiceImpl();
 			session.setAttribute("user", pDao.selectProfessor(user));

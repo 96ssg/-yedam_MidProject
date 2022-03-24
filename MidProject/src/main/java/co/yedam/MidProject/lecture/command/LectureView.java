@@ -16,8 +16,6 @@ public class LectureView implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		
-
 		LectureVO lecture = new LectureVO();
 		lecture.setLectureId(Integer.parseInt(request.getParameter("lectureId")));
 
@@ -27,7 +25,6 @@ public class LectureView implements Command {
 		
 		ProfessorVO p = new ProfessorVO();
 		p.setProfId(request.getParameter("professorId"));
-		
 		ProfessorService pDao = new ProfessorServiceImpl();
 		p = pDao.selectProfessor(p);
 		

@@ -9,23 +9,27 @@
 <body>
 <form action="lectureUpdate.do" method="post">
 <div align="center">
-<div><h1>강의 상세 정보</h1></div>
+<div><h1>강의 정보 수정</h1></div>
 <div>
+<input type="hidden" name="lectureId" id="lectureId" value="${vo.lectureId}">
 			<table border="1">
 						<tr>
-							<th width="100">강의번호</th>
-							<td width="150"><input type="number" name="lectureId" id="lectureId" value="${vo.lectureId}"></td>
 							<th width="100">강의명</th>
-							<td width="150">${vo.lectureName }</td>
+							<td width="150"><input type="text" name="lectureName" id="lectureName" value="${vo.lectureName }"></td>
+							<th width="100">학점</th>
+							<td width="150"><input type="text" name="lectureCredit" id="lectureCredit" value="${vo.lectureCredit }"></td>
+							<th width="100">요일</th>
+							<td width="150"><input type="text" name="lectureDay" id="lectureDay" value="${vo.lectureDay }"></td>
+							<th width="100">시작시간</th>
+							<td width="150"><input type="text" name="lectureStart" id="lectureStart" value="${vo.lectureStart }"></td>
+							<th width="100">종료시간</th>
+							<td width="150"><input type="text" name="lectureEnd" id="lectureEnd" value="${vo.lectureEnd }"></td>
+							<th width="100">강의실</th>
+							<td width="150"><input type="text" name="lectureRoom" id="lectureRoom" value="${vo.lectureRoom }"></td>
+							<th width="100">제한인원</th>
+							<td width="150"><input type="text" name="lectureCapacity" id="lectureCapacity" value="${vo.lectureCapacity }"></td>
 						</tr>
-						<tr>
-							<th>요일</th>
-							<td colspan="3">${vo.lectureDay }</td>
-						</tr>
-						<tr>
-							<th>강의실</th>
-							<td colspan="3"><input type="text" name="lectureRoom" id="lectureRoom" value="${vo.lectureRoom}"></td>
-						</tr>
+						
 					</table>
 		</div><br>
 		<div>

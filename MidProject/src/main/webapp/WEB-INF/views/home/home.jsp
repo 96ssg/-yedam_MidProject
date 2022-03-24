@@ -48,6 +48,7 @@
 		fetch(role + 'Info.do')
 		.then(response => response.text())
 		.then(result => {
+			console.log(result);
 			const homeInfo = result.split('~');
 			
 			const lectureList = JSON.parse(homeInfo[0]);

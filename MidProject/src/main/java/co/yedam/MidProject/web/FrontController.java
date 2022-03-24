@@ -8,12 +8,14 @@ import javax.servlet.http.*;
 
 import co.yedam.MidProject.board.command.*;
 import co.yedam.MidProject.common.Command;
+
 import co.yedam.MidProject.course.command.*;
 import co.yedam.MidProject.home.command.*;
 import co.yedam.MidProject.lecture.command.*;
 import co.yedam.MidProject.myPage.common.*;
 import co.yedam.MidProject.professor.command.*;
 import co.yedam.MidProject.student.command.*;
+
 
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -61,8 +63,11 @@ public class FrontController extends HttpServlet {
 		map.put("/loginForm.do", new LoginForm());					// 로그인 폼
 		map.put("/login.do", new Login());							// 로그인
 		map.put("/logout.do", new Logout());						// 로그아웃
-		map.put("/studentHome.do", new StudentHome());				// 학생 홈
-		map.put("/professorHome.do", new ProfessorHome());			// 교수 홈
+		map.put("/home.do", new HomeCommand());						// 홈 화면
+		map.put("/studentInfo.do", new AjaxStudentInfo());			// 학생 홈 정보 fetch
+		map.put("/professorInfo.do", new AjaxProfessorInfo());		// 교수 홈 정보 fetch
+		map.put("/adminInfo.do", new AjaxProfessorInfo());			// 교수 홈 정보 fetch
+		
 		
 		// board
 		map.put("/boardList.do", new BoardList());					// 공지사항

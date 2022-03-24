@@ -11,7 +11,9 @@ public class Logout implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
+
 		session.invalidate();
+		System.out.println("session invalidated");
 		
 		return "home/loginForm";
 	}

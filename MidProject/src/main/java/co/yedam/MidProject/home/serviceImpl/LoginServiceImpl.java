@@ -22,5 +22,10 @@ public class LoginServiceImpl implements LoginService {
 		// TODO Auto-generated method stub
 		return map.ispwCheck(pw);
 	}
-
+	
+	@Override
+	public int userUp(UserVO vo) {
+		return map.userUp(vo);
+	}
+	
 }

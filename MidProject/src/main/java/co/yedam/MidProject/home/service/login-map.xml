@@ -22,4 +22,15 @@
 		FROM PROFESSOR
 		WHERE P_ID = #{userId}
 	</select>
+	
+	<!-- 비밀번호 변경 -->
+	<update id="userUp" parameterType="co.yedam.MidProject.home.service.UserVO">
+		UPDATE STUDENT
+		SET S_PASSWORD = #{userPassword}
+		WHERE S_ID = #{userId}
+		UNION
+		UPDATE PROFESSOR
+		SET P_PASSWORD = #{userPassword}
+		WHERE P_ID = #{userId}
+	</update>
 </mapper>

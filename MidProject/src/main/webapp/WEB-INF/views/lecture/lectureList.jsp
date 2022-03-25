@@ -22,21 +22,21 @@
 						<option value="교수번호">교수번호</option>
 						<option value="강의명">강의명</option>
 
-					</select> <span> <input type="text" id="searchVal" name="searchVal" onkeyup="enterkey();">&nbsp;&nbsp;
+					</select> <span> <input type="text" id="searchVal" name="searchVal" onkeyup="enterkey()">&nbsp;&nbsp;
 						<input type="button" id="searchBtn" value="검색">
 					</span>
 				</div>
 
 				<br />
 				<div>
-					<table border="1" id="contents">
+					<table class="table" id="contents">
 						<thead>
 							<tr>
 								<th width="100">강의번호</th>
 								<th width="200">강의명</th>
 								<th width="50">학점</th>
-								<th width="70">강의요일</th>
-								<th width="60">시작교시</th>
+								<th width="80">강의요일</th>
+								<th width="80">시작교시</th>
 								<th width="60">끝교시</th>
 								<th width="300">강의실</th>
 								<th width="100">교수번호</th>
@@ -64,8 +64,8 @@
 										<td>${l.lectureRoom}</td>
 										<td class="profId">${l.professorId}</td>
 										<td>${l.lectureCapacity}</td>
-										<td align="center" onclick="preventDefault()"><c:if test="${role eq 'admin' }">
-												<button type="submit" formaction="lectureDelete.do">삭제</button>
+										<td align="center" onclick="event.stopPropagation()"><c:if test="${role eq 'admin' }">
+												<button type="button" onclick="lectureDelete(${l.lectureId})">삭제</button>
 											</c:if></td>
 									</tr>
 								</c:forEach>
@@ -75,7 +75,7 @@
 				</div>
 				<br />
 				<div>
-					<c:if test="${sessionScope.role eq 'admin' }">
+					<c:if test="${role eq 'admin' }">
 						<button type="button"
 							onclick="location.href='lectureInsertForm.do'">강의등록</button>
 					</c:if>
@@ -101,11 +101,13 @@
 			})
 		}
 	}
+	function lectureDelete(k){
+		frm.lectureId.value = k;
+		frm.action = "lectureDelete.do";
+		frm.submit();
+	}
 	
 function lectureContents(n,m){
-	console.log(n)
-	console.log(typeof m)
-	console.log(m)
 	frm.lectureId.value = n;
 	frm.professorId.value = m;
 	frm.action = "lectureView.do";

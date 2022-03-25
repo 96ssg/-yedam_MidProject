@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1>수강정보 목록</h1>
-	<table border="1">
+	<table class="table">
 		<tr>
 			<td>강의번호</td>
 			<td>학생번호</td>
@@ -33,15 +33,20 @@
 	</table>
 	
 	<script>
-	const courses = document.querySelectorAll('.course');
-		courses.forEach((element)=>{
-			element.addEventListener('click', () => {
-				const lId = element.children[0].innerText;
-				const sId = element.children[1].innerText;
-				
-				location.href="courseDetail.do?l_id=" + lId + "&s_id=" + sId;
+		const today = new Date();
+		const thisSemester = today.getFullYear() + '-' + today.getMonth()+1   
+		
+		function getGrade(thisSemester) {
+			fetch('ajaxTotalGrade.do?', {
+				method: 'post',
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+				body: 'thisSemester=' + thisSemester
 			})
-		})
+			.then(response => response.json())
+			.then(result => {
+				
+			})
+		}
 	</script>
 	
 </body>

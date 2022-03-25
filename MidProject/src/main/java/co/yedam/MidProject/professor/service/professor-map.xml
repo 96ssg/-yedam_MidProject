@@ -19,7 +19,7 @@
 		SELECT * FROM PROFESSOR
 	</select>
 
-	<!-- 로그인 -->
+	
 	<select id="selectProfessor"
 		parameterType="co.yedam.MidProject.professor.service.ProfessorVO"
 		resultMap="professorMap">
@@ -39,11 +39,13 @@
 	
 	<update id="updateProfessor"
 		parameterType="co.yedam.MidProject.professor.service.ProfessorVO">
-				UPDATE STUDENT SET p_Password = #{profPassword},  WHERE p_Id = #{profId}
+				UPDATE PROFESSOR SET P_PASSWORD = #{profPassword} WHERE P_ID = #{profId}
 		</update>
 
 	<delete id="deleteProfessor"
-		parameterType="co.yedam.MidProject.professor.service.ProfessorVO"></delete>
+		parameterType="co.yedam.MidProject.professor.service.ProfessorVO">
+			 DELETE FROM PROFESSOR WHERE p_Id = #{profId}
+		</delete>
 	<!-- 중복체크 -->
 	<!-- <select id="isIdCheck" parameterType="String"></select> -->
 </mapper>

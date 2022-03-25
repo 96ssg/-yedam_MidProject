@@ -19,10 +19,10 @@ import co.yedam.MidProject.board.command.BoardList;
 import co.yedam.MidProject.board.command.BoardUpdate;
 import co.yedam.MidProject.board.command.BoardUpdateForm;
 import co.yedam.MidProject.common.Command;
+import co.yedam.MidProject.course.command.AjaxSemesterGrade;
+import co.yedam.MidProject.course.command.AjaxTotalGrade;
 import co.yedam.MidProject.course.command.CourseDetail;
 import co.yedam.MidProject.course.command.CourseList;
-import co.yedam.MidProject.course.command.SemesterGrade;
-import co.yedam.MidProject.course.command.TotalGrade;
 import co.yedam.MidProject.home.command.AjaxProfessorInfo;
 import co.yedam.MidProject.home.command.AjaxStudentInfo;
 import co.yedam.MidProject.home.command.HomeCommand;
@@ -37,13 +37,17 @@ import co.yedam.MidProject.lecture.command.LectureList;
 import co.yedam.MidProject.lecture.command.LectureUpdate;
 import co.yedam.MidProject.lecture.command.LectureUpdateForm;
 import co.yedam.MidProject.lecture.command.LectureView;
+import co.yedam.MidProject.professor.command.ProfessorDelete;
 import co.yedam.MidProject.professor.command.ProfessorInsert;
 import co.yedam.MidProject.professor.command.ProfessorInsertForm;
 import co.yedam.MidProject.professor.command.ProfessorList;
 import co.yedam.MidProject.professor.command.ProfessorUpdate;
 import co.yedam.MidProject.professor.command.ProfessorUpdateForm;
+import co.yedam.MidProject.student.command.StudentDelete;
+import co.yedam.MidProject.student.command.StudentInsert;
 import co.yedam.MidProject.student.command.StudentInsertForm;
 import co.yedam.MidProject.student.command.StudentList;
+import co.yedam.MidProject.student.command.StudentUpdate;
 import co.yedam.MidProject.student.command.StudentUpdateForm;
 
 public class FrontController extends HttpServlet {
@@ -62,14 +66,16 @@ public class FrontController extends HttpServlet {
 		map.put("/studentList.do", new StudentList());
 		map.put("/studentInsertForm.do", new StudentInsertForm());
 		map.put("/studentUpdateForm.do", new StudentUpdateForm());
-
+		map.put("/studentinsert.do", new StudentInsert());
+		map.put("/studentUpdate.do", new StudentUpdate());
+		map.put("/studentDelete.do", new StudentDelete());
 		//교수 등록 수정 조회
 		map.put("/professorInsertForm.do", new ProfessorInsertForm());
 		map.put("/professorList.do", new ProfessorList());
 		map.put("/professorInsert.do", new ProfessorInsert());
 		map.put("/professorUpdateForm.do", new ProfessorUpdateForm()); 
 		map.put("/professorUpdate.do", new ProfessorUpdate());
-
+		map.put("/professorDelete.do", new ProfessorDelete());
 		// 승교
 		map.put("/lectureList.do", new LectureList()); //강의목록
 		map.put("/ajaxLectureSearch.do", new AjaxLectureSearch()); //강의 검색
@@ -106,8 +112,8 @@ public class FrontController extends HttpServlet {
 		// course
 		map.put("/courseList.do", new CourseList());				// 수강정보 목록
 		map.put("/courseDetail.do", new CourseDetail());			// 수강정보 상세
-		map.put("/totalGrade.do", new TotalGrade());				// 전체성적 조회
-		map.put("/semesterGrade.do", new SemesterGrade());			// 학기성적 조회
+		map.put("/ajaxTotalGrade.do", new AjaxTotalGrade());		// 전체성적 조회
+		map.put("/ajaxSemesterGrade.do", new AjaxSemesterGrade());	// 학기성적 조회
 		
 		
 		

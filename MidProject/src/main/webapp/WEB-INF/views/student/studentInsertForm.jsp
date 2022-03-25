@@ -7,7 +7,7 @@
 		<h1>학생등록</h1>
 	</div>
 	<div>
-		<form id="frm" name="frm" action="memberJoin.do" method="post">
+		<form id="frm" name="frm" action="studentinsert.do" method="post">
 			<div>
 				<table border="1">
 					
@@ -34,13 +34,13 @@
 					
 					<tr>
 						<th width="150">생년월일</th>
-						<td width="300"><input type="date" value="2022-03-19" min="1980-01-01" max="2022-12-31"></td>
+						<td width="300"><input type="date" id="sBirth" name="sBirth" value="2022-03-19" min="1980-01-01" max="2022-12-31"></td>
 					</tr>
 					
 					<tr>
 						<th width="150">학기</th>
 							<td>
-								<select>
+								<select id="sSemster" name="sSemster">
 		   						 	<option value="1" selected>1학기</option>
 		    						<option value="2">2학기</option>
 								</select>
@@ -49,7 +49,7 @@
 					
 					<tr>
 						<th width="150">성적</th>
-						<td width="300"><input type="text" id="sSemster" name="sSemster"></td>
+						<td width="300"><input type="number" id="sGrade" name="sGrade"></td>
 					</tr>
 						
 					<tr>
@@ -62,11 +62,22 @@
 						<td width="300"><input type="number" id="sScore" name="sScore"></td>
 					</tr>	
 					
+					<tr>
+					<th width="150">학과</th>
+							<td width="300">
+								<select id="dId" name="dId">
+		   						 	<option value="1" selected>국어국문학과</option>
+		    						<option value="2">응용생명과학부</option>
+		    						<option value="3">전자공학과</option>
+		    						<option value="4">자율전공학부</option>
+								</select>
+							</td>
+					</tr>
 					
 				</table>
 			</div><br />
 			<div>
-				<button type="submit" onclick="">학생 등록</button>&nbsp;&nbsp;&nbsp;
+				<button type="submit">학생 등록</button>&nbsp;&nbsp;&nbsp;
 				<button type="reset">취 소</button>&nbsp;&nbsp;&nbsp;
 				<button type="button" onclick="location.href='main.do'">홈</button>
 			</div>

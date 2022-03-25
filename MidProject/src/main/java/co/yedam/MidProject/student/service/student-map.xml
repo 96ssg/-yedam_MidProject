@@ -32,18 +32,21 @@
 
 	<insert id="insertStudent"
 		parameterType="co.yedam.MidProject.student.service.StudentVO">
+	
 		INSERT INTO STUDENT VALUES (#{studentId}, #{studentName}, #{studentPassword}, #{studentBirth},
-		#{studentGrade}, #{studentPhone}, #(studentScore), #(studentSemster) ,#{studentImg}, #{deptId})
+		#{studentGrade}, #{studentSemster}, #{studentPhone}, #{studentImg}, #{studentScore}, #{deptId})
 
 	</insert>
 
 	<update id="updateStudent"
 		parameterType="co.yedam.MidProject.student.service.StudentVO">
-		UPDATE STUDENT SET s_Password = #{studentPassword} WHERE s_Id = #{studentId}
+		UPDATE STUDENT SET S_PASSWORD = #{studentPassword} WHERE S_ID = #{studentId}
 	</update>
 
 	<delete id="deleteStudent"
-		parameterType="co.yedam.MidProject.student.service.StudentVO"></delete>
+		parameterType="co.yedam.MidProject.student.service.StudentVO">
+		 DELETE FROM student WHERE s_Id = #{studentId}
+		</delete>
 	<!-- 중복체크 -->
 	<!-- <select id="isIdCheck" parameterType="String"></select> -->
 </mapper>

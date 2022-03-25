@@ -20,8 +20,6 @@ public class AjaxLectureSearch implements Command {
 		LectureService lectureDAO = new LectureServiceImpl();
 		String key = request.getParameter("key");
 		String val = request.getParameter("val");
-		System.out.println(key);
-		System.out.println(val);
 		List<LectureVO> list = lectureDAO.selectLectureSearchList(key, val) ;
 		String data = null;
 		try {

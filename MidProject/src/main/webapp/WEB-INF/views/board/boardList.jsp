@@ -21,7 +21,7 @@
 			<input type="button" value="검색" id="searchBtn">
 		</form>
 	</div>
-
+	
 	<div>
 		<ul>
 			<li>번호</li>
@@ -31,7 +31,7 @@
 	</div>
 
 	<div id="resultList">
-		<table border="1">
+		<table class="table">
 			<c:forEach items="${boardList }" var="b">
 				<tr class="board">
 					<td>${b.boardId }</td>

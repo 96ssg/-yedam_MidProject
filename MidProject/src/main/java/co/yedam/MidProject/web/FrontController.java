@@ -37,6 +37,11 @@ import co.yedam.MidProject.lecture.command.LectureList;
 import co.yedam.MidProject.lecture.command.LectureUpdate;
 import co.yedam.MidProject.lecture.command.LectureUpdateForm;
 import co.yedam.MidProject.lecture.command.LectureView;
+import co.yedam.MidProject.myPage.common.AjaxCheckPassword;
+import co.yedam.MidProject.myPage.common.ChangePassword;
+import co.yedam.MidProject.myPage.common.ChangePasswordForm;
+import co.yedam.MidProject.myPage.common.CheckPassword;
+import co.yedam.MidProject.myPage.common.MyPage;
 import co.yedam.MidProject.professor.command.ProfessorDelete;
 import co.yedam.MidProject.professor.command.ProfessorInsert;
 import co.yedam.MidProject.professor.command.ProfessorInsertForm;
@@ -76,6 +81,7 @@ public class FrontController extends HttpServlet {
 		map.put("/professorUpdateForm.do", new ProfessorUpdateForm()); 
 		map.put("/professorUpdate.do", new ProfessorUpdate());
 		map.put("/professorDelete.do", new ProfessorDelete());
+		
 		// 승교
 		map.put("/lectureList.do", new LectureList()); //강의목록
 		map.put("/ajaxLectureSearch.do", new AjaxLectureSearch()); //강의 검색
@@ -85,8 +91,13 @@ public class FrontController extends HttpServlet {
 		map.put("/lectureDelete.do", new LectureDelete()); //강의 삭제
 		map.put("/lectureView.do", new LectureView()); //강의 상세정보
 		map.put("/lectureUpdate.do", new LectureUpdate()); //강의 정보수정
-		// 진환
 		
+		// 진환
+		map.put("/checkpassword.do", new CheckPassword()); // 본인확인
+		map.put("/ajaxCheckPassword.do", new AjaxCheckPassword()); // 본인확인 비밀번호 체크
+		map.put("/myPage.do", new MyPage()); // 마이페이지
+		map.put("/changePasswordForm.do", new ChangePasswordForm()); // 비밀번호 변경폼 호출
+		map.put("/changePassword.do", new ChangePassword()); // 비밀번호 변경
 		
 		// 우준
 		// home
@@ -145,38 +156,5 @@ public class FrontController extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 	
-/*
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		String uri = request.getRequestURI();
-		String contextPath = request.getContextPath();
-		String page = uri.substring(contextPath.length());
-		
-		Command command = map.get(page);
-		String viewPage = "home/loginForm";
-		try {
-			viewPage = command.execute(request, response);
-		} catch(NullPointerException e) {
-			System.out.println("command.execute NPE");
-		} finally {
-		
-			// view resolve
-			if (!viewPage.endsWith(".do")) {
-				if(viewPage.startsWith("ajax:")) {
-					// ajax 처리
-					response.setContentType("text/html; charset=UTF-8");
-					response.getWriter().append(viewPage.substring(5));
-					return;
-				} else {
-					//viewPage = "WEB-INF/views/" + viewPage + ".jsp";
-					viewPage = viewPage + ".tiles";
-				}
-			}
-			
-			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
-			dispatcher.forward(request, response);
-		}
-	}
-*/
 
 }

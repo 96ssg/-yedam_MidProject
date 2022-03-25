@@ -15,8 +15,8 @@ public class CourseDetail implements Command {
 		
 		CourseService courseDao = new CourseServiceImpl();
 		CourseVO vo = new CourseVO();
-		vo.setLectureId(Integer.parseInt(request.getParameter("l_id")));
-		vo.setStudentId(request.getParameter("s_id"));
+		vo.setLectureId(Integer.parseInt(request.getParameter("lectureId")));
+		vo.setStudentId(request.getParameter("studentId"));
 		
 		vo = courseDao.courseSelect(vo);
 		

@@ -17,7 +17,7 @@ import co.yedam.MidProject.lecture.serviceImpl.LectureServiceImpl;
 import co.yedam.MidProject.professor.service.ProfessorVO;
 import co.yedam.MidProject.student.service.StudentVO;
 
-public class CourseList implements Command {
+public class StudnetCourseList implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {

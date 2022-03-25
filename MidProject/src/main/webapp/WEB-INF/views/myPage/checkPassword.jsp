@@ -8,41 +8,39 @@
 </head>
 <body>
 	<form id="frm" method="post">
-		<table align="center" border="1">
-			<tr>
-				<td align="center">:::비밀번호 확인:::</td>
-			</tr>
-			<tr>
-				<td>
-					<table border="1">
-						<tr>
-							<td>현재 비밀번호</td>
-							<td width="320">
-								<input type="password" id="password" name="password" placeholder="비밀번호를 입력해주세요." required="required" size="50">
-							</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div align="center">
-						<button type="button" id="check">확인</button>
-					</div>
-				</td>
-			</tr>
-		</table>
+		<div align="center">
+			<table border="1">
+				<tr>
+					<td align="center" colspan="2">:::비밀번호 확인:::</td>
+				</tr>
+				<tr>
+					<td>현재 비밀번호</td>
+					<td width="320">
+						<input type="password" id="password" name="password" placeholder="비밀번호를 입력해주세요." required="required" size="50">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div align="center">
+							<button type="button" id="check">확인</button>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
 	</form>
 	<script type="text/javascript">
+	
 		function passwdCheck() {
 			fetch('ajaxCheckPassword.do?', {
 				method: 'post',
 				headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+				body: 'input=' + password.value
 			})
-			.then(response => response.json())
+			.then(response => response.text())
 			.then(result => { 
 				console.log(result)
-				if (password.value != result.userPassword) {
+				if (result === "fail") {
 					alert('비밀번호가 일치하지 않습니다.');
 					password.value = '';
 					password.focus();
@@ -50,7 +48,7 @@
 				}
 				
 				alert("본인확인이 완료되었습니다.");
-				if (password.value == result.userPassword) {
+				if (result == "success") {
 					frm.setAttribute("action", "myPage.do");
 					frm.submit();
 				}

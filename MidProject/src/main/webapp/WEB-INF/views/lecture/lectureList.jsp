@@ -11,10 +11,10 @@
 <body>
 	<div align="center">
 		<div>
-			<h1>강의 목록</h1>
+			<h1>${role }</h1>
 		</div>
 		<div>
-			<form id="frm" method="post">
+			<form id="frm" method="post" onsubmit="return false">
 				<div>
 					<select id="searchKey" name="searchKey">
 						<option value="전체">전체</option>
@@ -22,8 +22,8 @@
 						<option value="교수번호">교수번호</option>
 						<option value="강의명">강의명</option>
 
-					</select> <span> <input type="text" id="searchVal" name="searchVal">&nbsp;&nbsp;
-						<input type="button" onclick="searchList()" value="검색">
+					</select> <span> <input type="text" id="searchVal" name="searchVal" onkeyup="enterkey();">&nbsp;&nbsp;
+						<input type="button" id="searchBtn" value="검색">
 					</span>
 				</div>
 
@@ -62,9 +62,9 @@
 										<td>${l.lectureStart}</td>
 										<td>${l.lectureEnd}</td>
 										<td>${l.lectureRoom}</td>
-										<td>${l.professorId}</td>
+										<td class="profId">${l.professorId}</td>
 										<td>${l.lectureCapacity}</td>
-										<td align="center"><c:if test="${sessionScope.role eq 'admin' }">
+										<td align="center" onclick="preventDefault()"><c:if test="${role eq 'admin' }">
 												<button type="submit" formaction="lectureDelete.do">삭제</button>
 											</c:if></td>
 									</tr>
@@ -86,12 +86,31 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-function lectureContents(n,m){
-		frm.lectureId.value = n;
-		frm.professorId.value = m;
-		frm.action = "lectureView.do";
-		frm.submit();
+	
+	window.onload = profNames;
+
+	function profNames() {
+		const pList = ${professors};
+		const pId = document.querySelectorAll('.profId');
+		
+		for (let i=0; i<pId.length; i++) {
+			pList.forEach(function(prof) {
+				if (prof.profId === pId[i].innerText) {
+					pId[i].innerText = prof.profName;
+				} 
+			})
+		}
 	}
+	
+function lectureContents(n,m){
+	console.log(n)
+	console.log(typeof m)
+	console.log(m)
+	frm.lectureId.value = n;
+	frm.professorId.value = m;
+	frm.action = "lectureView.do";
+	frm.submit();
+}
 function searchList(){
 	$.ajax({
 		url : "ajaxLectureSearch.do",
@@ -102,6 +121,7 @@ function searchList(){
 			if(result.length > 0){
 				// html 로 변환코드
 				searchResult(result);  // json data 를 html로 변환해서 뿌려주는 메소드
+				profNames();
 			}else{
 				alert("검색한 결과가 존재하지 않아요!");
 			}
@@ -109,7 +129,6 @@ function searchList(){
 	})
 }
 function searchResult(data){
-	console.log(data);
 	var tb = $("#lectureBody");
 	$("#lectureBody").empty();
 	
@@ -117,7 +136,7 @@ function searchResult(data){
 		var html = $("<tr />").attr({
 			'onmouseover' : 'this.style.background="#fcecae";',
 			'onmouseleave' : 'this.style.background="#FFFFFF";',
-			'onclick' : 'lectureContents('+ item.lectureId +')'
+			'onclick' : 'lectureContents('+item.lectureId+', "'+item.professorId+'")'
 		}).append(
 				$("<td />").text(item.lectureId),
 				$("<td />").text(item.lectureName),
@@ -135,6 +154,16 @@ function searchResult(data){
 	$("#contents").append(tb);
 	
 }
+searchBtn.addEventListener('click', searchList);
+function enterkey(){
+	if(window.event.keyCode == 13){
+		searchList();
+	}
+}
+
+
+
+
 </script>
 
 </body>

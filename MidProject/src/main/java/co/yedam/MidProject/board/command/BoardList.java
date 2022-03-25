@@ -11,7 +11,6 @@ import co.yedam.MidProject.board.service.BoardService;
 import co.yedam.MidProject.board.service.BoardVO;
 import co.yedam.MidProject.board.serviceImpl.BoardServiceImpl;
 import co.yedam.MidProject.common.Command;
-import co.yedam.MidProject.home.service.UserVO;
 import co.yedam.MidProject.professor.service.ProfessorVO;
 import co.yedam.MidProject.student.service.StudentVO;
 
@@ -35,17 +34,21 @@ public class BoardList implements Command {
 		
 		BoardService boardDao = new BoardServiceImpl();
 		List<BoardVO> list = boardDao.boardList();
-		List<BoardVO> boardList = new ArrayList<>();
+		List<BoardVO> boards = new ArrayList<>();
 		
-//		for (BoardVO b : list) {
-//			int = b.getBoardWriter();
-//			String deptId = writerId.substring(writerId.length()-6, writerId.length()-3);
-//		}
+		for (BoardVO b : list) {
+			String writerId= b.getBoardWriter();
+			String deptId = writerId.substring(writerId.length()-6, writerId.length()-3);
+			String userDeptId = userId.substring(userId.length()-6, userId.length()-3);
+			
+			if (userDeptId.equals(deptId)) boards.add(b);
+			
+		}
 		
 		
 		
 		
-		request.setAttribute("boardList", list);
+		request.setAttribute("boardList", boards);
 		
 		return "board/boardList";
 	}

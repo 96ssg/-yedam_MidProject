@@ -46,11 +46,24 @@ public class AjaxProfessorInfo implements Command {
 		// 공지사항
 		BoardService bDao = new BoardServiceImpl();
 		List<BoardVO> boardList = bDao.boardList();
-		List<BoardVO> noticeList = new ArrayList<>();
+		List<BoardVO> boards = new ArrayList<>();
 		
-		for (int i=0; i < 5; i++) noticeList.add(boardList.get(i));
+		int count = 0;
+		for (BoardVO b : boardList) {
+			String writerId= b.getBoardWriter();
+			String deptId = writerId.substring(writerId.length()-6, writerId.length()-3);
+			String userId = user.getProfId();
+			String userDeptId = userId.substring(userId.length()-6, userId.length()-3);
+			
+			if (userDeptId.equals(deptId)) {
+				boards.add(b);
+				count++;
+			}
+			
+			if (count == 4) break;
+		}
 		
-		String notice = gson.toJson(noticeList);
+		String notice = gson.toJson(boards);
 		data = data + "~" + notice;
 		
 		

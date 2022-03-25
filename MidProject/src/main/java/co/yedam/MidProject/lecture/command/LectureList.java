@@ -7,11 +7,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+
 import co.yedam.MidProject.common.Command;
 import co.yedam.MidProject.lecture.service.LectureService;
 import co.yedam.MidProject.lecture.service.LectureVO;
 import co.yedam.MidProject.lecture.serviceImpl.LectureServiceImpl;
+import co.yedam.MidProject.professor.service.ProfessorService;
 import co.yedam.MidProject.professor.service.ProfessorVO;
+import co.yedam.MidProject.professor.serviceImpl.ProfessorServiceImpl;
 import co.yedam.MidProject.student.service.StudentVO;
 
 public class LectureList implements Command {
@@ -42,9 +46,17 @@ public class LectureList implements Command {
 				lectures.add(l);
 			}
 		}
-
+		
 		request.setAttribute("lectures", lectures);
 
+		ProfessorService pDao = new ProfessorServiceImpl();
+		List<ProfessorVO> pList = pDao.selectProfessorList();
+		
+		Gson gson = new Gson();
+		String professors = gson.toJson(pList); 
+		request.setAttribute("professors", professors);
+		
+		
 		return "lecture/lectureList";
 	}
 

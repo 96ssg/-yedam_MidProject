@@ -59,7 +59,7 @@
 			<div>
 				<button type="submit" onclick="location.href='professorList.do'">교수 등록</button>&nbsp;&nbsp;&nbsp;
 				<button type="reset">취 소</button>&nbsp;&nbsp;&nbsp;
-				<button type="button" onclick="location.href='main.do'">홈</button>
+				<button type="button" onclick="location.href='home.do'">홈</button>
 			</div>
 		</form>
 	</div>

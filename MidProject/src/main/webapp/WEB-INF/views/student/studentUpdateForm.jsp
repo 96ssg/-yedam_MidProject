@@ -68,7 +68,7 @@
 				<button type="submit">切积 荐沥</button>&nbsp;&nbsp;&nbsp;
 				<button type="reset">秒 家</button>&nbsp;&nbsp;&nbsp;
 				<button type="submit" formaction='studentDelete.do'>昏力</button>
-				<button type="button" onclick="location.href='main.do'">权</button>
+				<button type="button" onclick="location.href='home.do'">权</button>
 			</div>
 		</form>
 	</div>

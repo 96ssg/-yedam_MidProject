@@ -13,7 +13,7 @@ public class Logout implements Command {
 		HttpSession session = request.getSession();
 
 		session.invalidate();
-		System.out.println("session invalidated");
+		System.out.println("session invalidated\n");
 		
 		return "home/loginForm";
 	}

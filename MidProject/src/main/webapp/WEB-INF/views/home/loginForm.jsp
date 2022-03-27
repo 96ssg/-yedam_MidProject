@@ -20,7 +20,8 @@
 	
 	<h1>테스트</h1>
 	<input type="button" value="학생 2011001001 로그인" onclick="login('2011001001', '1234')">
-	<input type="button" value="교수 001001 로그인" onclick="login('001001', '1234')">
+	<input type="button" value="학과장교수 001001 로그인" onclick="login('001001', '1234')">
+	<input type="button" value="일반교수 002002 로그인" onclick="login('002002', '1234')">
 	
 		
 	<script>

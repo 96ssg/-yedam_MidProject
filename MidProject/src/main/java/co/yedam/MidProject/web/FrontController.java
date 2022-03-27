@@ -19,10 +19,11 @@ import co.yedam.MidProject.board.command.BoardList;
 import co.yedam.MidProject.board.command.BoardUpdate;
 import co.yedam.MidProject.board.command.BoardUpdateForm;
 import co.yedam.MidProject.common.Command;
-import co.yedam.MidProject.course.command.AjaxSemesterGrade;
-import co.yedam.MidProject.course.command.AjaxTotalGrade;
+import co.yedam.MidProject.course.command.AjaxCourseUpdate;
 import co.yedam.MidProject.course.command.CourseDetail;
-import co.yedam.MidProject.course.command.CourseList;
+import co.yedam.MidProject.course.command.CourseInsertList;
+import co.yedam.MidProject.course.command.ProfessorCourseList;
+import co.yedam.MidProject.course.command.StudentCourseList;
 import co.yedam.MidProject.home.command.AjaxProfessorInfo;
 import co.yedam.MidProject.home.command.AjaxStudentInfo;
 import co.yedam.MidProject.home.command.HomeCommand;
@@ -121,10 +122,11 @@ public class FrontController extends HttpServlet {
 		map.put("/boardDelete.do", new BoardDelete());				// 공지사항 사제
 		
 		// course
-		map.put("/courseList.do", new CourseList());				// 수강정보 목록
-		map.put("/courseDetail.do", new CourseDetail());			// 수강정보 상세
-		map.put("/ajaxTotalGrade.do", new AjaxTotalGrade());		// 전체성적 조회
-		map.put("/ajaxSemesterGrade.do", new AjaxSemesterGrade());	// 학기성적 조회
+		map.put("/studentCourseList.do", new StudentCourseList());		// 학생 성적 조회
+		map.put("/professorCourseList.do", new ProfessorCourseList());	// 학과 내 학생의 수강정보 목록
+		map.put("/courseInsertList.do", new CourseInsertList());		// 내 강의 목록
+		map.put("/courseDetail.do", new CourseDetail());				// 수강정보 상세
+		map.put("/ajaxCourseUpdate.do", new AjaxCourseUpdate());		// 성적 입력
 		
 		
 		

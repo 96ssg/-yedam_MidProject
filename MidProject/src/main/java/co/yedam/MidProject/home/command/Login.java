@@ -46,10 +46,9 @@ public class Login implements Command {
 			user = sDao.selectStudent(user);
 			
 			System.out.println("new login : student " + user.getStudentName());
-
-			session.setAttribute("user", user);
+			System.out.println("deptId : " + user.getDeptId());
 			
-			return "ajax:success";
+			session.setAttribute("user", user);
 			
 		} else {
 			ProfessorService pDao = new ProfessorServiceImpl();
@@ -58,12 +57,13 @@ public class Login implements Command {
 			user = pDao.selectProfessor(user);
 			
 			System.out.println("new login : prof " + user.getProfName());
-			System.out.println(user.getDeptId());
+			System.out.println("deptId : " + user.getDeptId());
+
 			session.setAttribute("user", user);
-			
-			return "ajax:success";
 		}
 		
+		System.out.println();
+		return "ajax:success";
 	}
 
 }

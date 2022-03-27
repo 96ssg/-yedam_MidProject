@@ -27,7 +27,7 @@ public class CourseList implements Command {
 		String userId = "";
 
 		CourseService courseDao = new CourseServiceImpl();
-		List<CourseVO> list = courseDao.courseSelectList();
+		List<CourseVO> list = courseDao.selectCourseList();
 		List<CourseVO> courses = new ArrayList<>();
 		
 		if (role.equals("student")) {

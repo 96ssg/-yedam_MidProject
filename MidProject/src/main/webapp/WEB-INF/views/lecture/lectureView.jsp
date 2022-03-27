@@ -14,7 +14,7 @@
 <div align="center">
 <div><h1>강의 상세 정보</h1></div>
 <div>
-			<table border="1">
+			<table class="table" border="1">
 						<tr>
 							<th width="100">강의번호</th>
 							<td width="150">${vo.lectureId}</td>

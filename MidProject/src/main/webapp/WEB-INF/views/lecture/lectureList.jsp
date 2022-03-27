@@ -22,8 +22,9 @@
 						<option value="교수번호">교수번호</option>
 						<option value="강의명">강의명</option>
 
-					</select> <span> <input type="text" id="searchVal" name="searchVal" onkeyup="enterkey()">&nbsp;&nbsp;
-						<input type="button" id="searchBtn" value="검색">
+					</select> <span> <input type="text" id="searchVal" name="searchVal"
+						onkeyup="enterkey()">&nbsp;&nbsp; <input type="button"
+						id="searchBtn" value="검색">
 					</span>
 				</div>
 
@@ -31,16 +32,10 @@
 				<div>
 					<table class="table" id="contents">
 						<thead>
-							<tr>
-								<th width="100">강의번호</th>
+							<tr align="center">
 								<th width="200">강의명</th>
 								<th width="50">학점</th>
-								<th width="80">강의요일</th>
-								<th width="80">시작교시</th>
-								<th width="60">끝교시</th>
-								<th width="300">강의실</th>
-								<th width="100">교수번호</th>
-								<th width="100">최대인원</th>
+								<th width="100">교수명</th>
 								<th width="100">비고</th>
 							</tr>
 						</thead>
@@ -52,20 +47,16 @@
 							</c:if>
 							<c:if test="${not empty lectures }">
 								<c:forEach items="${lectures }" var="l">
-									<tr onmouseover='this.style.background="#fcecae";'
+									<tr align="center" onmouseover='this.style.background="#fcecae";'
 										onmouseleave='this.style.background="#FFFFFF";'
 										onclick='lectureContents(${l.lectureId},"${l.professorId }")'>
-										<td>${l.lectureId }</td>
 										<td>${l.lectureName}</td>
 										<td>${l.lectureCredit}</td>
-										<td>${l.lectureDay}</td>
-										<td>${l.lectureStart}</td>
-										<td>${l.lectureEnd}</td>
-										<td>${l.lectureRoom}</td>
 										<td class="profId">${l.professorId}</td>
-										<td>${l.lectureCapacity}</td>
-										<td align="center" onclick="event.stopPropagation()"><c:if test="${role eq 'admin' }">
-												<button type="button" onclick="lectureDelete(${l.lectureId})">삭제</button>
+										<td onclick="event.stopPropagation()"><c:if
+												test="${role eq 'admin' }">
+												<button type="button"
+													onclick="lectureDelete(${l.lectureId})">삭제</button>
 											</c:if></td>
 									</tr>
 								</c:forEach>
@@ -107,13 +98,13 @@
 		frm.submit();
 	}
 	
-function lectureContents(n,m){
+	function lectureContents(n,m){
 	frm.lectureId.value = n;
 	frm.professorId.value = m;
 	frm.action = "lectureView.do";
 	frm.submit();
-}
-function searchList(){
+	}
+	function searchList(){
 	$.ajax({
 		url : "ajaxLectureSearch.do",
 		type : "post",
@@ -128,36 +119,31 @@ function searchList(){
 				alert("검색한 결과가 존재하지 않아요!");
 			}
 		}
-	})
-}
-function searchResult(data){
+		})
+	}
+	function searchResult(data){
 	var tb = $("#lectureBody");
 	$("#lectureBody").empty();
 	
 	$.each(data, function(index, item){
-		var html = $("<tr />").attr({
+		var html = $("<tr align='center'></tr>").attr({
 			'onmouseover' : 'this.style.background="#fcecae";',
 			'onmouseleave' : 'this.style.background="#FFFFFF";',
 			'onclick' : 'lectureContents('+item.lectureId+', "'+item.professorId+'")'
 		}).append(
-				$("<td />").text(item.lectureId),
-				$("<td />").text(item.lectureName),
-				$("<td />").text(item.lectureCredit),
-				$("<td />").text(item.lectureDay),
-				$("<td />").text(item.lectureStart),
-				$("<td />").text(item.lectureEnd),
-				$("<td />").text(item.lectureRoom),
-				$("<td />").text(item.professorId),
-				$("<td />").text(item.lectureCapacity)
-				);
+				$("<td></td>").text(item.lectureName),
+				$("<td></td>").text(item.lectureCredit),
+				$("<td class='profId'></td>").text(item.professorId),
+				$("<td></td>")
+		);
 		tb.append(html)
 	});
 	
 	$("#contents").append(tb);
 	
-}
-searchBtn.addEventListener('click', searchList);
-function enterkey(){
+	}
+	searchBtn.addEventListener('click', searchList);
+	function enterkey(){
 	if(window.event.keyCode == 13){
 		searchList();
 	}

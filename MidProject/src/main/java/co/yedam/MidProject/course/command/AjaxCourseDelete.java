@@ -4,45 +4,39 @@ import java.time.LocalDate;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.yedam.MidProject.common.Command;
 import co.yedam.MidProject.course.service.CourseService;
 import co.yedam.MidProject.course.service.CourseVO;
 import co.yedam.MidProject.course.serviceImpl.CourseServiceImpl;
+import co.yedam.MidProject.student.service.StudentVO;
 
-public class AjaxCourseUpdate implements Command {
+public class AjaxCourseDelete implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-
-		// 브라우저에서 온 정보
-		int lectureId = Integer.parseInt(request.getParameter("lectureId"));
-		String studentId = request.getParameter("studentId");
-		int courseMid = Integer.parseInt(request.getParameter("courseMid"));
-		int courseFinal = Integer.parseInt(request.getParameter("courseFinal"));
-		String courseScore = request.getParameter("courseScore");
 		
-		// 수정할 courseVO
+		HttpSession session = request.getSession();
+		StudentVO user = (StudentVO) session.getAttribute("user");
+		
+		// 삭제할 수강정보 선택
 		// 현재 연도, 학기
 		LocalDate now = LocalDate.now();
 		int thisYear = now.getYear();
 		int thisSemester = (now.getMonthValue() < 8) ? 1 : 2;
+		
 		CourseService courseDao = new CourseServiceImpl();
 		CourseVO vo = new CourseVO();
-		vo.setLectureId(lectureId);
-		vo.setStudentId(studentId);
+		vo.setLectureId(Integer.parseInt(request.getParameter("lectureId")));
+		vo.setStudentId(user.getStudentId());
 		vo.setCourseYear(thisYear);
 		vo.setCourseSemester(thisSemester);
-		vo = courseDao.selectCourse(vo);
 		
-		// 수정
-		vo.setCourseMid(courseMid);
-		vo.setCourseFinal(courseFinal);
-		vo.setCourseScore(courseScore);
-		courseDao.updateCourse(vo);
-		System.out.println("course updated");
+		courseDao.deleteCourse(vo);
+		System.out.println("course deleted");
 		
-		return "ajax:updated";
+		return "ajax:deleted";
 	}
 
 }

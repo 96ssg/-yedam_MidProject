@@ -17,8 +17,8 @@
 		SELECT * FROM course
 	</select>
 	<select id="selectCourse" resultMap="CourseMap">
-		SELECT * FROM course WHERE
-		l_id=#{lectureId} AND s_id=#{studentId}
+		SELECT * FROM course 
+		WHERE l_id=#{lectureId} AND s_id=#{studentId} AND c_year=#{courseYear} AND c_semester=#{courseSemester}
 	</select>
 	<select id="myCourse"
 		resultMap="CourseMap">
@@ -39,7 +39,7 @@
 	</update>
 	<delete id="deleteCourse"
 		parameterType="co.yedam.MidProject.course.service.CourseVO">
-		DELETE FROM course WHERE l_id=#{lectureId} AND
-		s_id=#{studentId}
+		DELETE FROM course 
+		WHERE l_id=#{lectureId} AND s_id=#{studentId} AND c_year=#{courseYear} AND c_semester=#{courseSemester}
 	</delete>
 </mapper>

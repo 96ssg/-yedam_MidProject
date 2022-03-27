@@ -9,6 +9,7 @@
 </head>
 <body>
 	<h1>성적 입력</h1>
+	<h6>최소 점수는 1점입니다. 0점 입력시 성적 미입력 상태로 반영됩니다.</h6>
 	<table class="table">
 		<tr>
 			<td>강의번호</td>
@@ -26,8 +27,8 @@
 				<td>${course.studentId }</td>
 				<td>${course.courseYear }</td>
 				<td>${course.courseSemester }</td>
-				<td><input type="number" value="${course.courseMid }" min="1" max="100" disabled></td>
-				<td><input type="number" value="${course.courseFinal }" min="1" max="100" disabled></td>
+				<td><input type="number" value="${course.courseMid }" min="0" max="100" disabled></td>
+				<td><input type="number" value="${course.courseFinal }" min="0" max="100" disabled></td>
 				<td><input type="text" value="${course.courseScore }" disabled></td>
 				<td><input type="button" class="updateBtn" value="성적 입력" disabled></td>
 			</tr>
@@ -66,10 +67,15 @@
 				})
 				.then(response => response.text())
 				.then(result => {
-					console.log(result);
-					element.children[4].children[0].setAttribute('disabled', '');
-					element.children[5].children[0].setAttribute('disabled', '');
-					element.children[7].children[0].setAttribute('disabled', '');
+					// 성적 입력 후 입력창 비활성화
+					if (result === 'updated') {
+						element.children[4].children[0].setAttribute('disabled', '');
+						element.children[5].children[0].setAttribute('disabled', '');
+						element.children[7].children[0].setAttribute('disabled', '');
+					} else {
+						alert('성적 입력 중 오류가 발생했습니다.');
+					}
+					
 				})
 			})
 		})
@@ -81,7 +87,20 @@
 			const finalScore = selectedRow.children[5].children[0].value;
 			const gpa = midScore/2 + finalScore/2;
 			
-			if (finalScore == 0) {selectedRow.children[6].children[0].value = '-'; return;}
+			// 음수 입력시 오류
+			if (midScore < 0 || finalScore < 0) {
+				alert('잘못 입력하셨습니다.');
+				
+				// 값 초기화
+				if (midScore < 0) selectedRow.children[4].children[0].value = 0;
+				if (finalScore < 0) selectedRow.children[5].children[0].value = 0;
+				selectedRow.children[6].children[0].value = '-';
+				
+				return;
+			}
+			
+			// 각 점수의 평균에 따라 성적 입력
+			if (midScore == 0 || finalScore == 0) {selectedRow.children[6].children[0].value = '-'; return;}
 			if (gpa >= 95) {selectedRow.children[6].children[0].value = 'A+'; return;}
 			if (gpa >= 90) {selectedRow.children[6].children[0].value = 'A'; return;}
 			if (gpa >= 85) {selectedRow.children[6].children[0].value = 'B+'; return;}

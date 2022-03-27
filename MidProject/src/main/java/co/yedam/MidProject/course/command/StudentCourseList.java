@@ -1,6 +1,5 @@
 package co.yedam.MidProject.course.command;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 
 import co.yedam.MidProject.common.Command;
+import co.yedam.MidProject.course.service.CourseMethods;
 import co.yedam.MidProject.course.service.CourseService;
 import co.yedam.MidProject.course.service.CourseVO;
 import co.yedam.MidProject.course.serviceImpl.CourseServiceImpl;
@@ -23,28 +23,32 @@ public class StudentCourseList implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 
+		System.out.println("-- StudentCourseList");
+		
 		HttpSession session = request.getSession();
+		StudentVO user = (StudentVO) session.getAttribute("user");
+		String role = (String) session.getAttribute("role");
 
 		CourseService courseDao = new CourseServiceImpl();
-		List<CourseVO> list = courseDao.selectCourseList();
-		List<CourseVO> courses = new ArrayList<>();
+		List<CourseVO> courseList = courseDao.myCourse(role, user.getStudentId());
 
-		StudentVO user = (StudentVO) session.getAttribute("user");
-		String userId = user.getStudentId();
-
-		// 학생 본인의 수강 기록만 전달
-		for (CourseVO c : list) {
-			if (userId.equals(c.getStudentId())) courses.add(c);
-		}
-		request.setAttribute("courseList", courses);
-
-
+		// 전체 수강 목록
+		request.setAttribute("courseList", courseList);
+		
+		// 학기 수강 목록
+		List<CourseVO> semesterCourseList =  new CourseMethods().getSemesterCourseList(courseList);
+		request.setAttribute("semesterCourseList", semesterCourseList);
+		
+		
+		// 강의번호 => 강의명
 		LectureService lectureDao = new LectureServiceImpl();
 		List<LectureVO> lectures = lectureDao.selectLectureList();
 		
 		Gson gson = new Gson();
 		String lectureList = gson.toJson(lectures);
 		request.setAttribute("lectures", lectureList);
+		
+		
 
 		return "course/studentCourseList";
 

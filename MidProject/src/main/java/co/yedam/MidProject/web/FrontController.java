@@ -19,7 +19,12 @@ import co.yedam.MidProject.board.command.BoardList;
 import co.yedam.MidProject.board.command.BoardUpdate;
 import co.yedam.MidProject.board.command.BoardUpdateForm;
 import co.yedam.MidProject.common.Command;
+import co.yedam.MidProject.course.command.AjaxApplicationSearch;
+import co.yedam.MidProject.course.command.AjaxCourseDelete;
+import co.yedam.MidProject.course.command.AjaxCourseInsert;
 import co.yedam.MidProject.course.command.AjaxCourseUpdate;
+import co.yedam.MidProject.course.command.AjaxSemesterCourseList;
+import co.yedam.MidProject.course.command.CourseApplicationForm;
 import co.yedam.MidProject.course.command.CourseDetail;
 import co.yedam.MidProject.course.command.CourseInsertList;
 import co.yedam.MidProject.course.command.ProfessorCourseList;
@@ -122,11 +127,16 @@ public class FrontController extends HttpServlet {
 		map.put("/boardDelete.do", new BoardDelete());				// 공지사항 사제
 		
 		// course
-		map.put("/studentCourseList.do", new StudentCourseList());		// 학생 성적 조회
-		map.put("/professorCourseList.do", new ProfessorCourseList());	// 학과 내 학생의 수강정보 목록
-		map.put("/courseInsertList.do", new CourseInsertList());		// 내 강의 목록
-		map.put("/courseDetail.do", new CourseDetail());				// 수강정보 상세
-		map.put("/ajaxCourseUpdate.do", new AjaxCourseUpdate());		// 성적 입력
+		map.put("/studentCourseList.do", new StudentCourseList());				// 학생 성적 조회
+		map.put("/professorCourseList.do", new ProfessorCourseList());			// 학과 내 학생의 수강정보 목록
+		map.put("/courseInsertList.do", new CourseInsertList());				// 내 강의 목록
+		map.put("/courseApplicationForm.do", new CourseApplicationForm());		// 수강신청 폼
+		map.put("/ajaxApplicationSearch.do", new AjaxApplicationSearch());		// 수강신청 강의, 교수정보
+		map.put("/ajaxSemesterCourseList.do", new AjaxSemesterCourseList());	// 수강신청 강의, 교수정보
+		map.put("/ajaxCourseInsert.do", new AjaxCourseInsert());				// 수강신청
+		map.put("/ajaxCourseDelete.do", new AjaxCourseDelete());				// 수강신청 취소
+		map.put("/courseDetail.do", new CourseDetail());						// 수강정보 상세
+		map.put("/ajaxCourseUpdate.do", new AjaxCourseUpdate());				// 성적 입력
 		
 		
 		
@@ -137,25 +147,42 @@ public class FrontController extends HttpServlet {
 		String uri = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String page = uri.substring(contextPath.length());
+
+		Command command = null;
+		String viewPage = null;
 		
-		Command command = map.get(page);
-		String viewPage = command.execute(request, response);
-		
-		// view resolve
-		if (!viewPage.endsWith(".do")) {
-			if(viewPage.startsWith("ajax:")) {
-				// ajax 처리
-				response.setContentType("text/html; charset=UTF-8");
-				response.getWriter().append(viewPage.substring(5));
-				return;
-			} else {
-				//viewPage = "WEB-INF/views/" + viewPage + ".jsp";
-				viewPage = viewPage + ".tiles";
+		try {
+			command = map.get(page);
+			viewPage = command.execute(request, response);
+			
+			// view resolve
+			if (!viewPage.endsWith(".do")) {
+				if(viewPage.startsWith("ajax:")) {
+					// ajax 처리
+					response.setContentType("text/html; charset=UTF-8");
+					response.getWriter().append(viewPage.substring(5));
+					System.out.println("ajax successful\n");
+					
+				} else {
+					viewPage = viewPage + ".tiles";
+					System.out.println("move to : " + viewPage);
+					System.out.println();
+				}
 			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			if (command == null) viewPage = "home/404page.tiles";
+			if (viewPage == null) viewPage = "home/500page.tiles";
+			if (viewPage.startsWith("ajax:")) return;
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+			dispatcher.forward(request, response);
 		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
-		dispatcher.forward(request, response);
+		
 	}
 	
 

@@ -51,7 +51,7 @@
 			})
 		}
 		
-		loginBtn.addEventListener('click', login);
+		loginBtn.addEventListener('click', () => login(loginId.value, loginPassword.value));
 		frm.addEventListener('keydown', event => {
 			if (event.key === 'Enter') login(loginId.value, loginPassword.value);
 		})

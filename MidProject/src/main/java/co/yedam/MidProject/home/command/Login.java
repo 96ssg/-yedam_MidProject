@@ -26,6 +26,7 @@ public class Login implements Command {
 		LoginService loginDao = new LoginServiceImpl();
 		
 		UserVO loginUser = loginDao.fetchUser(userId);
+		System.out.println("login try with "+ userId +", "+ userPassword);
 		
 		// 로그인 실패
 		if (loginUser == null) return "ajax:id";
@@ -62,7 +63,6 @@ public class Login implements Command {
 			session.setAttribute("user", user);
 		}
 		
-		System.out.println();
 		return "ajax:success";
 	}
 

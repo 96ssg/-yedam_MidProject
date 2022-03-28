@@ -48,6 +48,7 @@ import co.yedam.MidProject.myPage.common.ChangePasswordForm;
 import co.yedam.MidProject.myPage.common.CheckPassword;
 import co.yedam.MidProject.myPage.common.CheckPasswordForm;
 import co.yedam.MidProject.myPage.common.MyPage;
+import co.yedam.MidProject.myPage.common.MyView;
 import co.yedam.MidProject.professor.command.ProfessorDelete;
 import co.yedam.MidProject.professor.command.ProfessorInsert;
 import co.yedam.MidProject.professor.command.ProfessorInsertForm;
@@ -104,6 +105,7 @@ public class FrontController extends HttpServlet {
 		map.put("/changePasswordForm.do", new ChangePasswordForm()); // 비밀번호 변경폼 호출
 		map.put("/ajaxChangePassword.do", new AjaxChangePassword()); // 비밀번호 변경
 		map.put("/checkPasswordForm.do", new CheckPasswordForm());//비밀번호 확인폼 호출
+		map.put("/myView.do", new MyView()); //내정보
 		
 		// 우준
 		// home

@@ -9,24 +9,24 @@
 <body>
 <script type="text/javascript">
 	window.onload = function() {
-		frm.s_password.focus();
+		frm.password.focus();
 	}
 	
 	function passwdCheck(form){
-		if(form.s_password.value == "") {
+		if(frm.password.value == "") {
 			alert("비밀번호를 입력해주세요");
-			frm.s_password.focus();
+			frm.password.focus();
 			return false;
 		}
 		
 		frm.method="post";
-		frm.action="myPage.do";
+		frm.action="checkPassword.do";
 		frm.submit();
 	}
 </script>
 
 	<form id="frm" name="frm">
-		<table align="center">
+		<table>
 			<tr>
 				<td align="center">:::비밀번호 확인:::</td>
 			</tr>
@@ -36,7 +36,7 @@
 						<tr>
 							<td>현재 비밀번호</td>
 							<td>
-								<input type="password" name="s_password" placeholder="본인확인을 위해 비밀번호를 입력해주세요." required="required">
+								<input type="password" name="password" placeholder="본인확인을 위해 비밀번호를 입력해주세요." required="required">
 							</td>
 						</tr>
 					</table>

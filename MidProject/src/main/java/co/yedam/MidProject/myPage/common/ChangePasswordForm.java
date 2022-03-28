@@ -11,7 +11,7 @@ public class ChangePasswordForm implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
-		return "myPage/changePasswordForm";
+		return "myPage/changepasswordForm";
 	}
 
 }

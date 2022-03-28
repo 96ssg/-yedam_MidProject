@@ -23,8 +23,6 @@ public class StudentCourseList implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 
-		System.out.println("-- StudentCourseList");
-		
 		HttpSession session = request.getSession();
 		StudentVO user = (StudentVO) session.getAttribute("user");
 		String role = (String) session.getAttribute("role");

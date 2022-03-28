@@ -86,6 +86,11 @@
 			})
 			.then(response => response.text())
 			.then(result => {
+				console.log(result)
+				if (result == 'lectureId') {
+					alert('강의 번호를 확인하세요.')
+					return;
+				}
 				if (result == 'capacity') {
 					alert('수강정원이 초과되었습니다.')
 					return;
@@ -94,6 +99,8 @@
 					alert('최대이수학점을 초과해서 신청할 수 없습니다.')
 					return;
 				}
+				
+				
 				
 				// 수강신청 후 목록 재호출
 				semesterCourseList();

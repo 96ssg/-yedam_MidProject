@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import co.yedam.MidProject.lecture.service.LectureVO;
 
 public interface StudentMapper {
 	

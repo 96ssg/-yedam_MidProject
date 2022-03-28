@@ -8,6 +8,7 @@
 		<result property="studentPassword" column="s_password"/> 
 		<result property="studentPhone" column="s_phone"/> 
 		<result property="studentImg" column="s_img"/>
+		<result property="studentBirth" column="s_birth"/>
 		<result property="studentGrade" column="s_grade"/> 
 		<result property="studentSemester" column="s_semester"/>
 		<result property="studentScore" column="s_score"/>

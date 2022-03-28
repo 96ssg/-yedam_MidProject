@@ -100,7 +100,7 @@ public class FrontController extends HttpServlet {
 		map.put("/lectureDelete.do", new LectureDelete()); //강의 삭제
 		map.put("/lectureView.do", new LectureView()); //강의 상세정보
 		map.put("/lectureUpdate.do", new LectureUpdate()); //강의 정보수정
-		
+
 		// 진환
 		map.put("/checkpassword.do", new CheckPassword()); // 본인확인
 		map.put("/ajaxCheckPassword.do", new AjaxCheckPassword()); // 본인확인 비밀번호 체크

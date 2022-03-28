@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div align="center">
-	</div>
+	<a href="changePasswordForm.do">패스워드 변경</a>
 </body>
 </html>

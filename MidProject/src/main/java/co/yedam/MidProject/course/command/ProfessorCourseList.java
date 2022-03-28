@@ -1,6 +1,5 @@
 package co.yedam.MidProject.course.command;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +13,7 @@ import co.yedam.MidProject.charge.service.ChargeService;
 import co.yedam.MidProject.charge.service.ChargeVO;
 import co.yedam.MidProject.charge.serviceImpl.ChargeServiceImpl;
 import co.yedam.MidProject.common.Command;
+import co.yedam.MidProject.course.service.CourseMethods;
 import co.yedam.MidProject.course.service.CourseService;
 import co.yedam.MidProject.course.service.CourseVO;
 import co.yedam.MidProject.course.serviceImpl.CourseServiceImpl;
@@ -44,13 +44,11 @@ public class ProfessorCourseList implements Command {
 			if (!user.getDeptId().equals(studentDeptId)) continue;
 			
 			// 일반 교수는 지도학생의 이번 학기 성적만 조회 가능
+			System.out.println("role : " + role);
 			if (!role.equals("admin")) {
 				// 수강연도, 학기 확인
-				LocalDate now = LocalDate.now();
-				int year = now.getYear();
-				int month = now.getMonthValue();
-				int semester = (month<9)? 1 : 2;
-				if (c.getCourseYear() != year || c.getCourseSemester() != semester) continue;
+				CourseMethods cm = new CourseMethods();
+				if (c.getCourseYear() != cm.getNow("year") || c.getCourseSemester() != cm.getNow("semester")) continue;
 				
 				// 지도학생 여부 확인
 				ChargeVO vo = new ChargeVO();
@@ -58,7 +56,10 @@ public class ProfessorCourseList implements Command {
 				vo.setProfessorId(user.getProfId());
 				
 				ChargeService chargeDao = new ChargeServiceImpl();
-				if (chargeDao.selectCharge(vo).size() == 0) continue;
+				if (chargeDao.selectCharge(vo).size() == 0) {
+					System.out.println("not my student");
+					continue;
+				}
 			}
 
 			courses.add(c);

@@ -21,7 +21,7 @@
 			<input type="button" value="검색" id="searchBtn">
 		</form>
 	</div>
-
+	
 	<div>
 		<ul>
 			<li>번호</li>
@@ -31,7 +31,7 @@
 	</div>
 
 	<div id="resultList">
-		<table border="1">
+		<table class="table">
 			<c:forEach items="${boardList }" var="b">
 				<tr class="board">
 					<td>${b.boardId }</td>
@@ -43,9 +43,11 @@
 		</table>
 	</div>
 	
-	<div>
-		<input type="button" value="글쓰기" onclick='location.href="boardInsertForm.do"'>
-	</div>
+	<c:if test="${role eq 'admin' }">
+		<div>
+			<input type="button" value="글쓰기" onclick='location.href="boardInsertForm.do"'>
+		</div>
+	</c:if>
 	
 	<script>
 		// 글쓰기 후 새로고침 시 글쓰기 중복 수행 방지를 위한 url 변경

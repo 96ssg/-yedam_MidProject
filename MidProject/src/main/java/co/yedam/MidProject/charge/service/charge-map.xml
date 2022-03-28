@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="co.yedam.MidProject.charge.service.ChargeMapper">
+	<resultMap type="co.yedam.MidProject.charge.service.ChargeVO"
+		id="ChargeMap">
+		<result property="studentId" column="s_id" />
+		<result property="professorId" column="p_id" />
+	</resultMap>
+
+	<select id="selectChargeList" resultMap="ChargeMap">
+		SELECT * FROM charge
+	</select>
+	<select id="selectCharge" resultMap="ChargeMap">
+		SELECT * FROM charge WHERE 
+		s_id LIKE #{studentId} AND p_id LIKE #{professorId}
+	</select>
+	<insert id="insertCharge"
+		parameterType="co.yedam.MidProject.charge.service.ChargeVO">
+		INSERT INTO charge 
+		VALUES(#{studentId},#{professorId})
+	</insert>
+	<update id="updateCharge"
+		parameterType="co.yedam.MidProject.charge.service.ChargeVO">
+		UPDATE charge 
+		SET s_id=#{studentId}, p_id=#{professorId} 
+		WHERE s_id=#{studentId} AND p_id=#{professorId}
+	</update>
+	<delete id="deleteCharge"
+		parameterType="co.yedam.MidProject.charge.service.ChargeVO">
+		DELETE FROM charge 
+		WHERE s_id=#{studentId} AND p_id=#{professorId}
+	</delete>
+</mapper>

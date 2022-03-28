@@ -13,34 +13,33 @@
 		<result property="courseScore" column="c_score" />
 	</resultMap>
 
-	<select id="courseSelectList" resultMap="CourseMap">
+	<select id="selectCourseList" resultMap="CourseMap">
 		SELECT * FROM course
 	</select>
-	<select id="courseSelect" resultMap="CourseMap">
-		SELECT * FROM course WHERE
-		l_id=#{lectureId} AND s_id=#{studentId}
+	<select id="selectCourse" resultMap="CourseMap">
+		SELECT * FROM course 
+		WHERE l_id=#{lectureId} AND s_id=#{studentId} AND c_year=#{courseYear} AND c_semester=#{courseSemester}
 	</select>
 	<select id="myCourse"
 		resultMap="CourseMap">
-		SELECT * FROM course
-		WHERE
-		<if test='role == "student"'> s_id=#{userId}</if>
-		<if test='role == "professor"'> p_id=#{userId}</if>
+		SELECT * FROM course 
+		<if test='role == "student"'>WHERE s_id=#{id}</if>
+		<if test='role == "admin" || role == "professor"'>WHERE l_id=#{id}</if>
 	</select>
-	<insert id="courseInsert"
+	<insert id="insertCourse"
 		parameterType="co.yedam.MidProject.course.service.CourseVO">
 		INSERT INTO course
 		VALUES(#{lectureId},#{studentId},#{courseYear},#{courseSemester},#{courseMid},#{courseFinal},#{courseScore})
 	</insert>
-	<update id="courseUpdate"
+	<update id="updateCourse"
 		parameterType="co.yedam.MidProject.course.service.CourseVO">
 		UPDATE course
-		SET c_mid=#{courseMid}, c_final=#{courseFinal}
+		SET c_mid=#{courseMid}, c_final=#{courseFinal}, c_score=#{courseScore} 
 		WHERE l_id=#{lectureId} AND s_id=#{studentId}
 	</update>
-	<delete id="courseDelete"
+	<delete id="deleteCourse"
 		parameterType="co.yedam.MidProject.course.service.CourseVO">
-		DELETE FROM course WHERE l_id=#{lectureId} AND
-		s_id=#{studentId}
+		DELETE FROM course 
+		WHERE l_id=#{lectureId} AND s_id=#{studentId} AND c_year=#{courseYear} AND c_semester=#{courseSemester}
 	</delete>
 </mapper>

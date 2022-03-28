@@ -26,6 +26,7 @@ public class Login implements Command {
 		LoginService loginDao = new LoginServiceImpl();
 		
 		UserVO loginUser = loginDao.fetchUser(userId);
+		System.out.println("login try with "+ userId +", "+ userPassword);
 		
 		// 로그인 실패
 		if (loginUser == null) return "ajax:id";
@@ -46,10 +47,9 @@ public class Login implements Command {
 			user = sDao.selectStudent(user);
 			
 			System.out.println("new login : student " + user.getStudentName());
-
-			session.setAttribute("user", user);
+			System.out.println("deptId : " + user.getDeptId());
 			
-			return "ajax:success";
+			session.setAttribute("user", user);
 			
 		} else {
 			ProfessorService pDao = new ProfessorServiceImpl();
@@ -58,12 +58,12 @@ public class Login implements Command {
 			user = pDao.selectProfessor(user);
 			
 			System.out.println("new login : prof " + user.getProfName());
+			System.out.println("deptId : " + user.getDeptId());
 
 			session.setAttribute("user", user);
-			
-			return "ajax:success";
 		}
 		
+		return "ajax:success";
 	}
 
 }

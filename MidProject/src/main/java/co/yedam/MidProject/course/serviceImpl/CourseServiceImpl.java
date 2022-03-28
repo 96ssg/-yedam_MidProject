@@ -15,33 +15,33 @@ public class CourseServiceImpl implements CourseService {
 	private CourseMapper map = sqlSession.getMapper(CourseMapper.class);
 	
 	@Override
-	public List<CourseVO> courseSelectList() {
-		return map.courseSelectList();
+	public List<CourseVO> selectCourseList() {
+		return map.selectCourseList();
 	}
 
 	@Override
-	public CourseVO courseSelect(CourseVO vo) {
-		return map.courseSelect(vo);
+	public CourseVO selectCourse(CourseVO vo) {
+		return map.selectCourse(vo);
 	}
 
 	@Override
-	public List<CourseVO> myCourse(String role, String userId) {
-		return map.myCourse(role, userId);
+	public List<CourseVO> myCourse(String role, String id) {
+		return map.myCourse(role, id);
 	}
 
 	@Override
-	public int courseInsert(CourseVO vo) {
-		return map.courseInsert(vo);
+	public int insertCourse(CourseVO vo) {
+		return map.insertCourse(vo);
 	}
 
 	@Override
-	public int courseUpdate(CourseVO vo) {
-		return map.courseUpdate(vo);
+	public int updateCourse(CourseVO vo) {
+		return map.updateCourse(vo);
 	}
 
 	@Override
-	public int courseDelete(CourseVO vo) {
-		return map.courseDelete(vo);
+	public int deleteCourse(CourseVO vo) {
+		return map.deleteCourse(vo);
 	}
 
 }

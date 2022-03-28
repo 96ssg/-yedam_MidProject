@@ -14,7 +14,7 @@
 <div align="center">
 <div><h1>강의 상세 정보</h1></div>
 <div>
-			<table border="1">
+			<table class="table" border="1">
 						<tr>
 							<th width="100">강의번호</th>
 							<td width="150">${vo.lectureId}</td>
@@ -23,7 +23,7 @@
 						</tr>
 						<tr>
 							<th>교수명</th>
-							<td colspan="3">${p.p_Name }</td>
+							<td colspan="3">${p.profName }</td>
 						</tr>
 						<tr>
 							<th>요일</th>
@@ -33,18 +33,26 @@
 							<th>강의실</th>
 							<td colspan="3">${vo.lectureRoom}</td>
 						</tr>
+						<tr>
+							<th>교수번호</th>
+							<td colspan="3">${p.profId}</td>
+						</tr>
 					</table>
 		</div><br>
 		<div>
 			<button type="button" onclick="location.href='lectureList.do'">목록가기</button>&nbsp;&nbsp;
-			<input type="button" onclick="lectureUpdate(${vo.lectureId})" value="강의수정">&nbsp;&nbsp;
+			<c:if test="${sessionScope.role eq 'admin' }">
+			<input type="button" onclick='lectureUpdate(${vo.lectureId},"${vo.professorId }")' value="강의수정">&nbsp;&nbsp;
+			</c:if>	
 		</div>
 	</div>
 	<input type="hidden" id="lectureId" name="lectureId">
+	<input type="hidden" id="professorId" name="professorId">
 	</form>
 	<script type="text/javascript">
-	function lectureUpdate(n){
+	function lectureUpdate(n,m){
 		frm.lectureId.value = n;
+		frm.professorId.value = m;
 		frm.action = "lectureUpdateForm.do";
 		frm.submit();
 	}

@@ -11,10 +11,10 @@
 <body>
 	<div align="center">
 		<div>
-			<h1>강의 목록</h1>
+			<h1>${role }</h1>
 		</div>
 		<div>
-			<form id="frm" method="post">
+			<form id="frm" method="post" onsubmit="return false">
 				<div>
 					<select id="searchKey" name="searchKey">
 						<option value="전체">전체</option>
@@ -22,25 +22,21 @@
 						<option value="교수번호">교수번호</option>
 						<option value="강의명">강의명</option>
 
-					</select> <span> <input type="text" id="searchVal" name="searchVal">&nbsp;&nbsp;
-						<input type="button" onclick="searchList()" value="검색">
+					</select> <span> <input type="text" id="searchVal" name="searchVal"
+						onkeyup="enterkey()">&nbsp;&nbsp; <input type="button"
+						id="searchBtn" value="검색">
 					</span>
 				</div>
 
 				<br />
 				<div>
-					<table border="1" id="contents">
+					<table class="table" id="contents">
 						<thead>
-							<tr>
-								<th width="100">강의번호</th>
+							<tr align="center">
 								<th width="200">강의명</th>
 								<th width="50">학점</th>
-								<th width="70">강의요일</th>
-								<th width="60">시작교시</th>
-								<th width="60">끝교시</th>
-								<th width="300">강의실</th>
-								<th width="100">교수번호</th>
-								<th width="100">최대인원</th>
+								<th width="100">교수명</th>
+								<th width="100">비고</th>
 							</tr>
 						</thead>
 						<tbody id="lectureBody">
@@ -51,18 +47,17 @@
 							</c:if>
 							<c:if test="${not empty lectures }">
 								<c:forEach items="${lectures }" var="l">
-									<tr onmouseover='this.style.background="#fcecae";'
+									<tr align="center" onmouseover='this.style.background="#fcecae";'
 										onmouseleave='this.style.background="#FFFFFF";'
 										onclick='lectureContents(${l.lectureId},"${l.professorId }")'>
-										<td>${l.lectureId }<c:if test=""><button type="submit" formaction="lectureDelete.do">삭제</button></c:if></td>
 										<td>${l.lectureName}</td>
 										<td>${l.lectureCredit}</td>
-										<td>${l.lectureDay}</td>
-										<td>${l.lectureStart}</td>
-										<td>${l.lectureEnd}</td>
-										<td>${l.lectureRoom}</td>
-										<td>${l.professorId}</td>
-										<td>${l.lectureCapacity}&nbsp;&nbsp;&nbsp;</td>
+										<td class="profId">${l.professorId}</td>
+										<td onclick="event.stopPropagation()"><c:if
+												test="${role eq 'admin' }">
+												<button type="button"
+													onclick="lectureDelete(${l.lectureId})">삭제</button>
+											</c:if></td>
 									</tr>
 								</c:forEach>
 							</c:if>
@@ -71,22 +66,45 @@
 				</div>
 				<br />
 				<div>
-					<button type="button"
-						onclick="location.href='lectureInsertForm.do'">강의등록</button>
+					<c:if test="${role eq 'admin' }">
+						<button type="button"
+							onclick="location.href='lectureInsertForm.do'">강의등록</button>
+					</c:if>
 				</div>
-				<input type="hidden" id="lectureId" name="lectureId">
-				<input type="hidden" id="professorId" name="professorId">
+				<input type="hidden" id="lectureId" name="lectureId"> <input
+					type="hidden" id="professorId" name="professorId">
 			</form>
 		</div>
 	</div>
 	<script type="text/javascript">
-function lectureContents(n,m){
-		frm.lectureId.value = n;
-		frm.professorId.value = m;
-		frm.action = "lectureView.do";
+	
+	window.onload = profNames;
+
+	function profNames() {
+		const pList = ${professors};
+		const pId = document.querySelectorAll('.profId');
+		
+		for (let i=0; i<pId.length; i++) {
+			pList.forEach(function(prof) {
+				if (prof.profId === pId[i].innerText) {
+					pId[i].innerText = prof.profName;
+				} 
+			})
+		}
+	}
+	function lectureDelete(k){
+		frm.lectureId.value = k;
+		frm.action = "lectureDelete.do";
 		frm.submit();
 	}
-function searchList(){
+	
+	function lectureContents(n,m){
+	frm.lectureId.value = n;
+	frm.professorId.value = m;
+	frm.action = "lectureView.do";
+	frm.submit();
+	}
+	function searchList(){
 	$.ajax({
 		url : "ajaxLectureSearch.do",
 		type : "post",
@@ -96,39 +114,44 @@ function searchList(){
 			if(result.length > 0){
 				// html 로 변환코드
 				searchResult(result);  // json data 를 html로 변환해서 뿌려주는 메소드
+				profNames();
 			}else{
 				alert("검색한 결과가 존재하지 않아요!");
 			}
 		}
-	})
-}
-function searchResult(data){
-	console.log(data);
+		})
+	}
+	function searchResult(data){
 	var tb = $("#lectureBody");
 	$("#lectureBody").empty();
 	
 	$.each(data, function(index, item){
-		var html = $("<tr />").attr({
+		var html = $("<tr align='center'></tr>").attr({
 			'onmouseover' : 'this.style.background="#fcecae";',
 			'onmouseleave' : 'this.style.background="#FFFFFF";',
-			'onclick' : 'lectureContents('+ item.lectureId +')'
+			'onclick' : 'lectureContents('+item.lectureId+', "'+item.professorId+'")'
 		}).append(
-				$("<td />").text(item.lectureId),
-				$("<td />").text(item.lectureName),
-				$("<td />").text(item.lectureCredit),
-				$("<td />").text(item.lectureDay),
-				$("<td />").text(item.lectureStart),
-				$("<td />").text(item.lectureEnd),
-				$("<td />").text(item.lectureRoom),
-				$("<td />").text(item.professorId),
-				$("<td />").text(item.lectureCapacity)
-				);
+				$("<td></td>").text(item.lectureName),
+				$("<td></td>").text(item.lectureCredit),
+				$("<td class='profId'></td>").text(item.professorId),
+				$("<td></td>")
+		);
 		tb.append(html)
 	});
 	
 	$("#contents").append(tb);
 	
+	}
+	searchBtn.addEventListener('click', searchList);
+	function enterkey(){
+	if(window.event.keyCode == 13){
+		searchList();
+	}
 }
+
+
+
+
 </script>
 
 </body>

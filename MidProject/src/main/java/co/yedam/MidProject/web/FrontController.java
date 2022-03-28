@@ -19,8 +19,16 @@ import co.yedam.MidProject.board.command.BoardList;
 import co.yedam.MidProject.board.command.BoardUpdate;
 import co.yedam.MidProject.board.command.BoardUpdateForm;
 import co.yedam.MidProject.common.Command;
+import co.yedam.MidProject.course.command.AjaxApplicationSearch;
+import co.yedam.MidProject.course.command.AjaxCourseDelete;
+import co.yedam.MidProject.course.command.AjaxCourseInsert;
+import co.yedam.MidProject.course.command.AjaxCourseUpdate;
+import co.yedam.MidProject.course.command.AjaxSemesterCourseList;
+import co.yedam.MidProject.course.command.CourseApplicationForm;
 import co.yedam.MidProject.course.command.CourseDetail;
-import co.yedam.MidProject.course.command.CourseList;
+import co.yedam.MidProject.course.command.CourseInsertList;
+import co.yedam.MidProject.course.command.ProfessorCourseList;
+import co.yedam.MidProject.course.command.StudentCourseList;
 import co.yedam.MidProject.home.command.AjaxProfessorInfo;
 import co.yedam.MidProject.home.command.AjaxStudentInfo;
 import co.yedam.MidProject.home.command.HomeCommand;
@@ -35,13 +43,22 @@ import co.yedam.MidProject.lecture.command.LectureList;
 import co.yedam.MidProject.lecture.command.LectureUpdate;
 import co.yedam.MidProject.lecture.command.LectureUpdateForm;
 import co.yedam.MidProject.lecture.command.LectureView;
+import co.yedam.MidProject.myPage.common.AjaxCheckPassword;
+import co.yedam.MidProject.myPage.common.ChangePassword;
+import co.yedam.MidProject.myPage.common.ChangePasswordForm;
+import co.yedam.MidProject.myPage.common.CheckPassword;
+import co.yedam.MidProject.myPage.common.MyPage;
+import co.yedam.MidProject.professor.command.ProfessorDelete;
 import co.yedam.MidProject.professor.command.ProfessorInsert;
 import co.yedam.MidProject.professor.command.ProfessorInsertForm;
 import co.yedam.MidProject.professor.command.ProfessorList;
 import co.yedam.MidProject.professor.command.ProfessorUpdate;
 import co.yedam.MidProject.professor.command.ProfessorUpdateForm;
+import co.yedam.MidProject.student.command.StudentDelete;
+import co.yedam.MidProject.student.command.StudentInsert;
 import co.yedam.MidProject.student.command.StudentInsertForm;
 import co.yedam.MidProject.student.command.StudentList;
+import co.yedam.MidProject.student.command.StudentUpdate;
 import co.yedam.MidProject.student.command.StudentUpdateForm;
 
 public class FrontController extends HttpServlet {
@@ -60,14 +77,17 @@ public class FrontController extends HttpServlet {
 		map.put("/studentList.do", new StudentList());
 		map.put("/studentInsertForm.do", new StudentInsertForm());
 		map.put("/studentUpdateForm.do", new StudentUpdateForm());
-
+		map.put("/studentinsert.do", new StudentInsert());
+		map.put("/studentUpdate.do", new StudentUpdate());
+		map.put("/studentDelete.do", new StudentDelete());
 		//교수 등록 수정 조회
 		map.put("/professorInsertForm.do", new ProfessorInsertForm());
 		map.put("/professorList.do", new ProfessorList());
 		map.put("/professorInsert.do", new ProfessorInsert());
 		map.put("/professorUpdateForm.do", new ProfessorUpdateForm()); 
 		map.put("/professorUpdate.do", new ProfessorUpdate());
-
+		map.put("/professorDelete.do", new ProfessorDelete());
+		
 		// 승교
 		map.put("/lectureList.do", new LectureList()); //강의목록
 		map.put("/ajaxLectureSearch.do", new AjaxLectureSearch()); //강의 검색
@@ -77,8 +97,13 @@ public class FrontController extends HttpServlet {
 		map.put("/lectureDelete.do", new LectureDelete()); //강의 삭제
 		map.put("/lectureView.do", new LectureView()); //강의 상세정보
 		map.put("/lectureUpdate.do", new LectureUpdate()); //강의 정보수정
-		// 진환
 		
+		// 진환
+		map.put("/checkpassword.do", new CheckPassword()); // 본인확인
+		map.put("/ajaxCheckPassword.do", new AjaxCheckPassword()); // 본인확인 비밀번호 체크
+		map.put("/myPage.do", new MyPage()); // 마이페이지
+		map.put("/changePasswordForm.do", new ChangePasswordForm()); // 비밀번호 변경폼 호출
+		map.put("/changePassword.do", new ChangePassword()); // 비밀번호 변경
 		
 		// 우준
 		// home
@@ -102,8 +127,17 @@ public class FrontController extends HttpServlet {
 		map.put("/boardDelete.do", new BoardDelete());				// 공지사항 사제
 		
 		// course
-		map.put("/courseList.do", new CourseList());				// 수강정보 목록
-		map.put("/courseDetail.do", new CourseDetail());				// 수강정보 상세
+		map.put("/studentCourseList.do", new StudentCourseList());				// 학생 성적 조회
+		map.put("/professorCourseList.do", new ProfessorCourseList());			// 학과 내 학생의 수강정보 목록
+		map.put("/courseInsertList.do", new CourseInsertList());				// 내 강의 목록
+		map.put("/courseApplicationForm.do", new CourseApplicationForm());		// 수강신청 폼
+		map.put("/ajaxApplicationSearch.do", new AjaxApplicationSearch());		// 수강신청 강의, 교수정보
+		map.put("/ajaxSemesterCourseList.do", new AjaxSemesterCourseList());	// 수강신청 강의, 교수정보
+		map.put("/ajaxCourseInsert.do", new AjaxCourseInsert());				// 수강신청
+		map.put("/ajaxCourseDelete.do", new AjaxCourseDelete());				// 수강신청 취소
+		map.put("/courseDetail.do", new CourseDetail());						// 수강정보 상세
+		map.put("/ajaxCourseUpdate.do", new AjaxCourseUpdate());				// 성적 입력
+		
 		
 		
 	}
@@ -113,25 +147,43 @@ public class FrontController extends HttpServlet {
 		String uri = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String page = uri.substring(contextPath.length());
+
+		Command command = null;
+		String viewPage = null;
 		
-		Command command = map.get(page);
-		String viewPage = command.execute(request, response);
-		
-		// view resolve
-		if (!viewPage.endsWith(".do")) {
-			if(viewPage.startsWith("ajax:")) {
-				// ajax 처리
-				response.setContentType("text/html; charset=UTF-8");
-				response.getWriter().append(viewPage.substring(5));
-				return;
-			} else {
-				//viewPage = "WEB-INF/views/" + viewPage + ".jsp";
-				viewPage = viewPage + ".tiles";
+		try {
+			command = map.get(page);
+			viewPage = command.execute(request, response);
+			
+			// view resolve
+			if (!viewPage.endsWith(".do")) {
+				if(viewPage.startsWith("ajax:")) {
+					// ajax 처리
+					response.setContentType("text/html; charset=UTF-8");
+					response.getWriter().append(viewPage.substring(5));
+					System.out.println("ajax successful\n");
+					
+				} else {
+					viewPage = viewPage + ".tiles";
+					System.out.println("move to : " + viewPage);
+					System.out.println();
+				}
 			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			if (command == null) viewPage = "home/404page.tiles";
+			if (viewPage == null) viewPage = "home/500page.tiles";
+			if (viewPage.startsWith("ajax:")) return;
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+			dispatcher.forward(request, response);
 		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
-		dispatcher.forward(request, response);
+		
 	}
+	
 
 }

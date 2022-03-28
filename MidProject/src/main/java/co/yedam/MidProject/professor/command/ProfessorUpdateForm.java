@@ -19,7 +19,6 @@ public class ProfessorUpdateForm implements Command {
 		ProfessorVO professor = new ProfessorVO();
 		professor.setProfId(professorId);
 		professor = professorDao.selectProfessor(professor);
-		System.out.println(professor.getProfId());
 		
 		request.setAttribute("professors", professor);
 		

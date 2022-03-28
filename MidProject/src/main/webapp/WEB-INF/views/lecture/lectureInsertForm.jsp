@@ -14,7 +14,7 @@
 			<h1>강의 등록</h1>
 		</div>
 		<div>
-			<form action="lectureInsert.do" method="POST">
+			<form action="lectureInsert.do" onsubmit="return checkPeriod()" method="POST">
 				<div>
 					<table border="1">
 						<tr>
@@ -35,12 +35,27 @@
 						<tr>
 							<th width="100">시작시간</th>
 							<td width="100"><input type="text" id="lectureStart"
-								name="lectureStart" required="required"></td>
+								name="lectureStart" required="required">
+								<select name="lectureStart" id="lectureStart">
+									<option value='0'>선택</option>
+									<option value='1'></option>
+									<option value='2'></option>
+									<option value='3'></option>
+									<option value='4'></option>
+								</select>
+								
+								</td>
 						</tr>
 						<tr>
 							<th width="100">종료시간</th>
 							<td width="100"><input type="text" id="lectureEnd"
-								name="lectureEnd" required="required"></td>
+								name="lectureEnd" required="required">
+								<select name="lectureEnd">
+									<option value='2'></option>
+									<option value='3'></option>
+									<option value='4'></option>
+								</select>
+								</td>
 						</tr>
 						<tr>
 							<th width="100">강의실</th>

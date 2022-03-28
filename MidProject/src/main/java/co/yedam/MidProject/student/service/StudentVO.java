@@ -11,9 +11,12 @@ public class StudentVO {
 	private String studentPassword;
 	private String studentBirth;
 	private int studentGrade;
-	private int studentSemster;
+	private int studentSemester;
 	private String studentPhone;
 	private String studentImg;
 	private int studentScore;
 	private String deptId;
+	
+	private int studentStatus;
+	
 }

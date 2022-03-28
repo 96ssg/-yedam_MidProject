@@ -10,8 +10,9 @@
 		<result property="studentPhone" column="s_phone"/> 
 		<result property="studentImg" column="s_img"/>
 		<result property="studentGrade" column="s_grade"/> 
-		<result property="studentSemster" column="s_semster"/>
+		<result property="studentSemester" column="s_semester"/>
 		<result property="studentScore" column="s_score"/>
+		<result property="studentStatus" column="s_status"/>
 		<result property="deptId" column="d_id"/>
 	</resultMap>
 	<select id="selectStudentList"
@@ -29,25 +30,35 @@
 		resultMap="studentMap">
 		SELECT * FROM student WHERE s_id = #{studentId}
 	</select>
-
+	
+	<select id="selectStudentSearchList" resultMap="studentMap">
+SELECT * FROM STUDENT
+WHERE
+	<if test ='key == "1"'>
+	S_ID LIKE '%'||#{val}||'%'
+	</if>
+	<if test ='key == "2"'>
+	S_NAME LIKE '%'||#{val}||'%'
+	</if>
+ORDER BY S_ID 
+</select>
 
 	<insert id="insertStudent"
 		parameterType="co.yedam.MidProject.student.service.StudentVO">
 	
 		INSERT INTO STUDENT VALUES (#{studentId}, #{studentName}, #{studentPassword}, #{studentBirth},
-		#{studentGrade}, #{studentSemster}, #{studentPhone}, #{studentImg}, #{studentScore}, #{deptId})
+		#{studentGrade}, #{studentSemester}, #{studentPhone}, #{studentImg}, #{studentScore}, #{deptId}, #{studentStatus})
 
 	</insert>
 
 	<update id="updateStudent"
 		parameterType="co.yedam.MidProject.student.service.StudentVO">
-		UPDATE STUDENT SET S_PASSWORD = #{studentPassword} WHERE S_ID = #{studentId}
+		UPDATE STUDENT SET S_PASSWORD = #{studentPassword}, #{studentStatus} WHERE S_ID = #{studentId}
 	</update>
 
-	<delete id="deleteStudent"
-		parameterType="co.yedam.MidProject.student.service.StudentVO">
-		 DELETE FROM student WHERE s_Id = #{studentId}
-		</delete>
+
+	<!-- s_status 추가로 딜리트 버튼 삭제함. -->
+	<delete id="deleteStudent" parameterType="co.yedam.MidProject.student.service.StudentVO"></delete>
 	<!-- 중복체크 -->
 	<!-- <select id="isIdCheck" parameterType="String"></select> -->
 </mapper>

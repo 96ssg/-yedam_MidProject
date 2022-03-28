@@ -43,10 +43,10 @@ import co.yedam.MidProject.lecture.command.LectureList;
 import co.yedam.MidProject.lecture.command.LectureUpdate;
 import co.yedam.MidProject.lecture.command.LectureUpdateForm;
 import co.yedam.MidProject.lecture.command.LectureView;
-import co.yedam.MidProject.myPage.common.AjaxCheckPassword;
-import co.yedam.MidProject.myPage.common.ChangePassword;
+import co.yedam.MidProject.myPage.common.AjaxChangePassword;
 import co.yedam.MidProject.myPage.common.ChangePasswordForm;
 import co.yedam.MidProject.myPage.common.CheckPassword;
+import co.yedam.MidProject.myPage.common.CheckPasswordForm;
 import co.yedam.MidProject.myPage.common.MyPage;
 import co.yedam.MidProject.professor.command.ProfessorDelete;
 import co.yedam.MidProject.professor.command.ProfessorInsert;
@@ -102,11 +102,11 @@ public class FrontController extends HttpServlet {
 		map.put("/lectureUpdate.do", new LectureUpdate()); //강의 정보수정
 
 		// 진환
-		map.put("/checkpassword.do", new CheckPassword()); // 본인확인
-		map.put("/ajaxCheckPassword.do", new AjaxCheckPassword()); // 본인확인 비밀번호 체크
+		map.put("/checkPassword.do", new CheckPassword()); // 본인확인
 		map.put("/myPage.do", new MyPage()); // 마이페이지
 		map.put("/changePasswordForm.do", new ChangePasswordForm()); // 비밀번호 변경폼 호출
-		map.put("/changePassword.do", new ChangePassword()); // 비밀번호 변경
+		map.put("/ajaxChangePassword.do", new AjaxChangePassword()); // 비밀번호 변경
+		map.put("/checkPasswordForm.do", new CheckPasswordForm());//비밀번호 확인폼 호출
 		
 		// 우준
 		// home

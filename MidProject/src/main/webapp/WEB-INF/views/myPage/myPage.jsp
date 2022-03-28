@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="changePasswordForm.do">패스워드 변경</a>
+	<div align="center">
+		<div>
+			<button type="button" onclick="location.href='changePasswordForm.do'">비밀번호 변경</button>
+			<button type="button" onclick="location.href='changePasswordForm.do'">내정보</button>
+			<button type="button" onclick="location.href='changePasswordForm.do'">성적</button>
+		</div>
+	</div>
 </body>
 </html>

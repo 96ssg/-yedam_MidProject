@@ -41,7 +41,7 @@
 		</div><br>
 		<div>
 			<button type="button" onclick="location.href='lectureList.do'">목록가기</button>&nbsp;&nbsp;
-			<c:if test="${sessionScope.role eq 'admin' }">
+			<c:if test="${p.deptId eq user.deptId && role eq 'admin'}">
 			<input type="button" onclick='lectureUpdate(${vo.lectureId},"${vo.professorId }")' value="강의수정">&nbsp;&nbsp;
 			</c:if>	
 		</div>

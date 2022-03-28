@@ -34,28 +34,35 @@
 						</tr>
 						<tr>
 							<th width="100">시작시간</th>
-							<td width="100"><input type="text" id="lectureStart"
-								name="lectureStart" required="required">
+							<td>
 								<select name="lectureStart" id="lectureStart">
-									<option value='0'>선택</option>
-									<option value='1'></option>
-									<option value='2'></option>
-									<option value='3'></option>
-									<option value='4'></option>
+									<option value="0" selected>선택</option>
+									<option value="1">1교시</option>
+									<option value="2">2교시</option>
+									<option value="3">3교시</option>
+									<option value="4">4교시</option>
+									<option value="5">5교시</option>
+									<option value="6">6교시</option>
+									<option value="7">7교시</option>
+									<option value="8">8교시</option>
 								</select>
-								
-								</td>
+							</td>
 						</tr>
 						<tr>
 							<th width="100">종료시간</th>
-							<td width="100"><input type="text" id="lectureEnd"
-								name="lectureEnd" required="required">
-								<select name="lectureEnd">
-									<option value='2'></option>
-									<option value='3'></option>
-									<option value='4'></option>
+							<td width="100">
+								<select name="lectureEnd" id="lectureEnd">
+									<option value="0" selected>선택</option>
+									<option value="2">2교시</option>
+									<option value="3">3교시</option>
+									<option value="4">4교시</option>
+									<option value="5">5교시</option>
+									<option value="6">6교시</option>
+									<option value="7">7교시</option>
+									<option value="8">8교시</option>
+									<option value="9">9교시</option>
 								</select>
-								</td>
+							</td>
 						</tr>
 						<tr>
 							<th width="100">강의실</th>
@@ -66,7 +73,7 @@
 							<th width="100">교수번호</th>
 							<td width="100">
 								<!-- <td width="100"><input type="text" id="professorId" name="professorId" required="required"></td> -->
-								<select id="sel" name="professorId" onchange="selectBoxChange(this.value)">
+								<select id="sel" name="professorId" onchange="selectBoxChange(this.value);">
 									<c:forEach items="${list }" var="pr">
 										<option value="${pr.profId }">${pr.profName}</option>
 									</c:forEach>
@@ -93,5 +100,21 @@
 			</form>
 		</div>
 	</div>
+	<script>
+   function checkPeriod() {
+      const start = document.getElementById('lectureStart').value;
+      const end = document.getElementById('lectureEnd').value;
+      
+      if(start >= end) {
+         
+         alert("강의 시작,종료 시간을 확인해주세요.");
+         return false;
+      }
+      return true;
+   }
+   
+   document.getElementById('lectureStart').addEventListener('change', checkPeriod);
+</script>
+	
 </body>
 </html>

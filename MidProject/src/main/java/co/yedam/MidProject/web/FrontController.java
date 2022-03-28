@@ -3,22 +3,12 @@ package co.yedam.MidProject.web;
 import java.io.IOException;
 import java.util.HashMap;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.*;
+import javax.servlet.http.*;
 
-import co.yedam.MidProject.board.command.AjaxBoardSearch;
-import co.yedam.MidProject.board.command.BoardDelete;
-import co.yedam.MidProject.board.command.BoardDetail;
-import co.yedam.MidProject.board.command.BoardInsert;
-import co.yedam.MidProject.board.command.BoardInsertForm;
-import co.yedam.MidProject.board.command.BoardList;
-import co.yedam.MidProject.board.command.BoardUpdate;
-import co.yedam.MidProject.board.command.BoardUpdateForm;
+import co.yedam.MidProject.board.command.*;
 import co.yedam.MidProject.common.Command;
+<<<<<<< HEAD
 import co.yedam.MidProject.course.command.AjaxApplicationSearch;
 import co.yedam.MidProject.course.command.AjaxCourseDelete;
 import co.yedam.MidProject.course.command.AjaxCourseInsert;
@@ -97,7 +87,7 @@ public class FrontController extends HttpServlet {
 		map.put("/lectureDelete.do", new LectureDelete()); //강의 삭제
 		map.put("/lectureView.do", new LectureView()); //강의 상세정보
 		map.put("/lectureUpdate.do", new LectureUpdate()); //강의 정보수정
-		
+
 		// 진환
 		map.put("/checkpassword.do", new CheckPassword()); // 본인확인
 		map.put("/ajaxCheckPassword.do", new AjaxCheckPassword()); // 본인확인 비밀번호 체크

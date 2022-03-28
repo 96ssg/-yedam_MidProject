@@ -17,4 +17,15 @@ public class LoginServiceImpl implements LoginService {
 		return map.fetchUser(id);
 	}
 
+	@Override
+	public UserVO ispwCheck(String pw) {
+		// TODO Auto-generated method stub
+		return map.ispwCheck(pw);
+	}
+	
+	@Override
+	public int userUp(UserVO vo) {
+		return map.userUp(vo);
+	}
+	
 }

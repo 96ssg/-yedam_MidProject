@@ -3,12 +3,22 @@ package co.yedam.MidProject.web;
 import java.io.IOException;
 import java.util.HashMap;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-import co.yedam.MidProject.board.command.*;
+import co.yedam.MidProject.board.command.AjaxBoardSearch;
+import co.yedam.MidProject.board.command.BoardDelete;
+import co.yedam.MidProject.board.command.BoardDetail;
+import co.yedam.MidProject.board.command.BoardInsert;
+import co.yedam.MidProject.board.command.BoardInsertForm;
+import co.yedam.MidProject.board.command.BoardList;
+import co.yedam.MidProject.board.command.BoardUpdate;
+import co.yedam.MidProject.board.command.BoardUpdateForm;
 import co.yedam.MidProject.common.Command;
-<<<<<<< HEAD
 import co.yedam.MidProject.course.command.AjaxApplicationSearch;
 import co.yedam.MidProject.course.command.AjaxCourseDelete;
 import co.yedam.MidProject.course.command.AjaxCourseInsert;

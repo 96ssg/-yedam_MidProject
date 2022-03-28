@@ -6,10 +6,6 @@
 		<id property="studentId" column="s_id"/>
 		<result property="studentName" column="s_name"/> 
 		<result property="studentPassword" column="s_password"/> 
-<<<<<<< HEAD
-		<result property="studentBirth" column="s_birth"/> 
-=======
->>>>>>> refs/heads/KJH
 		<result property="studentPhone" column="s_phone"/> 
 		<result property="studentImg" column="s_img"/>
 		<result property="studentGrade" column="s_grade"/> 

@@ -56,7 +56,7 @@
 			</tr>
 			<tr>
 			<th>학년</th>
-			<td>${user.studentSemster }</td>
+			<td>${user.studentSemester }</td>
 			</tr>
 			<tr>
 			<th>학기</th>

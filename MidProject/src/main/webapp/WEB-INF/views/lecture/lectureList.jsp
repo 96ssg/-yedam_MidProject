@@ -7,16 +7,21 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="js/jquery.min.js"></script>
+<style>
+th{
+font-weight: bold;
+}
+</style>
 </head>
 <body>
-	<div align="center">
+	<div align="center" class="container">
 		<div>
-			<h1>${role }</h1>
+			<h1>강의 목록</h1>
 		</div>
 		<div>
 			<!-- Search Bar Start -->
 			<div>
-				<select id="searchKey" name="searchKey">
+				<select class="form-select-sm" id="searchKey" name="searchKey">
 					<option value="전체">전체</option>
 					<option value="강의번호">강의번호</option>
 					<option value="교수번호">교수번호</option>

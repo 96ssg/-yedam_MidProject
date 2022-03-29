@@ -9,7 +9,7 @@
 <body>
 <!-- LectureUpdateForm -->
 	<form action="lectureUpdate.do" method="post">
-		<div align="center">
+		<div align="center" class="container">
 			<div>
 				<h1>강의 정보 수정</h1>
 			</div>

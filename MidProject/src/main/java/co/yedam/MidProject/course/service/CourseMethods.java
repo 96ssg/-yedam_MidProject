@@ -15,23 +15,18 @@ import co.yedam.MidProject.student.service.StudentVO;
 
 public class CourseMethods {
 	
-	public int getNow(String str) {
-		
-		// 현재 연도, 학기
-		LocalDate now = LocalDate.now();
-		if (str.equals("year")) return now.getYear(); 
-		if (str.equals("semester")) return (now.getMonthValue() < 8) ? 1 : 2; 
-		
-		return 0;
-	}
+	static LocalDate now = LocalDate.now();
+	public static int year = now.getYear();
+	public static int semester = (now.getMonthValue() < 8) ? 1 : 2; 
+	
 
 	public List<CourseVO> getSemesterCourseList(List<CourseVO> courseList) {
 
 		// 현재 학기의 수강목록
 		List<CourseVO> semesterCourseList = new ArrayList<>();
 		for (CourseVO c : courseList) {
-			if (getNow("year") != c.getCourseYear()) continue;
-			if (getNow("semester") != c.getCourseSemester()) continue;
+			if (year != c.getCourseYear()) continue;
+			if (semester != c.getCourseSemester()) continue;
 
 			semesterCourseList.add(c);
 		}

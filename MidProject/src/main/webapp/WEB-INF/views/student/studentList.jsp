@@ -5,19 +5,21 @@
 	<form id="frm" method="post" onsubmit="return false">
 	<table class="table table-bordered" id="contents">
 	<thead>
-	<div>
+	<div align="center">
+			<div></div><br>
 			<select class="form-select, col-6 col-sm-1" id="searchKey" name="searchKey">
 						<option value="1">학번</option>
 						<option value="2">학생이름</option>
 			</select> 
 			<span> 
 					<input type="text" id="searchVal" name="searchVal" onkeyup="enterkey()">
-					<input type="button" class="btn btn-dark" id="strBtn" value="검색">
+					<input type="button" class="btn btn-secondary" id="strBtn" value="검색">
 			</span>
+			<div></div><br>
 	</div>
 	</thead>
 			<!-- width값은 나중에  -->
-		<tr>
+		<tr align="center">
 			<th scope="col">학번</th>
 			<th scope="col">학생 이름</th>
 			<th scope="col">생년월일</th>
@@ -35,7 +37,7 @@
 				<c:if test="${not empty students }">
 					<c:forEach items="${students }" var="s">
 							<c:if test="${role eq 'admin' }">
-							<tr onClick="location.href='studentUpdateForm.do?studentId=${s.studentId }'" >
+							<tr onClick="location.href='studentUpdateForm.do?studentId=${s.studentId }'" align="center">
 							</c:if>
 							<td>${s.studentId }</td> 
 					
@@ -75,9 +77,12 @@
 		</table>
 	 </form>
 	<script>
-
-
-	
+	/* 검색 후 업데이트 폼 넘어가는것. 1~4로 구분된 학적 재학 제적등으로 나오게하기. */
+	function studentContents(n){
+		frm.studentId.value = n;
+		frm.action = "studentUpdateForm.do";
+		frm.submit();
+		}
 
 	
 	function searchList(){
@@ -92,7 +97,7 @@
 					searchResult(result);  // json data 를 html로 변환해서 뿌려주는 메소드
 				
 				}else{
-					alert("검색한 결과가 존재하지 않아요!");
+					alert("관련 학생은 존재하지 않습니다.");
 				}
 			}
 			})
@@ -103,16 +108,14 @@
 		
 	 	$.each(data, function(index, item){
 			var html = $("<tr align='center'></tr>").attr({
-				'onmouseover' : 'this.style.background="#fcecae";',
-				'onmouseleave' : 'this.style.background="#FFFFFF";',
 				'onclick' : 'studentContents('+item.studentId+')'
 			}).append(
 					$("<td></td>").text(item.studentId),
 					$("<td></td>").text(item.studentName),
-		 			$("<td></td>").text(item.studentSemester),
 					$("<td></td>").text(item.studentBirth),
-					$("<td></td>").text(item.studentPhone), 
 					$("<td></td>").text(item.studentGrade),
+		 			$("<td></td>").text(item.studentSemester),
+					$("<td></td>").text(item.studentPhone), 
 					$("<td></td>").text(item.studentStatus)
 			);
 			tb.append(html)

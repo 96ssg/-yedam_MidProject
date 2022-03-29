@@ -7,22 +7,64 @@
 	<div>
 		<h1>교수등록</h1>
 	</div>
-	<div>
-		<form class="row g-3" id="frm" name="frm" action="professorInsert.do" method="post">
+	<div style="width:750px; border: 2px solid black">
+		<form id="frm" name="frm" action="professorInsert.do" method="post">
+			<div class="row">
+				<div class="col-3"></div>
+					<div class="col-3">
+						<label class="form-label">교번</label> 
+						<input type="text" class="form-control" id="pId" name="pId">
+					</div>
+				<div class="col-3">
+						<label class="form-label">이름</label> 
+						<input type="text" class="form-control" id="pName" name="pName">
+					</div>
+				<div class="col-3"></div>
+			</div>
 			
-			<div class="row g-3" width="50%">
-				<div class="container">
+
+					
+				<div class="row">	
+					<div class="col-3"></div>
+					<div class="col-3">
+					<label class="form-label">생년월일</label> 
+					<input type="date" id="pBirth" class="form-control" name="pBirth" value="2022-03-19" min="1980-01-01" max="2022-12-31">
+				</div>
+					
+				
+					<div class="col-3">
+						<label for="inputPassword4" class="form-label">비밀번호</label> 
+						<input type="password" class="form-control" id="pPassword" name="pPassword">
+					</div>
+						<div class="col-3"></div>
+				</div>
+
+			<div class="row">
+				<div class="col-4"></div>
+				
+				<div class="col-4">
+					<label for="inputPassword4" class="form-label">전화번호</label> 
+					<input type="number" class="form-control" id="pPhone" name="pPhone" placeholder="Please Number...">
+				</div>
+				
+				<div class="col-4"></div>
+					
+	 			</div><br>
+	 			
+	 			<div>
+		 			<div class="col-5"></div>
+						<select class="form-select, col-3" id="dId" name="dId">
+			   				<option selected disabled value="">학과 선택</option>
+			   				<option value="001">국어국문학과</option>
+			   				<option value="002">응용생명과학부</option>
+			   				<option value="003">전자공학과</option>
+			   				<option value="004">자율전공학부</option>
+		   				</select>
+		   			<div class="col-4"></div>
+	 			</div><br>
 			
-				<div class="col-md-3">
-					<label class="form-label">교번</label> <input type="text"
-						class="form-control" id="pId" name="pId">
-				</div>
-			
-				<div class="col-md-3">
-					<label for="inputPassword4" class="form-label">Password</label> <input
-						type="password" class="form-control" id="inputPassword4">
-				</div>
-				</div>
+			</div>
+		</div>		
 				<!-- 	교번
 						<td width="300">&nbsp;
 					
@@ -50,17 +92,7 @@
 						<th width="150">사진</th>
 						<td width="300"><input type="text" id="pImg" name="pImg"></td>
 					</tr> 
-					<tr>
-						<th width="150">학과</th>
-							<td width="300">
-								<select id="dId" name="dId">
-		   						 	<option value="1" selected>국어국문학과</option>
-		    						<option value="2">응용생명과학부</option>
-		    						<option value="3">전자공학과</option>
-		    						<option value="4">자율전공학부</option>
-								</select>
-							</td>
-					</tr>
+			
 					  <div>
  						  <select id="dId" name="dId">
    							   <option selected disabled value="">학과 선택</option>
@@ -71,13 +103,11 @@
    						 </select>
  					 </div>
 				</table> -->
-			</div>
 			<br />
-			<div>
+			</div>
+			<div align="center">
 				<c:if test="${role eq 'admin' }"><button type="submit" onclick="location.href='professorList.do'">교수 등록</button></c:if>&nbsp;&nbsp;&nbsp;
 				<c:if test="${role eq 'admin' }"><button type="reset">취 소</button></c:if>&nbsp;&nbsp;&nbsp;
 				<button type="button" onclick="location.href='home.do'">홈</button>
 			</div>
 		</form>
-	</div>
-</div>

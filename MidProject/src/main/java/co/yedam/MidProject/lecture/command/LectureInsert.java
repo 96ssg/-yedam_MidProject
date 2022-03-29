@@ -12,7 +12,7 @@ public class LectureInsert implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+		// 강의 등록
 		LectureService lectureDAO = new LectureServiceImpl();
 		LectureVO vo = new LectureVO();
 		vo.setLectureName(request.getParameter("lectureName"));
@@ -24,7 +24,7 @@ public class LectureInsert implements Command {
 		vo.setProfessorId(request.getParameter("professorId"));
 		vo.setLectureCapacity(Integer.parseInt(request.getParameter("lectureCapacity")));
 		
-		
+		// 등록이 정상 실행되지 않으면 Error출력
 		int r = lectureDAO.insertLecture(vo);
 		if(r != 0) {
 			return "lectureList.do";

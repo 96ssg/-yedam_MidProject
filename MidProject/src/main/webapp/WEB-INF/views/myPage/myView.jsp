@@ -15,7 +15,7 @@
 		</div>
 		<div>
 		<table class="table">
-		<c:if test="${role eq 'admin'||'professor' }">
+		<c:if test="${role eq 'admin'||role eq 'professor' }">
 			<tr>
 			<th>학번/교번</th>
 			<td>${user.profId }</td>
@@ -56,11 +56,11 @@
 			</tr>
 			<tr>
 			<th>학년</th>
-			<td>${user.studentSemester }</td>
+			<td>${user.studentGrade }</td>
 			</tr>
 			<tr>
 			<th>학기</th>
-			<td>${user.studentGrade }</td>
+			<td>${user.studentSemester }</td>
 			</tr>
 			<tr>
 			<th>전화번호</th>

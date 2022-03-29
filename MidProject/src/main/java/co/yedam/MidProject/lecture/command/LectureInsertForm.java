@@ -18,7 +18,7 @@ public class LectureInsertForm implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-
+		// 강의 등록시 접속한 admin과 같은 학과 교수만 등록
 		HttpSession session = request.getSession();
 		ProfessorVO user = (ProfessorVO) session.getAttribute("user");
 		

@@ -9,14 +9,16 @@
 <script src="js/jquery.min.js"></script>
 </head>
 <body>
+	<!-- LectureInsertForm -->
 	<div align="center">
 		<div>
 			<h1>강의 등록</h1>
 		</div>
 		<div>
-			<form action="lectureInsert.do" onsubmit="return checkPeriod()" method="POST">
+			<form action="lectureInsert.do" onsubmit="return checkPeriod()"
+				method="POST">
 				<div>
-					<table border="1">
+					<table class="table table-hover">
 						<tr>
 							<th width="100">강의명</th>
 							<td width="100"><input type="text" id="lectureName"
@@ -29,13 +31,20 @@
 						</tr>
 						<tr>
 							<th width="100">요일</th>
-							<td width="100"><input type="text" id="lectureDay"
-								name="lectureDay" required="required"></td>
+							<td width="100"><select name="lectureDay" id="lectureDay">
+									<option value="0" selected>선택</option>
+									<option value="SUN">SUN</option>
+									<option value="MON">MON</option>
+									<option value="TUE">TUE</option>
+									<option value="WED">WED</option>
+									<option value="TUR">TUR</option>
+									<option value="FRI">FRI</option>
+									<option value="SAT">SAT</option>
+							</select></td>
 						</tr>
 						<tr>
 							<th width="100">시작시간</th>
-							<td>
-								<select name="lectureStart" id="lectureStart">
+							<td><select name="lectureStart" id="lectureStart">
 									<option value="0" selected>선택</option>
 									<option value="1">1교시</option>
 									<option value="2">2교시</option>
@@ -45,13 +54,11 @@
 									<option value="6">6교시</option>
 									<option value="7">7교시</option>
 									<option value="8">8교시</option>
-								</select>
-							</td>
+							</select></td>
 						</tr>
 						<tr>
 							<th width="100">종료시간</th>
-							<td width="100">
-								<select name="lectureEnd" id="lectureEnd">
+							<td width="100"><select name="lectureEnd" id="lectureEnd">
 									<option value="0" selected>선택</option>
 									<option value="2">2교시</option>
 									<option value="3">3교시</option>
@@ -61,8 +68,7 @@
 									<option value="7">7교시</option>
 									<option value="8">8교시</option>
 									<option value="9">9교시</option>
-								</select>
-							</td>
+							</select></td>
 						</tr>
 						<tr>
 							<th width="100">강의실</th>
@@ -71,14 +77,12 @@
 						</tr>
 						<tr>
 							<th width="100">교수번호</th>
-							<td width="100">
-								<!-- <td width="100"><input type="text" id="professorId" name="professorId" required="required"></td> -->
-								<select id="sel" name="professorId" onchange="selectBoxChange(this.value);">
+							<td width="100"><select id="sel" name="professorId"
+								onchange="selectBoxChange(this.value);">
 									<c:forEach items="${list }" var="pr">
 										<option value="${pr.profId }">${pr.profName}</option>
 									</c:forEach>
-							</select>
-							</td>
+							</select></td>
 						</tr>
 						<tr>
 							<th width="100">최대인원</th>
@@ -90,31 +94,33 @@
 				</div>
 				<br />
 				<div>
-					<button type="submit">강의등록</button>
+					<button type="submit" class="btn btn-secondary">강의등록</button>
 					&nbsp;&nbsp;&nbsp;
-					<button type="reset">취 소</button>
+					<button type="reset" class="btn btn-secondary">취 소</button>
 					&nbsp;&nbsp;&nbsp;
-					<button type="button" onclick="location.href='lectureList.do'">목
-						록</button>
+					<button type="button" class="btn btn-secondary"
+						onclick="location.href='lectureList.do'">목 록</button>
 				</div>
 			</form>
 		</div>
 	</div>
 	<script>
-   function checkPeriod() {
-      const start = document.getElementById('lectureStart').value;
-      const end = document.getElementById('lectureEnd').value;
-      
-      if(start >= end) {
-         
-         alert("강의 시작,종료 시간을 확인해주세요.");
-         return false;
-      }
-      return true;
-   }
-   
-   document.getElementById('lectureStart').addEventListener('change', checkPeriod);
-</script>
-	
+		/* 강의시작시간이 종료시간보다 값이 클 경우 경고창 출력 */
+		function checkPeriod() {
+			const start = document.getElementById('lectureStart').value;
+			const end = document.getElementById('lectureEnd').value;
+
+			if (start >= end) {
+
+				alert("강의 시작,종료 시간을 확인해주세요.");
+				return false;
+			}
+			return true;
+		}
+
+		document.getElementById('lectureStart').addEventListener('change',
+				checkPeriod);
+	</script>
+
 </body>
 </html>

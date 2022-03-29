@@ -12,7 +12,7 @@
 <body>
 <!-- LectureView -->
 	<form id="frm" method="post">
-		<div align="center">
+		<div align="center" class="container">
 			<div>
 				<h1>강의 상세 정보</h1>
 			</div>
@@ -36,8 +36,8 @@
 					</tr>
 					<tr>
 						<th>강의시간</th>
-						<td colspan="3">시작 : ${vo.lectureStart}교시 <br> 종료 :
-							${vo.lectureEnd }교시
+						<td colspan="3">
+							${vo.lectureStart} ~ ${vo.lectureEnd }교시
 						</td>
 					</tr>
 					<tr>

@@ -38,6 +38,11 @@ public class StudentServiceImpl implements StudentService {
 		// TODO Auto-generated method stub
 		return map.deleteStudent(vo);
 	}
+	@Override
+	public List<StudentVO> selectStudentSearchList(String key, String val) {
+		// TODO Auto-generated method stub
+		return map.selectStudentSearchList(key, val);
+	}
 	
 	
 	

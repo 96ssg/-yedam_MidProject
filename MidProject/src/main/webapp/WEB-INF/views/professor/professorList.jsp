@@ -1,17 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 </head>
 <body>
 	
-		<table border="1" align="center">
+		<table border="1">
 	<c:forEach items="${professors }" var="professor">
-		<tr onClick="location.href='professorUpdateForm.do?professorId=${professor.profId }'">
+		<tr onClick='location.href="professorUpdateForm.do"'>
 		
 		<td>${professor.profId }</td> 
 		
@@ -31,6 +33,6 @@
 
 	</c:forEach>
 	</table>
-	
+    
 </body>
 </html>

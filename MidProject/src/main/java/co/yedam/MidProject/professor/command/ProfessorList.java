@@ -17,11 +17,11 @@ public class ProfessorList implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		
 		HttpSession session = request.getSession();
 		String role = (String) session.getAttribute("role");
 		String deptId;
 		
+		//user 세션 > 로그인 했을 때 값이 그대로 담겨 있는 상황임 
 		if (role.equals("student")) {
 			StudentVO user = (StudentVO) session.getAttribute("user");
 			deptId = user.getDeptId();
@@ -29,7 +29,6 @@ public class ProfessorList implements Command {
 			ProfessorVO user = (ProfessorVO) session.getAttribute("user");
 			deptId = user.getDeptId();
 		}
-		
 		
 		//교수리스트.
 		

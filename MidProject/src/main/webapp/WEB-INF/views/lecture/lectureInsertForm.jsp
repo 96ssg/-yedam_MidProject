@@ -34,33 +34,34 @@
 						</tr>
 						<tr>
 							<th width="100">시작시간</th>
-							<td width="100">
-							<select name="lectureStart" id="lectureStart">
-							<option value="0" selected>선택</option>
-							<option value="1">1교시</option>
-							<option value="2">2교시</option>
-							<option value="3">3교시</option>
-							<option value="4">4교시</option>
-							<option value="5">5교시</option>
-							<option value="6">6교시</option>
-							<option value="7">7교시</option>
-							<option value="8">8교시</option>
-							</select>
+							<td>
+								<select name="lectureStart" id="lectureStart">
+									<option value="0" selected>선택</option>
+									<option value="1">1교시</option>
+									<option value="2">2교시</option>
+									<option value="3">3교시</option>
+									<option value="4">4교시</option>
+									<option value="5">5교시</option>
+									<option value="6">6교시</option>
+									<option value="7">7교시</option>
+									<option value="8">8교시</option>
+								</select>
 							</td>
 						</tr>
 						<tr>
 							<th width="100">종료시간</th>
-							<td width="100"><select name="lectureEnd" id="lectureEnd">
-							<option value="0" selected>선택</option>
-							<option value="2">2교시</option>
-							<option value="3">3교시</option>
-							<option value="4">4교시</option>
-							<option value="5">5교시</option>
-							<option value="6">6교시</option>
-							<option value="7">7교시</option>
-							<option value="8">8교시</option>
-							<option value="9">9교시</option>
-							</select>
+							<td width="100">
+								<select name="lectureEnd" id="lectureEnd">
+									<option value="0" selected>선택</option>
+									<option value="2">2교시</option>
+									<option value="3">3교시</option>
+									<option value="4">4교시</option>
+									<option value="5">5교시</option>
+									<option value="6">6교시</option>
+									<option value="7">7교시</option>
+									<option value="8">8교시</option>
+									<option value="9">9교시</option>
+								</select>
 							</td>
 						</tr>
 						<tr>

@@ -36,7 +36,7 @@
 	</c:if>
 
 	<c:if test="${empty courseList }">
-	<h1>없음</h1>
+		<h1>지도학생이 없습니다.</h1>
 	</c:if>
 
 

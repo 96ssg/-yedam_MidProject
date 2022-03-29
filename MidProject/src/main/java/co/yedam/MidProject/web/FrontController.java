@@ -18,6 +18,7 @@ import co.yedam.MidProject.board.command.BoardInsertForm;
 import co.yedam.MidProject.board.command.BoardList;
 import co.yedam.MidProject.board.command.BoardUpdate;
 import co.yedam.MidProject.board.command.BoardUpdateForm;
+import co.yedam.MidProject.charge.command.ChargeStudentList;
 import co.yedam.MidProject.common.Command;
 import co.yedam.MidProject.course.command.AjaxApplicationSearch;
 import co.yedam.MidProject.course.command.AjaxCourseDelete;
@@ -130,7 +131,10 @@ public class FrontController extends HttpServlet {
 		map.put("/boardUpdateForm.do", new BoardUpdateForm());		// 공지사항 수정 폼
 		map.put("/boardUpdate.do", new BoardUpdate());				// 공지사항 수정
 		map.put("/boardDelete.do", new BoardDelete());				// 공지사항 사제
-		
+
+		// charge
+		map.put("/chargeStudentList.do", new ChargeStudentList());	// 지도학생 목록
+
 		// course
 		map.put("/studentCourseList.do", new StudentCourseList());				// 학생 성적 조회
 		map.put("/professorCourseList.do", new ProfessorCourseList());			// 학과 내 학생의 수강정보 목록

@@ -9,35 +9,81 @@
 </head>
 <body>
 	<h1>성적 입력</h1>
-	<h6>최소 점수는 1점입니다. 0점 입력시 성적 미입력 상태로 반영됩니다.</h6>
-	<table class="table">
-		<tr>
-			<td>강의번호</td>
-			<td>학생번호</td>
-			<td>수강연도</td>
-			<td>수강학기</td>
-			<td>중간고사 성적</td>
-			<td>기말고사 성적</td>
-			<td>평점</td>
-			<td> </td>
-		</tr>
-		<c:forEach var="course" items="${courseList }">
-			<tr class="course">
-				<td>${course.lectureId }</td>
-				<td>${course.studentId }</td>
-				<td>${course.courseYear }</td>
-				<td>${course.courseSemester }</td>
-				<td><input type="number" value="${course.courseMid }" min="0" max="100" disabled></td>
-				<td><input type="number" value="${course.courseFinal }" min="0" max="100" disabled></td>
-				<td><input type="text" value="${course.courseScore }" disabled></td>
-				<td><input type="button" class="updateBtn" value="성적 입력" disabled></td>
+	<h3 id="semesterTab" onclick="toggle('semester')">학기</h3>
+	<h3 id="allTab"onclick="toggle('all')">전체</h3>
+	
+	<div id="semesterCourse">
+		<h6>최소 점수는 1점입니다. 0점 입력시 성적 미입력 상태로 반영됩니다.</h6>
+		<table class="table">
+			<tr>
+				<td>강의번호</td>
+				<td>학생번호</td>
+				<td>수강연도</td>
+				<td>수강학기</td>
+				<td>중간고사 성적</td>
+				<td>기말고사 성적</td>
+				<td colspan="2">평점</td>
 			</tr>
-		</c:forEach>
-	</table>
+			<c:forEach var="course" items="${semesterCourseList }">
+				<tr class="course">
+					<td>${course.lectureId }</td>
+					<td>${course.studentId }</td>
+					<td>${course.courseYear }</td>
+					<td>${course.courseSemester }</td>
+					<td><input type="number" value="${course.courseMid }" min="0" max="100" disabled></td>
+					<td><input type="number" value="${course.courseFinal }" min="0" max="100" disabled></td>
+					<td><input type="text" value="${course.courseScore }" disabled></td>
+					<td><input type="button" class="updateBtn" value="성적 입력" disabled></td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
+	
+	<div id="allCourse" style="display: none">
+		<c:if test="${empty allCourseList }">
+			<h3>이전 학기 정보가 없습니다.</h3>
+		</c:if>
+		<c:if test="${not empty allCourseList }">
+			<table class="table">
+			<tr>
+				<td>강의번호</td>
+				<td>학생번호</td>
+				<td>수강연도</td>
+				<td>수강학기</td>
+				<td>중간고사 성적</td>
+				<td>기말고사 성적</td>
+				<td>평점</td>
+			</tr>
+			<c:forEach var="course" items="${allCourseList }">
+				<tr>
+					<td>${course.lectureId }</td>
+					<td>${course.studentId }</td>
+					<td>${course.courseYear }</td>
+					<td>${course.courseSemester }</td>
+					<td>${course.courseMid }</td>
+					<td>${course.courseFinal }</td>
+					<td>${course.courseScore }</td>
+				</tr>
+			</c:forEach>
+		</table>
+		</c:if>
+	</div>
 	
 	<input type="button" onclick="location.href='courseInsertList.do'" value="목록">
 
 	<script>
+		// 탭
+		function toggle(tab) {
+			if (tab === 'semester') {
+				semesterCourse.style.display = '';
+				allCourse.style.display = 'none';
+			}
+			if (tab == 'all') {
+				semesterCourse.style.display = 'none';
+				allCourse.style.display = '';
+			}
+		}
+	
 		// 성적 입력칸 활성화
 		const course = document.querySelectorAll('.course');
 		course.forEach(element => {

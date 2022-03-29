@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.exceptions.PersistenceException;
+
 import co.yedam.MidProject.common.Command;
 import co.yedam.MidProject.course.service.CourseMethods;
 import co.yedam.MidProject.course.service.CourseService;
@@ -33,9 +35,13 @@ public class AjaxCourseInsert implements Command {
 		lecture.setLectureId(lectureId);
 		lecture = lectureDao.selectLecture(lecture);
 		
+		// =================================================
+		// 조건1 : 강의번호 오입력
+		if (lecture == null) return "ajax:lectureId";
+		
 		
 		// =================================================
-		// 조건1 : 최대이수학점
+		// 조건2 : 최대이수학점
 		// 현재 수강신청 목록의 이수학점 총합 계산
 		List<LectureVO> semesterLectureList = new CourseMethods().getSemesterLectureList(request);
 		int creditSum = lecture.getLectureCredit();
@@ -46,7 +52,7 @@ public class AjaxCourseInsert implements Command {
 		
 		
 		// =================================================
-		// 조건2 : 수강정원
+		// 조건3 : 수강정원
 		// 현재 학기의 해당 강의 수강신청 인원 조회
 		LocalDate now = LocalDate.now();
 		int thisYear = now.getYear();
@@ -65,18 +71,24 @@ public class AjaxCourseInsert implements Command {
 		// 정원초과 시 신청 불가
 		if (lecture.getLectureCapacity() == semesterCourseList.size()) return "ajax:capacity";
 		
+		// =================================================
+		// 조건4 : 이미 신청한 강의
+		try {
+			CourseVO course = new CourseVO();
+			course.setLectureId(lectureId);
+			course.setStudentId(user.getStudentId());
+			course.setCourseYear(thisYear);
+			course.setCourseSemester(thisSemester);
+			
+			courseDao.insertCourse(course);
 		
-		
+		} catch (PersistenceException e) {
+			e.printStackTrace();
+			return "ajax:applied";
+		}
+
 		// =================================================
 		// 수강신청 성공
-		CourseVO course = new CourseVO();
-		course.setLectureId(lectureId);
-		course.setStudentId(user.getStudentId());
-		course.setCourseYear(thisYear);
-		course.setCourseSemester(thisSemester);
-		
-		courseDao.insertCourse(course);
-		
 		return "ajax:success";
 	}
 

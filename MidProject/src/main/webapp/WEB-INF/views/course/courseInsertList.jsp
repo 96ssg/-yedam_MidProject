@@ -8,8 +8,8 @@
 <title>courseInsertList.do</title>
 </head>
 <body>
-	<h1 onclick="location.href='professorCourseList.do'">수강정보 목록(클릭)</h1>
 	<h1>내 강의 목록</h1>
+	<h1 onclick="location.href='chargeStudentList.do'">지도학생 목록</h1>
 	<c:if test="${role ne 'student' }">
 		<table class="table">
 			<thead>

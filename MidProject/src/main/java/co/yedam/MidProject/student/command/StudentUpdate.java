@@ -18,11 +18,14 @@ public class StudentUpdate implements Command {
 
 		StudentService service = new StudentServiceImpl();
 		StudentVO student = new StudentVO();
+		
 		student.setStudentId(request.getParameter("studentId"));
+		student.setStudentName(request.getParameter("studentName"));
 		student.setStudentPassword(request.getParameter("studentPassword"));
-
+		student.setStudentStatus(Integer.parseInt(request.getParameter("studentStatus")));
+		
 		service.updateStudent(student);
-
+		System.out.println(student.getStudentId());
 		return "studentList.do";
 	}
 

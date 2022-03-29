@@ -22,12 +22,9 @@
 					<li class="nav-item"><a href="home.do">student home</a></li>
 					<li class="nav-item"><a href="studentCourseList.do">course</a></li>
 				</c:when>			
-				<c:otherwise>
-					<li class="nav-item"><a href="home.do">professor home</a></li>
-					<li class="nav-item"><a href="professorCourseList.do">course</a></li>
-				</c:otherwise>
 			</c:choose>
 			<li></li>
+			<li class="nav-item"><a class="nav-link" href="studentCourseList.do">course</a></li>
 			<li class="nav-item"><a class="nav-link" href="boardList.do">board</a></li>
 			<li class="nav-item"><a class="nav-link" href="lectureList.do">lecture</a></li>
 			<li class="nav-item"><a class="nav-link" href="studentList.do">student</a></li>
@@ -43,9 +40,7 @@
             <li><a class="dropdown-item" href="professorInsertForm.do">교수등록</a></li>
             <li><a class="dropdown-item" href="studentInsertForm.do">학생등록</a></li>
             <li><a class="dropdown-item" href="#">3</a></li>
-            <!--  footer class class="bd-footer py-5 mt-5 bg-light" 고정
-            으로 하면 난리나서 대책을 강구하던가 해야될듯함.
-             -->
+            
           </ul>
         </li>
 			</ul>

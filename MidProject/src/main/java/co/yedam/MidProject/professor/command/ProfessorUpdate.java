@@ -15,9 +15,9 @@ public class ProfessorUpdate implements Command {
 		
 		ProfessorService service = new ProfessorServiceImpl();
 		ProfessorVO professor = new ProfessorVO();
-		 professor.setProfId(request.getParameter("profId"));
-			/* professor.setProfName(request.getParameter("profName")); */
-		 
+		
+		professor.setProfId(request.getParameter("profId"));
+		professor.setProfName(request.getParameter("profName"));
 		professor.setProfPassword(request.getParameter("profPassword"));
 		/*
 		 * professor.setProfBirth(request.getParameter("profBirth"));
@@ -29,6 +29,7 @@ public class ProfessorUpdate implements Command {
 		service.updateProfessor(professor);
 		
 		
+
 		System.out.println(professor);
 		return "professorList.do";
 	}

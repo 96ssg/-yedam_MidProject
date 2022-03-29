@@ -35,7 +35,7 @@ public class LectureList implements Command {
 			deptId = user.getDeptId();
 		}
 
-		// 강의 전체 리스트
+		// 강의 리스트 출력시 접속계정의 해당학과 강의만 출력
 		LectureService lectureDAO = new LectureServiceImpl();
 
 		List<LectureVO> list = lectureDAO.selectLectureList();
@@ -48,7 +48,8 @@ public class LectureList implements Command {
 		}
 		
 		request.setAttribute("lectures", lectures);
-
+		
+		// LectureList.jsp에서 profName 추출
 		ProfessorService pDao = new ProfessorServiceImpl();
 		List<ProfessorVO> pList = pDao.selectProfessorList();
 		

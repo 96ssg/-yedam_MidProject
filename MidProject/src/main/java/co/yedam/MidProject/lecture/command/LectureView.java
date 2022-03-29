@@ -15,7 +15,7 @@ public class LectureView implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+		// 강의 상세 정보
 		LectureVO lecture = new LectureVO();
 		lecture.setLectureId(Integer.parseInt(request.getParameter("lectureId")));
 

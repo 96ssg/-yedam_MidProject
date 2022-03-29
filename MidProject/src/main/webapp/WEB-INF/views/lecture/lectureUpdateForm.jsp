@@ -7,15 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
+<!-- LectureUpdateForm -->
 	<form action="lectureUpdate.do" method="post">
-		<div align="center">
+		<div align="center" class="container">
 			<div>
 				<h1>강의 정보 수정</h1>
 			</div>
 			<div>
 				<input type="hidden" name="lectureId" id="lectureId"
 					value="${vo.lectureId}">
-				<table border="1">
+				<table class="table table-hover">
 					<tr>
 						<th width="100">강의명</th>
 						<td width="150"><input type="text" name="lectureName"
@@ -56,8 +57,8 @@
 			</div>
 			<br>
 			<div>
-				<button type="button" onclick="location.href='lectureList.do'">목록가기</button>
-				&nbsp;&nbsp; <input type="submit" value="수정">&nbsp;&nbsp;
+				<button type="button" class="btn btn-secondary" onclick="location.href='lectureList.do'">목록가기</button>
+				&nbsp;&nbsp; <input type="submit" class="btn btn-secondary" value="수정">&nbsp;&nbsp;
 			</div>
 		</div>
 	</form>

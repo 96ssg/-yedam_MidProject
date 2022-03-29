@@ -69,6 +69,10 @@
 				</table>
 			</c:if>
 		</div>
+		
+		<c:if test="${role ne 'student' }">
+			<input type="button" onclick="location.href='chargeStudentList.do'" value="목록">
+		</c:if>
 	
 	<script>
 // 		강의번호 => 강의명

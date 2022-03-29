@@ -8,7 +8,8 @@
 <title>담당 지도학생 목록</title>
 </head>
 <body>
-	<h1>담당 지도학생 목록</h1>
+	<h1 onclick="location.href='courseInsertList.do'">내 강의 목록</h1>
+	<h1>지도학생 목록</h1>
 	<table class="table">
 		<tr>
 			<th>학생번호</th>
@@ -28,9 +29,11 @@
 	
 	<script>
 		const students = document.querySelectorAll('.student');
-		students.addEventListener('click', () => {
-			console.log(event.target);
-		})
+		students.forEach( student => {
+			student.addEventListener('click', () => {
+				const studentId = event.target.parentNode.children[0].innerText;
+				location.href = "studentCourseList.do?studentId=" + studentId
+		})});
 	</script>
 </body>
 </html>

@@ -24,11 +24,19 @@ public class StudentCourseList implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 
 		HttpSession session = request.getSession();
-		StudentVO user = (StudentVO) session.getAttribute("user");
+		String studentId;
 		String role = (String) session.getAttribute("role");
-
+		
+		if (role.equals("student")) {
+			StudentVO user = (StudentVO) session.getAttribute("user");
+			studentId = user.getStudentId();
+		} else {
+			// 교수가 학생의 성적을 조회할 때는 session이 아닌 받아온 값을 이용
+			studentId = request.getParameter("studentId");
+		}
+		
 		CourseService courseDao = new CourseServiceImpl();
-		List<CourseVO> courseList = courseDao.myCourse(role, user.getStudentId());
+		List<CourseVO> courseList = courseDao.myCourse("student", studentId);
 
 		// 전체 수강 목록
 		request.setAttribute("courseList", courseList);

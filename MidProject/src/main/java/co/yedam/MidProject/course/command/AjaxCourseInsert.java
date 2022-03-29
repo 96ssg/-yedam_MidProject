@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.exceptions.PersistenceException;
+
 import co.yedam.MidProject.common.Command;
 import co.yedam.MidProject.course.service.CourseMethods;
 import co.yedam.MidProject.course.service.CourseService;
@@ -69,18 +71,24 @@ public class AjaxCourseInsert implements Command {
 		// 정원초과 시 신청 불가
 		if (lecture.getLectureCapacity() == semesterCourseList.size()) return "ajax:capacity";
 		
+		// =================================================
+		// 조건4 : 이미 신청한 강의
+		try {
+			CourseVO course = new CourseVO();
+			course.setLectureId(lectureId);
+			course.setStudentId(user.getStudentId());
+			course.setCourseYear(thisYear);
+			course.setCourseSemester(thisSemester);
+			
+			courseDao.insertCourse(course);
 		
-		
+		} catch (PersistenceException e) {
+			e.printStackTrace();
+			return "ajax:applied";
+		}
+
 		// =================================================
 		// 수강신청 성공
-		CourseVO course = new CourseVO();
-		course.setLectureId(lectureId);
-		course.setStudentId(user.getStudentId());
-		course.setCourseYear(thisYear);
-		course.setCourseSemester(thisSemester);
-		
-		courseDao.insertCourse(course);
-		
 		return "ajax:success";
 	}
 

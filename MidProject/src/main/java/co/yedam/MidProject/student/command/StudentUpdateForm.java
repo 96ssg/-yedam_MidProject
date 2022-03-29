@@ -13,7 +13,6 @@ public class StudentUpdateForm implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		//단건 조회로 먼저 tr을 누르면 정보 가져올게 필요함. 
 		StudentService studentDao = new StudentServiceImpl();
 		String studentId = request.getParameter("studentId");
 		

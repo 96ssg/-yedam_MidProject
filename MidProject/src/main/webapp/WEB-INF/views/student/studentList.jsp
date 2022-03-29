@@ -9,10 +9,10 @@
 </head>
 <body>
 	<form id="frm" method="post">
-	<table border="1" id="contents">
+	<table class="table table-bordered" id="contents">
 	<thead>
 	<div>
-			<select id="searchKey" name="searchKey">
+			<select class="form-select, col-6 col-sm-1" id="searchKey" name="searchKey">
 						<option value="1">학번</option>
 						<option value="2">학생이름</option>
 			</select> 
@@ -24,13 +24,13 @@
 	</thead>
 			<!-- width값은 나중에  -->
 		<tr>
-			<th width="70">학번</th>
-			<th width="150">학생 이름</th>
-			<th width="150">생년월일</th>
-			<th width="200">학년</th>
-			<th width="200">학기</th>
-			<th width="250">전화번호</th>
-			<th width="200">학적</th>	
+			<th scope="col">학번</th>
+			<th scope="col">학생 이름</th>
+			<th scope="col">생년월일</th>
+			<th scope="col">학년</th>
+			<th scope="col">학기</th>
+			<th scope="col">전화번호</th>
+			<th scope="col">학적</th>	
 		</tr>
 		<tbody id="studentBody">
 			<c:if test="${empty students }">

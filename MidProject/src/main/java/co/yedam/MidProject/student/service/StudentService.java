@@ -13,7 +13,6 @@ public interface StudentService {
 	int updateStudent(StudentVO vo); // 수정
 	int deleteStudent(StudentVO vo); // 삭제
 	
-
 	
 	List<StudentVO> selectStudentSearchList(@Param("key")String key, @Param("val") String val);
 	/*

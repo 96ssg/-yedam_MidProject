@@ -7,11 +7,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="js/jquery.min.js"></script>
+<style>
+th{
+font-weight: bold;
+}
+</style>
 </head>
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-9">
+	<div style="width: 80%; display:inline; float:right;">
+			<div class="container">
 				<div>
 					<h1>내 정보</h1>
 				</div>
@@ -85,6 +89,5 @@
 				</div>
 			</div>
 		</div>
-	</div>
 </body>
 </html>

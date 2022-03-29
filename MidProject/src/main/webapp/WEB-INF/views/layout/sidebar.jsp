@@ -7,8 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="d-flex flex-column flex-shrink-0 p-3 bg-light"
-		style="width: 280px;">
+	<div style="width:10%; display:inline; float:left;">
 		<span class="fs-4">Sidebar</span>
 		<hr>
 		<ul class="nav nav-pills flex-column mb-auto">
@@ -20,5 +19,6 @@
 		</ul>
 		<hr>
 	</div>
+	
 </body>
 </html>

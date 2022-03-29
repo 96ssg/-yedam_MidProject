@@ -70,5 +70,46 @@ ProfessorUpdate.do
 
 
 
+성환
+리스트 단에 메뉴 이름 띄우기.
+--사진 업로드 부분 추가. 이건 부트스트랩 보고 jqury부분 참조해서 만들면 금방 만들거 같긴한데 모르겠음.
+-업로드는 염두만 해두고 먼저 넘어감.-사진 최후순위.
+-학번X
+-grade 학년.
+-학점 최대이수학점.
+-학과장은 자기자신 삭제 X
+-교번도 수정 X
+ 
+-(c:if= roll)=학생, 교수 CUD는 어드민만. 
+--학생은 검색기능 필요.<학번, 이름> 후순위
+
+승교 -
+검색 후 타과강의 수정 못하게 하기
+로그인한 교수번호 앞 3자리 체크해서 수정 삭제 버튼
+요일 - SELECT OPTION
+강의시작,종료시간 1~9 DROPDOWN
+종료시간>시작시간 CHANGE EVENTLISTNER
+<script>
+	function checkPeriod() {
+		const start = document.getElementById('lectureStart').value
+		const end = document.getElementById('lectureEnd').value
+		
+		if(start >= end) {
+			alert();
+			document.getElementById('lectureStart').value = 0
+			document.getElementById('lectureEnd').value = 0
+			return false;
+		}
+		return true;
+	}
+	
+	document.getElementById('lectureStart').addEventListener('change', checkPeriod)
+</script>
+
+우준
+평교수 지도학생 성적 표시
+수강신청- 과목이름 검색
+중복 수강신청 방지
+
 
 

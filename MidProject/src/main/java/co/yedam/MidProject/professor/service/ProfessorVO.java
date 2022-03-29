@@ -13,5 +13,5 @@ public class ProfessorVO {
 	private String profPhone;
 	private String profImg;
 	private String deptId;
-	
+	//전담 교수 관련 vo 하나 들어와야함.
 }

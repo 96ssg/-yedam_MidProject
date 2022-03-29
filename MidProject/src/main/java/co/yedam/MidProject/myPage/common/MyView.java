@@ -5,38 +5,37 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import co.yedam.MidProject.common.Command;
+import co.yedam.MidProject.professor.service.ProfessorService;
 import co.yedam.MidProject.professor.service.ProfessorVO;
+import co.yedam.MidProject.professor.serviceImpl.ProfessorServiceImpl;
+import co.yedam.MidProject.student.service.StudentService;
 import co.yedam.MidProject.student.service.StudentVO;
+import co.yedam.MidProject.student.serviceImpl.StudentServiceImpl;
 
-public class AjaxCheckPassword implements Command {
+public class MyView implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-
 		HttpSession session = request.getSession();
-
-		String checkPw = request.getParameter("input");
-		System.out.println(checkPw);
-		
 		String role = (String) session.getAttribute("role");
-		String password = "";
+		
 		
 		if (role.equals("student")) {
+			StudentService studentDAO = new StudentServiceImpl();
 			StudentVO user = (StudentVO) session.getAttribute("user");
-			password = user.getStudentPassword();
-			String result = (password.equals(checkPw))? "success" : "fail";
-			
-			System.out.println(password);
-			return "ajax:" + result;
-					
+			user.getStudentId();
+			user = studentDAO.selectStudent(user);
+			request.setAttribute("user", user);
 		} else {
+			ProfessorService professorDAO = new ProfessorServiceImpl();
 			ProfessorVO user = (ProfessorVO) session.getAttribute("user");
-			password = user.getProfPassword();
-			String result = (password.equals(checkPw))? "success" : "fail";
-			
-			System.out.println(password);
-			return "ajax:" + result;
+			user.getProfId();
+			user = professorDAO.selectProfessor(user);
+			request.setAttribute("user", user);
 		}
-		
+
+	
+		return "myPage/myView";
 	}
+
 }

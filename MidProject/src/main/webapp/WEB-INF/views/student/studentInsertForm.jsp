@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 
 <div align="center">
@@ -40,7 +41,7 @@
 					<tr>
 						<th width="150">학기</th>
 							<td>
-								<select id="sSemster" name="sSemster">
+								<select id="sSemester" name="sSemester">
 		   						 	<option value="1" selected>1학기</option>
 		    						<option value="2">2학기</option>
 								</select>
@@ -48,7 +49,7 @@
 					</tr>
 					
 					<tr>
-						<th width="150">성적</th>
+						<th width="150">학년</th>
 						<td width="300"><input type="number" id="sGrade" name="sGrade"></td>
 					</tr>
 						
@@ -58,27 +59,29 @@
 					</tr>	
 					
 					<tr>
-						<th width="150">학점</th>
+						<th width="150">이수학점</th>
 						<td width="300"><input type="number" id="sScore" name="sScore"></td>
 					</tr>	
 					
 					<tr>
-					<th width="150">학과</th>
-							<td width="300">
-								<select id="dId" name="dId">
-		   						 	<option value="1" selected>국어국문학과</option>
-		    						<option value="2">응용생명과학부</option>
-		    						<option value="3">전자공학과</option>
-		    						<option value="4">자율전공학부</option>
-								</select>
-							</td>
+					
+					<tr>
+					   <th width="150">담당교수</th>
+					   <td>
+					      <select name="profId">
+					         <c:forEach var="professor" items="${professors }">
+					            <option value="${professor.profId }">${professor.profName}</option>
+					         </c:forEach>
+					      </select>
+					   </td>
 					</tr>
+
 					
 				</table>
 			</div><br />
 			<div>
-				<button type="submit">학생 등록</button>&nbsp;&nbsp;&nbsp;
-				<button type="reset">취 소</button>&nbsp;&nbsp;&nbsp;
+				<c:if test="${role eq 'admin' }"><button type="submit">학생 등록</button></c:if>&nbsp;&nbsp;&nbsp;
+				<c:if test="${role eq 'admin' }"><button type="reset">취 소</button></c:if>&nbsp;&nbsp;&nbsp;
 				<button type="button" onclick="location.href='home.do'">홈</button>
 			</div>
 		</form>

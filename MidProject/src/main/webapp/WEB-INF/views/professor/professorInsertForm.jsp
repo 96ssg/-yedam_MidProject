@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    
 <!DOCTYPE html>
 
 <div align="center">
@@ -37,12 +39,12 @@
 						<td width="300"><input type="number" id="pPhone" name="pPhone"></td>
 					</tr>
 					
-					<tr>
+					<!-- <tr>
 						<th width="150">사진</th>
 						<td width="300"><input type="text" id="pImg" name="pImg"></td>
-					</tr>
+					</tr> -->
 
-					<tr>
+<!-- 					<tr>
 						<th width="150">학과</th>
 							<td width="300">
 								<select id="dId" name="dId">
@@ -52,13 +54,22 @@
 		    						<option value="4">자율전공학부</option>
 								</select>
 							</td>
-					</tr>
-					
+					</tr> -->
+					  <div class="col-md-2">
+   						 <label for="validationDefault04" class="form-label"></label>
+ 						   <select class="form-select" id="validationDefault04" name="dId" required>
+   							   <option selected disabled value="">학과 선택</option>
+   							   <option value="1">국어국문학과</option>
+   							   <option value="2">응용생명과학부</option>
+   							   <option value="3">전자공학과</option>
+   							   <option value="4">자율전공학부</option>
+   						 </select>
+ 					 </div>
 				</table>
 			</div><br />
 			<div>
-				<button type="submit" onclick="location.href='professorList.do'">교수 등록</button>&nbsp;&nbsp;&nbsp;
-				<button type="reset">취 소</button>&nbsp;&nbsp;&nbsp;
+				<c:if test="${role eq 'admin' }"><button type="submit" onclick="location.href='professorList.do'">교수 등록</button></c:if>&nbsp;&nbsp;&nbsp;
+				<c:if test="${role eq 'admin' }"><button type="reset">취 소</button></c:if>&nbsp;&nbsp;&nbsp;
 				<button type="button" onclick="location.href='home.do'">홈</button>
 			</div>
 		</form>

@@ -43,7 +43,6 @@ public class StudentList implements Command {
 		}
 		
 		request.setAttribute("students", students);
-		System.out.println(studentDao.selectStudentList());
 		
 		return "student/studentList";
 		

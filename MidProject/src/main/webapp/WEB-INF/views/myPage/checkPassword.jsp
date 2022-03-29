@@ -7,49 +7,55 @@
 <title>본인확인</title>
 </head>
 <body>
-<script type="text/javascript">
-	window.onload = function() {
-		frm.s_password.focus();
-	}
+	<form id="frm" method="post">
+		<div align="center">
+			<table border="1">
+				<tr>
+					<td align="center" colspan="2">:::비밀번호 확인:::</td>
+				</tr>
+				<tr>
+					<td>현재 비밀번호</td>
+					<td width="320">
+						<input type="password" id="password" name="password" placeholder="비밀번호를 입력해주세요." required="required" size="50">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div align="center">
+							<button type="button" id="check">확인</button>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</form>
+	<script type="text/javascript">
 	
-	function passwdCheck(form){
-		if(form.s_password.value == "") {
-			alert("비밀번호를 입력해주세요");
-			frm.s_password.focus();
-			return false;
+		function passwdCheck() {
+			fetch('ajaxCheckPassword.do?', {
+				method: 'post',
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+				body: 'input=' + password.value
+			})
+			.then(response => response.text())
+			.then(result => { 
+				console.log(result)
+				if (result === "fail") {
+					alert('비밀번호가 일치하지 않습니다.');
+					password.value = '';
+					password.focus();
+					return;
+				}
+				
+				alert("본인확인이 완료되었습니다.");
+				if (result == "success") {
+					frm.setAttribute("action", "myPage.do");
+					frm.submit();
+				}
+			})
 		}
 		
-		frm.method="post";
-		frm.action="myPage.do";
-		frm.submit();
-	}
-</script>
-
-	<form id="frm" name="frm">
-		<table align="center">
-			<tr>
-				<td align="center">:::비밀번호 확인:::</td>
-			</tr>
-			<tr>
-				<td>
-					<table border="1">
-						<tr>
-							<td>현재 비밀번호</td>
-							<td>
-								<input type="password" name="s_password" placeholder="본인확인을 위해 비밀번호를 입력해주세요." required="required">
-							</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div align="center">
-						<button type="button" onclick="passwdCheck(frm);">확인</button>
-					</div>
-				</td>
-			</tr>
-		</table>
-	</form>
+		check.addEventListener('click', passwdCheck)
+	</script>
 </body>
 </html>

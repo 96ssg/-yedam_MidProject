@@ -9,7 +9,7 @@
 
 </head>
 <body>
-	<div align="center">
+	<div align="center" class="row">
 		<div>
 			<h1>${role } 홈</h1>
 			<table border="1">
@@ -33,12 +33,12 @@
 		</div>
 		
 		<!-- 시간표 -->
-		<div id="timetable">
+		<div id="timetable" class="col-md-6">
 			<h2>강의 목록</h2>
 		</div>
 		
 		<!-- 공지사항 -->
-		<div id="notice">
+		<div id="notice" class="col-md-6">
 			<h2>학과공지</h2>
 		</div>
 	</div>

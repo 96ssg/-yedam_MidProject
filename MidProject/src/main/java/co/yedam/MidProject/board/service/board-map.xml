@@ -39,6 +39,7 @@
 		<if test='key eq "1"'>bd_title LIKE '%'||#{val}||'%' OR bd_content LIKE '%'||#{val}||'%'</if>
 		<if test='key eq "2"'>bd_title LIKE '%'||#{val}||'%'</if>
 		<if test='key eq "3"'>bd_content LIKE '%'||#{val}||'%'</if>
+		 ORDER BY bd_id DESC
 	</select>
 	
 </mapper>

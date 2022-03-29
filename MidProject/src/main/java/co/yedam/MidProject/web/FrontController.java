@@ -125,7 +125,7 @@ public class FrontController extends HttpServlet {
 		// board
 		map.put("/boardList.do", new BoardList());					// 공지사항
 		map.put("/boardDetail.do", new BoardDetail());				// 공지사항 상세 게시글
-		map.put("/boardSearch.do", new AjaxBoardSearch());			// 게시글 검색
+		map.put("/ajaxBoardSearch.do", new AjaxBoardSearch());			// 게시글 검색
 		map.put("/boardInsertForm.do", new BoardInsertForm());		// 공지사항 작성 폼
 		map.put("/boardInsert.do", new BoardInsert());				// 공지사항 작성
 		map.put("/boardUpdateForm.do", new BoardUpdateForm());		// 공지사항 수정 폼

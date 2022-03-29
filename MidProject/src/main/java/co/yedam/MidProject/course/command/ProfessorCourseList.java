@@ -47,8 +47,7 @@ public class ProfessorCourseList implements Command {
 			System.out.println("role : " + role);
 			if (!role.equals("admin")) {
 				// 수강연도, 학기 확인
-				CourseMethods cm = new CourseMethods();
-				if (c.getCourseYear() != cm.getNow("year") || c.getCourseSemester() != cm.getNow("semester")) continue;
+				if (c.getCourseYear() != CourseMethods.year || c.getCourseSemester() != CourseMethods.semester) continue;
 				
 				// 지도학생 여부 확인
 				ChargeVO vo = new ChargeVO();

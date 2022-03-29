@@ -18,13 +18,13 @@ public class BoardDelete implements Command {
 		BoardService boardDao = new BoardServiceImpl();
 
 		BoardVO vo = new BoardVO();
-		vo.setBoardId(Integer.parseInt(request.getParameter("num")));
+		vo.setBoardId(Integer.parseInt(request.getParameter("boardId")));
 		boardDao.boardDelete(vo);
 		
 		List<BoardVO> list = boardDao.boardList();
 		request.setAttribute("boardList", list);
 		
-		return "board/boardList";
+		return "boardList.do";
 	}
 
 }

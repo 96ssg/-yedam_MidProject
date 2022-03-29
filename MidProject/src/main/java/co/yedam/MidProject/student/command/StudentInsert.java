@@ -32,23 +32,27 @@ public class StudentInsert implements Command {
 		student.setStudentGrade(Integer.parseInt(request.getParameter("sGrade")));
 		student.setStudentScore(Integer.parseInt(request.getParameter("sScore")));
 		student.setStudentSemester(Integer.parseInt(request.getParameter("sSemester")));
+		student.setDeptId(request.getParameter("dId"));
 		student.setStudentStatus(Integer.parseInt(request.getParameter("sStatus")));
-		student.setDeptId(user.getDeptId());
+		
+		/* student.setDeptId(user.getDeptId()); */
 		
 		
-		ChargeService chargeService = new ChargeServiceImpl();
-		ChargeVO charge = new ChargeVO();
-		charge.setStudentId(request.getParameter("sId"));
-		charge.setProfessorId(request.getParameter("profId"));
-
-		chargeService.insertCharge(charge);
-		
-		
+		/*
+		 * ChargeService chargeService = new ChargeServiceImpl(); ChargeVO charge = new
+		 * ChargeVO(); charge.setStudentId(request.getParameter("sId"));
+		 * charge.setProfessorId(request.getParameter("profId"));
+		 * 
+		 * chargeService.insertCharge(charge);
+		 * 
+		 * 
+		 * 
+		 * 
+		 * System.out.println(student);
+		 */
 		StudentService service = new StudentServiceImpl();
 		service.insertStudent(student);
-		
-		
-		System.out.println(student);
+		request.setAttribute("students", student);
 		return "studentList.do";
 	}
 

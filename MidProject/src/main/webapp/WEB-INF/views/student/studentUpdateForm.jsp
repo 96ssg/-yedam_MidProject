@@ -1,80 +1,67 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
 
 <div align="center">
 	<div>
-		<h1>ÇÐ»ý¼öÁ¤</h1>
+		<h1>í•™ìƒìˆ˜ì •</h1>
 	</div>
 	<div>
 		<form action="studentUpdate.do" method="post">
+	<input type="hidden" id="studentId" name="studentId" value="${students.studentId }">				
 				<div>
 				<table border="1">	
-					
 					<tr>
-						<th width="150">ÀÌ¸§</th>
+						<th width="150">ì´ë¦„</th>
 						<td width="300"><input type="text" id="studentName" name="studentName" value="${students.studentName }"></td>
 					</tr>
 					
 					<tr>
-						<th width="150">ÆÐ½º¿öµå</th>
-						<td width="300"><input type="text" id="studentPassword" name="studentPassword" value="${students.studentPassword }"></td>
+						<th width="150">íŒ¨ìŠ¤ì›Œë“œ</th>
+						<td width="300"><input type="password" id="studentPassword" name="studentPassword" value="${students.studentPassword }"></td>
 					</tr>
 					
 					<tr>
-						<th width="150">ÈÞ´ëÆù¹øÈ£</th>
+						<th width="150">íœ´ëŒ€í°ë²ˆí˜¸</th>
 						<td width="300"><input type="text" id="studentPhone" name="studentPhone" value="${students.studentPhone }"></td>
 					</tr>
 					
 					<tr>
-						<th width="150">»ý³â¿ùÀÏ</th>
-						<td width="300"><input type="date" value="2022-03-19" min="1980-01-01" max="2022-12-31"></td>
-					</tr>
-					
-					<tr>
-						<th width="150">ÇÐ±â</th>
-							<td>
-								<select>
-		   						 	<option value="1" selected>1ÇÐ±â</option>
-		    						<option value="2">2ÇÐ±â</option>
-								</select>
-							</td>
-					</tr>
-					
-					<tr>
-						<th width="150">¼ºÀû</th>
+						<th width="150">í•™ê¸°</th>
 						<td width="300"><input type="text" id="studentSemester" name="studentSemester" value="${students.studentSemester }"></td>
 					</tr>
 						
 					<tr>
-						<th width="150">»çÁø</th>
+						<th width="150">ì‚¬ì§„</th>
 						<td width="300"><input type="text" id="studentImg" name="studentImg" value="${students.studentImg }"></td>
 					</tr>	
 					
 					<tr>
-						<th width="150">ÇÐÁ¡</th>
-						<td width="300"><input type="number" id="sScore" name="sScore" value="${students.studentScore }"></td>
+						<th width="150">í•™ì </th>
+						<td width="300"><input type="number" id="studentScore" name="studentScore" value="${students.studentScore }"></td>
 					</tr>	
 					
-						<tr>
-						<th width="150" id="sStatus" name="sStatus">ÇÐÀû</th>
+					<tr>
+					<th width="150" >í•™ì </th>
 							<td>
-								<select>
-		   						 	<option value="1" selected>ÀçÇÐ</option>
-		    						<option value="2">Á¦Àû</option>
-		    						<option value="3">ÅðÇÐ</option>
-		    						<option value="4">ÈÞÇÐ</option>
+								<select id="studentStatus" name="studentStatus">
+		   						 	<option value="1" selected>ìž¬í•™</option>
+		    						<option value="2">ì œì </option>
+		    						<option value="3">í‡´í•™</option>
+		    						<option value="4">íœ´í•™</option>
 								</select>
 							</td>
 					</tr>
+					
 				</table>	
 			</div><br />
 			<div>
-				<button type="button" onclick="location.href='home.do'">È¨</button>
-				<c:if test="${role eq 'admin' }"><button type="submit">ÇÐ»ý ¼öÁ¤</button></c:if>&nbsp;&nbsp;&nbsp;
-				<c:if test="${role eq 'admin' }"><button type="reset">Ãë ¼Ò</button></c:if>&nbsp;&nbsp;&nbsp;
-			</div>
+				<button type="button" onclick="location.href='home.do'">í™ˆ</button>
+				<c:if test="${role eq 'admin' }"><button type="submit">í•™ìƒ ìˆ˜ì •</button></c:if>&nbsp;&nbsp;&nbsp;
+				<c:if test="${role eq 'admin' }"><button type="reset">ì·¨ ì†Œ</button></c:if>&nbsp;&nbsp;&nbsp;
+<%-- 				<c:if test="${role eq 'admin' }"><button type="submit"  formaction='studentDelete.do'>ì‚­ì œ</button></c:if>
+ --%>			</div>
+ 	
 		</form>
 	</div>
 </div>

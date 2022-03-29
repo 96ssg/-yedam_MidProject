@@ -1,76 +1,82 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     
-<!DOCTYPE html>
 
 <div align="center">
 	<div>
-		<h1>±³¼öµî·Ï</h1>
+		<h1>êµìˆ˜ë“±ë¡</h1>
 	</div>
 	<div>
-		<form id="frm" name="frm" action="professorInsert.do" method="post">
-			<div>
-				<table border="1">
-
-					<tr>
-						<th width="150">±³¹ø</th>
-						<td width="300"><input type="text" id="pId" name="pId">&nbsp;
-						</td>
-					</tr>
+		<form class="row g-3" id="frm" name="frm" action="professorInsert.do" method="post">
+			
+			<div class="row g-3" width="50%">
+				<div class="container">
+			
+				<div class="col-md-3">
+					<label class="form-label">êµë²ˆ</label> <input type="text"
+						class="form-control" id="pId" name="pId">
+				</div>
+			
+				<div class="col-md-3">
+					<label for="inputPassword4" class="form-label">Password</label> <input
+						type="password" class="form-control" id="inputPassword4">
+				</div>
+				</div>
+				<!-- 	êµë²ˆ
+						<td width="300">&nbsp;
 					
 					<tr>
-						<th width="150">ÀÌ¸§</th>
+						<th width="150">ì´ë¦„</th>
 						<td width="300"><input type="text" id="pName" name="pName"></td>
 					</tr>
 					
 					<tr>
-						<th width="150">ÆÐ½º¿öµå</th>
+						<th width="150">íŒ¨ìŠ¤ì›Œë“œ</th>
 						<td width="300"><input type="password" id="pPassword" name="pPassword"></td>
 					</tr>
 					
 					<tr>
-						<th width="150">»ý³â¿ùÀÏ</th>
+						<th width="150">íœ´ëŒ€í° ë²ˆí˜¸</th>
+						<td width="300"><input type="number" id="pPhone" name="pPhone"></td>
+					</tr>
+					
+					<tr>
+						<th width="150">ìƒë…„ì›”ì¼</th>
 						<td width="300"><input type="date" id="pBirth" name="pBirth" value="2022-03-19" min="1980-01-01" max="2022-12-31"></td>
 					</tr>
 					
 					<tr>
-						<th width="150">ÈÞ´ëÆù ¹øÈ£</th>
-						<td width="300"><input type="number" id="pPhone" name="pPhone"></td>
-					</tr>
-					
-					<!-- <tr>
-						<th width="150">»çÁø</th>
+						<th width="150">ì‚¬ì§„</th>
 						<td width="300"><input type="text" id="pImg" name="pImg"></td>
-					</tr> -->
-
-<!-- 					<tr>
-						<th width="150">ÇÐ°ú</th>
+					</tr> 
+					<tr>
+						<th width="150">í•™ê³¼</th>
 							<td width="300">
 								<select id="dId" name="dId">
-		   						 	<option value="1" selected>±¹¾î±¹¹®ÇÐ°ú</option>
-		    						<option value="2">ÀÀ¿ë»ý¸í°úÇÐºÎ</option>
-		    						<option value="3">ÀüÀÚ°øÇÐ°ú</option>
-		    						<option value="4">ÀÚÀ²Àü°øÇÐºÎ</option>
+		   						 	<option value="1" selected>êµ­ì–´êµ­ë¬¸í•™ê³¼</option>
+		    						<option value="2">ì‘ìš©ìƒëª…ê³¼í•™ë¶€</option>
+		    						<option value="3">ì „ìžê³µí•™ê³¼</option>
+		    						<option value="4">ìžìœ¨ì „ê³µí•™ë¶€</option>
 								</select>
 							</td>
-					</tr> -->
-					  <div class="col-md-2">
-   						 <label for="validationDefault04" class="form-label"></label>
- 						   <select class="form-select" id="validationDefault04" name="dId" required>
-   							   <option selected disabled value="">ÇÐ°ú ¼±ÅÃ</option>
-   							   <option value="1">±¹¾î±¹¹®ÇÐ°ú</option>
-   							   <option value="2">ÀÀ¿ë»ý¸í°úÇÐºÎ</option>
-   							   <option value="3">ÀüÀÚ°øÇÐ°ú</option>
-   							   <option value="4">ÀÚÀ²Àü°øÇÐºÎ</option>
+					</tr>
+					  <div>
+ 						  <select id="dId" name="dId">
+   							   <option selected disabled value="">í•™ê³¼ ì„ íƒ</option>
+   							   <option value="001">êµ­ì–´êµ­ë¬¸í•™ê³¼</option>
+   							   <option value="002">ì‘ìš©ìƒëª…ê³¼í•™ë¶€</option>
+   							   <option value="003">ì „ìžê³µí•™ê³¼</option>
+   							   <option value="004">ìžìœ¨ì „ê³µí•™ë¶€</option>
    						 </select>
  					 </div>
-				</table>
-			</div><br />
+				</table> -->
+			</div>
+			<br />
 			<div>
-				<c:if test="${role eq 'admin' }"><button type="submit" onclick="location.href='professorList.do'">±³¼ö µî·Ï</button></c:if>&nbsp;&nbsp;&nbsp;
-				<c:if test="${role eq 'admin' }"><button type="reset">Ãë ¼Ò</button></c:if>&nbsp;&nbsp;&nbsp;
-				<button type="button" onclick="location.href='home.do'">È¨</button>
+				<c:if test="${role eq 'admin' }"><button type="submit" onclick="location.href='professorList.do'">êµìˆ˜ ë“±ë¡</button></c:if>&nbsp;&nbsp;&nbsp;
+				<c:if test="${role eq 'admin' }"><button type="reset">ì·¨ ì†Œ</button></c:if>&nbsp;&nbsp;&nbsp;
+				<button type="button" onclick="location.href='home.do'">í™ˆ</button>
 			</div>
 		</form>
 	</div>

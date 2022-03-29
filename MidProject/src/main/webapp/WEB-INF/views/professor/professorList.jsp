@@ -1,16 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
-</head>
-<body>
 	
+	<form id="frm" method="post">
 	<table class="table table-bordered">
 		<thead>
 		    <tr>
@@ -22,7 +14,9 @@
 		</thead>
 	<c:forEach items="${professors }" var="professor">
 		<tbody>
-		<tr onClick='location.href="professorUpdateForm.do"'>
+		<c:if test="${role eq 'admin' }">
+		<tr onClick="profcheck('${professor.profId }')">
+		</c:if>
 		
 		<td>${professor.profId }</td> 
 		
@@ -39,8 +33,20 @@
 		</tr>
 
 	</c:forEach>
+
 	</tbody>
 	</table>
-    
-</body>
-</html>
+	<input type="hidden" id="professorId" name="professorId">
+</form>
+<script type="text/javascript">
+function profcheck(n){
+	console.log(n)
+	frm.professorId.value=n;
+	frm.action = "professorUpdateForm.do";
+	frm.submit();
+	
+}
+
+
+</script>
+

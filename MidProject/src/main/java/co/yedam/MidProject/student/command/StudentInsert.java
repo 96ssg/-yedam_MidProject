@@ -2,8 +2,13 @@ package co.yedam.MidProject.student.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import co.yedam.MidProject.charge.service.ChargeService;
+import co.yedam.MidProject.charge.service.ChargeVO;
+import co.yedam.MidProject.charge.serviceImpl.ChargeServiceImpl;
 import co.yedam.MidProject.common.Command;
+import co.yedam.MidProject.professor.service.ProfessorVO;
 import co.yedam.MidProject.student.service.StudentService;
 import co.yedam.MidProject.student.service.StudentVO;
 import co.yedam.MidProject.student.serviceImpl.StudentServiceImpl;
@@ -13,7 +18,9 @@ public class StudentInsert implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 
-		
+		HttpSession session = request.getSession();
+		ProfessorVO user = (ProfessorVO) session.getAttribute("user");
+
 		StudentVO student = new StudentVO();
 		
 		student.setStudentId(request.getParameter("sId"));
@@ -24,14 +31,23 @@ public class StudentInsert implements Command {
 		student.setStudentImg(request.getParameter("sImg"));
 		student.setStudentGrade(Integer.parseInt(request.getParameter("sGrade")));
 		student.setStudentScore(Integer.parseInt(request.getParameter("sScore")));
-		student.setStudentSemster(Integer.parseInt(request.getParameter("sSemster")));
-		student.setDeptId(request.getParameter("dId"));
+		student.setStudentSemester(Integer.parseInt(request.getParameter("sSemester")));
+		student.setStudentStatus(Integer.parseInt(request.getParameter("sStatus")));
+		student.setDeptId(user.getDeptId());
+		
+		
+		ChargeService chargeService = new ChargeServiceImpl();
+		ChargeVO charge = new ChargeVO();
+		charge.setStudentId(request.getParameter("sId"));
+		charge.setProfessorId(request.getParameter("profId"));
+
+		chargeService.insertCharge(charge);
+		
 		
 		StudentService service = new StudentServiceImpl();
 		service.insertStudent(student);
 		
 		
-		request.setAttribute("students", student);
 		System.out.println(student);
 		return "studentList.do";
 	}

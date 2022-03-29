@@ -12,7 +12,7 @@ public class LectureDelete implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+		// 강의 리스트 삭제
 		LectureVO vo = new LectureVO();
 		vo.setLectureId(Integer.parseInt(request.getParameter("lectureId")));
 		LectureService lectureDAO = new LectureServiceImpl();

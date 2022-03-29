@@ -26,10 +26,9 @@
 			<li><a href="lectureList.do">lecture</a></li>
 			<li><a href="studentList.do">student</a></li>
 			<li><a href="professorList.do">professor</a></li>
-			<li><a href="checkpassword.do">myPage</a></li>
+			<li><a href="checkPasswordForm.do">myPage</a></li>
 			<li></li>
 			<li><a href="logout.do">logout</a></li>
-			<li><a href="checkpassword.do">myPage</a></li>
 		</ul>
 		<hr>
 	</div>

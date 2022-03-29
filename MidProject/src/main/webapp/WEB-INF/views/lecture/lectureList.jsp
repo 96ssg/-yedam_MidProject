@@ -7,30 +7,37 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="js/jquery.min.js"></script>
+<style>
+th{
+font-weight: bold;
+}
+</style>
 </head>
 <body>
-	<div align="center">
+	<div align="center" class="container">
 		<div>
-			<h1>${role }</h1>
+			<h1>강의 목록</h1>
 		</div>
 		<div>
+			<!-- Search Bar Start -->
+			<div>
+				<select class="form-select-sm" id="searchKey" name="searchKey">
+					<option value="전체">전체</option>
+					<option value="강의번호">강의번호</option>
+					<option value="교수번호">교수번호</option>
+					<option value="강의명">강의명</option>
+				</select> <input type="text" id="searchVal" name="searchVal"
+					onkeyup="enterkey()" placeholder="Search" aria-label="Search">
+
+				<button class="btn-search" id="searchBtn" type="button">Search</button>
+
+			</div>
+			<!-- Search Bar End -->
+			<!-- LectureList Start -->
 			<form id="frm" method="post" onsubmit="return false">
-				<div>
-					<select id="searchKey" name="searchKey">
-						<option value="전체">전체</option>
-						<option value="강의번호">강의번호</option>
-						<option value="교수번호">교수번호</option>
-						<option value="강의명">강의명</option>
-
-					</select> <span> <input type="text" id="searchVal" name="searchVal"
-						onkeyup="enterkey()">&nbsp;&nbsp; <input type="button"
-						id="searchBtn" value="검색">
-					</span>
-				</div>
-
 				<br />
 				<div>
-					<table class="table" id="contents">
+					<table class="table table-hover" id="contents">
 						<thead>
 							<tr align="center">
 								<th width="200">강의명</th>
@@ -47,15 +54,14 @@
 							</c:if>
 							<c:if test="${not empty lectures }">
 								<c:forEach items="${lectures }" var="l">
-									<tr align="center" onmouseover='this.style.background="#fcecae";'
-										onmouseleave='this.style.background="#FFFFFF";'
+									<tr align="center"
 										onclick='lectureContents(${l.lectureId},"${l.professorId }")'>
 										<td>${l.lectureName}</td>
 										<td>${l.lectureCredit}</td>
 										<td class="profId">${l.professorId}</td>
 										<td onclick="event.stopPropagation()"><c:if
 												test="${role eq 'admin' }">
-												<button type="button"
+												<button type="button" class="btn btn-secondary"
 													onclick="lectureDelete(${l.lectureId})">삭제</button>
 											</c:if></td>
 									</tr>
@@ -67,7 +73,7 @@
 				<br />
 				<div>
 					<c:if test="${role eq 'admin' }">
-						<button type="button"
+						<button type="button" class="btn btn-secondary"
 							onclick="location.href='lectureInsertForm.do'">강의등록</button>
 					</c:if>
 				</div>
@@ -76,8 +82,9 @@
 			</form>
 		</div>
 	</div>
+	<!-- LectureList End -->
 	<script type="text/javascript">
-	
+	/* 각 항목에 해당하는 교수명 출력 */
 	window.onload = profNames;
 
 	function profNames() {
@@ -92,18 +99,20 @@
 			})
 		}
 	}
+	/* 항목 삭제 */
 	function lectureDelete(k){
 		frm.lectureId.value = k;
 		frm.action = "lectureDelete.do";
 		frm.submit();
 	}
-	
+	/* 강의 상세정보 페이지 호출 */
 	function lectureContents(n,m){
 	frm.lectureId.value = n;
 	frm.professorId.value = m;
 	frm.action = "lectureView.do";
 	frm.submit();
 	}
+	/* 리스트 검색 기능 */
 	function searchList(){
 	$.ajax({
 		url : "ajaxLectureSearch.do",
@@ -112,8 +121,7 @@
 		dataType : "json",
 		success : function(result){
 			if(result.length > 0){
-				// html 로 변환코드
-				searchResult(result);  // json data 를 html로 변환해서 뿌려주는 메소드
+				searchResult(result);  // json data => html
 				profNames();
 			}else{
 				alert("검색한 결과가 존재하지 않아요!");
@@ -121,14 +129,13 @@
 		}
 		})
 	}
+	/* 리스트 검색 결과 출력 */
 	function searchResult(data){
 	var tb = $("#lectureBody");
 	$("#lectureBody").empty();
 	
 	$.each(data, function(index, item){
 		var html = $("<tr align='center'></tr>").attr({
-			'onmouseover' : 'this.style.background="#fcecae";',
-			'onmouseleave' : 'this.style.background="#FFFFFF";',
 			'onclick' : 'lectureContents('+item.lectureId+', "'+item.professorId+'")'
 		}).append(
 				$("<td></td>").text(item.lectureName),
@@ -143,6 +150,7 @@
 	
 	}
 	searchBtn.addEventListener('click', searchList);
+	/* 리스트 검색기능 Enter로 호출 */
 	function enterkey(){
 	if(window.event.keyCode == 13){
 		searchList();

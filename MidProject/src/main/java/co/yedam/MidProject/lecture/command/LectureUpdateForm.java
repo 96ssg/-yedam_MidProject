@@ -15,14 +15,14 @@ public class LectureUpdateForm implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+		// 강의 수정폼 호출
 		LectureVO lecture = new LectureVO();
 		lecture.setLectureId(Integer.parseInt(request.getParameter("lectureId")));
 
 		LectureService service = new LectureServiceImpl();
 		lecture = service.selectLecture(lecture);
 		
-		
+		//교수명 추출
 		ProfessorVO p = new ProfessorVO();
 		p.setProfId(request.getParameter("professorId"));
 		ProfessorService pDao = new ProfessorServiceImpl();

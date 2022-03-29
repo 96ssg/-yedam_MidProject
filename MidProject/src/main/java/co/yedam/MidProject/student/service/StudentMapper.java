@@ -2,6 +2,9 @@ package co.yedam.MidProject.student.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
+
 public interface StudentMapper {
 	
 		//기본구성
@@ -13,5 +16,6 @@ public interface StudentMapper {
 		
 
 	//	boolean isIdCheck(String str); // 아이디 중복체크
+		List<StudentVO> selectStudentSearchList(@Param("key")String key, @Param("val") String val);
 	}
 

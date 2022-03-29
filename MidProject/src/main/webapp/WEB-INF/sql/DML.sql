@@ -336,112 +336,112 @@ SELECT * FROM dual;
 INSERT ALL
     INTO lecture VALUES (1,'국문학총론',3,'MON','5','7','인문대학 1호관 201호','001001',10)
     INTO lecture VALUES (2,'국문학각론',3,'TUE','2','4','인문대학 1호관 302호','001002',10)
-    
+
     INTO lecture VALUES (3,'재배학개론',3,'WED','1','3','농업생명과학대학 4호관 423호','002001',10)
     INTO lecture VALUES (4,'기초생화학',3,'FRI','5','7','자연과학대학 2호관 202호','002002',10)
-
+    
     INTO lecture VALUES (5,'기초전자실험 및 설계',3,'TUE','1','3','공과대학 1호관 303호','003001',10)
     INTO lecture VALUES (6,'공학수학1',3,'THR','1','3','공과대학 3호관 507호','003002',10)
     
     INTO lecture VALUES (7,'대학글쓰기',3,'WED','2','4','제4합동강의동 101호','004001',10)
-    INTO lecture VALUES (8,'논리와 비판적 사고',3,'THR','5','7','인문한국진흥관 205호','004002',10)
+    INTO lecture VALUES (8,'논리와 비판적 사고',3,'THR','5','7','인문한국진흥관 205호','004002',10)    
     
     INTO lecture VALUES (9,'대중문화예술사',3,'MON','5','8','인문대학 1호관 202호','001003',10)
     INTO lecture VALUES (10,'문예창작',3,'TUE','3','6','인문대학 1호관 303호','001004',10)
-
+    
     INTO lecture VALUES (11,'심리학개론',3,'WED','1','4','농업생명과학대학 3호관 424호','002003',10)
     INTO lecture VALUES (12,'사회복지학개론',3,'FRI','6','9','자연과학대학 2호관 203호','002004',10)
-
+    
     INTO lecture VALUES (13,'미학개론',3,'TUE','5','8','공과대학 2호관 304호','003003',10)
     INTO lecture VALUES (14,'조형심리학개론',3,'THR','2','4','공과대학 3호관 508호','003004',10)
-
+    
     INTO lecture VALUES (15,'의복과색채',3,'WED','4','5','제4합동강의동 102호','004003',10)
-    INTO lecture VALUES (16,'카메라스튜디오',3,'THR','5','8','인문한국진흥관 206호','004004',10)
+	INTO lecture VALUES (16,'카메라스튜디오',3,'THR','5','8','인문한국진흥관 206호','004004',10)
 
     INTO lecture VALUES (17,'태극권Ⅱ',3,'WED','3','4','인문대학 1호관 208호','001005',10)
     INTO lecture VALUES (18,'골프Ⅰ',3,'MON','2','4','인문대학 1호관 306호','001006',10)
-
+	
     INTO lecture VALUES (19,'보완대체요법',3,'WED','5','7','농업생명과학대학 3호관 313호','002005',10)
     INTO lecture VALUES (20,'국악개론Ⅰ',3,'TUE','3','5','자연과학대학 3호관 303호','002006',10)
-
-    INTO lecture VALUES (21,'음악개론Ⅰ',3,'THR','2','4','공과대학 3호관 104호','003005',10)
+    
+    INTO lecture VALUES (21,'음악개론Ⅰ',3,'MON','2','4','공과대학 3호관 104호','003005',10)
     INTO lecture VALUES (22,'사회복지학개론',3,'FRI','1','4','공과대학 4호관 208호','003006',10)
 
     INTO lecture VALUES (23,'심리학개론',3,'THR','3','4','제4합동강의동 104호','004005',10)
     INTO lecture VALUES (24,'문예창작',3,'WED','4','6','인문한국진흥관 208호','004006',10)
 
     INTO lecture VALUES (25,'국문학총론',3,'TUE','6','9','인문대학 1호관 201호','001001',10)
-    INTO lecture VALUES (26,'국문학각론',3,'TUE','6','8','인문대학 1호관 302호','001002',10)
+	INTO lecture VALUES (26,'국문학각론',3,'TUE','6','8','인문대학 1호관 302호','001002',10)
 
     INTO lecture VALUES (27,'재배학개론',3,'WED','5','7','농업생명과학대학 4호관 423호','002001',10)
     INTO lecture VALUES (28,'기초생화학',3,'TUE','1','3','자연과학대학 2호관 202호','002002',10)
-
+    
     INTO lecture VALUES (29,'기초전자실험 및 설계',3,'WED','7','9','공과대학 1호관 303호','003001',10)
     INTO lecture VALUES (30,'공학수학1',3,'FRI','4','5','공과대학 3호관 507호','003002',10)
-
+    
     INTO lecture VALUES (31,'대학글쓰기',3,'THR','2','4','제4합동강의동 101호','004001',10)
     INTO lecture VALUES (32,'논리와 비판적 사고',3,'FRI','3','5','인문한국진흥관 205호','004002',10)
     
     INTO lecture VALUES (33,'영화의이해',3,'FRI','6','9','인문대학 2호관 206호','001001',10)
-    INTO lecture VALUES (34,'경제학개론',3,'TUE','3','4','인문대학 2호관 302호','001002',10)
-
+    INTO lecture VALUES (34,'경제학개론',3,'THR','3','4','인문대학 2호관 302호','001002',10)
+    
     INTO lecture VALUES (35,'이상행동의심리',3,'MON','3','4','농업생명과학대학 3호관 300호','002001',10)
     INTO lecture VALUES (36,'채플(A)',3,'THR','2','4','자연과학대학 1호관 211호','002002',10)
-
+    
     INTO lecture VALUES (37,'기독교세계와문화',3,'MON','3','4','공과대학 3호관 306호','003001',10)
     INTO lecture VALUES (38,'대학영어3',3,'TUE','5','7','공과대학 1호관 511호','003002',10)
-
+    
     INTO lecture VALUES (39,'물리학1',3,'FRI','2','4','제2합동강의동 101호','004001',10)
     INTO lecture VALUES (40,'화학1',3,'WED','3','5','인문한국진흥관 208호','004002',10)
-
+    
     INTO lecture VALUES (41,'자동차공학기초',3,'TUE','8','9','인문대학 2호관 204호','001003',10)
     INTO lecture VALUES (42,'한국사',3,'THR','2','4','인문대학 2호관 305호','001004',10)
-
+    
     INTO lecture VALUES (43,'일반물리실험1',3,'MON','7','9','농업생명과학대학 3호관 302호','002003',10)
-    INTO lecture VALUES (44,'일반물리',3,'FRI','6','8','자연과학대학 1호관 207호','002004',10)
-
+    INTO lecture VALUES (44,'일반물리',3,'MON','6','8','자연과학대학 1호관 207호','002004',10)
+    
     INTO lecture VALUES (45,'미적분학1',3,'THR','2','4','공과대학 3호관 304호','003003',10)
     INTO lecture VALUES (46,'창의설계입문',3,'FRI','3','4','공과대학 1호관 509호','003004',10)
-
+    
     INTO lecture VALUES (47,'중국근세철학사',3,'FRI','7','9','제2합동강의동 105호','004003',10)
     INTO lecture VALUES (48,'동양철학사',3,'TUE','6','9','인문한국진흥관 203호','004004',10)
 
     INTO lecture VALUES (49,'과학철학',3,'TUE','4','5','인문대학 2호관 210호','001003',10)
     INTO lecture VALUES (50,'현대철학입문',3,'THR','5','6','인문대학 2호관 214호','001004',10)
-
-    INTO lecture VALUES (51,'논리학',3,'MON','5','9','농업생명과학대학 4호관 308호','002003',10)
-    INTO lecture VALUES (52,'정치학의쟁점',3,'FRI','7','9','자연과학대학 5호관 211호','002004',10)
-
-    INTO lecture VALUES (53,'서양고대철학사',3,'THR','4','5','공과대학 3호관 501호','003003',10)
-    INTO lecture VALUES (54,'정의론 연구',3,'FRI','2','4','공과대학 3호관 214호','003004',10)
-
+    
+    INTO lecture VALUES (51,'논리학',3,'FRI','5','9','농업생명과학대학 4호관 308호','002003',10)
+    INTO lecture VALUES (52,'정치학의쟁점',3,'TUE','7','9','자연과학대학 5호관 211호','002004',10)
+    
+    INTO lecture VALUES (53,'서양고대철학사',3,'FRI','4','5','공과대학 3호관 501호','003003',10)
+    INTO lecture VALUES (54,'정의론 연구',3,'MON','2','4','공과대학 3호관 214호','003004',10)
+    
     INTO lecture VALUES (55,'문화철학',3,'TUE','2','4','제1합동강의동 115호','004003',10)
     INTO lecture VALUES (56,'퇴계와 율곡의 철학',3,'THR','1','3','인문한국진흥관 106호','004004',10)
 
-    INTO lecture VALUES (57,'일반물리실험1',3,'FRI','4','5','인문대학 2호관 213호','001005',10)
+	INTO lecture VALUES (57,'일반물리실험1',3,'FRI','4','5','인문대학 2호관 213호','001005',10)
     INTO lecture VALUES (58,'일반물리',3,'TUE','6','8','인문대학 2호관 213호','001006',10)
-
-    INTO lecture VALUES (59,'미적분학1',3,'WED','5','9','농업생명과학대학 4호관 301호','002005',10)
+    
+    INTO lecture VALUES (59,'미적분학1',3,'FRI','5','9','농업생명과학대학 4호관 301호','002005',10)
     INTO lecture VALUES (60,'정의론 연구',3,'WED','7','9','자연과학대학 5호관 212호','002006',10)
-
+    
     INTO lecture VALUES (61,'정치학의쟁점',3,'THR','4','5','공과대학 3호관 502호','003005',10)
     INTO lecture VALUES (62,'중국근세철학사',3,'TUE','2','4','공과대학 3호관 213호','003006',10)
 
     INTO lecture VALUES (63,'논리학',3,'FRI','2','4','제1합동강의동 112호','004005',10)
-    INTO lecture VALUES (64,'과학철학',3,'FRI','1','3','인문한국진흥관 103호','004006',10)
+	INTO lecture VALUES (64,'과학철학',3,'FRI','1','3','인문한국진흥관 103호','004006',10)
 
-    INTO lecture VALUES (65,'채플(A)',3,'TUE','2','4','인문대학 2호관 216호','001005',10)
+	INTO lecture VALUES (65,'채플(A)',3,'TUE','2','4','인문대학 2호관 216호','001005',10)
     INTO lecture VALUES (66,'경제학개론',3,'THR','6','8','인문대학 2호관 211호','001006',10)
-
-    INTO lecture VALUES (67,'이상행동의심리',3,'WED','2','4','농업생명과학대학 4호관 303호','002005',10)
-    INTO lecture VALUES (68,'기독교세계와문화',3,'WED','6','8','자연과학대학 5호관 209호','002006',10)
+	
+	INTO lecture VALUES (67,'이상행동의심리',3,'WED','2','4','농업생명과학대학 4호관 303호','002005',10)
+    INTO lecture VALUES (68,'기독교세계와문화',3,'MON','6','8','자연과학대학 5호관 209호','002006',10)    
 
     INTO lecture VALUES (69,'화학1',3,'THR','1','3','공과대학 3호관 503호','003005',10)
-    INTO lecture VALUES (70,'물리학1',3,'TUE','2','4','공과대학 3호관 217호','003006',10)
+    INTO lecture VALUES (70,'물리학1',3,'MON','2','4','공과대학 3호관 217호','003006',10)
 
-    INTO lecture VALUES (71,'일반물리실험1',3,'FRI','2','4','제1합동강의동 114호','004005',10)
+    INTO lecture VALUES (71,'일반물리실험1',3,'MON','2','4','제1합동강의동 114호','004005',10)
     INTO lecture VALUES (72,'일반물리',3,'FRI','5','7','인문한국진흥관 107호','004006',10)
-    
+
 SELECT * FROM dual;
 
 -- 담당
@@ -549,46 +549,46 @@ SELECT * FROM dual;
 
 -- 수강
 INSERT ALL
-    INTO course VALUES (1,'2011001001',2020,1,90,90,'A')
-    INTO course VALUES (1,'2011001002',2020,1,80,90,'B')
-    INTO course VALUES (1,'2013003001',2020,1,90,50,'C')
-    
-    INTO course VALUES (2,'2011001001',2020,2,90,90,'A')
-    INTO course VALUES (2,'2011001002',2020,2,90,90,'A')
-    INTO course VALUES (2,'2014004002',2020,2,90,90,'A')
-    
+    INTO course VALUES (1,'2011001001',2022,1,90,90,'A')
+    INTO course VALUES (1,'2011001002',2022,1,80,90,'B')
+    INTO course VALUES (1,'2013003001',2022,1,90,50,'C')
+
+    INTO course VALUES (2,'2011001001',2022,1,90,90,'A')
+    INTO course VALUES (2,'2011001002',2022,1,90,90,'A')
+    INTO course VALUES (2,'2014004002',2022,1,90,90,'A')
+
     INTO course VALUES (3,'2012002001',2020,1,90,90,'A')
     INTO course VALUES (3,'2012002002',2020,1,90,90,'A')
     INTO course VALUES (3,'2013003001',2020,1,90,90,'A')
-    
+
     INTO course VALUES (4,'2012002001',2020,2,90,90,'A')
     INTO course VALUES (4,'2012002002',2020,2,90,90,'A')
     INTO course VALUES (4,'2014004002',2020,2,90,90,'A')
-    
+
     INTO course VALUES (5,'2013003001',2020,1,90,90,'A')
     INTO course VALUES (5,'2013003002',2020,1,90,90,'A')
     INTO course VALUES (5,'2014004001',2020,1,90,90,'A')
-    
+
     INTO course VALUES (6,'2013003001',2020,1,90,90,'A')
     INTO course VALUES (6,'2013003002',2020,1,90,90,'A')
-    INTO course VALUES (6,'2011001001',2020,1,90,90,'A')
-    
+    INTO course VALUES (6,'2011001001',2022,1,90,90,'A')
+
     INTO course VALUES (7,'2014004001',2020,1,90,90,'A')
     INTO course VALUES (7,'2014004002',2020,1,90,90,'A')
     INTO course VALUES (7,'2011001002',2020,1,90,90,'A')
-    
+
     INTO course VALUES (8,'2014004001',2020,2,90,90,'A')
     INTO course VALUES (8,'2014004002',2020,2,90,90,'A')
     INTO course VALUES (8,'2012002002',2020,2,90,90,'A')
-    
+
     INTO course VALUES (9, '2011001003', 2022, 1, 90, 90, 'A' )
-    INTO course VALUES (9, '2011001004', 2021, 1, 80, 80, 'B' )
-    INTO course VALUES (9, '2011001005', 2021, 1, 70, 70, 'C' )
+    INTO course VALUES (9, '2011001004', 2022, 1, 80, 80, 'B' )
+    INTO course VALUES (9, '2011001005', 2022, 1, 70, 70, 'C' )
     INTO course VALUES (9, '2011001006', 2022, 1, 60, 60, 'D' )
     INTO course VALUES (9, '2011001007', 2022, 1, 90, 90, 'A' )
     INTO course VALUES (9, '2011001008', 2022, 1, 80, 80, 'B' )
-    INTO course VALUES (9, '2011001009', 2021, 1, 70, 70, 'C' )
-    INTO course VALUES (9, '2011001010', 2020, 1, 60, 60, 'D' )
+    INTO course VALUES (9, '2011001009', 2022, 1, 70, 70, 'C' )
+    INTO course VALUES (9, '2011001010', 2022, 1, 60, 60, 'D' )
 
     INTO course VALUES (10, '2011001003', 2022, 2, 90, 90, 'A' )
     INTO course VALUES (10, '2011001004', 2021, 2, 80, 80, 'B' )
@@ -617,16 +617,16 @@ INSERT ALL
     INTO course VALUES (13, '2012002009', 2022, 2, 90, 90, 'A' )
     INTO course VALUES (13, '2012002010', 2020, 2, 80, 80, 'B' )
 
-    INTO course VALUES (14, '2013003001', 2022, 2, 90, 90, 'A' )
-    INTO course VALUES (14, '2013003002', 2022, 2, 80, 80, 'B' )
+    INTO course VALUES (14, '2013003001', 2022, 1, 90, 90, 'A' )
+    INTO course VALUES (14, '2013003002', 2022, 1, 80, 80, 'B' )
     INTO course VALUES (14, '2013003003', 2021, 2, 70, 70, 'C' )
-    INTO course VALUES (14, '2013003004', 2022, 2, 60, 60, 'D' )
+    INTO course VALUES (14, '2013003004', 2022, 1, 60, 60, 'D' )
     INTO course VALUES (14, '2013003005', 2020, 2, 90, 90, 'A' )
     INTO course VALUES (14, '2013003006', 2020, 2, 80, 80, 'B' )
     INTO course VALUES (14, '2013003007', 2020, 2, 70, 70, 'C' )
     INTO course VALUES (14, '2013003008', 2021, 2, 60, 60, 'D' )
     INTO course VALUES (14, '2013003009', 2021, 2, 90, 90, 'A' )
-    INTO course VALUES (14, '2013003010', 2022, 2, 80, 80, 'B' )
+    INTO course VALUES (14, '2013003010', 2022, 1, 80, 80, 'B' )
 
     INTO course VALUES (15, '2013003001', 2022, 1, 90, 90, 'A' )
     INTO course VALUES (15, '2013003002', 2022, 1, 80, 80, 'B' )
@@ -652,10 +652,10 @@ INSERT ALL
     INTO course VALUES (18, '2014004004', 2021, 2, 60, 60, 'D' )
     INTO course VALUES (18, '2014004005', 2020, 2, 90, 90, 'A' )
     INTO course VALUES (18, '2014004006', 2021, 2, 80, 80, 'B' )
-    INTO course VALUES (18, '2014004007', 2022, 2, 70, 70, 'C' )
-    INTO course VALUES (18, '2014004008', 2022, 2, 60, 60, 'D' )
-    INTO course VALUES (18, '2014004009', 2022, 2, 90, 90, 'A' )
-    INTO course VALUES (18, '2014004010', 2022, 2, 80, 80, 'B' )
+    INTO course VALUES (18, '2014004007', 2022, 1, 70, 70, 'C' )
+    INTO course VALUES (18, '2014004008', 2022, 1, 60, 60, 'D' )
+    INTO course VALUES (18, '2014004009', 2022, 1, 90, 90, 'A' )
+    INTO course VALUES (18, '2014004010', 2022, 1, 80, 80, 'B' )
 
     INTO course VALUES (19, '2015001001', 2021, 1, 90, 90, 'A' )
     INTO course VALUES (19, '2015001002', 2022, 1, 80, 80, 'B' )
@@ -666,16 +666,16 @@ INSERT ALL
     INTO course VALUES (19, '2015001007', 2021, 1, 70, 70, 'C' )
     INTO course VALUES (19, '2015001008', 2022, 1, 60, 60, 'D' )
     INTO course VALUES (19, '2015001009', 2019, 1, 90, 90, 'A' )
-    INTO course VALUES (19, '2015001010', 2021, 1, 80, 80, 'B' )
+    INTO course VALUES (19, '2011001001', 2021, 1, 80, 80, 'B' )
 
     INTO course VALUES (20, '2015001001', 2021, 2, 90, 90, 'A' )
-    INTO course VALUES (20, '2015001002', 2022, 2, 80, 80, 'B' )
-    INTO course VALUES (20, '2015001003', 2022, 2, 70, 70, 'C' )
-    INTO course VALUES (20, '2015001004', 2022, 2, 60, 60, 'D' )
-    INTO course VALUES (20, '2015001005', 2022, 2, 90, 90, 'A' )
-    INTO course VALUES (20, '2015001006', 2022, 2, 80, 80, 'B' )
+    INTO course VALUES (20, '2015001001', 2022, 1, 80, 80, 'B' )
+    INTO course VALUES (20, '2015001003', 2022, 1, 70, 70, 'C' )
+    INTO course VALUES (20, '2015001004', 2022, 1, 60, 60, 'D' )
+    INTO course VALUES (20, '2015001005', 2022, 1, 90, 90, 'A' )
+    INTO course VALUES (20, '2015001006', 2022, 1, 80, 80, 'B' )
     INTO course VALUES (20, '2015001007', 2021, 2, 70, 70, 'C' )
-    INTO course VALUES (20, '2015001008', 2022, 2, 60, 60, 'D' )
+    INTO course VALUES (20, '2015001008', 2022, 1, 60, 60, 'D' )
     INTO course VALUES (20, '2015001009', 2019, 2, 90, 90, 'A' )
     INTO course VALUES (20, '2015001010', 2021, 2, 80, 80, 'B' )
 
@@ -714,37 +714,37 @@ INSERT ALL
 
     INTO course VALUES (24, '2017003001', 2020, 2, 90, 90, 'A' )
     INTO course VALUES (24, '2017003002', 2021, 2, 80, 80, 'B' )
-    INTO course VALUES (24, '2017003003', 2022, 2, 70, 70, 'C' )
-    INTO course VALUES (24, '2017003004', 2022, 2, 60, 60, 'D' )
-    INTO course VALUES (24, '2017003005', 2022, 2, 90, 90, 'A' )
-    INTO course VALUES (24, '2017003006', 2022, 2, 80, 80, 'B' )
-    INTO course VALUES (24, '2017003007', 2022, 2, 70, 70, 'C' )
-    INTO course VALUES (24, '2017003008', 2022, 2, 60, 60, 'D' )
+    INTO course VALUES (24, '2017003001', 2022, 1, 70, 70, 'C' )
+    INTO course VALUES (24, '2017003004', 2022, 1, 60, 60, 'D' )
+    INTO course VALUES (24, '2017003005', 2022, 1, 90, 90, 'A' )
+    INTO course VALUES (24, '2017003006', 2022, 1, 80, 80, 'B' )
+    INTO course VALUES (24, '2017003007', 2022, 1, 70, 70, 'C' )
+    INTO course VALUES (24, '2017003008', 2022, 1, 60, 60, 'D' )
     INTO course VALUES (24, '2017003009', 2021, 2, 90, 90, 'A' )
     INTO course VALUES (24, '2017003010', 2022, 2, 80, 80, 'B' )
 
-    INTO course VALUES (25, '2018004001', 2022, 1, 90, 90, 'A' )
+    INTO course VALUES (25, '2011001001', 2022, 1, 90, 90, 'A' )
     INTO course VALUES (25, '2018004002', 2022, 1, 80, 80, 'B' )
     INTO course VALUES (25, '2018004003', 2022, 1, 70, 70, 'C' )
     INTO course VALUES (25, '2018004004', 2022, 1, 60, 60, 'D' )
     INTO course VALUES (25, '2018004005', 2022, 1, 90, 90, 'A' )
     INTO course VALUES (25, '2018004006', 2022, 1, 80, 80, 'B' )
-    INTO course VALUES (25, '2018004007', 2021, 1, 70, 70, 'C' )
-    INTO course VALUES (25, '2018004008', 2021, 1, 60, 60, 'D' )
-    INTO course VALUES (25, '2018004009', 2020, 1, 90, 90, 'A' )
-    INTO course VALUES (25, '2018004010', 2021, 1, 80, 80, 'B' )
+    INTO course VALUES (25, '2018004007', 2022, 1, 70, 70, 'C' )
+    INTO course VALUES (25, '2018004008', 2022, 1, 60, 60, 'D' )
+    INTO course VALUES (25, '2018004009', 2022, 1, 90, 90, 'A' )
+    INTO course VALUES (25, '2018004010', 2022, 1, 80, 80, 'B' )
 
-    INTO course VALUES (26, '2018004001', 2022, 2, 90, 90, 'A' )
-    INTO course VALUES (26, '2018004002', 2022, 2, 80, 80, 'B' )
-    INTO course VALUES (26, '2018004003', 2022, 2, 70, 70, 'C' )
-    INTO course VALUES (26, '2018004004', 2022, 2, 60, 60, 'D' )
-    INTO course VALUES (26, '2018004005', 2022, 2, 90, 90, 'A' )
-    INTO course VALUES (26, '2018004006', 2022, 2, 80, 80, 'B' )
-    INTO course VALUES (26, '2018004007', 2021, 2, 70, 70, 'C' )
-    INTO course VALUES (26, '2018004008', 2021, 2, 60, 60, 'D' )
-    INTO course VALUES (26, '2018004009', 2020, 2, 90, 90, 'A' )
-    INTO course VALUES (26, '2018004010', 2021, 2, 80, 80, 'B' )
-    
+    INTO course VALUES (26, '2011001001', 2022, 1, 90, 90, 'A' )
+    INTO course VALUES (26, '2018004002', 2022, 1, 80, 80, 'B' )
+    INTO course VALUES (26, '2018004003', 2022, 1, 70, 70, 'C' )
+    INTO course VALUES (26, '2018004004', 2022, 1, 60, 60, 'D' )
+    INTO course VALUES (26, '2018004005', 2022, 1, 90, 90, 'A' )
+    INTO course VALUES (26, '2018004006', 2022, 1, 80, 80, 'B' )
+    INTO course VALUES (26, '2018004007', 2022, 1, 70, 70, 'C' )
+    INTO course VALUES (26, '2018004008', 2022, 1, 60, 60, 'D' )
+    INTO course VALUES (26, '2018004009', 2022, 1, 90, 90, 'A' )
+    INTO course VALUES (26, '2018004010', 2022, 1, 80, 80, 'B' )
+
     INTO course VALUES (27, '2019001001', 2022, 1, 90, 90, 'A' )
     INTO course VALUES (27, '2019001002', 2022, 1, 80, 80, 'B' )
     INTO course VALUES (27, '2019001003', 2022, 1, 70, 70, 'C' )
@@ -766,29 +766,30 @@ INSERT ALL
     INTO course VALUES (28, '2020002008', 2022, 1, 60, 60, 'D' )
     INTO course VALUES (28, '2020002009', 2022, 1, 90, 90, 'A' )
     INTO course VALUES (28, '2020002010', 2022, 1, 80, 80, 'B' )
-    
-    INTO course VALUES (29, '2019001001', 2022, 2, 90, 90, 'A' )
-    INTO course VALUES (29, '2019001002', 2022, 2, 80, 80, 'B' )
-    INTO course VALUES (29, '2019001003', 2022, 2, 70, 70, 'C' )
-    INTO course VALUES (29, '2019001004', 2022, 2, 60, 60, 'D' )
-    INTO course VALUES (29, '2019001005', 2022, 2, 90, 90, 'A' )
-    INTO course VALUES (29, '2019001006', 2022, 2, 80, 80, 'B' )
-    INTO course VALUES (29, '2019001007', 2022, 2, 70, 70, 'C' )
-    INTO course VALUES (29, '2019001008', 2022, 2, 60, 60, 'D' )
-    INTO course VALUES (29, '2019001009', 2022, 2, 90, 90, 'A' )
-    INTO course VALUES (29, '2019001010', 2022, 2, 80, 80, 'B' )
 
-    INTO course VALUES (30, '2020002001', 2022, 2, 90, 90, 'A' )
-    INTO course VALUES (30, '2020002002', 2022, 2, 80, 80, 'B' )
-    INTO course VALUES (30, '2020002003', 2022, 2, 70, 70, 'C' )
-    INTO course VALUES (30, '2020002004', 2022, 2, 60, 60, 'D' )
-    INTO course VALUES (30, '2020002005', 2022, 2, 90, 90, 'A' )
-    INTO course VALUES (30, '2020002006', 2022, 2, 80, 80, 'B' )
-    INTO course VALUES (30, '2020002007', 2022, 2, 70, 70, 'C' )
-    INTO course VALUES (30, '2020002008', 2022, 2, 60, 60, 'D' )
-    INTO course VALUES (30, '2020002009', 2022, 2, 90, 90, 'A' )
-    INTO course VALUES (30, '2020002010', 2022, 2, 80, 80, 'B' )
+    INTO course VALUES (33, '2019001001', 2022, 1, 90, 90, 'A' )
+    INTO course VALUES (33, '2019001002', 2022, 1, 80, 80, 'B' )
+    INTO course VALUES (33, '2019001003', 2022, 1, 70, 70, 'C' )
+    INTO course VALUES (33, '2019001004', 2022, 1, 60, 60, 'D' )
+    INTO course VALUES (33, '2019001005', 2022, 1, 90, 90, 'A' )
+    INTO course VALUES (33, '2019001006', 2022, 1, 80, 80, 'B' )
+    INTO course VALUES (33, '2019001007', 2022, 1, 70, 70, 'C' )
+    INTO course VALUES (33, '2019001008', 2022, 1, 60, 60, 'D' )
+    INTO course VALUES (33, '2019001009', 2022, 1, 90, 90, 'A' )
+    INTO course VALUES (33, '2019001010', 2022, 1, 80, 80, 'B' )
+
+    INTO course VALUES (34, '2020002001', 2022, 2, 90, 90, 'A' )
+    INTO course VALUES (34, '2020002002', 2022, 2, 80, 80, 'B' )
+    INTO course VALUES (34, '2020002003', 2022, 2, 70, 70, 'C' )
+    INTO course VALUES (34, '2020002004', 2022, 2, 60, 60, 'D' )
+    INTO course VALUES (34, '2020002005', 2022, 2, 90, 90, 'A' )
+    INTO course VALUES (34, '2020002006', 2022, 2, 80, 80, 'B' )
+    INTO course VALUES (34, '2020002007', 2022, 2, 70, 70, 'C' )
+    INTO course VALUES (34, '2020002008', 2022, 2, 60, 60, 'D' )
+    INTO course VALUES (34, '2020002009', 2022, 2, 90, 90, 'A' )
+    INTO course VALUES (34, '2020002010', 2022, 2, 80, 80, 'B' )
 SELECT * FROM dual;
+
 
 --SELECT * FROM department;
 --SELECT * FROM student;

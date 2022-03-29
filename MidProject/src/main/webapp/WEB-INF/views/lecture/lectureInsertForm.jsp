@@ -7,10 +7,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="js/jquery.min.js"></script>
+<style>
+th {
+font-weight: bold !important;
+}
+</style>
 </head>
 <body>
 	<!-- LectureInsertForm -->
-	<div align="center">
+	<div align="center" class="container">
 		<div>
 			<h1>강의 등록</h1>
 		</div>

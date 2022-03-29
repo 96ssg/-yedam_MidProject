@@ -33,7 +33,7 @@
 	
 	<select id="selectStudentSearchList" resultMap="studentMap">
 SELECT * FROM STUDENT
-WHERE
+WHERE 
 	<if test ='key == "1"'>
 	S_ID LIKE '%'||#{val}||'%'
 	</if>

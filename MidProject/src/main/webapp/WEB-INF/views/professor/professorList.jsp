@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	
+<div class="container-md">
+	<div class="fs-2 px-3 my-3" align="center">교수리스트</div>
 	<form id="frm" method="post">
 	<table class="table table-bordered">
-	<div></div><br>
+				
 		<thead>
 		    <tr align="center">
 		      <th scope="col">교번</th>
@@ -36,9 +37,19 @@
 	</c:forEach>
 
 	</tbody>
-	</table>
+	</table><br>
+	<div></div>
+	<div></div><br>
+	<div></div><br>
+	<div></div><br>
+	<div></div><br>
+	<div></div><br>
+	<div></div><br>
+	<div></div><br>
+	<div></div>
 	<input type="hidden" id="professorId" name="professorId">
 </form>
+</div>
 <script type="text/javascript">
 function profcheck(n){
 	console.log(n)

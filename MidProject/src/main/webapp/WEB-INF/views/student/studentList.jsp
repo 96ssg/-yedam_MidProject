@@ -1,24 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<div class="container-md">
+<div class="fs-2 px-3 my-3" align="center">학생리스트</div>
 	<form id="frm" method="post" onsubmit="return false">
-	<table class="table table-bordered" id="contents">
-	<thead>
 	<div align="center">
-			<div></div><br>
-			<select class="form-select, col-6 col-sm-1" id="searchKey" name="searchKey">
-						<option value="1">학번</option>
-						<option value="2">학생이름</option>
-			</select> 
-			<span> 
-					<input type="text" id="searchVal" name="searchVal" onkeyup="enterkey()">
-					<input type="button" class="btn btn-dark" id="strBtn" value="검색">
-			</span>
-			<div></div><br>
+			<div class="input-group my-4">
+				<select style="width: 10%" class="form-select-sm" id="searchKey" name="searchKey">
+					<option value="1">학번</option>
+					<option value="2">이름</option>
+				</select> 
+						<input type="text" class="form-control" id="searchVal" name="searchVal" onkeyup="enterkey()">
+						<button class="btn btn-outline-secondary" id="strBtn">검색</button>
+			</div>
 	</div>
-	</thead>
-			<!-- width값은 나중에  -->
+<div>
+	<table class="table table-bordered, col-4" id="contents">
+		<thead>
 		<tr align="center">
 			<th scope="col">학번</th>
 			<th scope="col">학생 이름</th>
@@ -28,7 +26,8 @@
 			<th scope="col">전화번호</th>
 			<th scope="col">학적</th>	
 		</tr>
-		<tbody id="studentBody">
+		</thead>
+		<tbody id="studentBody" align="center">
 			<c:if test="${empty students }">
 				<tr>
 					<td colspan="5">관련 학생은 존재하지 않습니다.</td>
@@ -74,10 +73,11 @@
 				</c:if>
 			</tbody>
 		</table>
-		<input type="hidden" id="student" name="studentId">
-	 </form>
+	</div>
+	<input type="hidden" id="student" name="studentId">
+	</form>
+</div>
 	<script>
-	/* 검색 후 업데이트 폼 넘어가는것. 1~4로 구분된 학적 재학 제적등으로 나오게하기. */
 	function studentContents(n){
 		frm.studentId.value = n;
 		frm.action = "studentUpdateForm.do";

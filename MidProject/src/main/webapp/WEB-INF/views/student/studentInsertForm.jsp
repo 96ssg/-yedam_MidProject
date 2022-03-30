@@ -100,7 +100,7 @@
 	 			</div>
 		
 			</div><br />
-			<div>
+			<div align="right">
 				<c:if test="${role eq 'admin' }"><button type="submit" class="btn btn-secondary btn-lg">학생 등록</button></c:if>&nbsp;&nbsp;&nbsp;
 				<c:if test="${role eq 'admin' }"><button type="reset" class="btn btn-secondary btn-lg">취 소</button></c:if>&nbsp;&nbsp;&nbsp;
 				<button type="button" onclick="location.href='home.do'" class="btn btn-secondary btn-lg">홈</button>

@@ -105,7 +105,7 @@
 				</table> -->
 			<br />
 			</div>
-			<div align="center">
+			<div align="right">
 				<c:if test="${role eq 'admin' }"><button type="submit" onclick="location.href='professorList.do'">교수 등록</button></c:if>&nbsp;&nbsp;&nbsp;
 				<c:if test="${role eq 'admin' }"><button type="reset">취 소</button></c:if>&nbsp;&nbsp;&nbsp;
 				<button type="button" onclick="location.href='home.do'">홈</button>

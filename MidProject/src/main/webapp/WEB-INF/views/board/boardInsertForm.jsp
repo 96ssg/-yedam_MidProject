@@ -1,27 +1,49 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<h1>공지사항 작성</h1>
-	<div>
-		<form action="boardInsert.do" method="post">
-			<div>
-				<ul>
-					<li>제목 : <input type="text" name="boardTitle" required></li>
-					<li>내용 : <textarea rows="20" cols="80" name="boardContent" ></textarea></li>
-				</ul>
-			</div>
-			<!-- DB 트랜잭션 발생 횟수를 줄이기 위해 작성자도 submit -->
-			<input type="submit" value="글쓰기">
-		</form>
-		<input type="button" value="취소" onclick='location.href="boardList.do"'>
+
+
+<div class="container-md">
+	<div class="fs-2 px-3 my-3">공지사항 작성</div>
+	<hr>
+	<form action="boardInsert.do" method="post" id="frm">
+		<input type="text" class="form-control fs-4 mt-5 mb-4" name="boardTitle" placeholder="제목을 입력하세요" required>
+		<div id="summernote"></div>
+		<input type="hidden" name="boardContent" id="boardContent">
+	</form>
+	<div class="mt-3 mb-5" align="right">
+		<button class="btn btn-outline-secondary" id="insertBtn">글쓰기</button>
+		<button class="btn btn-outline-secondary" onclick='location.href="boardList.do"'>취소</button>
 	</div>
+</div>
+
 	
-</body>
-</html>
+	
+<script>
+// 	summernote
+	 $('#summernote').summernote({
+        placeholder: 'Hello stand alone ui',
+        tabsize: 2,
+        height: 500,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'italic', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture']],
+          ['view', ['codeview', 'help']]
+        ]
+      });
+      
+//   서머노트 placeholder 수정
+     document.querySelector('.note-placeholder').innerText = '내용을 입력하세요.';
+      
+	 insertBtn.addEventListener('click', () => {
+		 const isUpdate = confirm('공지사항을 작성하시겠습니까?');
+		 const textarea = document.querySelector('.note-editable');
+		 boardContent.value = textarea.innerHTML;
+		 
+		 if (isUpdate) frm.submit();
+	 })
+</script>

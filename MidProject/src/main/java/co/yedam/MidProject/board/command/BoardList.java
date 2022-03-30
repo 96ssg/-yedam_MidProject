@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+
 import co.yedam.MidProject.board.service.BoardService;
 import co.yedam.MidProject.board.service.BoardVO;
 import co.yedam.MidProject.board.serviceImpl.BoardServiceImpl;
@@ -36,6 +38,8 @@ public class BoardList implements Command {
 		List<BoardVO> list = boardDao.boardList();
 		List<BoardVO> boards = new ArrayList<>();
 		
+		
+		// 내 학과의 공지사항만 출력
 		for (BoardVO b : list) {
 			String writerId= b.getBoardWriter();
 			String deptId = writerId.substring(writerId.length()-6, writerId.length()-3);
@@ -46,7 +50,7 @@ public class BoardList implements Command {
 		}
 		
 		
-		request.setAttribute("boardList", boards);
+		request.setAttribute("boardList", new Gson().toJson(boards));
 		
 		return "board/boardList";
 	}

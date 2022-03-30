@@ -4,8 +4,9 @@
 	
 	<form id="frm" method="post">
 	<table class="table table-bordered">
+	<div></div><br>
 		<thead>
-		    <tr>
+		    <tr align="center">
 		      <th scope="col">교번</th>
 		      <th scope="col">교수 이름</th>
 		      <th scope="col">생년월일</th>
@@ -15,7 +16,7 @@
 	<c:forEach items="${professors }" var="professor">
 		<tbody>
 		<c:if test="${role eq 'admin' }">
-		<tr onClick="profcheck('${professor.profId }')">
+		<tr onClick="profcheck('${professor.profId }')" align="center">
 		</c:if>
 		
 		<td>${professor.profId }</td> 

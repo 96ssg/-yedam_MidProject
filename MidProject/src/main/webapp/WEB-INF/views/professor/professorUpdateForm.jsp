@@ -11,25 +11,42 @@
 		<form action="professorUpdate.do" method="post">
 		<input type="hidden" id="profId" name="profId" value=${professors.profId }>
 			<div>
-				<table border="1">
+				<div class="row">
+				<div class="col-4"></div>
+					
+					
+					<div class="col">
+						<label class="form-label">교수 이름</label> 
+						<input type="text" class="form-control" id="profName" name="profName" value=${professors.profName }>
 				
-					<tr>
-						<th width="150">이름</th>
-						<td width="300"><input type="text" id="profName" name="profName" value=${professors.profName }></td>
-					</tr>
+					</div>
+			<div class="col-4"></div>
+					</div>
 					
-					<tr>
-						<th width="150">패스워드</th>
-						<td width="300"><input type="password" id="profPassword" name="profPassword" value=${professors.profPassword }></td>
-					</tr>
-					
-					<tr>
-						<th width="150">사진</th>
-						<td width="300"><input type="text" id="profImg" name="profImg" value="${professors.profImg }"></td>
-					</tr>
- 				
-					
-				</table>
+			<div class="row">	
+				<div class="col-4"></div>
+			
+			
+			
+			<div class="col-4">
+						<label for="inputPassword4" class="form-label">패스워드</label> 
+						<input type="password" class="form-control" id="profPassword" name="profPassword" value=${professors.profPassword }>
+			</div>
+			
+				<div class="col-4"></div>
+			</div>
+			
+			<div class="row">	
+				<div class="col-4"></div>
+
+			<div class="col-4">
+					<label for="inputPassword4" class="form-label">전화번호</label> 
+					<input type="number" class="form-control" id="pPhone" name="pPhone" placeholder="Please Number...">
+				</div>
+				
+				<div class="col-4"></div>
+			</div>
+				
 			</div><br />
 			<div>
 				<button type="button" onclick="location.href='home.do'">홈</button>

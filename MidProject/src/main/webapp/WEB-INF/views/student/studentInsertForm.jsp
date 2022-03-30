@@ -9,97 +9,101 @@
 	<div>
 		<form id="frm" name="frm" action="studentinsert.do" method="post">
 			<div>
-				<table border="1">
+			<h3>기본 정보</h3>
+				<div class="row">
+					<div class="col-4"></div>
+						<div class="col-2">
+							<label class="form-label">학번</label> 
+							<input type="text" class="form-control" id="sId" name="sId">
+						</div>
+					<div class="col-2">
+							<label class="form-label">비밀번호</label> 
+							<input type="password" class="form-control" id="sPassword" name="sPassword">
+						</div>
+					<div class="col-4"></div>
+			</div>
+			
+			<div class="row">
+					<div class="col-4"></div>
+						<div class="col-2">
+							<label class="form-label">학생 이름</label> 
+							<input type="text" class="form-control" id="sName" name="sName">
+						</div>
+					<div class="col-2">
+							<label class="form-label">전화 번호</label> 
+							<input type="number" class="form-control" id="sPhone" name="sPhone">
+						</div>
+					<div class="col-4"></div>
+			</div>
+			
+			<div class="row">
+					<div class="col-5"></div>
+						<div class="col-2">
+							<label class="form-label" >생년월일</label> 
+							<input type="date" class="form-control" id="sBirth" name="sBirth" value="2022-03-19" min="1980-01-01" max="2022-12-31">
+						</div>
 					
-					<tr>
-						<th width="150">학번</th>
-						<td width="300"><input type="text" id="sId" name="sId">&nbsp;
-						</td>
-					</tr>
-					
-					<tr>
-						<th width="150">패스워드</th>
-						<td width="300"><input type="password" id="sPassword" name="sPassword"></td>
-					</tr>
-					
-					<tr>
-						<th width="150">이름</th>
-						<td width="300"><input type="text" id="sName" name="sName"></td>
-					</tr>
-					
-					<tr>
-						<th width="150">휴대폰번호</th>
-						<td width="300"><input type="number" id="sPhone" name="sPhone"></td>
-					</tr>
-					
-					<tr>
-						<th width="150">생년월일</th>
-						<td width="300"><input type="date" id="sBirth" name="sBirth" value="2022-03-19" min="1980-01-01" max="2022-12-31"></td>
-					</tr>
-					
-					<tr>
-						<th width="150">학기</th>
-							<td>
-								<select id="sSemester" name="sSemester">
-		   						 	<option value="1" selected>1학기</option>
-		    						<option value="2">2학기</option>
-								</select>
-							</td>
-					</tr>
-					
-					<tr>
-						<th width="150">학년</th>
-						<td width="300"><input type="number" id="sGrade" name="sGrade"></td>
-					</tr>
-						
-					<tr>
-						<th width="150">사진</th>
-						<td width="300"><input type="text" id="sImg" name="sImg"></td>
-					</tr>	
-					
-					<tr>
-						<th width="150">이수학점</th>
-						<td width="300"><input type="number" id="sScore" name="sScore"></td>
-					</tr>	
-					
-					 <div>
- 						  <select id="dId" name="dId">
-   							   <option selected disabled value="">학과 선택</option>
-   							   <option value="001">국어국문학과</option>
-   							   <option value="002">응용생명과학부</option>
-   							   <option value="003">전자공학과</option>
-   							   <option value="004">자율전공학부</option>
-   						 </select>
- 					 </div>
-					
-					<th width="150" >학적</th>
-							<td>
-								<select id="sStatus" name="sStatus">
-		   						 	<option value="1" selected>재학</option>
+					<div class="col-5"></div>
+			</div><br>
+			<div class="row">
+				<div class="col-3"></div>
+					<div class="col-6">---------------------------------------------------------------------------------</div>
+				<div class="col-3"></div>			
+			</div><br>
+			<h3>학적 정보</h3>
+			<div>
+		 			<div class="col-4"></div>
+						<select class="form-select, col-2" id="dId" name="dId">
+			   				<option selected disabled value="">학과 선택</option>
+			   				<option value="001">국어국문학과</option>
+			   				<option value="002">응용생명과학부</option>
+			   				<option value="003">전자공학과</option>
+			   				<option value="004">자율전공학부</option>
+		   				</select>
+	 			
+	 					<select class="form-select, col-2" id="sStatus" name="sStatus">
+		   						 	<option selected disabled value="">학적 선택</option>
+		   						 	<option value="1">재학</option>
 		    						<option value="2">제적</option>
 		    						<option value="3">퇴학</option>
 		    						<option value="4">휴학</option>
 								</select>
-							</td>
-					</tr>
-		<%-- 			<tr>
-					   <th width="150">담당교수</th>
-					   <td>
-					      <select name="profId">
-					         <c:forEach var="professor" items="${professors }">
-					            <option value="${professor.profId }">${professor.profName}</option>
-					         </c:forEach>
-					      </select>
-					   </td>
-					</tr>
- --%>
-					
-				</table>
+		   			<div class="col-4"></div>
+	 			</div><br>
+	 			
+	 			
+	 			
+	 			<div class="row">
+		 			<div class="col-4"></div>
+						<select class="form-select, col-2" id="sGrade" name="sGrade">
+		   						 	<option selected disabled value="">학년 선택</option>
+		   						 	<option value="1">1학년</option>
+		    						<option value="2">2학년</option>
+		    						<option value="3">3학년</option>
+		    						<option value="4">4학년</option>
+								</select>
+						<select class="form-select, col-2" id="sSemester" name="sSemester">
+		   						 	<option selected disabled value="">학기 선택</option>
+		   						 	<option value="1">1학기</option>
+		    						<option value="2">2학기</option>
+								</select>
+					<div class="col-4"></div>
+	 			</div>
+	 			
+	 			<div class="row">
+	 				<div class="col-5"></div>
+		   		<div class="col-2">
+							<label class="form-label">최대이수학점</label> 
+							<input type="number" class="form-control" id="sScore" name="sScore">
+						</div>
+	 				<div class="col-5"></div>
+	 			</div>
+		
 			</div><br />
 			<div>
-				<c:if test="${role eq 'admin' }"><button type="submit">학생 등록</button></c:if>&nbsp;&nbsp;&nbsp;
-				<c:if test="${role eq 'admin' }"><button type="reset">취 소</button></c:if>&nbsp;&nbsp;&nbsp;
-				<button type="button" onclick="location.href='home.do'">홈</button>
+				<c:if test="${role eq 'admin' }"><button type="submit" class="btn btn-secondary btn-lg">학생 등록</button></c:if>&nbsp;&nbsp;&nbsp;
+				<c:if test="${role eq 'admin' }"><button type="reset" class="btn btn-secondary btn-lg">취 소</button></c:if>&nbsp;&nbsp;&nbsp;
+				<button type="button" onclick="location.href='home.do'" class="btn btn-secondary btn-lg">홈</button>
 			</div>
 		</form>
 	</div>

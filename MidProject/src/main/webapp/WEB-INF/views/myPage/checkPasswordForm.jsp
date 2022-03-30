@@ -22,7 +22,7 @@
 		frm.submit();
 	}
 </script>
-<div class="container" align="center">
+<div class="container" align="center" style="height: 70vh">
 	<form id="frm" name="frm" onsubmit="return false">
 		<div class="input-group my-4">
 			비밀번호 확인

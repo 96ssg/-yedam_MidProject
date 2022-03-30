@@ -68,7 +68,7 @@
 	</div>
 	
 	<c:if test="${role ne 'student' }">
-		<input type="button" onclick="location.href='chargeStudentList.do'"
+		<input type="button" class="btn btn-outline-secondary" onclick="location.href='chargeStudentList.do'"
 			value="목록">
 	</c:if>
 </div>

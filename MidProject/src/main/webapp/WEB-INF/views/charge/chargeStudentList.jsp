@@ -13,12 +13,12 @@
 			<th>비고</th>
 		</tr>
 		<c:forEach var="student" items="${studentList }">
-			<tr onclick="student">
+			<tr onclick="runview(${student.studentId})">
 				<td>${student.studentId }</td>
 				<td>${student.studentName }</td>
 				<td>${student.studentGrade }</td>
 				<td>${student.studentSemester }</td>
-				<td><button type="button" onclick="runcourse(${student.studentId})">성적조회</button></td>
+				<td onclick="event.stopPropagation()"><button type="button" class="btn btn-outline-secondary" onclick="runcourse(${student.studentId})">성적조회</button></td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -26,15 +26,14 @@
 	</form>
 	</div>
 	<script>
+	function runview(m){
+		frm.studentId.value = m;
+		frm.action = "studentView.do";
+		frm.submit();
+	}
 	function runcourse(n){
 		frm.studentId.value = n;
 		frm.action = "studentCourseList.do";
 		frm.submit();
 	}
-		/* const students = document.querySelectorAll('#student');
-		students.forEach( student => {
-			student.addEventListener('click', () => {
-				const studentId = event.target.parentNode.children[0].innerText;
-				location.href = "studentCourseList.do?studentId=" + studentId
-		})}); */
 	</script>

@@ -3,8 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="col-lg-10">
 	<h1>성적 입력</h1>
-	<h3 id="semesterTab" onclick="toggle('semester')">학기</h3>
-	<h3 id="allTab"onclick="toggle('all')">전체</h3>
+	<ul class="nav nav-tabs">
+		<li class="nav-item"><a id="allTab" onclick="toggle('all')" class="nav-link">전체학기</a></li>
+		<li class="nav-item"><a id="semesterTab" onclick="toggle('semester')" class="nav-link">해당학기</a></li>
+	</ul>
 	
 	<div id="semesterCourse">
 		<h6>최소 점수는 1점입니다. 0점 입력시 성적 미입력 상태로 반영됩니다.</h6>
@@ -63,7 +65,7 @@
 		</c:if>
 	</div>
 	
-	<input type="button" onclick="location.href='courseInsertList.do'" value="목록">
+	<input type="button" class="btn btn-outline-secondary" onclick="location.href='courseInsertList.do'" value="목록">
 </div>
 	<script>
 		// 탭

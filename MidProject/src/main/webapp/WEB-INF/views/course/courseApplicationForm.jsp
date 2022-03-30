@@ -1,32 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	<h1>수강신청</h1>
+<div class="container-md">
+<div class="fs-2 px-3 my-3">수강 신청</div>
 	<!-- 강의 검색 -->
-	<div>
-		<div>
-			학번 :  <input type="text" value="${user.studentId }" disabled>
-		</div>
-		<div>
-			최대이수학점 : <input type="text" value="${user.studentScore }" disabled>
-		</div>
-		<div>
-			강의번호 : <input type="text" name="lectureId" id="lectureId" required>
-		</div>
-		<div>
-			<input type="button" value="신청" id="applyBtn">
-		</div>
+	<div class="input-group my-4">
+			학번 &nbsp;  <input type="text" class="form-control-md" value="${user.studentId }" disabled>&nbsp;&nbsp;&nbsp;
+			최대이수학점 &nbsp; <input type="text" class="form-control-md" value="${user.studentScore }" disabled>&nbsp;&nbsp;&nbsp;
+			강의번호 &nbsp; <input type="text" class="form-control-md" name="lectureId" id="lectureId" required>
+			<input type="button" class="btn btn-outline-secondary" value="신청" id="applyBtn">
 	</div>
 	
 	<!-- 검색한 강의 정보 출력 -->
 	<div>
-		<h2>강의 검색</h2>
-		<div>
-			강의명 : <input type="text" name="lectureId" id="searchLectureId" required>
+<div class="fs-2 px-3 my-3">강의 검색</div>
+		<div class="input-group my-4">
+			강의명 &nbsp; <input type="text" class="form-control-md" name="lectureId" id="searchLectureId" required>
+			<input type="button" class="btn btn-outline-secondary" value="검색" id="searchLectureBtn">
 		</div>
-		<div>
-			<input type="button" value="검색" id="searchLectureBtn">
-		</div>
+		<div class="mb-3" style="height:30vh;overflow-y:auto;overflow-x:hidden">
 		<table class="table">
 			<thead>
 				<tr>
@@ -41,6 +33,7 @@
 			</thead>
 			<tbody id="searchResult"></tbody>
 		</table>
+		</div>
 	</div>
 	
 	<!-- 내 수강 신청 현황 -->
@@ -60,7 +53,7 @@
 			<tbody id="applicationInfo"></tbody>
 		</table>
 	</div>
-	
+</div>	
 	<script>
 		// 최초 페이지 로드 시 현재 수강신청 목록 출력
 		window.onload = semesterCourseList;

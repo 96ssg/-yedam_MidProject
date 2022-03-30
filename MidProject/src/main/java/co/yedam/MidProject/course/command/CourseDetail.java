@@ -28,16 +28,15 @@ public class CourseDetail implements Command {
 		courseList = courseDao.myCourse(role, lectureId);
 
 		// 학기 수강생 성적
-		CourseMethods cm = new CourseMethods();
 		List<CourseVO> semesterCourseList = courseList.stream()
-				.filter(course -> course.getCourseYear() == cm.getNow("year") && course.getCourseSemester() == cm.getNow("semester"))
+				.filter(course -> course.getCourseYear() == CourseMethods.year && course.getCourseSemester() == CourseMethods.semester)
 				.collect(Collectors.toList());
 		
 		request.setAttribute("semesterCourseList", semesterCourseList);
 
 		// 전체 수강생 성적 (학기성적 제외)
 		List<CourseVO> allCourseList = courseList.stream()
-				.filter(course -> course.getCourseYear() != cm.getNow("year") || course.getCourseSemester() != cm.getNow("semester"))
+				.filter(course -> course.getCourseYear() != CourseMethods.year || course.getCourseSemester() != CourseMethods.semester)
 				.collect(Collectors.toList());
 		
 		request.setAttribute("allCourseList", allCourseList);

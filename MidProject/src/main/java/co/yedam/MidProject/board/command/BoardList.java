@@ -46,8 +46,6 @@ public class BoardList implements Command {
 		}
 		
 		
-		
-		
 		request.setAttribute("boardList", boards);
 		
 		return "board/boardList";

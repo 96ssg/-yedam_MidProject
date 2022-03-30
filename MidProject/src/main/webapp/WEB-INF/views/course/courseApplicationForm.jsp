@@ -1,15 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>course application</title>
-</head>
-<body>
 	<h1>수강신청</h1>
-	
 	<!-- 강의 검색 -->
 	<div>
 		<div>
@@ -288,9 +280,5 @@
 				}
 			})
 		}
-		
 		searchLectureBtn.addEventListener('click', () => searchLecture())
-		
 	</script>
-</body>
-</html>

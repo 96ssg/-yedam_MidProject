@@ -1,13 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>courseInsertList.do</title>
-</head>
-<body>
+<div class="col-lg-10">
 	<h1>내 강의 목록</h1>
 	<h1 onclick="location.href='chargeStudentList.do'">지도학생 목록</h1>
 	<c:if test="${role ne 'student' }">
@@ -36,8 +30,7 @@
 	<c:if test="${empty lectureList }">
 		<h1>없음</h1>
 	</c:if>
-
-
+</div>
 	<script>
 	
 		const lectures = document.querySelectorAll('.lectures');
@@ -49,6 +42,3 @@
 			})
 		})
 	</script>
-
-</body>
-</html>

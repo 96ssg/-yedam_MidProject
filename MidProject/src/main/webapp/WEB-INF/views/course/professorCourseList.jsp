@@ -1,13 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>courseList.do</title>
-</head>
-<body>
+<div class="col-lg-10">
 	<h1>수강정보 목록</h1>
 	<h1 onclick="location.href='courseInsertList.do'">내 강의 목록(클릭)</h1>
 	<c:if test="${role ne 'student' }">
@@ -36,9 +30,9 @@
 	</c:if>
 
 	<c:if test="${empty courseList }">
-	<h1>없음</h1>
+		<h1>지도학생이 없습니다.</h1>
 	</c:if>
-
+</div>
 
 	<script>
 	
@@ -53,6 +47,3 @@
 		}
 	
 	</script>
-
-</body>
-</html>

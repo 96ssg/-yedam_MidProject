@@ -13,6 +13,7 @@ import co.yedam.MidProject.board.service.BoardService;
 import co.yedam.MidProject.board.service.BoardVO;
 import co.yedam.MidProject.board.serviceImpl.BoardServiceImpl;
 import co.yedam.MidProject.common.Command;
+import co.yedam.MidProject.course.service.CourseMethods;
 import co.yedam.MidProject.course.service.CourseService;
 import co.yedam.MidProject.course.service.CourseVO;
 import co.yedam.MidProject.course.serviceImpl.CourseServiceImpl;
@@ -33,9 +34,12 @@ public class AjaxStudentInfo implements Command {
 		
 		String data = "";
 		
-		// 수강 정보
+		// 이번 학기수강 정보
 		CourseService cDao = new CourseServiceImpl();
 		List<CourseVO> myCourseList = cDao.myCourse(role, user.getStudentId());
+		CourseMethods cm = new CourseMethods();
+		myCourseList = cm.getSemesterCourseList(myCourseList);
+		
 		LectureService lDao = new LectureServiceImpl();
 		List<LectureVO> allLectures = lDao.selectLectureList();
 		List<LectureVO> myLectureList = new ArrayList<>();

@@ -14,19 +14,19 @@ import co.yedam.MidProject.lecture.serviceImpl.LectureServiceImpl;
 import co.yedam.MidProject.student.service.StudentVO;
 
 public class CourseMethods {
+	
+	static LocalDate now = LocalDate.now();
+	public static int year = now.getYear();
+	public static int semester = (now.getMonthValue() < 8) ? 1 : 2; 
+	
 
 	public List<CourseVO> getSemesterCourseList(List<CourseVO> courseList) {
-
-		// 현재 연도, 학기
-		LocalDate now = LocalDate.now();
-		int thisYear = now.getYear();
-		int thisSemester = (now.getMonthValue() < 8) ? 1 : 2;
 
 		// 현재 학기의 수강목록
 		List<CourseVO> semesterCourseList = new ArrayList<>();
 		for (CourseVO c : courseList) {
-			if (thisYear != c.getCourseYear()) continue;
-			if (thisSemester != c.getCourseSemester()) continue;
+			if (year != c.getCourseYear()) continue;
+			if (semester != c.getCourseSemester()) continue;
 
 			semesterCourseList.add(c);
 		}
@@ -44,7 +44,7 @@ public class CourseMethods {
 		// 수강신청 정보
 		CourseService courseDao = new CourseServiceImpl();
 		List<CourseVO> courseList = courseDao.myCourse(role, user.getStudentId());
-		List<CourseVO> semesterCourseList = new CourseMethods().getSemesterCourseList(courseList);
+		List<CourseVO> semesterCourseList = getSemesterCourseList(courseList);
 		
 		// 검색결과가 없을 경우
 		if (semesterCourseList.size() == 0) return new ArrayList<LectureVO>();

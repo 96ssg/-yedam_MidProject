@@ -1,5 +1,6 @@
 package co.yedam.MidProject.course.command;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,22 +28,26 @@ public class AjaxApplicationSearch implements Command {
 		// 강의 검색 결과
 		LectureService lectureDAO = new LectureServiceImpl();
 		String val = request.getParameter("val");
-		List<LectureVO> lectureList = lectureDAO.selectLectureSearchList("강의번호", val);
+		List<LectureVO> lectureList = lectureDAO.selectLectureSearchList("강의명", val);
 		
 		// 검색결과가 없을 경우
 		if (lectureList.size() == 0) return "ajax:noResult";
 		
 		Gson gson = new Gson();
-		String data = gson.toJson(lectureList.get(0));
+		String data = gson.toJson(lectureList);
 		
 		// 검색한 강의의 교수명 표시
 		ProfessorService professorDao = new ProfessorServiceImpl();
-		ProfessorVO vo = new ProfessorVO();
-		vo.setProfId(lectureList.get(0).getProfessorId());
-		vo = professorDao.selectProfessor(vo);
-		String profName = vo.getProfName();
+		List<String> profNames = new ArrayList<>();
 		
-		data = data + "~" + profName;
+		for (LectureVO l : lectureList) {
+			ProfessorVO vo = new ProfessorVO();
+			vo.setProfId(l.getProfessorId());
+			String name  = professorDao.selectProfessor(vo).getProfName();
+			profNames.add(name);
+		}
+		
+		data = data + "~" + gson.toJson(profNames);
 		
 		// 검색한 과목의 현재 신청 인원 조회
 		// 선택한 과목을 신청한 수강 목록 
@@ -52,9 +57,9 @@ public class AjaxApplicationSearch implements Command {
 		
 		// 현재 학기의 수강 목록만 추출
 		courseList = new CourseMethods().getSemesterCourseList(courseList);
-		int currentApplications = courseList.size();
+		int currentApplicationNum = courseList.size();
 		
-		data = data + "~" + currentApplications;
+		data = data + "~" + currentApplicationNum;
 		
 		return "ajax:" + data;
 	}

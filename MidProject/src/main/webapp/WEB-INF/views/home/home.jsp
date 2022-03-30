@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>home.do</title>
-
 </head>
 <body>
 	<div align="center" class="row">
@@ -54,7 +53,6 @@
 			</table>
 		</div>
 	</div>
-
 	<script>
 		const role = '<c:out value="${role}"/>';
 		fetch(role + 'Info.do')
@@ -96,11 +94,6 @@
 				tr.append(td);
 				notice.append(tr);
 			})
-			
-			
-			
-			
-			
 		})
 	</script>
 </body>

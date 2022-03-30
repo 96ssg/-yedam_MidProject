@@ -31,7 +31,7 @@ public class BoardInsert implements Command {
 		
 		request.setAttribute("boardList", list);
 		
-		return "board/boardList";
+		return "boardList.do";
 	}
 
 }

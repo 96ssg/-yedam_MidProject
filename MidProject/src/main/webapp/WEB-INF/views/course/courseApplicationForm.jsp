@@ -1,15 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>course application</title>
-</head>
-<body>
 	<h1>수강신청</h1>
-	
 	<!-- 강의 검색 -->
 	<div>
 		<div>
@@ -19,7 +11,7 @@
 			최대이수학점 : <input type="text" value="${user.studentScore }" disabled>
 		</div>
 		<div>
-			과목코드 : <input type="text" name="lectureId" id="lectureId" required>
+			강의번호 : <input type="text" name="lectureId" id="lectureId" required>
 		</div>
 		<div>
 			<input type="button" value="신청" id="applyBtn">
@@ -30,7 +22,7 @@
 	<div>
 		<h2>강의 검색</h2>
 		<div>
-			과목코드 : <input type="text" name="lectureId" id="searchLectureId" required>
+			강의명 : <input type="text" name="lectureId" id="searchLectureId" required>
 		</div>
 		<div>
 			<input type="button" value="검색" id="searchLectureBtn">
@@ -57,7 +49,6 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>강의번호</th>
 					<th>강의명</th>
 					<th>학점</th>
 					<th>교수명</th>
@@ -77,15 +68,27 @@
 		
 		// 수강신청
 		function applyCourse() {
+			const lectureId = document.getElementById('lectureId').value;
+			
+			if (lectureId == '') {
+				alert('강의번호를 입력하세요.');
+				return;
+			} 
+			
 			const maxCredit = ${user.studentScore}
 			
 			fetch('ajaxCourseInsert.do?', {
 				method: 'post',
 				headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-				body: 'lectureId=' + document.getElementById('lectureId').value
+				body: 'lectureId=' + lectureId
 			})
 			.then(response => response.text())
 			.then(result => {
+				// 수강신청 실패
+				if (result == 'lectureId') {
+					alert('강의 번호를 확인하세요.')
+					return;
+				}
 				if (result == 'capacity') {
 					alert('수강정원이 초과되었습니다.')
 					return;
@@ -94,10 +97,16 @@
 					alert('최대이수학점을 초과해서 신청할 수 없습니다.')
 					return;
 				}
+				if (result == 'applied') {
+					alert('이미 신청된 강의입니다.');
+					return;
+				}
 				
+				// 수강신청 성공
 				// 수강신청 후 목록 재호출
 				semesterCourseList();
 			})
+			.catch(error => console.error('error : ', error))
 		}
 		
 		applyBtn.addEventListener('click', () => applyCourse());
@@ -133,8 +142,9 @@
 				for (let i=0; i<lectureList.length; i++) {
 					const tr = document.createElement('tr');
 					
-					const lectureId = document.createElement('td');
-					lectureId.innerText = lectureList[i].lectureId;
+					const lectureId = document.createElement('input');
+					lectureId.setAttribute('type','hidden');
+					lectureId.value= lectureList[i].lectureId;
 					
 					const lectureName = document.createElement('td');
 					lectureName.innerText = lectureList[i].lectureName;
@@ -199,10 +209,16 @@
 		
 		// 강의 검색
 		function searchLecture() {
+			const keyword = document.getElementById('searchLectureId').value
+			if (keyword == '') {
+				alert('강의번호를 입력하세요.');
+				return;
+			}
+			
 			fetch('ajaxApplicationSearch.do?', {
 				method: 'post',
 				headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-				body: 'val=' + document.getElementById('searchLectureId').value
+				body: 'val=' + keyword
 			})
 			.then(response => response.text())
 			.then(result => {
@@ -222,47 +238,47 @@
 
 				// 검색 결과 출력
 				// 강의정보, 교수명, 현재 수강신청 인원 결과
+				
 				const lecture = JSON.parse(result.split('~')[0]);
-				const professorName = result.split('~')[1];
+				const professorName = JSON.parse(result.split('~')[1]);
+				console.log(typeof professorName)
 				const currentApplications = result.split('~')[2];
 				
-				const tr = document.createElement('tr');
-				
-				const lectureId = document.createElement('td');
-				lectureId.innerText = lecture.lectureId;
-				
-				const lectureName = document.createElement('td');
-				lectureName.innerText = lecture.lectureName;
-				
-				const lectureCredit = document.createElement('td');
-				lectureCredit.innerText = lecture.lectureCredit;
-				
-				const profName = document.createElement('td');
-				profName.innerText = professorName;
-				
-				const lectureRoom = document.createElement('td');
-				lectureRoom.innerText = lecture.lectureRoom;
-				
-				const currentNum = document.createElement('td');
-				currentNum.innerText = currentApplications;
-				
-				const lectureCapacity = document.createElement('td');
-				lectureCapacity.innerText = lecture.lectureCapacity;
-				
-				tr.append(lectureId);
-				tr.append(lectureName);
-				tr.append(lectureCredit);
-				tr.append(profName);
-				tr.append(lectureRoom);
-				tr.append(currentNum);
-				tr.append(lectureCapacity);
-				
-				searchResult.append(tr);
+				for(let i=0; i<lecture.length; i++) {
+					const tr = document.createElement('tr');
+					
+					const lectureId = document.createElement('td');
+					lectureId.innerText = lecture[i].lectureId;
+					
+					const lectureName = document.createElement('td');
+					lectureName.innerText = lecture[i].lectureName;
+					
+					const lectureCredit = document.createElement('td');
+					lectureCredit.innerText = lecture[i].lectureCredit;
+					
+					const profName = document.createElement('td');
+					profName.innerText = professorName[i];
+					
+					const lectureRoom = document.createElement('td');
+					lectureRoom.innerText = lecture[i].lectureRoom;
+					
+					const currentNum = document.createElement('td');
+					currentNum.innerText = currentApplications;
+					
+					const lectureCapacity = document.createElement('td');
+					lectureCapacity.innerText = lecture[i].lectureCapacity;
+					
+					tr.append(lectureId);
+					tr.append(lectureName);
+					tr.append(lectureCredit);
+					tr.append(profName);
+					tr.append(lectureRoom);
+					tr.append(currentNum);
+					tr.append(lectureCapacity);
+					
+					searchResult.append(tr);
+				}
 			})
 		}
-		
 		searchLectureBtn.addEventListener('click', () => searchLecture())
-		
 	</script>
-</body>
-</html>

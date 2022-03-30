@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,26 +8,25 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>공지사항 상세</h1>
-	<div>
-		<ul>
-			<li>번호 : ${board.boardId }</li>
-			<li>작성자 : ${board.boardWriter }</li>
-			<li>작성일 : ${board.boardDate }</li>
-			<li>제목 : ${board.boardTitle }</li>
-			<li>내용 : ${board.boardContent }</li>
-		</ul>
+	<div class="container-md">
+		<div class="fs-2 px-3 mt-3">${board.boardTitle }</div>
+		<div class="fs-6 px-3 my-1">${board.boardDate }</div>
+		<hr>
+		<div class="fs-4 px-3 my-1" style="height: 50vh">${board.boardContent }</div>
+		<hr>
+		<div class="mb-5" align="right">
+			<form method="post" id="frm">
+				<c:if test="${role eq 'admin' }">
+					<input type="hidden" name="boardId" value="${board.boardId }">
+					<input type="button" value="수정" id="updateBtn">
+					<input type="button" value="삭제" id="deleteBtn">
+				</c:if>
+				<input type="button" value="목록"
+					onclick='location.href="boardList.do"'>
+			</form>
+		</div>
 	</div>
-	
-	<div>
-		<form method="post" id="frm">
-			<input type="hidden" name="boardId" value ="${board.boardId }">
-			<input type="button" value="수정" id="updateBtn">
-			<input type="button" value="삭제" id="deleteBtn">
-		</form>
-		<input type="button" value="목록" onclick='location.href="boardList.do"'>
-	</div>
-	
+
 	<script>
 		// 게시글 업데이트
 		updateBtn.addEventListener('click',()=> {
@@ -45,6 +44,6 @@
 			}
 		})
 	</script>
-	
+
 </body>
 </html>

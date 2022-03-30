@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div align="center">
+<div align="center" style="clear:both;">
 	<div>
 		<hr>
 		<h1>푸터 부분</h1>

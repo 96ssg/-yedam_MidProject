@@ -1,14 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<form id="frm" method="post">
+
+	<form id="frm" method="post" onsubmit="return false">
 	<table class="table table-bordered" id="contents">
 	<thead>
 	<div>
@@ -18,7 +12,7 @@
 			</select> 
 			<span> 
 					<input type="text" id="searchVal" name="searchVal" onkeyup="enterkey()">
-					<input type="button" onclick="searchList()" value="검색">
+					<input type="button" class="btn btn-dark" id="strBtn" value="검색">
 			</span>
 	</div>
 	</thead>
@@ -40,8 +34,9 @@
 			</c:if>
 				<c:if test="${not empty students }">
 					<c:forEach items="${students }" var="s">
-						<tr onClick="location.href='studentUpdateForm.do?studentId=${s.studentId }'" >
-				
+							<c:if test="${role eq 'admin' }">
+							<tr onClick="location.href='studentUpdateForm.do?studentId=${s.studentId }'" >
+							</c:if>
 							<td>${s.studentId }</td> 
 					
 							<td>${s.studentName }</td> 
@@ -52,14 +47,31 @@
 					
 							<td>${s.studentSemester }</td>
 					
-							<td>${s.studentPhone}</td>
-					
-							<td>${s.studentStatus }</td>
+							<td>${s.studentPhone }</td>
+							
+							<c:if test="${s.studentStatus eq 1 }">							
+							<td>재학</td>
+							</c:if>
+							
+							<c:if test="${s.studentStatus eq 2 }">						
+							<td>제적</td>
+							</c:if>
+							
+							<c:if test="${s.studentStatus eq 3 }">						
+							<td>퇴학</td>
+							</c:if>
+							
+							<c:if test="${s.studentStatus eq 4 }">						
+							<td>휴학</td>
+							</c:if>
+							
 					<!-- 지도교수 들어올 수도 있음. -->
-						</tr>
+							
+							
 					</c:forEach>
 				</c:if>
 			</tbody>
+			
 		</table>
 	 </form>
 	<script>
@@ -109,11 +121,14 @@
 		$("#contents").append(tb);
 		
 		}
-		
+		strBtn.addEventListener('click', searchList);
+		function enterkey(){
+			if(window.event.keyCode == 13){
+				searchList();
+			}
+		}
 		
 /* 	const sList = '<c:out value="${students }"/>';
 		console.log(sList);   */
 	</script>
 	
-</body>
-</html>

@@ -1,43 +1,43 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<!DOCTYPE html>
 
 <div align="center">
 	<div>
-		<h1>±³¼ö¼öÁ¤</h1>
+		<h1>êµìˆ˜ìˆ˜ì •</h1>
 	</div>
 	<div>
 		<form action="professorUpdate.do" method="post">
+		<input type="hidden" id="profId" name="profId" value=${professors.profId }>
 			<div>
 				<table border="1">
-					
 				
 					<tr>
-						<th width="150">ÀÌ¸§</th>
-						<td width="300"><input type="text" id="pName" name="pName" value=${professors.profName }></td>
+						<th width="150">ì´ë¦„</th>
+						<td width="300"><input type="text" id="profName" name="profName" value=${professors.profName }></td>
 					</tr>
 					
 					<tr>
-						<th width="150">ÆÐ½º¿öµå</th>
+						<th width="150">íŒ¨ìŠ¤ì›Œë“œ</th>
 						<td width="300"><input type="password" id="profPassword" name="profPassword" value=${professors.profPassword }></td>
 					</tr>
 					
 					<tr>
-						<th width="150">»çÁø</th>
-						<td width="300"><input type="text" id="pImg" name="pImg" value="${professors.profImg }"></td>
+						<th width="150">ì‚¬ì§„</th>
+						<td width="300"><input type="text" id="profImg" name="profImg" value="${professors.profImg }"></td>
 					</tr>
- 
+ 				
 					
 				</table>
 			</div><br />
 			<div>
-				<button type="button" onclick="location.href='home.do'">È¨</button>
-				<c:if test="${role eq 'admin' }"><button type="submit">±³¼ö ¼öÁ¤</button></c:if>&nbsp;&nbsp;&nbsp;
-				<c:if test="${role eq 'admin' }"><button type="reset">Ãë ¼Ò</button></c:if>&nbsp;&nbsp;&nbsp;
-				<c:if test="${role eq 'admin' }"><button type="submit"  formaction='professorDelete.do'>»èÁ¦</button></c:if>						
+				<button type="button" onclick="location.href='home.do'">í™ˆ</button>
+				<c:if test="${role eq 'admin' }"><button type="submit">êµìˆ˜ ìˆ˜ì •</button></c:if>&nbsp;&nbsp;&nbsp;
+				<c:if test="${role eq 'admin' }"><button type="reset">ì·¨ ì†Œ</button></c:if>&nbsp;&nbsp;&nbsp;
 			</div>
+
 		</form>
 	</div>
+
 </div>

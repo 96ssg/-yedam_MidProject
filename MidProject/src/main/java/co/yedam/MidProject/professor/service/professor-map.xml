@@ -4,8 +4,8 @@
 	namespace="co.yedam.MidProject.professor.service.ProfessorMapper">
 	<resultMap type="co.yedam.MidProject.professor.service.ProfessorVO" id="professorMap">
 		<id property="profId" column="p_id"/>
-		<result property="profPassword" column="p_password"/>
 		<result property="profName" column="p_name"/> 
+		<result property="profPassword" column="p_password"/>
 		<result property="profBirth" column="p_birth"/> 
 		<result property="profPhone" column="p_phone"/> 
 		<result property="profImg" column="p_img"/>
@@ -39,7 +39,9 @@
 	
 	<update id="updateProfessor"
 		parameterType="co.yedam.MidProject.professor.service.ProfessorVO">
-				UPDATE PROFESSOR SET P_PASSWORD = #{profPassword} WHERE P_ID = #{profId}
+				UPDATE PROFESSOR SET P_NAME = #{profName}, 
+				P_PASSWORD = #{profPassword} 
+				WHERE P_ID = #{profId}
 		</update>
 
 	<delete id="deleteProfessor"

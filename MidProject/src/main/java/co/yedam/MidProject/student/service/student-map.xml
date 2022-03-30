@@ -24,7 +24,6 @@
 		SELECT * FROM STUDENT WHERE s_id = #{studentId}
 	</select> -->
 	
-	<!-- 로그인 -->
 	<select id="selectStudent"
 		parameterType="co.yedam.MidProject.student.service.StudentVO"
 		resultMap="studentMap">
@@ -53,12 +52,16 @@ ORDER BY S_ID
 
 	<update id="updateStudent"
 		parameterType="co.yedam.MidProject.student.service.StudentVO">
-		UPDATE STUDENT SET S_PASSWORD = #{studentPassword}, #{studentStatus} WHERE S_ID = #{studentId}
+		UPDATE STUDENT SET S_NAME = #{studentName }, 
+		S_PASSWORD = #{studentPassword}, 
+		S_STATUS = #{studentStatus} WHERE S_ID = #{studentId}
 	</update>
 
 
 	<!-- s_status 추가로 딜리트 버튼 삭제함. -->
-	<delete id="deleteStudent" parameterType="co.yedam.MidProject.student.service.StudentVO"></delete>
+	<delete id="deleteStudent" parameterType="co.yedam.MidProject.student.service.StudentVO">
+				 DELETE FROM STUDENT WHERE S_ID = #{studentId}
+	</delete>
 	<!-- 중복체크 -->
 	<!-- <select id="isIdCheck" parameterType="String"></select> -->
 </mapper>

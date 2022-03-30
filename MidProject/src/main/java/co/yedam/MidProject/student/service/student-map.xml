@@ -52,11 +52,13 @@ ORDER BY S_ID
 
 	<update id="updateStudent"
 		parameterType="co.yedam.MidProject.student.service.StudentVO">
-		UPDATE STUDENT SET S_NAME = #{studentName }, 
-		S_PASSWORD = #{studentPassword}, 
-		S_STATUS = #{studentStatus} WHERE S_ID = #{studentId}
+		UPDATE STUDENT SET S_NAME = #{studentName },
+		S_PHONE = #{studentPhone},
+		S_SCORE = #{studentScore},
+		S_PASSWORD = #{studentPassword},
+		S_STATUS = #{studentStatus},
+		S_SEMESTER = #{studentSemester} WHERE S_ID = #{studentId}
 	</update>
-
 
 	<!-- s_status 추가로 딜리트 버튼 삭제함. -->
 	<delete id="deleteStudent" parameterType="co.yedam.MidProject.student.service.StudentVO">

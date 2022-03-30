@@ -19,18 +19,10 @@ public class ProfessorUpdate implements Command {
 		professor.setProfId(request.getParameter("profId"));
 		professor.setProfName(request.getParameter("profName"));
 		professor.setProfPassword(request.getParameter("profPassword"));
-		/*
-		 * professor.setProfBirth(request.getParameter("profBirth"));
-		 * professor.setProfPhone(request.getParameter("profPhone"));
-		 * professor.setProfImg(request.getParameter("profImg"));
-		 * professor.setDeptId(request.getParameter("deptId"));
-		 * 
-		 */
+		professor.setProfPhone(request.getParameter("profPhone"));
+		
 		service.updateProfessor(professor);
-		
-		
 
-		System.out.println(professor);
 		return "professorList.do";
 	}
 

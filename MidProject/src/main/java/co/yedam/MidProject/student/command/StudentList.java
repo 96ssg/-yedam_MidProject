@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+
 import co.yedam.MidProject.common.Command;
 import co.yedam.MidProject.professor.service.ProfessorVO;
 import co.yedam.MidProject.student.service.StudentService;
@@ -43,9 +45,8 @@ public class StudentList implements Command {
 		}
 		
 		request.setAttribute("students", students);
-		
+
 		return "student/studentList";
-		
 		
 	}
 

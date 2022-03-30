@@ -39,8 +39,10 @@
 	
 	<update id="updateProfessor"
 		parameterType="co.yedam.MidProject.professor.service.ProfessorVO">
-				UPDATE PROFESSOR SET P_NAME = #{profName}, 
-				P_PASSWORD = #{profPassword} 
+				UPDATE PROFESSOR SET 
+				P_NAME = #{profName}, 
+				P_PASSWORD = #{profPassword},
+				P_PHONE = #{profPhone}
 				WHERE P_ID = #{profId}
 		</update>
 

@@ -22,10 +22,13 @@ public class StudentUpdate implements Command {
 		student.setStudentId(request.getParameter("studentId"));
 		student.setStudentName(request.getParameter("studentName"));
 		student.setStudentPassword(request.getParameter("studentPassword"));
+		student.setStudentPhone(request.getParameter("studentPhone"));
+		student.setStudentScore(Integer.parseInt(request.getParameter("studentScore")));
 		student.setStudentStatus(Integer.parseInt(request.getParameter("studentStatus")));
+		student.setStudentSemester(Integer.parseInt(request.getParameter("studentSemester")));
 		
 		service.updateStudent(student);
-		System.out.println(student.getStudentId());
+		
 		return "studentList.do";
 	}
 

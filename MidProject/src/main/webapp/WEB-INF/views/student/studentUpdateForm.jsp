@@ -7,10 +7,6 @@
 		<h1>학생수정</h1>
 	</div>
 	<form action="studentUpdate.do" method="post">
-		<div>
-			<input type="hidden" id="studentId" name="studentId"
-				value="${students.studentId }">
-
 
 			<div class="row">
 				<div class="col-4"></div>
@@ -58,8 +54,8 @@
 				<div class="row">
 					<div class="col-4"></div>
 					<select class="form-select, col-4" id="studentSemester"
-						name="studentSemester" value="${students.studentSemester }">
-						<option selected disabled value="">학기 선택</option>
+						name="studentSemester">
+						<option selected value="1">학기 선택</option>
 						<option value="1">1학기</option>
 						<option value="2">2학기</option>
 					</select>
@@ -68,9 +64,8 @@
 				<br>
 				<div class="row">
 					<div class="col-4"></div>
-					<select class="form-select, col-4" id="studentStatus"
-						name="studentStatus">
-						<option selected disabled value="">학적 선택</option>
+					<select class="form-select, col-4" id="studentStatus" name="studentStatus">
+						<option selected value="1">학적 선택</option>
 						<option value="1">재학</option>
 						<option value="2">제적</option>
 						<option value="3">퇴학</option>
@@ -96,6 +91,8 @@
 				<%-- 				<c:if test="${role eq 'admin' }"><button type="submit"  formaction='studentDelete.do'>삭제</button></c:if>
  --%>
 			</div>
+			<input type="hidden" id="studentId" name="studentId"
+				value="${students.studentId }">
+			
 	</form>
-</div>
 </div>

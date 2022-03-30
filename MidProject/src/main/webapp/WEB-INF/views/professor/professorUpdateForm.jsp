@@ -41,12 +41,13 @@
 
 			<div class="col-4">
 					<label for="inputPassword4" class="form-label">전화번호</label> 
-					<input type="number" class="form-control" id="pPhone" name="pPhone" placeholder="Please Number...">
+					<input type="number" class="form-control" id="profPhone" name="profPhone" value="${professors.profPhone}">
 				</div>
 				
 				<div class="col-4"></div>
 			</div>
-				
+			
+			
 			</div><br />
 			<div>
 				<button type="button" onclick="location.href='home.do'">홈</button>

@@ -13,7 +13,7 @@
 			</select> 
 			<span> 
 					<input type="text" id="searchVal" name="searchVal" onkeyup="enterkey()">
-					<input type="button" class="btn btn-secondary" id="strBtn" value="검색">
+					<input type="button" class="btn btn-dark" id="strBtn" value="검색">
 			</span>
 			<div></div><br>
 	</div>
@@ -37,7 +37,7 @@
 				<c:if test="${not empty students }">
 					<c:forEach items="${students }" var="s">
 							<c:if test="${role eq 'admin' }">
-							<tr onClick="location.href='studentUpdateForm.do?studentId=${s.studentId }'" align="center">
+							<tr onClick="location.href='studentUpdateForm.do?studentId=${s.studentId }'" >
 							</c:if>
 							<td>${s.studentId }</td> 
 					
@@ -74,7 +74,7 @@
 				</c:if>
 			</tbody>
 		</table>
-			<input type="hidden" id="studentId" name="studentId">
+		<input type="hidden" id="student" name="studentId">
 	 </form>
 	<script>
 	/* 검색 후 업데이트 폼 넘어가는것. 1~4로 구분된 학적 재학 제적등으로 나오게하기. */
@@ -83,7 +83,6 @@
 		frm.action = "studentUpdateForm.do";
 		frm.submit();
 		}
-
 	
 	function searchList(){
 		$.ajax({
@@ -97,33 +96,46 @@
 					searchResult(result);  // json data 를 html로 변환해서 뿌려주는 메소드
 				
 				}else{
-					alert("관련 학생은 존재하지 않습니다.");
+					alert("검색한 결과가 존재하지 않아요!");
 				}
 			}
 			})
 	}
-		function searchResult(data){
+
+	function searchResult(data){
 		var tb = $("#studentBody");
 		$("#studentBody").empty();
 		
 	 	$.each(data, function(index, item){
 			var html = $("<tr align='center'></tr>").attr({
-				'onclick' : 'studentContents("'+item.studentId+'")'
+				'onmouseover' : 'this.style.background="#fcecae";',
+				'onmouseleave' : 'this.style.background="#FFFFFF";',
+				'onclick' : 'studentContents('+item.studentId+')'
 			}).append(
 					$("<td></td>").text(item.studentId),
 					$("<td></td>").text(item.studentName),
 					$("<td></td>").text(item.studentBirth),
 					$("<td></td>").text(item.studentGrade),
 		 			$("<td></td>").text(item.studentSemester),
-					$("<td></td>").text(item.studentPhone), 
-					$("<td></td>").text(item.studentStatus)
+					$("<td></td>").text(item.studentPhone)
 			);
+			if(item.studentStatus == 1){
+				$(html).append($("<td></td>").text("재학"))
+			}else if(item.studentStatus == 2){
+				$(html).append($("<td></td>").text("제적"))
+			}else if(item.studentStatus == 3){
+				$(html).append($("<td></td>").text("퇴학"))
+			}else if(item.studentStatus == 4){
+				$(html).append($("<td></td>").text("휴학"))
+			}
+			$("<td></td>").text()
 			tb.append(html)
 		});
 		
 		$("#contents").append(tb);
 		
 		}
+	
 		strBtn.addEventListener('click', searchList);
 		function enterkey(){
 			if(window.event.keyCode == 13){

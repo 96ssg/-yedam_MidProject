@@ -54,7 +54,7 @@
 			<div>
 		 			<div class="col-4"></div>
 						<select class="form-select, col-2" id="dId" name="dId">
-			   				<option selected disabled value="">학과 선택</option>
+			   				<option selected value="1">학과 선택</option>
 			   				<option value="001">국어국문학과</option>
 			   				<option value="002">응용생명과학부</option>
 			   				<option value="003">전자공학과</option>
@@ -62,7 +62,7 @@
 		   				</select>
 	 			
 	 					<select class="form-select, col-2" id="sStatus" name="sStatus">
-		   						 	<option selected disabled value="">학적 선택</option>
+		   						 	<option selected value="1">학적 선택</option>
 		   						 	<option value="1">재학</option>
 		    						<option value="2">제적</option>
 		    						<option value="3">퇴학</option>
@@ -76,14 +76,14 @@
 	 			<div class="row">
 		 			<div class="col-4"></div>
 						<select class="form-select, col-2" id="sGrade" name="sGrade">
-		   						 	<option selected disabled value="">학년 선택</option>
+		   						 	<option selected value="1">학년 선택</option>
 		   						 	<option value="1">1학년</option>
 		    						<option value="2">2학년</option>
 		    						<option value="3">3학년</option>
 		    						<option value="4">4학년</option>
 								</select>
 						<select class="form-select, col-2" id="sSemester" name="sSemester">
-		   						 	<option selected disabled value="">학기 선택</option>
+		   						 	<option selected value="1">학기 선택</option>
 		   						 	<option value="1">1학기</option>
 		    						<option value="2">2학기</option>
 								</select>

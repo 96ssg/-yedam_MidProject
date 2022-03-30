@@ -9,15 +9,15 @@
 			<tr>
 				<td>사용중인 비밀번호</td>
 				<td><input type="password" name="currentPassword"
-					id="currentPassword"></td>
+					id="currentPassword" onkeyup="enterkey()"></td>
 			</tr>
 			<tr>
 				<td>새 비밀번호</td>
-				<td><input type="password" name="password" id="password"></td>
+				<td><input type="password" name="password" id="password" onkeyup="enterkey()"></td>
 			</tr>
 			<tr>
 				<td>새 비밀번호 확인</td>
-				<td><input type="password" name="password2"></td>
+				<td><input type="password" name="password2" onkeyup="enterkey()"></td>
 			</tr>
 		</table>
 		<br>
@@ -47,6 +47,10 @@
 				}
 			
 		})
-
+	}
+	function enterkey() {
+		if (window.event.keyCode == 13) {
+			passwordCheck();
+		}
 	}
 	</script>

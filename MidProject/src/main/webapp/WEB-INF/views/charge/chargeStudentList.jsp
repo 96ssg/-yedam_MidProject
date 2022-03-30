@@ -1,13 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>담당 지도학생 목록</title>
-</head>
-<body>
+<div class="col-lg-10">
 	<h1 onclick="location.href='courseInsertList.do'">내 강의 목록</h1>
 	<h1>지도학생 목록</h1>
 	<table class="table">
@@ -26,7 +20,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-	
+	</div>
 	<script>
 		const students = document.querySelectorAll('.student');
 		students.forEach( student => {
@@ -35,5 +29,3 @@
 				location.href = "studentCourseList.do?studentId=" + studentId
 		})});
 	</script>
-</body>
-</html>

@@ -1,13 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>courseDetail.do</title>
-</head>
-<body>
+<div class="col-lg-10">
 	<h1>성적 입력</h1>
 	<h3 id="semesterTab" onclick="toggle('semester')">학기</h3>
 	<h3 id="allTab"onclick="toggle('all')">전체</h3>
@@ -70,7 +64,7 @@
 	</div>
 	
 	<input type="button" onclick="location.href='courseInsertList.do'" value="목록">
-
+</div>
 	<script>
 		// 탭
 		function toggle(tab) {
@@ -157,9 +151,4 @@
 			if (gpa >= 60) {selectedRow.children[6].children[0].value = 'D'; return;}
 			if (gpa < 60) selectedRow.children[6].children[0].value = 'F';
 		}
-		
-		
 	</script>
-
-</body>
-</html>

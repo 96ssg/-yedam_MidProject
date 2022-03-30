@@ -1,14 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<div style="width:10%; display:inline; float:left;">
+	<div class="col-lg-2 px-5" style="height: 70vh">
 		<span class="fs-4">My Page</span>
 		<hr>
 		<ul class="nav nav-pills flex-column mb-auto">
@@ -27,6 +20,3 @@
 		</ul>
 		<hr>
 	</div>
-	
-</body>
-</html>

@@ -21,6 +21,7 @@
 	</environments>
 	<mappers>
 		<mapper resource="co/yedam/MidProject/home/service/login-map.xml" />
+		<mapper resource="co/yedam/MidProject/department/service/department-map.xml" />
 		<mapper resource="co/yedam/MidProject/board/service/board-map.xml" />
 		<mapper resource="co/yedam/MidProject/lecture/service/lecture-mapper.xml" />
 		<mapper resource="co/yedam/MidProject/course/service/course-map.xml" />

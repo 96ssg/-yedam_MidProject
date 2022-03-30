@@ -35,13 +35,13 @@
 
 	<nav>
 	  <ul class="pagination justify-content-center">
-	    <li class="page-item" id="prevBtn">
+	    <li class="page-item" id="prevBtn" onclick="onPrevBtn()">
 	      <a class="page-link" aria-label="Previous">
 	        <span aria-hidden="true">&laquo;</span>
 	      </a>
 	    </li>
 	    
-	    <li class="page-item" id="nextBtn">
+	    <li class="page-item" id="nextBtn" onclick="onNextBtn()">
 	      <a class="page-link" aria-label="Next">
 	        <span aria-hidden="true">&raquo;</span>
 	      </a>
@@ -62,14 +62,14 @@
 	history.pushState(null, null, 'boardList.do');
 	
 	// 페이지 버튼 그룹핑을 위한 태그
-	const pagebutton = document.createElement('pagebutton');
-	prevBtn.after(pagebutton);
+	const pageButton = document.createElement('pagebutton');
+	pageButton.setAttribute('id', 'pagebutton')
+	prevBtn.after(pageButton);
 	
 	let pageGroup = document.createElement('pageGroup');
 	pageGroup.setAttribute('id','pageGroup-1');
-	pageGroup.setAttribute('data-status','on')
 	pageGroup.setAttribute('style','');
-	pagebutton.append(pageGroup);
+	pageButton.append(pageGroup);
 	
 	// 첫 화면 출력
 	window.onload = pagination(${boardList});
@@ -98,10 +98,8 @@
 					if (parseInt(pageNum/10) === group) {
 						group++;
 						
-						console.log('new Page Group')
 						const newPageGroup = document.createElement('pageGroup');
 						newPageGroup.setAttribute('id','pageGroup-'+group);
-						newPageGroup.setAttribute('data-status','off');
 						newPageGroup.setAttribute('style','display: none');
 						
 						// 이전 페이지 그룹 뒤에 추가
@@ -136,6 +134,10 @@
 			tr.appendChild(boardDate);
 			resultList.appendChild(tr);
 		}
+		
+		const lastPageGroup = pagebutton.lastChild;
+		if (lastPageGroup.innerHTML == '') lastPageGroup.remove();
+		
 		boardDetail();
 		document.querySelector('#page-1').click();
 	}
@@ -157,7 +159,6 @@
 		
 		// 해당하는 페이지 그룹에 추가
 		const id = 'pageGroup-'+group;
-		
 		document.getElementById(id).append(li);
 	}
 	
@@ -172,14 +173,24 @@
 		}
 	}
 	
+	// 이전 10개 페이지
 	function onPrevBtn() {
-		const currentPageGroup = document.querySelector('pageGroup[data-status=on]');
-		
-		
+		const currentPageGroup = document.querySelector('pageGroup[style=""]');
+		if (currentPageGroup.id != pageButton.firstChild.id) {
+			currentPageGroup.style = 'display: none';
+			currentPageGroup.previousSibling.style = '';
+			currentPageGroup.previousSibling.firstChild.click();
+		}
 	}
+	
+	// 다음 10개 페이지
 	function onNextBtn() {
-		const currentPageGroup = document.querySelector('pageGroup[data-status=on]');
-		const currentPageNum = parseInt(currnetPageGroup.id.substring(10));
+		const currentPageGroup = document.querySelector('pageGroup[style=""]');
+		if (currentPageGroup.id != pageButton.lastChild.id) {
+			currentPageGroup.style = 'display: none';
+			currentPageGroup.nextSibling.style = '';
+			currentPageGroup.nextSibling.firstChild.click();
+		}
 	}
 	
 	
@@ -225,7 +236,13 @@
 			resultList.innerHTML = '';
 			
 			// 결과 출력
-// 			pageBtn.innerHTML = '';
+			pageButton.innerHTML = '';
+			let pageGroup = document.createElement('pageGroup');
+			pageGroup.setAttribute('id','pageGroup-1');
+			pageGroup.setAttribute('data-status','on')
+			pageGroup.setAttribute('style','');
+			pageButton.append(pageGroup);
+			
 			pagination(result);
 			boardDetail();
 		})

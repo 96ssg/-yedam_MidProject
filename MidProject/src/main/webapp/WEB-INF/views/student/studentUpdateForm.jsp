@@ -78,14 +78,14 @@
 
 			</div>
 			<br />
-			<div>
-				<button type="button" class="btn btn-secondary btn-sm" onclick="location.href='home.do'">홈</button>&nbsp;&nbsp;&nbsp;
+			<div align="right">
+				<button type="button" class="btn btn-outline-secondary" onclick="location.href='home.do'">홈</button>&nbsp;&nbsp;&nbsp;
 				<c:if test="${role eq 'admin' }">
-					<button type="submit" class="btn btn-secondary btn-sm">학생 수정</button>
+					<button type="submit" class="btn btn-outline-secondary">학생 수정</button>
 				</c:if>
 				&nbsp;&nbsp;&nbsp;
 				<c:if test="${role eq 'admin' }">
-					<button type="reset" class="btn btn-secondary btn-sm">취 소</button>
+					<button type="reset" class="btn btn-outline-secondary">취 소</button>
 				</c:if>
 				&nbsp;&nbsp;&nbsp;
 				<%-- 				<c:if test="${role eq 'admin' }"><button type="submit"  formaction='studentDelete.do'>삭제</button></c:if>

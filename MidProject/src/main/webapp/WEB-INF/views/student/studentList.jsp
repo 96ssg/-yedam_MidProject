@@ -73,8 +73,8 @@
 					</c:forEach>
 				</c:if>
 			</tbody>
-			
 		</table>
+			<input type="hidden" id="studentId" name="studentId">
 	 </form>
 	<script>
 	/* 검색 후 업데이트 폼 넘어가는것. 1~4로 구분된 학적 재학 제적등으로 나오게하기. */
@@ -108,7 +108,7 @@
 		
 	 	$.each(data, function(index, item){
 			var html = $("<tr align='center'></tr>").attr({
-				'onclick' : 'studentContents('+item.studentId+')'
+				'onclick' : 'studentContents("'+item.studentId+'")'
 			}).append(
 					$("<td></td>").text(item.studentId),
 					$("<td></td>").text(item.studentName),

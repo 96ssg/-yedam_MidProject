@@ -63,6 +63,7 @@ import co.yedam.MidProject.student.command.StudentInsertForm;
 import co.yedam.MidProject.student.command.StudentList;
 import co.yedam.MidProject.student.command.StudentUpdate;
 import co.yedam.MidProject.student.command.StudentUpdateForm;
+import co.yedam.MidProject.student.command.StudentView;
 
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -84,6 +85,7 @@ public class FrontController extends HttpServlet {
 		map.put("/studentUpdate.do", new StudentUpdate());
 		map.put("/studentDelete.do", new StudentDelete());
 		map.put("/ajaxStudentSearch.do", new AjaxStudentSearch());
+		map.put("/studentView.do", new StudentView()); //마이페이지 학생 상세정보
 		
 		//교수 등록 수정 조회
 		map.put("/professorInsertForm.do", new ProfessorInsertForm());
@@ -102,8 +104,6 @@ public class FrontController extends HttpServlet {
 		map.put("/lectureDelete.do", new LectureDelete()); //강의 삭제
 		map.put("/lectureView.do", new LectureView()); //강의 상세정보
 		map.put("/lectureUpdate.do", new LectureUpdate()); //강의 정보수정
-
-		// 진환
 		map.put("/checkPassword.do", new CheckPassword()); // 본인확인
 		map.put("/myPage.do", new MyPage()); // 마이페이지
 		map.put("/changePasswordForm.do", new ChangePasswordForm()); // 비밀번호 변경폼 호출

@@ -16,8 +16,6 @@
 			<li><a href="chargeStudentList.do" class="nav-link link-dark">지도학생관리</a></li>
 			</c:otherwise>
 			</c:choose>
-			<li><a href="#" class="nav-link link-dark">?</a></li>
-			<li><a href="#" class="nav-link link-dark">?</a></li>
 		</ul>
 		<hr>
 	</div>

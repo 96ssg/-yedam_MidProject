@@ -56,7 +56,7 @@ WHERE L_ID = #{lectureId}
 SELECT * FROM LECTURE
 WHERE
 	<if test ='key == "전체"'>
-	1 = 1
+	L_ID LIKE '%'||#{val}||'%' OR P_ID LIKE '%'||#{val}||'%' OR L_NAME LIKE '%'||#{val}||'%'
 	</if>
 	<if test ='key == "강의번호"'>
 	L_ID LIKE '%'||#{val}||'%'

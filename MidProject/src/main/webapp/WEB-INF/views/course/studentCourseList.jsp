@@ -4,8 +4,10 @@
 
 <div class="col-lg-10">
 	<h1>성적 조회</h1>
-	<h3 id="total">전체성적</h3>
-	<h3 id="semester">학기성적</h3>
+	<ul class="nav nav-tabs">
+		<li class="nav-item"><a id="total" class="nav-link">전체학기</a></li>
+		<li class="nav-item"><a id="semester" class="nav-link">해당학기</a></li>
+	</ul>
 	<div id="totalGrade">
 		<c:if test="${empty courseList}">
 			<h5>수강 정보가 없습니다.</h5>
@@ -66,7 +68,7 @@
 	</div>
 	
 	<c:if test="${role ne 'student' }">
-		<input type="button" onclick="location.href='chargeStudentList.do'"
+		<input type="button" class="btn btn-outline-secondary" onclick="location.href='chargeStudentList.do'"
 			value="목록">
 	</c:if>
 </div>

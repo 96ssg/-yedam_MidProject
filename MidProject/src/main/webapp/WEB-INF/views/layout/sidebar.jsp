@@ -12,11 +12,10 @@
 			<li><a href="studentCourseList.do" class="nav-link link-dark">성적</a></li>
 			</c:when>
 			<c:otherwise>
-			<li><a href="professorCourseList.do" class="nav-link link-dark">성적관리</a></li>
+			<li><a href="courseInsertList.do" class="nav-link link-dark">내 강의/성적관리</a></li>
+			<li><a href="chargeStudentList.do" class="nav-link link-dark">지도학생관리</a></li>
 			</c:otherwise>
 			</c:choose>
-			<li><a href="#" class="nav-link link-dark">?</a></li>
-			<li><a href="#" class="nav-link link-dark">?</a></li>
 		</ul>
 		<hr>
 	</div>

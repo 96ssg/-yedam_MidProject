@@ -4,9 +4,9 @@
 	window.onload = function() {
 		frm.password.focus();
 	}
-	
-	function enterkey(){
-		if(window.event.keyCode == 13){
+
+	function enterkey() {
+		if (window.event.keyCode == 13) {
 			passwdCheck();
 		}
 	}
@@ -22,29 +22,14 @@
 		frm.submit();
 	}
 </script>
-<div class="container" align="center">
+<div class="container" align="center" style="height: 70vh">
 	<form id="frm" name="frm" onsubmit="return false">
-		<table>
-			<tr>
-				<td align="center">:::비밀번호 확인:::</td>
-			</tr>
-			<tr>
-				<td>
-					<table border="1">
-						<tr>
-							<td>현재 비밀번호</td>
-							<td><input type="password" name="password" onkeyup="enterkey()"
-								placeholder="본인확인을 위해 비밀번호를 입력해주세요." required="required">
-							</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<button type="button" class="btn btn-outline-secondary" onclick="passwdCheck();">확인</button>
-				</td>
-			</tr>
-		</table>
+		<div class="input-group my-4">
+			비밀번호 확인
+			<input type="password" name="password" onkeyup="enterkey()"
+				placeholder="본인확인을 위해 비밀번호를 입력해주세요." required="required">
+			<button type="button" class="btn btn-outline-secondary"
+				onclick="passwdCheck();">확인</button>
+		</div>
 	</form>
 </div>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div class="container-md">
+<div class="container-md" style="height: 70vh">
 	<div class="fs-2 px-3 my-3">공지사항</div>
 	<hr>
 	

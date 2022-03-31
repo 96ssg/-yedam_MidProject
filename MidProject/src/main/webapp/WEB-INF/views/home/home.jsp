@@ -1,8 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <div class="container">
-	<div class="row d-flex justify-content-around pt-3" style="min-height: 70vh">
+
+	  <input type="checkbox" class="btn-check" id="myInfoBtn" autocomplete="off" checked>
+	  <label class="btn btn-outline-secondary" for="myInfoBtn">내 정보</label>
+	
+	  <input type="checkbox" class="btn-check" id="timetableBtn" autocomplete="off" checked>
+	  <label class="btn btn-outline-secondary" for="timetableBtn">시간표</label>
+	
+	  <input type="checkbox" class="btn-check" id="boardBtn" autocomplete="off" checked>
+	  <label class="btn btn-outline-secondary" for="boardBtn">학과공지</label>
+	
+	
+	<div class="row d-flex justify-content-around pt-3" style="min-height: 70vh" id="viewGroup">
+
 		<div id="myInfo" class="col-lg-4 border m-3" style="width: 40vh; height: 40vh;">
 			<div class="p-5">
 				<c:if test="${role eq 'student' }">
@@ -42,170 +55,135 @@
 						<div class="col-5 mb-4">직책</div><div class="col-7">교수</div>
 					</c:if>
 				</div>
+				
 			</div>
 		</div>
 	
 		<!-- 시간표 -->
-		<div id="timetable" class="col-lg-5 border m-3" style="width: 50vh; height: 50vh;">
-			<div class="fs-3 m-3 text-center">강의 목록</div>
-			<div class="row text-center">
-				<div class="col-1"></div>
-				<div class="col border-bottom">월</div>
-				<div class="col border-bottom">화</div>
-				<div class="col border-bottom">수</div>
-				<div class="col border-bottom">목</div>
-				<div class="col border-bottom">금</div>
-			</div>
-			<div class="row">
-				<div class="col-1">1</div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-			</div>
-			<div class="row">
-				<div class="col-1">2</div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-			</div>
-			<div class="row">
-				<div class="col-1">3</div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-			</div>
-			<div class="row">
-				<div class="col-1">4</div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-			</div>
-			<div class="row">
-				<div class="col-1">5</div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-			</div>
-			<div class="row">
-				<div class="col-1">6</div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-			</div>
-			<div class="row">
-				<div class="col-1">7</div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-			</div>
-			<div class="row">
-				<div class="col-1">8</div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-			</div>
-			<div class="row">
-				<div class="col-1">9</div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-				<div class="col border-bottom"></div>
-			</div>
+		<div id="timetable" class="col-lg-5 border m-3" style="width: 50vh; height: 60vh; padding-right: 2vh">
+			<div class="h1 m-3 text-center">시간표</div>
+	
+			<table class="table text-center">
+				<colgroup>
+					<col width="10%"/>
+					<col/>
+					<col/>
+					<col/>
+					<col/>
+					<col/>
+				</colgroup>
+				<thead>
+					<tr><th></th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th></tr>
+				</thead>
+				<tbody>
+					<tr><td>1</td><td id="MON1"></td><td id="TUE1"></td><td id="WED1"></td><td id="THR1"></td><td id="FRI1"></td></tr>
+					<tr><td>2</td><td id="MON2"></td><td id="TUE2"></td><td id="WED2"></td><td id="THR2"></td><td id="FRI2"></td></tr>
+					<tr><td>3</td><td id="MON3"></td><td id="TUE3"></td><td id="WED3"></td><td id="THR3"></td><td id="FRI3"></td></tr>
+					<tr><td>4</td><td id="MON4"></td><td id="TUE4"></td><td id="WED4"></td><td id="THR4"></td><td id="FRI4"></td></tr>
+					<tr><td>5</td><td id="MON5"></td><td id="TUE5"></td><td id="WED5"></td><td id="THR5"></td><td id="FRI5"></td></tr>
+					<tr><td>6</td><td id="MON6"></td><td id="TUE6"></td><td id="WED6"></td><td id="THR6"></td><td id="FRI6"></td></tr>
+					<tr><td>7</td><td id="MON7"></td><td id="TUE7"></td><td id="WED7"></td><td id="THR7"></td><td id="FRI7"></td></tr>
+					<tr><td>8</td><td id="MON8"></td><td id="TUE8"></td><td id="WED8"></td><td id="THR8"></td><td id="FRI8"></td></tr>
+					<tr><td>9</td><td id="MON9"></td><td id="TUE9"></td><td id="WED9"></td><td id="THR9"></td><td id="FRI9"></td></tr>
+					<tr><td colspan="6">&nbsp;</td></tr>
+					<tr style="border-bottom: 1px solid white;"><td colspan="2" class="pt-3 fs-4 fw-bold" id="lectureInfo1"></td><td colspan="4" class="pt-3 fs-4 fw-bold" id="lectureInfo2"></td></tr>
+				</tbody>
+			</table>
 		</div>
-			
-<!-- 		<table class="table"> -->
-<!-- 			<thead> -->
-<!-- 				<tr align="center"> -->
-<!-- 					<th width="10%">시간</th> -->
-<!-- 					<th>월</th> -->
-<!-- 					<th>화</th> -->
-<!-- 					<th>수</th> -->
-<!-- 					<th>목</th> -->
-<!-- 					<th>금</th> -->
-<!-- 				</tr> -->
-<!-- 			</thead> -->
-<!-- 			<tbody> -->
-<!-- 				<tr id="MON"></tr> -->
-<!-- 				<tr id="TUE"></tr> -->
-<!-- 				<tr id="WED"></tr> -->
-<!-- 				<tr id="THR"></tr> -->
-<!-- 				<tr id="FRI"></tr> -->
-<!-- 			</tbody> -->
-<!-- 		</table> -->
-	</div>
 
-	<!-- 공지사항 -->
-	<div class="col-md-5 border">
-		<div>학과공지</div>
-		<table class="table">
-			<thead>
-				<tr align="center">
-					<th width="80%">제목</th>
-					<th>작성일</th>
-				</tr>
-			</thead>
-			<tbody id="notice">
-			</tbody>
-		</table>
+		<!-- 공지사항 -->
+		<div class="col-md-7 border m-3" id="board">
+			<div class="h1 m-3">학과공지</div>
+			<table class="table table-hover">
+				<thead>
+					<tr align="center">
+						<th width="80%">제목</th>
+						<th>작성일</th>
+					</tr>
+				</thead>
+				<tbody id="notice">
+				</tbody>
+			</table>
+		</div>
 	</div>
+	
+	<div class="fixed-bottom">아래쪽 스티커</div>
+	
 </div>
 <script>
-	const role = '<c:out value="${role}"/>';
+	// 홈 화면 정보 출력
+	const role = '${role}';
+	
 	fetch(role + 'Info.do')
 	.then(response => response.text())
 	.then(result => {
-		const homeInfo = result.split('~');
-		
+		const homeInfo = result.split('^~');
 		const lectureList = JSON.parse(homeInfo[0]);
+		const colorList = ['rgb(0, 137, 208)','rgb(204, 0, 76)','rgb(205, 235, 204)','rgb(100, 96, 170)','rgb(252, 183, 17)','rgb(13, 177, 75)'];
+		let colorOrder = 0;
+		
 		lectureList.forEach(element =>{
-			let hr = document.createElement('hr');
-			let p = document.createElement('p');
-			p.innerText = element.lectureName;
-// 			timetable.append(p);
+			const lectureName = element.lectureName;
+			const lectureDay = element.lectureDay;
+			const lectureStart = element.lectureStart;
+			const lectureEnd = element.lectureEnd;
+			const lectureRoom = element.lectureRoom;
+
 			
-			p = document.createElement('p');
-			p.innerText = element.lectureRoom;
-// 			timetable.append(p);
-// 			timetable.append(hr);				
-			
+			for (let i=Number(lectureStart); i< Number(lectureEnd)+1; i++) {
+				const td = document.getElementById(lectureDay + i);
+				
+				const color = colorList[colorOrder];
+				td.style.backgroundColor = color;
+				td.style.borderBottom = '1px solid ' + color;
+				
+				td.addEventListener('mouseover', () => {
+					lectureInfo1.innerHTML = '강의명 <br>강의실 ';
+					lectureInfo2.innerHTML = lectureName + '<br>' + lectureRoom;
+				})
+			}
+			colorOrder++;
 		})
 		
 		const noticeList = JSON.parse(homeInfo[1]);
 		noticeList.forEach(element =>{
 			let tr = document.createElement('tr');
-			let td = document.createElement('td');
-			td.innerText = element.boardId;
-			tr.append(td);
 			
 			td = document.createElement('td');
 			td.innerText = element.boardTitle;
 			tr.append(td);
 
 			td = document.createElement('td');
-			td.innerText = element.boardDate;
+			td.setAttribute('class','text-center');
+			
+			let date = element.boardDate.replace(',','').replace('월','').split(' ');
+			date[0] = (date[0].length < 2)? '0'+date[0] : date[0];
+			date[1] = (date[1].length < 2)? '0'+date[1] : date[1];
+			date = date[2]+'-'+date[0]+'-'+date[1]
+			
+			td.innerText = date;
 			tr.append(td);
 
-			td = document.createElement('td');
-			td.innerText = element.boardWriter;
-			tr.append(td);
-// 			notice.append(tr);
+			notice.append(tr);
 		})
 	})
+	
+	// 홈 화면 컴포넌트 버튼
+	const myInfoDiv = document.querySelector('#myInfo');
+	const timetableDiv = document.querySelector('#timetable');
+	const boardDiv = document.querySelector('#board');
+	
+	myInfoBtn.addEventListener('change', function() {
+		if (!this.checked) myInfoDiv.remove()
+		if (this.checked) viewGroup.append(myInfoDiv)
+	})
+	timetableBtn.addEventListener('change', function() {
+		if (!this.checked) timetableDiv.remove()
+		if (this.checked) viewGroup.append(timetableDiv)
+	})
+	boardBtn.addEventListener('change', function() {
+		if (!this.checked) boardDiv.remove()
+		if (this.checked) viewGroup.append(boardDiv)
+	})
+	
 </script>

@@ -64,11 +64,7 @@ public class AjaxProfessorInfo implements Command {
 		}
 		
 		String notice = gson.toJson(boards);
-		data = data + "~" + notice;
-		
-		
-		
-		
+		data = data + "^~" + notice;
 		
 		
 		

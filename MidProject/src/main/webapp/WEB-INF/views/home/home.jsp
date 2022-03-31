@@ -60,7 +60,7 @@
 		</div>
 	
 		<!-- 시간표 -->
-		<div id="timetable" class="col-lg-5 border m-3" style="width: 50vh; height: 60vh; padding-right: 2vh">
+		<div id="timetable" class="col-lg-5 border m-3" style="width: 50vh; height: 70vh; padding-right: 2vh">
 			<div class="h1 m-3 text-center">시간표</div>
 	
 			<table class="table text-center">
@@ -92,7 +92,7 @@
 		</div>
 
 		<!-- 공지사항 -->
-		<div class="col-md-7 border m-3" id="board">
+		<div class="col-md-6 border m-3" id="board" style="height:50vh">
 			<div class="h1 m-3">학과공지</div>
 			<table class="table table-hover">
 				<thead>
@@ -105,6 +105,7 @@
 				</tbody>
 			</table>
 		</div>
+		
 	</div>
 	
 	<div class="fixed-bottom">아래쪽 스티커</div>
@@ -159,12 +160,18 @@
 			let date = element.boardDate.replace(',','').replace('월','').split(' ');
 			date[0] = (date[0].length < 2)? '0'+date[0] : date[0];
 			date[1] = (date[1].length < 2)? '0'+date[1] : date[1];
-			date = date[2]+'-'+date[0]+'-'+date[1]
+			date = date[0]+'-'+date[1]
 			
 			td.innerText = date;
 			tr.append(td);
 
 			notice.append(tr);
+			
+			tr.addEventListener('click', () => {
+				
+				location.href="boardDetail.do?boardId=" + element.boardId;
+			})
+			
 		})
 	})
 	

@@ -12,7 +12,7 @@
 		<div class="fs-2 px-3 mt-3">${board.boardTitle }</div>
 		<div class="fs-6 px-3 my-1">${board.boardDate }</div>
 		<hr>
-		<div class="fs-4 px-3 my-1" style="height: 50vh">${board.boardContent }</div>
+		<div class="fs-4 px-3 my-1" style="min-height: 50vh">${board.boardContent }</div>
 		<hr>
 		<div class="mb-5" align="right">
 			<form method="post" id="frm">

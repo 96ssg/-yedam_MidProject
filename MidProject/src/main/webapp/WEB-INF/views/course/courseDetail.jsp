@@ -10,15 +10,15 @@
 	
 	<div id="semesterCourse">
 		<h6>최소 점수는 1점입니다. 0점 입력시 성적 미입력 상태로 반영됩니다.</h6>
-		<table class="table">
+		<table class="table table-hover">
 			<tr>
-				<td>강의번호</td>
-				<td>학생번호</td>
-				<td>수강연도</td>
-				<td>수강학기</td>
-				<td>중간고사 성적</td>
-				<td>기말고사 성적</td>
-				<td colspan="2">평점</td>
+				<th>강의번호</th>
+				<th>학생번호</th>
+				<th>수강연도</th>
+				<th>수강학기</th>
+				<th>중간고사 성적</th>
+				<th>기말고사 성적</th>
+				<th colspan="2">평점</th>
 			</tr>
 			<c:forEach var="course" items="${semesterCourseList }">
 				<tr class="course">
@@ -42,13 +42,13 @@
 		<c:if test="${not empty allCourseList }">
 			<table class="table">
 			<tr>
-				<td>강의번호</td>
-				<td>학생번호</td>
-				<td>수강연도</td>
-				<td>수강학기</td>
-				<td>중간고사 성적</td>
-				<td>기말고사 성적</td>
-				<td>평점</td>
+				<th>강의번호</th>
+				<th>학생번호</th>
+				<th>수강연도</th>
+				<th>수강학기</th>
+				<th>중간고사 성적</th>
+				<th>기말고사 성적</th>
+				<th>평점</th>
 			</tr>
 			<c:forEach var="course" items="${allCourseList }">
 				<tr>
@@ -65,9 +65,10 @@
 		</c:if>
 	</div>
 	<div align="right">
-	<input type="button" class="btn btn-outline-secondary" onclick="location.href='courseInsertList.do'" value="목록">
+	<input type="button" class="btn btn-outline-secondary mb-5" onclick="location.href='courseInsertList.do'" value="목록">
 	</div>
 </div>
+
 	<script>
 		// 탭
 		function toggle(tab) {

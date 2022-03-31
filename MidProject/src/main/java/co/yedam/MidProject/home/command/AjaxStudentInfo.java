@@ -70,7 +70,7 @@ public class AjaxStudentInfo implements Command {
 				boards.add(b);
 				count++;
 			}
-			if (count == 4) break;
+			if (count == 5) break;
 		}
 		
 		String notice = gson.toJson(boards);

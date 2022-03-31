@@ -23,7 +23,7 @@
 	<select id="myCourse"
 		resultMap="CourseMap">
 		SELECT * FROM course 
-		<if test='role == "student"'>WHERE s_id=#{id}</if>
+		<if test='role == "student"'>WHERE s_id=#{id} ORDER BY c_year</if>
 		<if test='role == "admin" || role == "professor"'>WHERE l_id=#{id}</if>
 	</select>
 	<insert id="insertCourse"

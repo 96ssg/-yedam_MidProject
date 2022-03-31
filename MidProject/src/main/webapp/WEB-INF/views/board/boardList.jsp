@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div class="container-md" style="height: 70vh">
+<div class="container-md" style="height: 80vh">
 	<div class="fs-2 px-3 my-3">공지사항</div>
 	<hr>
 	
@@ -32,7 +32,13 @@
 		</thead>
 		<tbody id="resultList"></tbody>
 	</table>
-
+	
+	<c:if test="${role eq 'admin' }">
+		<div align="right">
+			<button class="btn btn-outline-secondary" id="listBtn" onclick='location.href="boardInsertForm.do"'>글쓰기</button>
+		</div>
+	</c:if>
+	
 	<nav>
 	  <ul class="pagination justify-content-center">
 	    <li class="page-item" id="prevBtn" onclick="onPrevBtn()">
@@ -49,11 +55,7 @@
 	  </ul>
 	</nav>
 
-	<c:if test="${role eq 'admin' }">
-		<div align="right">
-			<button class="btn btn-outline-secondary" id="listBtn" onclick='location.href="boardInsertForm.do"'>글쓰기</button>
-		</div>
-	</c:if>
+	
 </div>
 
 <script>

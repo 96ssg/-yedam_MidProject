@@ -5,64 +5,70 @@
 <div class="col-lg-10">
 	<h1>성적 조회</h1>
 	<ul class="nav nav-tabs">
-		<li class="nav-item"><a id="total" class="nav-link">전체학기</a></li>
 		<li class="nav-item"><a id="semester" class="nav-link">해당학기</a></li>
+		<li class="nav-item"><a id="total" class="nav-link">전체학기</a></li>
 	</ul>
-	<div id="totalGrade">
+	<div id="totalGrade" style="display: none">
 		<c:if test="${empty courseList}">
 			<h5>수강 정보가 없습니다.</h5>
 		</c:if>
 	
 		<c:if test="${not empty courseList }">
-					전체
-					<table class="table">
-				<tr>
-					<td>수강연도</td>
-					<td>수강학기</td>
-					<td>강의명</td>
-					<td>중간고사 성적</td>
-					<td>기말고사 성적</td>
-					<td>평점</td>
-				</tr>
-				<c:forEach var="course" items="${courseList }">
-					<tr class="course">
-						<td>${course.courseYear }</td>
-						<td>${course.courseSemester }</td>
-						<td class="lectureName">${course.lectureId }</td>
-						<td>${course.courseMid}</td>
-						<td>${course.courseFinal }</td>
-						<td>${course.courseScore }</td>
+			<table class="table">
+				<thead>
+					<tr>
+						<td>수강연도</td>
+						<td>수강학기</td>
+						<td>강의명</td>
+						<td>중간고사 성적</td>
+						<td>기말고사 성적</td>
+						<td>평점</td>
 					</tr>
-				</c:forEach>
+				</thead>
+				<tbody>
+					<c:forEach var="course" items="${courseList }">
+						<tr class="course">
+							<td>${course.courseYear }</td>
+							<td>${course.courseSemester }</td>
+							<td class="lectureName">${course.lectureId }</td>
+							<td>${course.courseMid}</td>
+							<td>${course.courseFinal }</td>
+							<td>${course.courseScore }</td>
+						</tr>
+					</c:forEach>
+				</tbody>
 			</table>
 		</c:if>
 	</div>
 	
-	<div id="semesterGrade" style="display: none">
+	<div id="semesterGrade">
 		<c:if test="${empty semesterCourseList}">
 			<h5>수강 정보가 없습니다.</h5>
 		</c:if>
-		학기
 		<c:if test="${not empty semesterCourseList }">
 			<table class="table">
-				<tr>
-					<td>수강연도</td>
-					<td>수강학기</td>
-					<td>강의명</td>
-					<td>중간고사 성적</td>
-					<td>기말고사 성적</td>
-					<td>평점</td>
-				</tr>
-				<c:forEach var="course" items="${semesterCourseList }">
-					<tr class="course">
-						<td>${course.courseYear }</td>
-						<td>${course.courseSemester }</td>
-						<td class="lectureName">${course.lectureId }</td>
-						<td>${course.courseMid}</td>
-						<td>${course.courseFinal }</td>
-						<td>${course.courseScore }</td>
+				<thead>
+					<tr>
+						<td>수강연도</td>
+						<td>수강학기</td>
+						<td>강의명</td>
+						<td>중간고사 성적</td>
+						<td>기말고사 성적</td>
+						<td>평점</td>
 					</tr>
-				</c:forEach>
+				</thead>
+				<tbody>
+					<c:forEach var="course" items="${semesterCourseList }">
+						<tr class="course">
+							<td>${course.courseYear }</td>
+							<td>${course.courseSemester }</td>
+							<td class="lectureName">${course.lectureId }</td>
+							<td>${course.courseMid}</td>
+							<td>${course.courseFinal }</td>
+							<td>${course.courseScore }</td>
+						</tr>
+					</c:forEach>
+				</tbody>
 			</table>
 		</c:if>
 	</div>

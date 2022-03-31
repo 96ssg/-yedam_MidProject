@@ -26,7 +26,7 @@
 	</form>
 </div>
 <script type="text/javascript">
-	
+	window.onload = frm.currentPassword.focus();
 	btn.addEventListener('click', passwordCheck);
 	function passwordCheck() {
 		fetch('ajaxChangePassword.do?', {

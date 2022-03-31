@@ -3,18 +3,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script src="js/jquery.min.js"></script>
 <div class="container-md">
-<div class="fs-2 px-3 my-3">강의 목록</div>
+	<div class="fs-2 px-3 my-3">강의 목록</div>
 	<div>
 		<!-- Search Bar Start -->
 		<div class="input-group my-4">
-			<select style="width: 10%" class="form-select-sm" id="searchKey" name="searchKey">
+			<select style="width: 10%" class="form-select-sm" id="searchKey"
+				name="searchKey">
 				<option value="전체">전체</option>
 				<option value="강의번호">강의번호</option>
 				<option value="교수번호">교수번호</option>
 				<option value="강의명">강의명</option>
-			</select> <input type="text" class="form-control" id="searchVal" name="searchVal"
-				onkeyup="enterkey()" placeholder="Search" aria-label="Search">
-			<button class="btn btn-outline-secondary" id="searchBtn" type="button">Search</button>
+			</select> <input type="text" class="form-control" id="searchVal"
+				name="searchVal" onkeyup="enterkey()" placeholder="Search"
+				aria-label="Search">
+			<button class="btn btn-outline-secondary" id="searchBtn"
+				type="button">Search</button>
 		</div>
 		<!-- Search Bar End -->
 		<!-- LectureList Start -->
@@ -24,6 +27,7 @@
 				<table class="table table-hover" id="contents">
 					<thead>
 						<tr align="center">
+							<th width="100">강의번호</th>
 							<th width="200">강의명</th>
 							<th width="50">학점</th>
 							<th width="100">교수명</th>
@@ -37,16 +41,20 @@
 							</tr>
 						</c:if>
 						<c:if test="${not empty lectures }">
-							<c:forEach items="${lectures }" var="l">
+							<tr>
+									<td align="center"colspan="5">내 학과 강의목록</td>
+							</tr>
+							<c:forEach items="${lectures }" var="l" varStatus="status">
 								<tr align="center"
 									onclick='lectureContents(${l.lectureId},"${l.professorId }")'>
+									<td>${l.lectureId }</td>
 									<td>${l.lectureName}</td>
 									<td>${l.lectureCredit}</td>
 									<td class="profId">${l.professorId}</td>
 									<td onclick="event.stopPropagation()"><c:if
 											test="${role eq 'admin' }">
 											<button type="button" class="btn btn-outline-secondary"
-												onclick="lectureDelete(${l.lectureId})">삭제</button>
+												onclick="deleteLectures(${l.lectureId})">삭제</button>
 										</c:if></td>
 								</tr>
 							</c:forEach>
@@ -55,9 +63,9 @@
 				</table>
 			</div>
 			<br />
-			<div>
+			<div align="right">
 				<c:if test="${role eq 'admin' }">
-					<button type="button" class="btn btn-outline-secondary"
+					<button type="button" class="btn btn-outline-secondary mb-5"
 						onclick="location.href='lectureInsertForm.do'">강의등록</button>
 				</c:if>
 			</div>
@@ -82,12 +90,6 @@
 				} 
 			})
 		}
-	}
-	/* 항목 삭제 */
-	function lectureDelete(k){
-		frm.lectureId.value = k;
-		frm.action = "lectureDelete.do";
-		frm.submit();
 	}
 	/* 강의 상세정보 페이지 호출 */
 	function lectureContents(n,m){
@@ -119,13 +121,14 @@
 	$("#lectureBody").empty();
 	
 	$.each(data, function(index, item){
-		var html = $("<tr align='center'></tr>").attr({
+		var html = $("<tr align='center'></td>").attr({
 			'onclick' : 'lectureContents('+item.lectureId+', "'+item.professorId+'")'
 		}).append(
-				$("<td></td>").text(item.lectureName),
-				$("<td></td>").text(item.lectureCredit),
+				$("<td/>").text(item.lectureId),
+				$("<td/>").text(item.lectureName),
+				$("<td/>").text(item.lectureCredit),
 				$("<td class='profId'></td>").text(item.professorId),
-				$("<td></td>")
+				$("<td/>")
 		);
 		tb.append(html)
 	});
@@ -140,4 +143,25 @@
 		searchList();
 	}
 }
+	function deleteLectures(lectureId) {
+		const isDel = confirm('강의를 삭제 하시겠습니까?');
+		if (isDel == false) return;
+		
+		fetch('ajaxLectureDelete.do?', {
+			method: 'post',
+			headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+			body: 'lectureId=' + lectureId
+		})
+		.then(response => response.text())
+		.then(result => {
+			if (result != 'deleted') {
+				alert('진행중인 강의는 삭제할 수 없습니다.')
+				return;
+			}
+			
+			// 취소 후 강의리스트 목록 재호출
+			alert('삭제되었습니다.');
+			document.location.reload();
+		})
+	}
 </script>

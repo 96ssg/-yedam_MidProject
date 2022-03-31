@@ -5,8 +5,10 @@
 
 <div class="row mx-3">
 	<div class="col-md-4 fs-1 px-5 my-3">
-		<div class="border border-danger border-5 rounded rounded-3 px-2 text-center" style="width: 100px">
-			<a class="text-reset" style="text-decoration: none" href="home.do">5조</a>
+		<div class="">
+			<a class="text-reset" style="text-decoration: none" href="home.do">
+				<img width="200px" alt="logo" src="images/logo.png">
+			</a>
 		</div>
 	</div>
 	<div class="col-md-4"></div>

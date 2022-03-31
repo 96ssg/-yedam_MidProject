@@ -37,7 +37,7 @@ import co.yedam.MidProject.home.command.Login;
 import co.yedam.MidProject.home.command.LoginForm;
 import co.yedam.MidProject.home.command.Logout;
 import co.yedam.MidProject.lecture.command.AjaxLectureSearch;
-import co.yedam.MidProject.lecture.command.LectureDelete;
+import co.yedam.MidProject.lecture.command.AjaxLectureDelete;
 import co.yedam.MidProject.lecture.command.LectureInsert;
 import co.yedam.MidProject.lecture.command.LectureInsertForm;
 import co.yedam.MidProject.lecture.command.LectureList;
@@ -46,6 +46,7 @@ import co.yedam.MidProject.lecture.command.LectureUpdateForm;
 import co.yedam.MidProject.lecture.command.LectureView;
 import co.yedam.MidProject.myPage.common.AjaxChangePassword;
 import co.yedam.MidProject.myPage.common.ChangePasswordForm;
+import co.yedam.MidProject.myPage.common.ChangePhone;
 import co.yedam.MidProject.myPage.common.CheckPassword;
 import co.yedam.MidProject.myPage.common.CheckPasswordForm;
 import co.yedam.MidProject.myPage.common.MyPage;
@@ -101,7 +102,7 @@ public class FrontController extends HttpServlet {
 		map.put("/lectureInsertForm.do", new LectureInsertForm()); //강의 등록폼 호출
 		map.put("/lectureInsert.do", new LectureInsert()); //강의 등록
 		map.put("/lectureUpdateForm.do", new LectureUpdateForm()); //강의 수정폼 호출
-		map.put("/lectureDelete.do", new LectureDelete()); //강의 삭제
+		map.put("/ajaxLectureDelete.do", new AjaxLectureDelete()); //강의 삭제
 		map.put("/lectureView.do", new LectureView()); //강의 상세정보
 		map.put("/lectureUpdate.do", new LectureUpdate()); //강의 정보수정
 		map.put("/checkPassword.do", new CheckPassword()); // 본인확인
@@ -110,6 +111,7 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxChangePassword.do", new AjaxChangePassword()); // 비밀번호 변경
 		map.put("/checkPasswordForm.do", new CheckPasswordForm());//비밀번호 확인폼 호출
 		map.put("/myView.do", new MyView()); //내정보
+		map.put("/changePhone.do", new ChangePhone());  //전화번호 수정
 		
 		// 우준
 		// home
@@ -125,7 +127,7 @@ public class FrontController extends HttpServlet {
 		// board
 		map.put("/boardList.do", new BoardList());					// 공지사항
 		map.put("/boardDetail.do", new BoardDetail());				// 공지사항 상세 게시글
-		map.put("/ajaxBoardSearch.do", new AjaxBoardSearch());			// 게시글 검색
+		map.put("/ajaxBoardSearch.do", new AjaxBoardSearch());		// 게시글 검색
 		map.put("/boardInsertForm.do", new BoardInsertForm());		// 공지사항 작성 폼
 		map.put("/boardInsert.do", new BoardInsert());				// 공지사항 작성
 		map.put("/boardUpdateForm.do", new BoardUpdateForm());		// 공지사항 수정 폼

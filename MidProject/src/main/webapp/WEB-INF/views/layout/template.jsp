@@ -23,9 +23,9 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
 <style>
-	* {
-		font-family: 'Nanum Gothic', sans-serif;
-		text-decoration: none
+	body {
+		font-family: 'Nanum Gothic', sans-serif !important;
+		text-decoration: none;
 	 }
 </style>
 </head>

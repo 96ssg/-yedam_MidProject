@@ -18,30 +18,41 @@
 			<form method="post" id="frm">
 				<c:if test="${role eq 'admin' }">
 					<input type="hidden" name="boardId" value="${board.boardId }">
-					<input type="button" value="수정" id="updateBtn">
-					<input type="button" value="삭제" id="deleteBtn">
+					<button class="btn btn-outline-secondary" id="updateBtn">수정</button>
+					<button class="btn btn-outline-secondary" id="deleteBtn">삭제</button>
 				</c:if>
-				<input type="button" value="목록"
-					onclick='location.href="boardList.do"'>
+				<button class="btn btn-outline-secondary" id="listBtn">목록</button>
 			</form>
 		</div>
 	</div>
 
-	<script>
-		// 게시글 업데이트
-		updateBtn.addEventListener('click',()=> {
-			frm.setAttribute('action','boardUpdateForm.do');
-			frm.submit();
-		});
-		
-		// 게시글 삭제
-		deleteBtn.addEventListener('click', ()=> {
-			let check = confirm('삭제하시겠습니까?');
-			if (check) {
-				frm.setAttribute('action','boardDelete.do');
-				alert('삭제되었습니다.');
+
+
+	<c:if test="${role eq 'admin'}">
+		<script type="text/javascript">
+			// 게시글 업데이트
+			updateBtn.addEventListener('click',()=> {
+				frm.setAttribute('action','boardUpdateForm.do');
 				frm.submit();
-			}
+			});
+			
+			// 게시글 삭제
+			deleteBtn.addEventListener('click', ()=> {
+				let check = confirm('삭제하시겠습니까?');
+				if (check) {
+					frm.setAttribute('action','boardDelete.do');
+					alert('삭제되었습니다.');
+					frm.submit();
+				}
+			})
+		</script>
+	</c:if>
+
+	<script>
+		// 목록
+		listBtn.addEventListener('click', () => {
+			event.preventDefault();
+			location.href = "boardList.do"
 		})
 	</script>
 

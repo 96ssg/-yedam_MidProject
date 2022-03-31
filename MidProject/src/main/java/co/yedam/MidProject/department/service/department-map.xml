@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.yedam.MidProject.department.service.DepartmentMapper">
+	<resultMap type="co.yedam.MidProject.department.service.DeptVO"
+		id="DepartmentMap">
+		<result property="deptId" column="d_id" />
+		<result property="deptName" column="d_name" />
+		<result property="deptPhone" column="d_phone" />
+	</resultMap>
+
+	<select id="findAll" resultMap="DepartmentMap">
+		SELECT * FROM department
+	</select>
+	<select id="findOne" resultMap="DepartmentMap">
+		SELECT * FROM department 
+		WHERE d_id=#{deptId}
+	</select>
+</mapper>

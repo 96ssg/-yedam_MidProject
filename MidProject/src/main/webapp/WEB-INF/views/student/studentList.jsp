@@ -2,82 +2,84 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="container-md">
-<div class="fs-2 px-3 my-3" align="center">학생리스트</div>
-	<form id="frm" method="post" onsubmit="return false">
+	<div class="fs-2 px-3 my-3">학생리스트</div>
 	<div align="center">
-			<div class="input-group my-4">
-				<select style="width: 10%" class="form-select-sm" id="searchKey" name="searchKey">
-					<option value="1">학번</option>
-					<option value="2">이름</option>
-				</select> 
-						<input type="text" class="form-control" id="searchVal" name="searchVal" onkeyup="enterkey()">
-						<button class="btn btn-outline-secondary" id="strBtn">검색</button>
-			</div>
+		<div class="input-group my-4">
+			<select style="width: 10%" class="form-select-sm" id="searchKey"
+				name="searchKey">
+				<option value="1">학번</option>
+				<option value="2">이름</option>
+			</select> <input type="text" class="form-control" id="searchVal"
+				name="searchVal" onkeyup="enterkey()">
+			<button class="btn btn-outline-secondary" id="strBtn">검색</button>
+		</div>
 	</div>
-<div>
-	<table class="table table-bordered, col-4" id="contents">
-		<thead>
-		<tr align="center">
-			<th scope="col">학번</th>
-			<th scope="col">학생 이름</th>
-			<th scope="col">생년월일</th>
-			<th scope="col">학년</th>
-			<th scope="col">학기</th>
-			<th scope="col">전화번호</th>
-			<th scope="col">학적</th>	
-		</tr>
-		</thead>
-		<tbody id="studentBody" align="center">
-			<c:if test="${empty students }">
-				<tr>
-					<td colspan="5">관련 학생은 존재하지 않습니다.</td>
-				</tr>
-			</c:if>
-				<c:if test="${not empty students }">
-					<c:forEach items="${students }" var="s">
+	<form id="frm" method="post" onsubmit="return false">
+		<div>
+			<table class="table table-hover" id="contents">
+				<div>
+				<thead>
+					<tr align="center">
+						<th scope="col">학번</th>
+						<th scope="col">학생 이름</th>
+						<th scope="col">생년월일</th>
+						<th scope="col">학년</th>
+						<th scope="col">학기</th>
+						<th scope="col">학적</th>
+					</tr>
+				</thead>
+				<tbody id="studentBody" align="center">
+					<c:if test="${empty students }">
+						<tr>
+							<td colspan="5">관련 학생은 존재하지 않습니다.</td>
+						</tr>
+					</c:if>
+					<c:if test="${not empty students }">
+						<c:forEach items="${students }" var="s">
 							<c:if test="${role eq 'admin' }">
-							<tr onClick="location.href='studentUpdateForm.do?studentId=${s.studentId }'" >
+								<tr onClick="location.href='studentUpdateForm.do?studentId=${s.studentId }'">
 							</c:if>
-							<td>${s.studentId }</td> 
-					
-							<td>${s.studentName }</td> 
-					
+							<td>${s.studentId }</td>
+
+							<td>${s.studentName }</td>
+
 							<td>${s.studentBirth }</td>
-					
+
 							<td>${s.studentGrade }</td>
-					
+
 							<td>${s.studentSemester }</td>
-					
+
 							<td>${s.studentPhone }</td>
-							
-							<c:if test="${s.studentStatus eq 1 }">							
-							<td>재학</td>
+
+							<c:if test="${s.studentStatus eq 1 }">
+								<td>재학</td>
 							</c:if>
-							
-							<c:if test="${s.studentStatus eq 2 }">						
-							<td>제적</td>
+
+							<c:if test="${s.studentStatus eq 2 }">
+								<td>제적</td>
 							</c:if>
-							
-							<c:if test="${s.studentStatus eq 3 }">						
-							<td>퇴학</td>
+
+							<c:if test="${s.studentStatus eq 3 }">
+								<td>퇴학</td>
 							</c:if>
-							
-							<c:if test="${s.studentStatus eq 4 }">						
-							<td>휴학</td>
+
+							<c:if test="${s.studentStatus eq 4 }">
+								<td>휴학</td>
 							</c:if>
-							
-					<!-- 지도교수 들어올 수도 있음. -->
-							
-							
-					</c:forEach>
-				</c:if>
-			</tbody>
-		</table>
-	</div>
-	<input type="hidden" id="student" name="studentId">
-	</form>
+
+							<!-- 지도교수 들어올 수도 있음. -->
+
+
+						</c:forEach>
+					</c:if>
+				</tbody>
+			</table>
+		</div>
+<input type="hidden" id="student" name="studentId">
+</form>
 </div>
-	<script>
+</div>
+<script>
 	function studentContents(n){
 		frm.studentId.value = n;
 		frm.action = "studentUpdateForm.do";
@@ -146,4 +148,4 @@
 /* 	const sList = '<c:out value="${students }"/>';
 		console.log(sList);   */
 	</script>
-	
+

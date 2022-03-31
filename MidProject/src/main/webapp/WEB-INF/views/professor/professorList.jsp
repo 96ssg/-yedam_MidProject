@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="container-md">
-	<div class="fs-2 px-3 my-3" align="center">교수리스트</div>
+	<div class="fs-2 px-3 my-3">교수리스트</div>
 	<form id="frm" method="post">
 	<table class="table table-bordered">
 				
@@ -19,7 +19,6 @@
 		<c:if test="${role eq 'admin' }">
 		<tr onClick="profcheck('${professor.profId }')" align="center">
 		</c:if>
-		
 		<td>${professor.profId }</td> 
 		
 		<td>${professor.profName }</td> 

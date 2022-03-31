@@ -64,19 +64,17 @@ public class AjaxStudentInfo implements Command {
 		for (BoardVO b : boardList) {
 			String writerId= b.getBoardWriter();
 			String deptId = writerId.substring(writerId.length()-6, writerId.length()-3);
-			String userId = user.getStudentId();
-			String userDeptId = userId.substring(userId.length()-6, userId.length()-3);
+			String userDeptId = user.getDeptId();
 			
 			if (userDeptId.equals(deptId)) {
 				boards.add(b);
 				count++;
 			}
-			
 			if (count == 4) break;
 		}
 		
 		String notice = gson.toJson(boards);
-		data = data + "~" + notice;
+		data = data + "^~" + notice;
 		
 		return "ajax:" + data;
 	}

@@ -33,14 +33,14 @@
 					<tr>
 						<th width="100">전화번호</th>
 						<td width="100"><input type="text"
-							id="pPhone" name="pPhone" placeholder="Please Number..."></td>
+							id="pPhone" name="pPhone"></td>
 					</tr>
 
 					<tr>
 						<th width="100">학과</th>
 						<td width="100"><select class="form-select, col-3" id="dId"
 							name="dId">
-								<option selected disabled value="">학과 선택</option>
+								<option selected disabled value="000">학과 선택</option>
 								<option value="001">국어국문학과</option>
 								<option value="002">응용생명과학부</option>
 								<option value="003">전자공학과</option>
@@ -68,5 +68,15 @@
 				<div></div><br/>
 			<div></div><br/>
 		</form>
+		<script>
+		function(){
+			if(${studentStatus } == 000){
+					alert("학적 선택을 해주세요.")
+			}else{
+				
+			}
+			
+		}
+		</script>
 	</div>
 </div>

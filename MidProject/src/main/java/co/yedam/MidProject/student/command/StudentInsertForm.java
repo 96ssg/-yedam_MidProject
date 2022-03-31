@@ -31,7 +31,6 @@ public class StudentInsertForm implements Command {
 		   };
 		}
 		request.setAttribute("pList", pList);
-		System.out.println(professorList.toString());
 
 		
 		return "student/studentInsertForm";

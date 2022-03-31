@@ -17,15 +17,15 @@
 	<form id="frm" method="post" onsubmit="return false">
 		<div>
 			<table class="table table-hover" id="contents">
-				<div>
 				<thead>
 					<tr align="center">
-						<th scope="col">학번</th>
-						<th scope="col">학생 이름</th>
-						<th scope="col">생년월일</th>
-						<th scope="col">학년</th>
-						<th scope="col">학기</th>
-						<th scope="col">학적</th>
+						<th>학생번호</th>
+						<th>학생이름</th>
+						<th>생년월일</th>
+						<th>학년</th>
+						<th>학기</th>
+						<th>전화번호</th>
+						<th>학적</th>
 					</tr>
 				</thead>
 				<tbody id="studentBody" align="center">
@@ -57,7 +57,7 @@
 							<td>${s.studentSemester }</td>
 
 							<td>${s.studentPhone }</td>
-
+							
 							<c:if test="${s.studentStatus eq 1 }">
 								<td>재학</td>
 							</c:if>
@@ -73,7 +73,6 @@
 							<c:if test="${s.studentStatus eq 4 }">
 								<td>휴학</td>
 							</c:if>
-
 							<!-- 지도교수 들어올 수도 있음. -->
 
 
@@ -91,7 +90,6 @@
 		</div>
 <input type="hidden" id="student" name="studentId">
 </form>
-</div>
 </div>
 <script>
 	function studentContents(n){

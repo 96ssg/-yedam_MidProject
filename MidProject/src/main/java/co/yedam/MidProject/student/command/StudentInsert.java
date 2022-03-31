@@ -33,7 +33,6 @@ public class StudentInsert implements Command {
 		student.setStudentScore(Integer.parseInt(request.getParameter("sScore")));
 		student.setStudentSemester(Integer.parseInt(request.getParameter("sSemester")));
 		student.setDeptId(request.getParameter("dId"));
-		System.out.println("개씨발련:"+request.getParameter("dId"));
 		student.setStudentStatus(Integer.parseInt(request.getParameter("sStatus")));
 		
 		

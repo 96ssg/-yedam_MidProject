@@ -18,10 +18,10 @@ public class StudentUpdate implements Command {
 
 		StudentService service = new StudentServiceImpl();
 		StudentVO student = new StudentVO();
-		student = service.selectStudent(student);
 		
 		student.setStudentId(request.getParameter("studentId"));
 		student.setStudentName(request.getParameter("studentName"));
+		// 공란이 아니면 parameter에 넘어간 값을? 넘겨준다 
 		String password = student.getStudentPassword();
 		if (!request.getParameter("studentPassword").equals("")) {
 			password = request.getParameter("studentPassword"); 
@@ -31,6 +31,8 @@ public class StudentUpdate implements Command {
 		student.setStudentScore(Integer.parseInt(request.getParameter("studentScore")));
 		student.setStudentStatus(Integer.parseInt(request.getParameter("studentStatus")));
 		student.setStudentSemester(Integer.parseInt(request.getParameter("studentSemester")));
+		
+		student = service.selectStudent(student);
 		
 		service.updateStudent(student);
 		

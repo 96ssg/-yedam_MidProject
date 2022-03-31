@@ -33,7 +33,7 @@ public class ChangePhone implements Command {
 			user.setProfPhone(request.getParameter("phone"));
 			professorDAO.updateProfessor(user);
 		}
-		return "myPage/myView";
+		return "myView.do";
 	}
 
 }

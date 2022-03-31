@@ -39,6 +39,8 @@ public class LectureList implements Command {
 		LectureService lectureDAO = new LectureServiceImpl();
 
 		List<LectureVO> list = lectureDAO.selectLectureList();
+		request.setAttribute("lectures", list);
+
 		List<LectureVO> lectures = new ArrayList<>();
 		
 		for (LectureVO l : list) {
@@ -47,8 +49,10 @@ public class LectureList implements Command {
 			}
 		}
 		
-		request.setAttribute("lectures", lectures);
+		String deptLecture = new Gson().toJson(lectures);
+		request.setAttribute("deptLecture", deptLecture);
 		
+
 		// LectureList.jsp에서 profName 추출
 		ProfessorService pDao = new ProfessorServiceImpl();
 		List<ProfessorVO> pList = pDao.selectProfessorList();

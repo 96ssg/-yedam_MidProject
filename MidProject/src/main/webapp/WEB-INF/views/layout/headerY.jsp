@@ -59,7 +59,7 @@
 			<li class="nav-item px-3"><a class="nav-link px-3"
 				href="boardList.do">학과게시판</a></li>
 			<li class="nav-item px-3"><a class="nav-link px-3"
-				href="letureList.do">개설강의</a></li>
+				href="lectureList.do">개설강의</a></li>
 			<li class="nav-item px-3"><a class="nav-link px-3"
 				href="checkPasswordForm.do">마이페이지</a></li>
 		</ul>

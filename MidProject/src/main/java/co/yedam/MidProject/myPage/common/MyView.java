@@ -5,6 +5,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import co.yedam.MidProject.common.Command;
+import co.yedam.MidProject.department.service.DepartmentService;
+import co.yedam.MidProject.department.service.DeptVO;
+import co.yedam.MidProject.department.serviceImpl.DepartmentServiceImpl;
 import co.yedam.MidProject.professor.service.ProfessorService;
 import co.yedam.MidProject.professor.service.ProfessorVO;
 import co.yedam.MidProject.professor.serviceImpl.ProfessorServiceImpl;
@@ -18,22 +21,33 @@ public class MyView implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		String role = (String) session.getAttribute("role");
-		
+		String deptId = "";
+		StudentVO sUser ;
+		ProfessorVO pUser;
 		
 		if (role.equals("student")) {
 			StudentService studentDAO = new StudentServiceImpl();
-			StudentVO user = (StudentVO) session.getAttribute("user");
-			user.getStudentId();
-			user = studentDAO.selectStudent(user);
-			request.setAttribute("user", user);
+			sUser = (StudentVO) session.getAttribute("user");
+			sUser.getStudentId();
+			sUser = studentDAO.selectStudent(sUser);
+			request.setAttribute("user", sUser);
+			deptId = sUser.getDeptId();
 		} else {
 			ProfessorService professorDAO = new ProfessorServiceImpl();
-			ProfessorVO user = (ProfessorVO) session.getAttribute("user");
-			user.getProfId();
-			user = professorDAO.selectProfessor(user);
-			request.setAttribute("user", user);
+			pUser = (ProfessorVO) session.getAttribute("user");
+			pUser.getProfId();
+			pUser = professorDAO.selectProfessor(pUser);
+			request.setAttribute("user", pUser);
+			deptId = pUser.getDeptId();
 		}
 
+		DepartmentService deptDao = new DepartmentServiceImpl();
+		DeptVO dept = new DeptVO();
+		System.out.println(deptId);
+		dept.setDeptId(deptId);
+		dept = deptDao.findOne(dept);
+		System.out.println(dept.getDeptName());
+		request.setAttribute("dept", dept);
 	
 		return "myPage/myView";
 	}

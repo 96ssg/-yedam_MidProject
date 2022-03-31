@@ -64,8 +64,9 @@
 		</table>
 		</c:if>
 	</div>
-	
+	<div align="right">
 	<input type="button" class="btn btn-outline-secondary" onclick="location.href='courseInsertList.do'" value="목록">
+	</div>
 </div>
 	<script>
 		// 탭

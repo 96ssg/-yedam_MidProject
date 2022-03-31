@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="js/jquery.min.js"></script>
 <!-- StudentView -->
 <div class="col-lg-10">
 	<div class="fs-2 px-3 my-3">학생 상세 정보</div>
@@ -38,16 +38,31 @@
 				</tr>
 				<tr>
 					<th>학적</th>
-					<td colspan="3">${students.studentStatus}</td>
+							<c:if test="${students.studentStatus == 1}">
+					<td colspan="3">재학</td>
+					</c:if>
+					<c:if test="${students.studentStatus == 2}">
+					<td colspan="3">제적</td>
+					</c:if>
+					<c:if test="${students.studentStatus == 3}">
+					<td colspan="3">퇴학</td>
+					</c:if>
+					<c:if test="${students.studentStatus == 4}">
+					<td colspan="3">휴학</td>
+					</c:if>
 				</tr>
 				<tr>
-					<th>학과번호</th>
-					<td colspan="3">${students.deptId }</td>
+					<th>학과</th>
+					<td colspan="3">${dept.deptName }</td>
+				</tr>
+				<tr>
+					<th>학과 연락처</th>
+					<td colspan="3">${dept.deptPhone }</td>
 				</tr>
 			</table>
 		</div>
 		<br>
-		<div>
+		<div align="right">
 			<button type="button" class="btn btn-outline-secondary"
 				onclick="location.href='chargeStudentList.do'">목록가기</button>
 		</div>

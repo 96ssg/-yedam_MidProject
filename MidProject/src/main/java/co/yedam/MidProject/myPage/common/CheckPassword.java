@@ -35,7 +35,7 @@ public class CheckPassword implements Command {
 			if (student.getStudentPassword().equals(request.getParameter("password"))) {
 				pwdCheck = student.getStudentPassword().equals(request.getParameter("password"))?"yes":"no";
 				session.setAttribute("pwdCheck", pwdCheck);
-				return "myPage/myView";
+				return "myView.do";
 			} else {
 				pwdCheck = !student.getStudentPassword().equals(request.getParameter("password"))?"no":"yes";
 				out.println("<script>alert('비밀번호가 일치하지 않습니다.');location.href = 'checkPasswordForm.do';</script>");
@@ -45,11 +45,12 @@ public class CheckPassword implements Command {
 		} else {
 			// 교수 비밀번호 확인
 			ProfessorVO professor = (ProfessorVO) session.getAttribute("user");
-			if (professor.getProfPassword().equals(request.getParameter("password"))) {
-				pwdCheck = professor.getProfPassword().equals(request.getParameter("password"))?"yes" : "no";
+			boolean check = professor.getProfPassword().equals(request.getParameter("password"));
+			if (check) {
+				pwdCheck = check? "yes" : "no";
 				session.setAttribute("pwdCheck", pwdCheck);
 
-				return "myPage/myView";
+				return "myView.do";
 			} else {
 				pwdCheck = !professor.getProfPassword().equals(request.getParameter("password"))?"no" : "yes";
 				out.println("<script>alert('비밀번호가 일치하지 않습니다.');location.href = 'checkPasswordForm.do';</script>");

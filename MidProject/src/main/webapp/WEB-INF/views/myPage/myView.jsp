@@ -6,10 +6,10 @@
 	<div>
 		<h1>내 정보</h1>
 	</div>
-	<form id="frm" action="changePhone.do" method="post">
+	<form id="frm" action="changePhone.do" onsubmit="return confirm('수정하시겠습니까?')" method="post">
 		<div>
 			<table class="table">
-				<c:if test="${role eq 'admin'||role eq 'professor' }">
+				<c:if test="${role ne 'student' }">
 					<tr>
 						<th>학번/교번</th>
 						<td>${user.profId }</td>
@@ -32,8 +32,12 @@
 						<td>${user.profImg }</td>
 					</tr>
 					<tr>
-						<th>학과번호</th>
-						<td>${user.deptId }</td>
+						<th>학과</th>
+						<td>${dept.deptName }</td>
+					</tr>
+					<tr>
+						<th>학과 연락처</th>
+						<td>${dept.deptPhone}</td>
 					</tr>
 				</c:if>
 				<c:if test="${role eq 'student' }">
@@ -71,8 +75,12 @@
 						<td>${user.studentScore }</td>
 					</tr>
 					<tr>
-						<th>학과번호</th>
-						<td>${user.deptId }</td>
+						<th>학과</th>
+						<td>${dept.deptName }</td>
+					</tr>
+					<tr>
+						<th>학과 연락처</th>
+						<td>${dept.deptPhone}</td>
 					</tr>
 				</c:if>
 			</table>

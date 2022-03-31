@@ -4,8 +4,8 @@
 <div class="col-lg-10">
 	<h1>성적 입력</h1>
 	<ul class="nav nav-tabs">
-		<li class="nav-item"><a id="allTab" onclick="toggle('all')" class="nav-link">전체학기</a></li>
 		<li class="nav-item"><a id="semesterTab" onclick="toggle('semester')" class="nav-link">해당학기</a></li>
+		<li class="nav-item"><a id="allTab" onclick="toggle('all')" class="nav-link">전체학기</a></li>
 	</ul>
 	
 	<div id="semesterCourse">

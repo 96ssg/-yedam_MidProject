@@ -103,7 +103,9 @@
 		}
 		
 		applyBtn.addEventListener('click', () => applyCourse());
-		
+		lectureId.addEventListener('keydown', event => {
+		if (event.key === 'Enter') applyCourse();
+		})
 		
 		// 수강신청 목록 출력
 		function semesterCourseList() {
@@ -204,7 +206,7 @@
 		function searchLecture() {
 			const keyword = document.getElementById('searchLectureId').value
 			if (keyword == '') {
-				alert('강의번호를 입력하세요.');
+				alert('강의명을 입력하세요.');
 				return;
 			}
 			
@@ -274,4 +276,7 @@
 			})
 		}
 		searchLectureBtn.addEventListener('click', () => searchLecture())
+		searchLectureId.addEventListener('keydown', event => {
+		if (event.key === 'Enter') searchLecture();
+		})
 	</script>

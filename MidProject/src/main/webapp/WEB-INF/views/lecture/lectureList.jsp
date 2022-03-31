@@ -8,22 +8,25 @@
 		<!-- Search Bar Start -->
 		<div class="row">
 			<div class="col-9 input-group my-4">
-				<select style="width: 10%" class="form-select-sm" id="searchKey" name="searchKey">
+				<select style="width: 10%" class="form-select-sm" id="searchKey"
+					name="searchKey">
 					<option value="전체">전체</option>
 					<option value="강의번호">강의번호</option>
 					<option value="교수번호">교수번호</option>
 					<option value="강의명">강의명</option>
-				</select>
-				<input type="text" class="form-control" id="searchVal" name="searchVal" onkeyup="enterkey()"
-					placeholder="Search"aria-label="Search">
-				<button class="btn btn-outline-secondary" id="searchBtn" type="button">Search</button>
+				</select> <input type="text" class="form-control" id="searchVal"
+					name="searchVal" onkeyup="enterkey()" placeholder="Search"
+					aria-label="Search">
+				<button class="btn btn-outline-secondary" id="searchBtn"
+					type="button">Search</button>
 			</div>
 			<div class="col-3">
-				<button class="btn btn-outline-secondary" id="deptLectureBtn" type="button">학과 강의 목록</button>
+				<button class="btn btn-outline-secondary" id="deptLectureBtn"
+					type="button">학과 강의 목록</button>
 			</div>
 			<!-- Search Bar End -->
 		</div>
-		
+
 		<!-- LectureList Start -->
 		<form id="frm" method="post" onsubmit="return false">
 			<br />
@@ -45,9 +48,6 @@
 							</tr>
 						</c:if>
 						<c:if test="${not empty lectures }">
-							<tr>
-									<td align="center"colspan="5">내 학과 강의목록</td>
-							</tr>
 							<c:forEach items="${lectures }" var="l" varStatus="status">
 								<tr align="center"
 									onclick='lectureContents(${l.lectureId},"${l.professorId }")'>
@@ -63,33 +63,33 @@
 				</table>
 			</div>
 			<br />
-			
-			
-			
-			
-			
-<!-- 			<nav> -->
-<!-- 			  <ul class="pagination justify-content-center"> -->
-<!-- 			    <li class="page-item" id="prevBtn" onclick="onPrevBtn()"> -->
-<!-- 			      <a class="page-link" aria-label="Previous"> -->
-<!-- 			        <span aria-hidden="true">&laquo;</span> -->
-<!-- 			      </a> -->
-<!-- 			    </li> -->
-			    
-<!-- 			    <li class="page-item" id="nextBtn" onclick="onNextBtn()"> -->
-<!-- 			      <a class="page-link" aria-label="Next"> -->
-<!-- 			        <span aria-hidden="true">&raquo;</span> -->
-<!-- 			      </a> -->
-<!-- 			    </li> -->
-<!-- 			  </ul> -->
-<!-- 			</nav> -->
-			
-			
-			
-			
-			
-			
-			
+
+
+
+
+
+			 			<nav>
+						  <ul class="pagination justify-content-center">
+						    <li class="page-item" id="prevBtn" onclick="onPrevBtn()">
+						      <a class="page-link" aria-label="Previous">
+						        <span aria-hidden="true">&laquo;</span>
+						      </a>
+						    </li>
+
+						    <li class="page-item" id="nextBtn" onclick="onNextBtn()">
+						      <a class="page-link" aria-label="Next">
+						        <span aria-hidden="true">&raquo;</span>
+						      </a>
+						    </li>
+						  </ul>
+						</nav>
+
+
+
+
+
+
+
 			<div align="right">
 				<c:if test="${role eq 'admin' }">
 					<button type="button" class="btn btn-outline-secondary mb-5"
@@ -152,11 +152,11 @@
 		var html = $("<tr align='center'></td>").attr({
 			'onclick' : 'lectureContents('+item.lectureId+', "'+item.professorId+'")'
 		}).append(
-				$("<td/>").text(item.lectureId),
+				$("<td class='lId'></td>").text(item.lectureId),
 				$("<td/>").text(item.lectureName),
 				$("<td/>").text(item.lectureCredit),
 				$("<td class='profId'></td>").text(item.professorId),
-				$("<td class='delBtnTd'></td>")
+				$("<td onclick='event.stopPropagation()' class='delBtnTd'></td>")
 		);
 		tb.append(html)
 	});
@@ -167,7 +167,6 @@
 	
 	searchBtn.addEventListener('click', searchList);
 	
-	
 	// 소속 학과 강의 출력 버튼
 	const deptLecture = ${deptLecture}
 	deptLectureBtn.addEventListener('click', printDeptLecture)
@@ -176,19 +175,19 @@
 		searchResult(deptLecture);
 		profNames();
 		
-		const deleteBtnTd = document.querySelectorAll('.deleteBtnTd');
-		
-		for (let i=0; i< deleteBtnTd.length; i++) {
-			
-			
-			
-			
+		const delBtnTd = document.querySelectorAll('.delBtnTd');
+		const lId = document.querySelectorAll('.lId');
+		for (let i=0; i< delBtnTd.length; i++) {
+			const delBtn = document.createElement('input');
+			delBtn.setAttribute('type','button');
+			delBtn.setAttribute('id','delBtn');
+			delBtn.setAttribute('value','삭제');
+			delBtn.setAttribute('class','btn btn-outline-secondary');
+			delBtn.addEventListener('click', () => deleteLectures(lId[i].innerText));
+			delBtnTd[i].append(delBtn);
+
 		}
-		
-		
-		
 	}
-	
 	
 	/* 리스트 검색기능 Enter로 호출 */
 	function enterkey(){
@@ -199,7 +198,7 @@
 	function deleteLectures(lectureId) {
 		const isDel = confirm('강의를 삭제 하시겠습니까?');
 		if (isDel == false) return;
-		
+		console.log(lectureId)
 		fetch('ajaxLectureDelete.do?', {
 			method: 'post',
 			headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -207,14 +206,15 @@
 		})
 		.then(response => response.text())
 		.then(result => {
+			//lectureBody.innerHTML = '';
 			if (result != 'deleted') {
 				alert('진행중인 강의는 삭제할 수 없습니다.')
 				return;
 			}
-			
 			// 취소 후 강의리스트 목록 재호출
 			alert('삭제되었습니다.');
-			document.location.reload();
+			location.reload();
+			
 		})
 	}
 	
@@ -237,14 +237,14 @@
 // 		let group = 1;		// 페이지의 10단위 숫자
 // 		paintPageBtn(pageNum, group);
 		
-// 		for (let board of lectureList) {
+// 		for (let lecture of lectureList) {
 // 			const tr = document.createElement('tr');
-// 			tr.setAttribute('class','board pages page-'+ pageNum);
+// 			tr.setAttribute('class','lecture pages page-'+ pageNum);
 // 			tr.setAttribute('style', '');
 // 			count++;
 			
 // 			// 딱 맞게 끝나면 새 페이지 생성 안함 && 한 페이지에 count만큼 표시
-// 			if (!(pageNum * Number(pagesPerView.value) == boardList.length)) {
+// 			if (!(pageNum * Number(pagesPerView.value) == lectureList.length)) {
 // 				if (count == Number(pagesPerView.value)) {
 // 					pageNum++;
 // 					paintPageBtn(pageNum, group);
@@ -264,24 +264,23 @@
 // 				}
 // 			}
 			
-// 			const boardId = document.createElement('td');
-// 			boardId.setAttribute('class', 'text-center');
-// 			boardId.innerText = board.boardId;
+// 			const lectureId = document.createElement('td');
+// 			lectureId.setAttribute('class', 'text-center');
+// 			lectureId.innerText = lecture.lectureId;
 
-// 			const boardTitle = document.createElement('td');
-// 			boardTitle.innerText = board.boardTitle;
+// 			const lectureName = document.createElement('td');
+// 			lectureTitle.innerText = lecture.lectureName;
 			
 			
-// 			tr.appendChild(boardId);
-// 			tr.appendChild(boardTitle);
-// 			tr.appendChild(boardDate);
+// 			tr.appendChild(lectureId);
+// 			tr.appendChild(lectureName);
 // 			resultList.appendChild(tr);
 // 		}
 		
 // 		const lastPageGroup = pagebutton.lastChild;
 // 		if (lastPageGroup.innerHTML == '') lastPageGroup.remove();
 		
-// 		boardDetail();
+// 		lectureView();
 // 		document.querySelector('#page-1').click();
 // 	}
 	

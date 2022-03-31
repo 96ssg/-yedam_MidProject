@@ -21,12 +21,14 @@ public class StudentUpdate implements Command {
 		
 		student.setStudentId(request.getParameter("studentId"));
 		student.setStudentName(request.getParameter("studentName"));
-		// 공란이 아니면 parameter에 넘어간 값을? 넘겨준다 
-		String password = student.getStudentPassword();
-		if (!request.getParameter("studentPassword").equals("")) {
-			password = request.getParameter("studentPassword"); 
-		}
-		student.setStudentPassword(password);
+		// 공란이 아니면 parameter에 넘어간 값을 넘겨주고 그외에는 hidden된걸 넘겨준다.
+		/*
+		 * String password = student.getStudentPassword(); if
+		 * (!request.getParameter("studentPassword").equals("")) { password =
+		 * request.getParameter("studentPassword"); }
+		 * student.setStudentPassword(password);
+		 */
+		student.setStudentPassword(request.getParameter("studentPassword"));
 		student.setStudentPhone(request.getParameter("studentPhone"));
 		student.setStudentScore(Integer.parseInt(request.getParameter("studentScore")));
 		student.setStudentStatus(Integer.parseInt(request.getParameter("studentStatus")));

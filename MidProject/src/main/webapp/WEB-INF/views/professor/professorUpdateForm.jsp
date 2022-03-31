@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<div class="container-md">
+<div class="container-md" style="height:70vh;">
 	<div class="fs-2 px-3 my-3, col-3">교수수정</div>
 
 	<br>
@@ -36,30 +36,16 @@
 
 			</table>
 			</form>
-				</div>
-				<div></div>
-				<br>
-				<div></div>
-				<br>
-				<div></div>
-				<br>
-				<div></div>
-				<br>
-				<div></div>
-				<br>
-				<div></div>
-				<br>
-				<div></div>
-				<br>
+		
 
 
-			</div>
 			<div align="right">
 				<button type="button" class="btn btn-outline-secondary"
 					onclick="location.href='professorList.do'">목록</button>
 				<c:if test="${role eq 'admin' }">
-					<button class="btn btn-outline-secondary" type="submit">교수 수정</button>
+					<button type="submit" class="btn btn-outline-secondary" >교수 수정</button>
 				</c:if>
 				&nbsp;&nbsp;&nbsp;
 			</div>
-
+			</div>
+</div>

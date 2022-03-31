@@ -1,16 +1,36 @@
 package co.yedam.MidProject.professor.command;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.yedam.MidProject.common.Command;
+import co.yedam.MidProject.professor.service.ProfessorService;
+import co.yedam.MidProject.professor.service.ProfessorVO;
+import co.yedam.MidProject.professor.serviceImpl.ProfessorServiceImpl;
 
 public class ProfessorInsertForm implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		//교수 등록폼.	
-		
+		HttpSession session = request.getSession();
+		ProfessorVO user = (ProfessorVO) session.getAttribute("user");
+
+		ProfessorService professorDao = new ProfessorServiceImpl();
+		List<ProfessorVO> professorList = professorDao.selectProfessorList();
+		List<ProfessorVO> pList = new ArrayList<>();
+		request.setAttribute("professorList", professorList);   
+
+		for (ProfessorVO p : professorList ) {
+		   if (p.getProfId().equals(user.getProfId())) {
+			   pList.add(p);
+		   };
+		}
+		request.setAttribute("pList", pList);
 		return "professor/professorInsertForm.tiles";
 	}
 

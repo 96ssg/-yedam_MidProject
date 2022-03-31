@@ -25,9 +25,6 @@
 		
 		<td>${professor.profPhone}</td>
 		
-		<%--<td>${professor.profImg }</td>
-		
-		<td>${professor.deptId }</td> --%>
 		
 		</tr>
 

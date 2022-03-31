@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div class="container-md">
+<div class="container-md" style="height:70vh;">
 	<div class="fs-2 px-3 my-3">교수등록</div>
 	<div>
 		<form id="frm" name="frm" action="professorInsert.do" method="post" onsubmit="return checkIt()">
@@ -27,8 +27,7 @@
 					<tr>
 						<th width="100">비밀번호</th>
 						<td width="100">
-						
-						<input type="hidden" id="pPassword" name="pPassword" required></td>
+						<input type="text" id="pPassword" name="pPassword" required></td>
 					</tr>
 
 					<tr>

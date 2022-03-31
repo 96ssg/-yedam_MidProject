@@ -17,7 +17,7 @@
 					<tr>
 						<th>비밀번호</th>
 						<td>
-						<input type="text" id="studentPassword" name="studentPassword">
+						<input type="text" id="studentPassword" name="studentPassword" required></td>
 						<!-- <input type="hidden" id="studentPassword" name="studentPassword"> -->
 					</tr>
 
@@ -58,6 +58,8 @@
 				</table>
 			</div><br>
 			<div></div><br>
+			<input type="hidden" id="studentId" name="studentId"
+				value="${students.studentId }">
 			<div></div>
 		
 			<div align="right">
@@ -72,14 +74,7 @@
 			<div></div><br>
 			<div></div><br>
 			<div></div>
-			<input type="hidden" id="studentId" name="studentId"
-				value="${students.studentId }">
 		</form>
-		<script type="text/javascript">
-		if(frm.studnetPassword.val() == ""){
-		    alert("비밀번호를 입력해주세요");
-		    return false;
-		}
-		</script>
+	
 	</div>
 </div>

@@ -5,9 +5,9 @@
 <div class="fs-2 px-3 my-3">수강 신청</div>
 	<!-- 강의 검색 -->
 	<div class="input-group my-4">
-			학번 &nbsp;  <input type="text" class="form-control-md" value="${user.studentId }" disabled>&nbsp;&nbsp;&nbsp;
-			최대이수학점 &nbsp; <input type="text" class="form-control-md" value="${user.studentScore }" disabled>&nbsp;&nbsp;&nbsp;
-			강의번호 &nbsp; <input type="text" class="form-control-md" name="lectureId" id="lectureId" required>
+			<h6 class="mt-2">학번</h6> &nbsp;&nbsp;  <input type="text" class="form-control-md" value="${user.studentId }" disabled>&nbsp;&nbsp;&nbsp;
+			<h6 class="mt-2">최대이수학점</h6> &nbsp;&nbsp; <input type="text" class="form-control-md" value="${user.studentScore }" disabled>&nbsp;&nbsp;&nbsp;
+			<h6 class="mt-2">강의번호</h6> &nbsp;&nbsp; <input type="text" class="form-control-md" name="lectureId" id="lectureId" required>
 			<input type="button" class="btn btn-outline-secondary" value="신청" id="applyBtn">
 	</div>
 	
@@ -15,7 +15,7 @@
 	<div>
 <div class="fs-2 px-3 my-3">강의 검색</div>
 		<div class="input-group my-4">
-			강의명 &nbsp; <input type="text" class="form-control-md" name="lectureId" id="searchLectureId" required>
+			<h6 class="mt-2">강의명</h6> &nbsp;&nbsp; <input type="text" class="form-control-md" name="lectureId" id="searchLectureId" required>
 			<input type="button" class="btn btn-outline-secondary" value="검색" id="searchLectureBtn">
 		</div>
 		<div class="mb-3" style="height:30vh;overflow-y:auto;overflow-x:hidden">
@@ -161,6 +161,7 @@
 					cancelBtn.setAttribute('type', 'button');
 					cancelBtn.setAttribute('id', 'cancelBtn');
 					cancelBtn.setAttribute('value', '취소하기');
+					cancelBtn.setAttribute('class','btn btn-outline-secondary');
 					cancelBtn.addEventListener('click', () => cancelCourse(lectureList[i].lectureId));
 					cancel.append(cancelBtn);
 					

@@ -13,7 +13,7 @@
 			</c:when>
 			<c:otherwise>
 			<li><a href="courseInsertList.do" class="nav-link link-dark">내 강의/성적관리</a></li>
-			<li><a href="chargeStudentList.do" class="nav-link link-dark">지도학생관리</a></li>
+			<li><a href="chargeStudentList.do" class="nav-link link-dark">지도학생정보</a></li>
 			</c:otherwise>
 			</c:choose>
 		</ul>

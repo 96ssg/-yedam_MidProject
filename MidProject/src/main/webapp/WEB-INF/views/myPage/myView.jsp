@@ -26,8 +26,6 @@
 						<th>전화번호</th>
 						<td><input type="text" id="phone" name="phone"
 							value="${user.profPhone }"></td>
-						<td><input type="submit" class="btn btn-outline-secondary"
-							value="수정"></td>
 					</tr>
 					<tr>
 						<th>사진</th>
@@ -63,8 +61,6 @@
 						<th>전화번호</th>
 						<td><input type="text" id="phone" name="phone"
 							value="${user.studentPhone }"></td>
-						<td><input type="submit" class="btn btn-outline-secondary"
-							value="수정"></td>
 					</tr>
 					<tr>
 						<th>사진</th>
@@ -80,11 +76,16 @@
 					</tr>
 				</c:if>
 			</table>
+			<div class="mb-5 mx-5" align="right">
+				<input type="submit" class="btn btn-outline-secondary" value="수정">
+			</div>
 		</div>
 	</form>
 </div>
 <script>
-	function updatePhone() {
-
+	function enterkey() {
+		if (window.event.keyCode == 13) {
+			frm.submit();
+		}
 	}
 </script>

@@ -47,7 +47,7 @@
 			</table>
 		</div>
 		<br>
-		<div>
+		<div class="mb-5" align="right">
 			<button type="button" class="btn btn-outline-secondary"
 				onclick="location.href='lectureList.do'">목록가기</button>
 			&nbsp;&nbsp;

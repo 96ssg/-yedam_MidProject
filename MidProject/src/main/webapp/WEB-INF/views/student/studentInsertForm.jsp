@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<script src="js/jquery.min.js"></script>
 <div class="container-md">
 <div align="center">
 <div class="fs-2 px-3 my-3" align="left">학생등록</div>
@@ -36,14 +37,29 @@
 						
 					<tr>
 							<th width="100">학과</th>
-							<td width="100"><select id="dId" name="dId">
-				   				<option selected value="1">학과 선택</option>
-				   				<option value="001">국어국문학과</option>
-				   				<option value="002">응용생명과학부</option>
-				   				<option value="003">전자공학과</option>
-				   				<option value="004">자율전공학부</option>
-			   				</select></td>
-			   				
+							<c:forEach items="${pList }" var="pList">
+							<c:if test="${pList.deptId eq '001'}">
+							<td width="100">
+							<input type="hidden" id="dId" name="dId" value="${pList.deptId }" >
+							<input type="text" value="국어국문학과" disabled></td>
+							</c:if>
+							<c:if test="${pList.deptId eq '002'}">
+							<td width="100">
+							<input type="hidden" id="dId" name="dId" value="${pList.deptId }" >
+							<input type="text" value="응용생명과학부" disabled></td>
+							</c:if>
+							<c:if test="${pList.deptId eq '003'}">
+							<td width="100">
+							<input type="hidden" id="dId" name="dId" value="${pList.deptId }" >
+							<input type="text" value="전자공학과" disabled></td>
+							</c:if>
+							<c:if test="${pList.deptId eq '004'}">
+							<td width="100">
+							<input type="hidden" id="dId" name="dId" value="${pList.deptId }" >
+							<input type="text" value="자율전공학부" disabled></td>
+							</c:if>
+							
+			   				</c:forEach>
 		 			</tr>
 	 			
 	 				<tr>

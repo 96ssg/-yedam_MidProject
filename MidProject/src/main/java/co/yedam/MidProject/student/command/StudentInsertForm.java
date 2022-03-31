@@ -1,5 +1,6 @@
 package co.yedam.MidProject.student.command;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,12 +22,16 @@ public class StudentInsertForm implements Command {
 
 		ProfessorService professorDao = new ProfessorServiceImpl();
 		List<ProfessorVO> professorList = professorDao.selectProfessorList();
-
-		for (int i=0; i<professorList.size(); i++) {
-		   if (!professorList.get(i).getDeptId().equals(user.getDeptId())) professorList.remove(i);
-		}
-
+		List<ProfessorVO> pList = new ArrayList<>();
 		request.setAttribute("professorList", professorList);   
+
+		for (ProfessorVO p : professorList ) {
+		   if (p.getProfId().equals(user.getProfId())) {
+			   pList.add(p);
+		   };
+		}
+		request.setAttribute("pList", pList);
+		System.out.println(professorList.toString());
 
 		
 		return "student/studentInsertForm";

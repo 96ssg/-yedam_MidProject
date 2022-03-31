@@ -35,10 +35,17 @@
 						</tr>
 					</c:if>
 					<c:if test="${not empty students }">
+
 						<c:forEach items="${students }" var="s">
-							<c:if test="${role eq 'admin' }">
-								<tr onClick="location.href='studentUpdateForm.do?studentId=${s.studentId }'">
-							</c:if>
+							<c:choose>
+								<c:when test="${role eq 'admin' }">
+									<tr onClick="location.href='studentUpdateForm.do?studentId=${s.studentId }'">
+								</c:when>
+								<c:otherwise>
+									<tr></tr>
+								</c:otherwise>
+							</c:choose>
+							
 							<td>${s.studentId }</td>
 
 							<td>${s.studentName }</td>
@@ -74,6 +81,13 @@
 					</c:if>
 				</tbody>
 			</table>
+			<div align="right">
+			<c:if test="${role eq 'admin' }">
+			
+				<button type="button" class="btn btn-outline-secondary" onclick="location.href='studentInsertForm.do'">학생등록</button>
+			</c:if>
+			</div><br>
+			
 		</div>
 <input type="hidden" id="student" name="studentId">
 </form>

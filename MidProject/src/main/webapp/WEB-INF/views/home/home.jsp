@@ -142,7 +142,7 @@
 					lectureInfo2.innerHTML = lectureName + '<br>' + lectureRoom;
 				})
 				td.addEventListener('click', () => {
-					location.href='lectureView.do?lectureId=' + element.lectureId;
+					location.href='lectureView.do?lectureId=' + element.lectureId + '&professorId='+ element.professorId;
 				})
 				
 			}

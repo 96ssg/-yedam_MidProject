@@ -184,15 +184,18 @@
 		profNames();
 		const delBtnTd = document.querySelectorAll('.delBtnTd');
 		const lId = document.querySelectorAll('.lId');
-		for (let i=0; i< delBtnTd.length; i++) {
-			const delBtn = document.createElement('input');
-			delBtn.setAttribute('type','button');
-			delBtn.setAttribute('id','delBtn');
-			delBtn.setAttribute('value','삭제');
-			delBtn.setAttribute('class','btn btn-outline-secondary');
-			delBtn.addEventListener('click', () => deleteLectures(lId[i].innerText));
-			delBtnTd[i].append(delBtn);
-			
+		
+		const role = '${role}';
+		if (role == 'admin') {
+			for (let i=0; i< delBtnTd.length; i++) {
+				const delBtn = document.createElement('input');
+				delBtn.setAttribute('type','button');
+				delBtn.setAttribute('id','delBtn');
+				delBtn.setAttribute('value','삭제');
+				delBtn.setAttribute('class','btn btn-outline-secondary');
+				delBtn.addEventListener('click', () => deleteLectures(lId[i].innerText));
+				delBtnTd[i].append(delBtn);
+			}
 		}
 	}
 	

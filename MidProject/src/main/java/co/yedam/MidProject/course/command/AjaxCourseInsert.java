@@ -54,17 +54,13 @@ public class AjaxCourseInsert implements Command {
 		// =================================================
 		// 조건3 : 수강정원
 		// 현재 학기의 해당 강의 수강신청 인원 조회
-		LocalDate now = LocalDate.now();
-		int thisYear = now.getYear();
-		int thisSemester = (now.getMonthValue()<8)? 1 : 2;
-		
 		CourseService courseDao = new CourseServiceImpl();
 		List<CourseVO> courseList = courseDao.myCourse("admin", Integer.toString(lectureId));
 		List<CourseVO> semesterCourseList = new ArrayList<CourseVO>();
 		
 		for (CourseVO c : courseList) {
-			if (c.getCourseYear() != thisYear) continue;
-			if (c.getCourseSemester() != thisSemester) continue;
+			if (c.getCourseYear() != CourseMethods.year) continue;
+			if (c.getCourseSemester() != CourseMethods.semester) continue;
 			semesterCourseList.add(c);
 		}
 		
@@ -77,8 +73,8 @@ public class AjaxCourseInsert implements Command {
 			CourseVO course = new CourseVO();
 			course.setLectureId(lectureId);
 			course.setStudentId(user.getStudentId());
-			course.setCourseYear(thisYear);
-			course.setCourseSemester(thisSemester);
+			course.setCourseYear(CourseMethods.year);
+			course.setCourseSemester(CourseMethods.semester);
 			
 			courseDao.insertCourse(course);
 		

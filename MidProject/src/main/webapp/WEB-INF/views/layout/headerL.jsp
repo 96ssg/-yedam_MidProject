@@ -7,7 +7,7 @@
 	<div class="col-md-4 fs-1 px-5 my-3">
 		<div class="">
 			<a class="text-reset" style="text-decoration: none" href="home.do">
-				<img width="200px" alt="logo" src="images/logo.png">
+				<img width="200px" alt="logo1" src="images/logo1.png">
 			</a>
 		</div>
 	</div>

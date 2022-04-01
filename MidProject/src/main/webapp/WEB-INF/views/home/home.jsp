@@ -60,7 +60,7 @@
 		</div>
 	
 		<!-- 시간표 -->
-		<div id="timetable" class="col-lg-5 border m-3" style="width: 50vh; height: 70vh; padding-right: 2vh">
+		<div id="timetable" class="col-lg-5 border m-3" style="width: 50vh; padding-right: 2vh; max-height: 60vh">
 			<div class="h1 m-3 text-center">시간표</div>
 	
 			<table class="table text-center">
@@ -85,15 +85,17 @@
 					<tr><td>7</td><td id="MON7"></td><td id="TUE7"></td><td id="WED7"></td><td id="THR7"></td><td id="FRI7"></td></tr>
 					<tr><td>8</td><td id="MON8"></td><td id="TUE8"></td><td id="WED8"></td><td id="THR8"></td><td id="FRI8"></td></tr>
 					<tr><td>9</td><td id="MON9"></td><td id="TUE9"></td><td id="WED9"></td><td id="THR9"></td><td id="FRI9"></td></tr>
-					<tr><td colspan="6">&nbsp;</td></tr>
-					<tr style="border-bottom: 1px solid white;"><td colspan="2" class="pt-3 fs-4 fw-bold" id="lectureInfo1"></td><td colspan="4" class="pt-3 fs-4 fw-bold" id="lectureInfo2"></td></tr>
 				</tbody>
 			</table>
+			<div class="row">
+				<div class="col-4 pb-3 fs-5 fw-bold text-center" id="lectureInfo1">-</div>
+				<div class="col-8 pb-3 fs-5 fw-bold text-center" id="lectureInfo2">-</div>
+			</div>
 		</div>
 
 		<!-- 공지사항 -->
-		<div class="col-md-6 border m-3" id="board" style="height:50vh">
-			<div class="h1 m-3">학과공지</div>
+		<div class="col-md-6 border m-3" id="board" style="max-height: 45vh">
+			<div class="h1 m-3 text-center">학과공지</div>
 			<table class="table table-hover">
 				<thead>
 					<tr align="center">
@@ -139,9 +141,13 @@
 				td.style.borderBottom = '1px solid ' + color;
 				
 				td.addEventListener('mouseover', () => {
-					lectureInfo1.innerHTML = '강의명 <br>강의실 ';
+					lectureInfo1.innerHTML = '강의정보 <br>강의실 ';
 					lectureInfo2.innerHTML = lectureName + '<br>' + lectureRoom;
 				})
+				td.addEventListener('click', () => {
+					location.href='lectureView.do?lectureId=' + element.lectureId;
+				})
+				
 			}
 			colorOrder++;
 		})
@@ -175,6 +181,12 @@
 		})
 	})
 	
+	document.querySelector('#timetable').addEventListener('mouseleave', () => {
+		lectureInfo1.innerHTML = '-';
+		lectureInfo2.innerHTML = '-';
+	})
+	
+	
 	// 홈 화면 컴포넌트 버튼
 	const myInfoDiv = document.querySelector('#myInfo');
 	const timetableDiv = document.querySelector('#timetable');
@@ -192,5 +204,8 @@
 		if (!this.checked) boardDiv.remove()
 		if (this.checked) viewGroup.append(boardDiv)
 	})
+	
+	
+	
 	
 </script>

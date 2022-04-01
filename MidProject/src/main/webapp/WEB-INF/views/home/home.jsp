@@ -16,7 +16,7 @@
 	
 	<div class="row d-flex justify-content-around pt-3" style="min-height: 70vh" id="viewGroup">
 
-		<div id="myInfo" class="col-lg-4 border m-3" style="width: 40vh; height: 40vh;">
+		<div id="myInfo" class="col-auto border m-3" style="width: 40vh; height: 40vh;">
 			<div class="p-5">
 				<c:if test="${role eq 'student' }">
 					<div class="h1 pb-4 border-bottom border-secondary">${user.studentName } 님</div>
@@ -60,7 +60,7 @@
 		</div>
 	
 		<!-- 시간표 -->
-		<div id="timetable" class="col-lg-5 border m-3" style="width: 50vh; padding-right: 2vh; max-height: 60vh">
+		<div id="timetable" class="col-auto border m-3" style="width: 50vh; padding-right: 2vh; max-height: 65vh">
 			<div class="h1 m-3 text-center">시간표</div>
 	
 			<table class="table text-center">
@@ -94,7 +94,7 @@
 		</div>
 
 		<!-- 공지사항 -->
-		<div class="col-md-6 border m-3" id="board" style="max-height: 45vh">
+		<div class="col-auto border m-3" id="board" style="max-height: 45vh">
 			<div class="h1 m-3 text-center">학과공지</div>
 			<table class="table table-hover">
 				<thead>

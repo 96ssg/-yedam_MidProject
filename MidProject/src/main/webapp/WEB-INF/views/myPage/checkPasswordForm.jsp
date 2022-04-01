@@ -27,7 +27,7 @@
 	<div style="width: 50%; float:none; margin:0 auto">
 		<form id="frm" name="frm" onsubmit="return false">
 			<div class="input-group my-4 col-md-6 justify-content-center" style="float: none; margin:0 auto;">
-				<div class="text-center display-4" style="width: 100%; height: 10vh">비밀번호 확인</div>
+				<div class="text-center display-4" style="width: 100%; height: 15vh">비밀번호 확인</div>
 				<input type="password" name="password" onkeyup="enterkey()"
 					placeholder="Enter Password..." required="required">
 				<button type="button" class="btn btn-outline-secondary"

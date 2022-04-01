@@ -23,21 +23,17 @@
 					<tr>
 						<th width="100">요일</th>
 						<td width="100"><select name="lectureDay" id="lectureDay">
-								<option value="0" selected>선택</option>
-								<option value="SUN">SUN</option>
-								<option value="MON">MON</option>
+								<option value="MON" selected>MON</option>
 								<option value="TUE">TUE</option>
 								<option value="WED">WED</option>
 								<option value="TUR">TUR</option>
 								<option value="FRI">FRI</option>
-								<option value="SAT">SAT</option>
 						</select></td>
 					</tr>
 					<tr>
 						<th width="100">시작시간</th>
 						<td><select name="lectureStart" id="lectureStart">
-								<option value="0" selected>선택</option>
-								<option value="1">1교시</option>
+								<option value="1" selected>1교시</option>
 								<option value="2">2교시</option>
 								<option value="3">3교시</option>
 								<option value="4">4교시</option>
@@ -50,8 +46,7 @@
 					<tr>
 						<th width="100">종료시간</th>
 						<td width="100"><select name="lectureEnd" id="lectureEnd">
-								<option value="0" selected>선택</option>
-								<option value="2">2교시</option>
+								<option value="2" selected>2교시</option>
 								<option value="3">3교시</option>
 								<option value="4">4교시</option>
 								<option value="5">5교시</option>

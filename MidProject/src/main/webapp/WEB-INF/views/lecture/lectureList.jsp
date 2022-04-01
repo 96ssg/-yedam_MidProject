@@ -68,21 +68,21 @@
 
 
 
-			 			<nav>
-						  <ul class="pagination justify-content-center">
-						    <li class="page-item" id="prevBtn" onclick="onPrevBtn()">
-						      <a class="page-link" aria-label="Previous">
-						        <span aria-hidden="true">&laquo;</span>
-						      </a>
-						    </li>
+<!-- 			 			<nav> -->
+<!-- 						  <ul class="pagination justify-content-center"> -->
+<!-- 						    <li class="page-item" id="prevBtn" onclick="onPrevBtn()"> -->
+<!-- 						      <a class="page-link" aria-label="Previous"> -->
+<!-- 						        <span aria-hidden="true">&laquo;</span> -->
+<!-- 						      </a> -->
+<!-- 						    </li> -->
 
-						    <li class="page-item" id="nextBtn" onclick="onNextBtn()">
-						      <a class="page-link" aria-label="Next">
-						        <span aria-hidden="true">&raquo;</span>
-						      </a>
-						    </li>
-						  </ul>
-						</nav>
+<!-- 						    <li class="page-item" id="nextBtn" onclick="onNextBtn()"> -->
+<!-- 						      <a class="page-link" aria-label="Next"> -->
+<!-- 						        <span aria-hidden="true">&raquo;</span> -->
+<!-- 						      </a> -->
+<!-- 						    </li> -->
+<!-- 						  </ul> -->
+<!-- 						</nav> -->
 
 
 
@@ -103,6 +103,11 @@
 </div>
 <!-- LectureList End -->
 <script type="text/javascript">
+
+	// 강의 등록 후 새로고침 시 글쓰기 중복 수행 방지를 위한 url 변경
+	history.pushState(null, null, 'lectureList.do');
+
+
 	/* 각 항목에 해당하는 교수명 출력 */
 	window.onload = profNames;
 
@@ -213,8 +218,8 @@
 			}
 			// 취소 후 강의리스트 목록 재호출
 			alert('삭제되었습니다.');
-			location.reload();
 			
+			location.href='lectureList.do';
 		})
 	}
 	

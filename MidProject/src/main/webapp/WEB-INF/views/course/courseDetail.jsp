@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<div class="col-lg-10">
+<div class="col-lg-8" style="height: 70vh">
 	<h1>성적 입력</h1>
 	<ul class="nav nav-tabs">
 		<li class="nav-item"><a id="semesterTab" onclick="toggle('semester')" class="nav-link">해당학기</a></li>

@@ -59,16 +59,16 @@
 			<div></div>
 
 			<div align="right">
-				<button type="button" class="btn btn-outline-secondary"
-					onclick="location.href='home.do'">홈</button>
-				&nbsp;&nbsp;&nbsp;
+<!-- 				<button type="button" class="btn btn-outline-secondary" -->
+<!-- 					onclick="location.href='home.do'">홈</button> -->
+<!-- 				&nbsp;&nbsp;&nbsp; -->
 				<c:if test="${role eq 'admin' }">
 					<button type="submit" class="btn btn-outline-secondary">학생
 						수정</button>
 				</c:if>
 				&nbsp;&nbsp;&nbsp;
 				<c:if test="${role eq 'admin' }">
-					<button type="reset" class="btn btn-outline-secondary">취 소</button>
+					<button type="reset" class="btn btn-outline-secondary" onclick="window.history.back()">취 소</button>
 				</c:if>
 				&nbsp;&nbsp;&nbsp;
 			</div>

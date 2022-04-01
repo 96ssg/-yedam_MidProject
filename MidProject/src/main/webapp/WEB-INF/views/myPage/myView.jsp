@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script src="js/jquery.min.js"></script>
-<div class="col-lg-10">
+<div class="col-lg-8" style="height:70vh;">
 	<div>
 		<h1>내 정보</h1>
 	</div>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	<div class="col-lg-2 px-5" style="height: 70vh">
+	<div class="col-lg-2 px-5">
 		<span class="fs-4">My Page</span>
 		<hr>
 		<ul class="nav nav-pills flex-column mb-auto">

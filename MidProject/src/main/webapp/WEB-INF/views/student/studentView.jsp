@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="js/jquery.min.js"></script>
 <!-- StudentView -->
-<div class="col-lg-10">
+<div class="col-lg-8" style="height: 70vh">
 	<div class="fs-2 px-3 my-3">학생 상세 정보</div>
 	<form id="frm" method="post">
 		<div>

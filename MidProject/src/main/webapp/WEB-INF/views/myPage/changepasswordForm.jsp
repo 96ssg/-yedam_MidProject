@@ -15,7 +15,7 @@
 					onkeyup="enterkey()" aria-label="First name" >
 		</div>
 		<div class="input-group mb-3 col-lg-4 justify-content-center">
-			<span class="input-group-text " style="width: 13%;">새 비밀번호 확인</span> <input type="password" name="password2"
+			<span class="input-group-text " style="width: 13%;">새 비밀번호 확인</span> <input type="password" name="password2" id="password2"
 					onkeyup="enterkey()" aria-label="First name" >
 		</div>
 		<br>
@@ -36,7 +36,7 @@
 		fetch('ajaxChangePassword.do?', {
 			method: 'post',
 			headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-			body: 'currentPw=' + currentPassword.value +'&password=' + password.value
+			body: 'currentPw=' + currentPassword.value +'&password=' + password.value +'&password2=' + password2.value
 		})
 		.then(response => response.text())
 		.then(result => {

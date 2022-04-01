@@ -40,6 +40,7 @@ public class LectureList implements Command {
 
 		List<LectureVO> list = lectureDAO.selectLectureList();
 		request.setAttribute("lectures", list);
+		request.setAttribute("llist", new Gson().toJson(list));
 
 		List<LectureVO> lectures = new ArrayList<>();
 		

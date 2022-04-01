@@ -73,12 +73,13 @@
 		</c:if>
 	</div>
 	<div align="right">
-	<c:if test="${role ne 'student' }">
-		<input type="button" class="btn btn-outline-secondary" onclick="location.href='chargeStudentList.do'"
-			value="목록">
-	</c:if>
+		<c:if test="${role ne 'student' }">
+			<input type="button" class="btn btn-outline-secondary" onclick="location.href='chargeStudentList.do'"
+				value="목록">
+		</c:if>
+	</div>
 </div>
-</div>
+
 <script>
 // 		강의번호 => 강의명
 		const lectureList = ${lectures};

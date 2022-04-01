@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <div class="col-lg-8" style="height: 70vh">
 	<h1>내 강의 목록</h1>
 	<c:if test="${role ne 'student' }">
@@ -30,14 +31,16 @@
 		<h1>없음</h1>
 	</c:if>
 </div>
-	<script>
-	
-		const lectures = document.querySelectorAll('.lectures');
-		lectures.forEach((element)=>{
-			element.addEventListener('click', () => {
-				const lectureId = element.children[0].innerText;
-				
-				location.href="courseDetail.do?lectureId=" + lectureId;
-			})
+
+
+<script>
+	// 성적 입력 페이지(courseDetail) 로 이동
+	const lectures = document.querySelectorAll('.lectures');
+	lectures.forEach((element)=>{
+		element.addEventListener('click', () => {
+			const lectureId = element.children[0].innerText;
+			
+			location.href="courseDetail.do?lectureId=" + lectureId;
 		})
-	</script>
+	})
+</script>

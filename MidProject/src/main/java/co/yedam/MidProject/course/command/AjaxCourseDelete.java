@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import co.yedam.MidProject.common.Command;
-import co.yedam.MidProject.course.service.CourseMethods;
 import co.yedam.MidProject.course.service.CourseService;
 import co.yedam.MidProject.course.service.CourseVO;
 import co.yedam.MidProject.course.serviceImpl.CourseServiceImpl;
@@ -21,15 +20,12 @@ public class AjaxCourseDelete implements Command {
 		
 		// 삭제할 수강정보 선택
 		// 현재 연도, 학기
-		int thisYear = CourseMethods.year;
-		int thisSemester = CourseMethods.semester;
-		
 		CourseService courseDao = new CourseServiceImpl();
 		CourseVO vo = new CourseVO();
 		vo.setLectureId(Integer.parseInt(request.getParameter("lectureId")));
 		vo.setStudentId(user.getStudentId());
-		vo.setCourseYear(thisYear);
-		vo.setCourseSemester(thisSemester);
+		vo.setCourseYear(CourseMethods.year);
+		vo.setCourseSemester(CourseMethods.semester);
 		
 		courseDao.deleteCourse(vo);
 		System.out.println("course deleted");

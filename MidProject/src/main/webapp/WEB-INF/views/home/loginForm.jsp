@@ -66,48 +66,44 @@
     </div>
   </div>
   
+  <!-- footer -->
   <jsp:include page="/WEB-INF/views/layout/footer.jsp"/>
-<!--   <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-secondary"> -->
-<!--     Copyright -->
-<!--     <div class="text-white mb-3 mb-md-0"> -->
-<!--       Copyright © 2020. All rights reserved. -->
-<!--     </div> -->
-<!--   </div> -->
+  
 </section>
 	
 		
-	<script>
-		function login(id, pw) {
-			fetch('login.do?', {
-				method: 'post',
-				headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-				body: 'id=' + id + '&password=' + pw
-			})
-			.then(response => response.text())
-			.then(result => {
-				if (result === 'id') {
-					alert('아이디가 존재하지 않습니다.');
-					loginId.value = '';
-					loginId.focus();
-					return;
-				}
-				
-				if (result === 'password') {
-					alert('비밀번호를 확인하세요.');
-					loginPassword.value = '';
-					loginPassword.focus();
-					return;
-				}
-				
-				if (result === 'success') location.href='home.do';
-			})
-		}
-		
-		loginBtn.addEventListener('click', () => login(loginId.value, loginPassword.value));
-		loginForm.addEventListener('keydown', event => {
-			if (event.key === 'Enter') login(loginId.value, loginPassword.value);
+<script>
+	function login(id, pw) {
+		fetch('login.do?', {
+			method: 'post',
+			headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+			body: 'id=' + id + '&password=' + pw
 		})
-	</script>
+		.then(response => response.text())
+		.then(result => {
+			if (result === 'id') {
+				alert('아이디가 존재하지 않습니다.');
+				loginId.value = '';
+				loginId.focus();
+				return;
+			}
+			
+			if (result === 'password') {
+				alert('비밀번호를 확인하세요.');
+				loginPassword.value = '';
+				loginPassword.focus();
+				return;
+			}
+			
+			if (result === 'success') location.href='home.do';
+		})
+	}
+	
+	loginBtn.addEventListener('click', () => login(loginId.value, loginPassword.value));
+	loginForm.addEventListener('keydown', event => {
+		if (event.key === 'Enter') login(loginId.value, loginPassword.value);
+	})
+</script>
 
 </body>
 </html>

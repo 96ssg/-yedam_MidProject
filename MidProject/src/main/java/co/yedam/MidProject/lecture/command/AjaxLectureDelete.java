@@ -1,20 +1,12 @@
 package co.yedam.MidProject.lecture.command;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.google.gson.Gson;
 
 import co.yedam.MidProject.common.Command;
 import co.yedam.MidProject.lecture.service.LectureService;
 import co.yedam.MidProject.lecture.service.LectureVO;
 import co.yedam.MidProject.lecture.serviceImpl.LectureServiceImpl;
-import co.yedam.MidProject.professor.service.ProfessorVO;
-import co.yedam.MidProject.student.service.StudentVO;
 
 public class AjaxLectureDelete implements Command {
 

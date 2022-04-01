@@ -63,6 +63,9 @@
 		</div>
 		<br>
 		<div align="right">
+			<c:if test="${role eq 'admin' }">
+				<button type="button" class="btn btn-outline-secondary" onclick="location.href='studentUpdateForm.do?studentId=${students.studentId}'">수정</button>
+			</c:if>
 			<button type="button" class="btn btn-outline-secondary"
 				onclick="location.href='chargeStudentList.do'">목록가기</button>
 		</div>

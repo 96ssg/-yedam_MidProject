@@ -22,6 +22,7 @@ public class AjaxProfessorInfo implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
+		// 로그인한 교수의 홈 화면 정보
 		
 		HttpSession session = request.getSession();
 		ProfessorVO user = (ProfessorVO) session.getAttribute("user");

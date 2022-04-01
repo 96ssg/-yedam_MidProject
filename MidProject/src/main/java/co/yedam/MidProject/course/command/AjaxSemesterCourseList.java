@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 
 import co.yedam.MidProject.common.Command;
-import co.yedam.MidProject.course.service.CourseMethods;
 import co.yedam.MidProject.course.service.CourseService;
 import co.yedam.MidProject.course.service.CourseVO;
 import co.yedam.MidProject.course.serviceImpl.CourseServiceImpl;
@@ -40,6 +39,7 @@ public class AjaxSemesterCourseList implements Command {
 		
 		// 검색결과가 없을 경우
 		if (semesterCourseList.size() == 0) return "ajax:noResult";
+		
 		
 		LectureService lectureDao = new LectureServiceImpl();
 		List<LectureVO> lectureList = lectureDao.selectLectureList();

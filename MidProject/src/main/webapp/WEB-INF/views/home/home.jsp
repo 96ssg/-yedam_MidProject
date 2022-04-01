@@ -16,6 +16,7 @@
 	
 	<div class="row d-flex justify-content-around pt-3" style="min-height: 70vh" id="viewGroup">
 
+		<!--  내 정보 -->
 		<div id="myInfo" class="col-auto border m-3" style="width: 40vh; height: 40vh;">
 			<div class="p-5">
 				<c:if test="${role eq 'student' }">
@@ -111,6 +112,8 @@
 	</div>
 	
 </div>
+
+
 <script>
 	// 홈 화면 정보 출력
 	const role = '${role}';

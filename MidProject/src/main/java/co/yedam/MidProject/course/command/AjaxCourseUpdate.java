@@ -1,7 +1,5 @@
 package co.yedam.MidProject.course.command;
 
-import java.time.LocalDate;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,15 +22,12 @@ public class AjaxCourseUpdate implements Command {
 		
 		// 수정할 courseVO
 		// 현재 연도, 학기
-		LocalDate now = LocalDate.now();
-		int thisYear = now.getYear();
-		int thisSemester = (now.getMonthValue() < 8) ? 1 : 2;
 		CourseService courseDao = new CourseServiceImpl();
 		CourseVO vo = new CourseVO();
 		vo.setLectureId(lectureId);
 		vo.setStudentId(studentId);
-		vo.setCourseYear(thisYear);
-		vo.setCourseSemester(thisSemester);
+		vo.setCourseYear(CourseMethods.year);
+		vo.setCourseSemester(CourseMethods.semester);
 		vo = courseDao.selectCourse(vo);
 		
 		// 수정

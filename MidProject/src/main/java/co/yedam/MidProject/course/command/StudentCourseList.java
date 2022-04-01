@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 
 import co.yedam.MidProject.common.Command;
-import co.yedam.MidProject.course.service.CourseMethods;
 import co.yedam.MidProject.course.service.CourseService;
 import co.yedam.MidProject.course.service.CourseVO;
 import co.yedam.MidProject.course.serviceImpl.CourseServiceImpl;

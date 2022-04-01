@@ -4,9 +4,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import co.yedam.MidProject.charge.service.ChargeService;
-import co.yedam.MidProject.charge.service.ChargeVO;
-import co.yedam.MidProject.charge.serviceImpl.ChargeServiceImpl;
 import co.yedam.MidProject.common.Command;
 import co.yedam.MidProject.professor.service.ProfessorVO;
 import co.yedam.MidProject.student.service.StudentService;
@@ -19,7 +16,6 @@ public class StudentInsert implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 
 		HttpSession session = request.getSession();
-		ProfessorVO user = (ProfessorVO) session.getAttribute("user");
 
 		StudentVO student = new StudentVO();
 		
@@ -33,7 +29,6 @@ public class StudentInsert implements Command {
 		student.setStudentScore(Integer.parseInt(request.getParameter("sScore")));
 		student.setStudentSemester(Integer.parseInt(request.getParameter("sSemester")));
 		student.setDeptId(request.getParameter("dId"));
-		System.out.println("개씨발련:"+request.getParameter("dId"));
 		student.setStudentStatus(Integer.parseInt(request.getParameter("sStatus")));
 		
 		

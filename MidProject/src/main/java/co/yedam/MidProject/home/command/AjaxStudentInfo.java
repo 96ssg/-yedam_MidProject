@@ -13,7 +13,7 @@ import co.yedam.MidProject.board.service.BoardService;
 import co.yedam.MidProject.board.service.BoardVO;
 import co.yedam.MidProject.board.serviceImpl.BoardServiceImpl;
 import co.yedam.MidProject.common.Command;
-import co.yedam.MidProject.course.service.CourseMethods;
+import co.yedam.MidProject.course.command.CourseMethods;
 import co.yedam.MidProject.course.service.CourseService;
 import co.yedam.MidProject.course.service.CourseVO;
 import co.yedam.MidProject.course.serviceImpl.CourseServiceImpl;
@@ -26,6 +26,7 @@ public class AjaxStudentInfo implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
+		// 로그인한 학생의 홈 정보
 
 		HttpSession session = request.getSession();
 		StudentVO user = (StudentVO) session.getAttribute("user");

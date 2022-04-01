@@ -29,6 +29,8 @@ public class ChargeStudentList implements Command {
 
 		ChargeService chargeDao = new ChargeServiceImpl();
 		ChargeVO vo = new ChargeVO();
+		
+		// 해당 교수의 지도학생 목록
 		vo.setProfessorId(user.getProfId());
 		vo.setStudentId("%%");
 		List<ChargeVO> chargeList = chargeDao.selectCharge(vo);

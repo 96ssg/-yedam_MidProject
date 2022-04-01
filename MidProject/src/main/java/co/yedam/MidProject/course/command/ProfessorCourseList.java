@@ -13,7 +13,6 @@ import co.yedam.MidProject.charge.service.ChargeService;
 import co.yedam.MidProject.charge.service.ChargeVO;
 import co.yedam.MidProject.charge.serviceImpl.ChargeServiceImpl;
 import co.yedam.MidProject.common.Command;
-import co.yedam.MidProject.course.service.CourseMethods;
 import co.yedam.MidProject.course.service.CourseService;
 import co.yedam.MidProject.course.service.CourseVO;
 import co.yedam.MidProject.course.serviceImpl.CourseServiceImpl;
@@ -45,7 +44,7 @@ public class ProfessorCourseList implements Command {
 			
 			// 일반 교수는 지도학생의 이번 학기 성적만 조회 가능
 			System.out.println("role : " + role);
-			if (!role.equals("admin")) {
+			if (role.equals("professor")) {
 				// 수강연도, 학기 확인
 				if (c.getCourseYear() != CourseMethods.year || c.getCourseSemester() != CourseMethods.semester) continue;
 				

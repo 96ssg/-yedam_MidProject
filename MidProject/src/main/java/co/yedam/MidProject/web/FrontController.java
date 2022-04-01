@@ -28,7 +28,6 @@ import co.yedam.MidProject.course.command.AjaxSemesterCourseList;
 import co.yedam.MidProject.course.command.CourseApplicationForm;
 import co.yedam.MidProject.course.command.CourseDetail;
 import co.yedam.MidProject.course.command.CourseInsertList;
-import co.yedam.MidProject.course.command.ProfessorCourseList;
 import co.yedam.MidProject.course.command.StudentCourseList;
 import co.yedam.MidProject.home.command.AjaxProfessorInfo;
 import co.yedam.MidProject.home.command.AjaxStudentInfo;
@@ -36,8 +35,8 @@ import co.yedam.MidProject.home.command.HomeCommand;
 import co.yedam.MidProject.home.command.Login;
 import co.yedam.MidProject.home.command.LoginForm;
 import co.yedam.MidProject.home.command.Logout;
-import co.yedam.MidProject.lecture.command.AjaxLectureSearch;
 import co.yedam.MidProject.lecture.command.AjaxLectureDelete;
+import co.yedam.MidProject.lecture.command.AjaxLectureSearch;
 import co.yedam.MidProject.lecture.command.LectureInsert;
 import co.yedam.MidProject.lecture.command.LectureInsertForm;
 import co.yedam.MidProject.lecture.command.LectureList;
@@ -139,7 +138,6 @@ public class FrontController extends HttpServlet {
 
 		// course
 		map.put("/studentCourseList.do", new StudentCourseList());				// 학생 성적 조회
-		map.put("/professorCourseList.do", new ProfessorCourseList());			// 학과 내 학생의 수강정보 목록
 		map.put("/courseInsertList.do", new CourseInsertList());				// 내 강의 목록
 		map.put("/courseApplicationForm.do", new CourseApplicationForm());		// 수강신청 폼
 		map.put("/ajaxApplicationSearch.do", new AjaxApplicationSearch());		// 수강신청 강의, 교수정보

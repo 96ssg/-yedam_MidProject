@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <div class="col-lg-8" style="height: 70vh">
 	<h1>지도학생 목록</h1>
 	<form id="frm" method="post">
@@ -28,8 +29,9 @@
 		</table>
 		<input type="hidden" id="studentId" name="studentId">
 	</form>
-	</div>
-	<script>
+</div>
+	
+<script>
 	function runview(m){
 		frm.studentId.value = m;
 		frm.action = "studentView.do";
@@ -40,4 +42,4 @@
 		frm.action = "studentCourseList.do";
 		frm.submit();
 	}
-	</script>
+</script>

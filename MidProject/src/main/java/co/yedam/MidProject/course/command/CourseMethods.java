@@ -1,4 +1,4 @@
-package co.yedam.MidProject.course.service;
+package co.yedam.MidProject.course.command;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -7,6 +7,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import co.yedam.MidProject.course.service.CourseService;
+import co.yedam.MidProject.course.service.CourseVO;
 import co.yedam.MidProject.course.serviceImpl.CourseServiceImpl;
 import co.yedam.MidProject.lecture.service.LectureService;
 import co.yedam.MidProject.lecture.service.LectureVO;
@@ -14,6 +16,7 @@ import co.yedam.MidProject.lecture.serviceImpl.LectureServiceImpl;
 import co.yedam.MidProject.student.service.StudentVO;
 
 public class CourseMethods {
+	// 공용 변수, 함수
 	
 	static LocalDate now = LocalDate.now();
 	public static int year = now.getYear();
@@ -21,6 +24,7 @@ public class CourseMethods {
 	
 
 	public List<CourseVO> getSemesterCourseList(List<CourseVO> courseList) {
+		// 받아온 목록 중 현재 학기의 목록만 필터링
 
 		// 현재 학기의 수강목록
 		List<CourseVO> semesterCourseList = new ArrayList<>();
@@ -35,6 +39,7 @@ public class CourseMethods {
 	}
 	
 	public List<LectureVO> getSemesterLectureList(HttpServletRequest request) {
+		// 수강목록 중 현재 학기의 강의 정보
 		
 		HttpSession session = request.getSession();
 		StudentVO user = (StudentVO) session.getAttribute("user");

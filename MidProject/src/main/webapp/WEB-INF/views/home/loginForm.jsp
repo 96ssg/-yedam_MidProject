@@ -33,12 +33,12 @@
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-md-9 col-xl-5 d-none d-xl-block" align="center">
       	<div style="height: 40vh; border-right: 10px solid lightgrey;">
-        	<img src="images/logo.png" alt="logo" class="img-fluid" width="400px" style="padding-top: 25%">
+        	<img src="images/logo1.png" alt="logo1" class="img-fluid" width="400px" style="padding-top: 25%">
         </div>
       </div>
       <div class="col-md-9 col-xl-5 d-xl-none" align="center">
       	<div style="height: 40vh; border-bottom: 10px solid lightgrey;">
-        	<img src="images/logo.png" alt="logo" class="img-fluid" width="400px" style="padding-top: 25%">
+        	<img src="images/logo1.png" alt="logo1" class="img-fluid" width="400px" style="padding-top: 25%">
         </div>
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">

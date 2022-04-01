@@ -20,8 +20,15 @@ public class StudentUpdate implements Command {
 		StudentVO student = new StudentVO();
 		
 		student.setStudentId(request.getParameter("studentId"));
+		student = service.selectStudent(student);
+		
 		student.setStudentName(request.getParameter("studentName"));
-		student.setStudentPassword(request.getParameter("studentPassword"));
+
+		String inputPw = request.getParameter("studentPassword");
+		if (!inputPw.equals("")) {
+			student.setStudentPassword(request.getParameter("studentPassword"));
+		}
+		
 		student.setStudentPhone(request.getParameter("studentPhone"));
 		student.setStudentScore(Integer.parseInt(request.getParameter("studentScore")));
 		student.setStudentStatus(Integer.parseInt(request.getParameter("studentStatus")));

@@ -66,7 +66,7 @@
     </div>
   </div>
   
-  <jsp:include page="/WEB-INF/views/layout/footerY.jsp"/>
+  <jsp:include page="/WEB-INF/views/layout/footer.jsp"/>
 <!--   <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-secondary"> -->
 <!--     Copyright -->
 <!--     <div class="text-white mb-3 mb-md-0"> -->

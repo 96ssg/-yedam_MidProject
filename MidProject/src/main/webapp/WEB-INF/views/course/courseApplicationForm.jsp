@@ -54,230 +54,261 @@
 		</table>
 	</div>
 </div>	
-	<script>
-		// 최초 페이지 로드 시 현재 수강신청 목록 출력
-		window.onload = semesterCourseList;
+
+
+<!-- 모달 -->
+<div class="modal fade" id="modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<h4 class="modal-title">주의!</h4>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+			</div>
+
+			<div class="modal-body">수강신청을 취소하시겠습니까?</div>
+
+			<div class="modal-footer">
+				<input type="hidden" id="lectureToCancel">
+				<button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="cancelConfirmBtn">수강신청 취소</button>
+				<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">닫기</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+
+
+<script>
+	// 최초 페이지 로드 시 현재 수강신청 목록 출력
+	window.onload = semesterCourseList;
+	
+	
+	// 수강신청
+	function applyCourse() {
+		const lectureId = document.getElementById('lectureId').value;
 		
+		if (lectureId == '') {
+			alert('강의번호를 입력하세요.');
+			return;
+		} 
 		
-		// 수강신청
-		function applyCourse() {
-			const lectureId = document.getElementById('lectureId').value;
-			
-			if (lectureId == '') {
-				alert('강의번호를 입력하세요.');
-				return;
-			} 
-			
-			const maxCredit = ${user.studentScore}
-			
-			fetch('ajaxCourseInsert.do?', {
-				method: 'post',
-				headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-				body: 'lectureId=' + lectureId
-			})
-			.then(response => response.text())
-			.then(result => {
-				// 수강신청 실패
-				if (result == 'lectureId') {
-					alert('강의 번호를 확인하세요.')
-					return;
-				}
-				if (result == 'capacity') {
-					alert('수강정원이 초과되었습니다.')
-					return;
-				}
-				if (result == 'credit') {
-					alert('최대이수학점을 초과해서 신청할 수 없습니다.')
-					return;
-				}
-				if (result == 'applied') {
-					alert('이미 신청된 강의입니다.');
-					return;
-				}
-				
-				// 수강신청 성공
-				// 수강신청 후 목록 재호출
-				semesterCourseList();
-			})
-			.catch(error => console.error('error : ', error))
-		}
+		const maxCredit = ${user.studentScore}
 		
-		applyBtn.addEventListener('click', () => applyCourse());
-		lectureId.addEventListener('keydown', event => {
-		if (event.key === 'Enter') applyCourse();
+		fetch('ajaxCourseInsert.do?', {
+			method: 'post',
+			headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+			body: 'lectureId=' + lectureId
 		})
-		
-		// 수강신청 목록 출력
-		function semesterCourseList() {
-			
-			// 기존 수강신청 목록 삭제
-			applicationInfo.innerHTML = '';
-			
-			fetch('ajaxSemesterCourseList.do')
-			.then(response => response.text())
-			.then(result => {
-				
-				// 신청한 강의가 없을 경우
-				if (result === 'noResult') {
-					
-					const td = document.createElement('td');
-					td.setAttribute('colspan', '7');
-					td.setAttribute('align', 'center');
-					td.innerText = '신청한 강의가 없습니다.';
-					
-					applicationInfo.append(td);
-					return;
-				}
-				
-				// 수강신청 강의 목록, 교수명
-				const lectureList = JSON.parse(result.split('~')[0]);
-				const professorName = JSON.parse(result.split('~')[1]);
-				
-				// 결과 출력
-				for (let i=0; i<lectureList.length; i++) {
-					const tr = document.createElement('tr');
-					
-					const lectureId = document.createElement('input');
-					lectureId.setAttribute('type','hidden');
-					lectureId.value= lectureList[i].lectureId;
-					
-					const lectureName = document.createElement('td');
-					lectureName.innerText = lectureList[i].lectureName;
-					
-					const lectureCredit = document.createElement('td');
-					lectureCredit.innerText = lectureList[i].lectureCredit;
-					
-					const profName = document.createElement('td');
-					profName.innerText = professorName[i];
-					
-					const lectureRoom = document.createElement('td');
-					lectureRoom.innerText = lectureList[i].lectureRoom;
-					
-					const lectureCapacity = document.createElement('td');
-					lectureCapacity.innerText = lectureList[i].lectureCapacity;
-					
-					const cancel = document.createElement('td');
-					const cancelBtn = document.createElement('input');
-					cancelBtn.setAttribute('type', 'button');
-					cancelBtn.setAttribute('id', 'cancelBtn');
-					cancelBtn.setAttribute('value', '취소하기');
-					cancelBtn.setAttribute('class','btn btn-outline-secondary');
-					cancelBtn.addEventListener('click', () => cancelCourse(lectureList[i].lectureId));
-					cancel.append(cancelBtn);
-					
-					tr.append(lectureId);
-					tr.append(lectureName);
-					tr.append(lectureCredit);
-					tr.append(profName);
-					tr.append(lectureRoom);
-					tr.append(lectureCapacity);
-					tr.append(cancel);
-					
-					applicationInfo.append(tr);
-				}
-				
-			})
-		}
-		
-		
-		// 수강신청 취소
-		function cancelCourse(lectureId) {
-			const isCancel = confirm('강의를 수강취소 하시겠습니까?');
-			if (isCancel == false) return;
-			
-			fetch('ajaxCourseDelete.do?', {
-				method: 'post',
-				headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-				body: 'lectureId=' + lectureId
-			})
-			.then(response => response.text())
-			.then(result => {
-				if (result != 'deleted') {
-					alert('수강신청 취소 중 오류가 발생했습니다.')
-					return;
-				}
-				
-				// 취소 후 수강신청 목록 재호출
-				semesterCourseList();
-			})
-		}
-		
-		
-		// 강의 검색
-		function searchLecture() {
-			const keyword = document.getElementById('searchLectureId').value
-			if (keyword == '') {
-				alert('강의명을 입력하세요.');
+		.then(response => response.text())
+		.then(result => {
+			// 수강신청 실패
+			if (result == 'lectureId') {
+				alert('강의 번호를 확인하세요.')
+				return;
+			}
+			if (result == 'capacity') {
+				alert('수강정원이 초과되었습니다.')
+				return;
+			}
+			if (result == 'credit') {
+				alert('최대이수학점을 초과해서 신청할 수 없습니다.')
+				return;
+			}
+			if (result == 'applied') {
+				alert('이미 신청된 강의입니다.');
 				return;
 			}
 			
-			fetch('ajaxApplicationSearch.do?', {
-				method: 'post',
-				headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-				body: 'val=' + keyword
-			})
-			.then(response => response.text())
-			.then(result => {
-				// 기존 검색결과 삭제
-				searchResult.innerHTML = '';
-				
-				// 검색결과가 없을 경우
-				if (result === 'noResult') {
-					const td = document.createElement('td');
-					td.setAttribute('colspan', '7');
-					td.setAttribute('align', 'center');
-					td.innerText = '검색결과가 없습니다.';
-					
-					searchResult.append(td);
-					return;
-				}
-
-				// 검색 결과 출력
-				// 강의정보, 교수명, 현재 수강신청 인원 결과
-				
-				const lecture = JSON.parse(result.split('~')[0]);
-				const professorName = JSON.parse(result.split('~')[1]);
-				console.log(typeof professorName)
-				const currentApplications = result.split('~')[2];
-				
-				for(let i=0; i<lecture.length; i++) {
-					const tr = document.createElement('tr');
-					
-					const lectureId = document.createElement('td');
-					lectureId.innerText = lecture[i].lectureId;
-					
-					const lectureName = document.createElement('td');
-					lectureName.innerText = lecture[i].lectureName;
-					
-					const lectureCredit = document.createElement('td');
-					lectureCredit.innerText = lecture[i].lectureCredit;
-					
-					const profName = document.createElement('td');
-					profName.innerText = professorName[i];
-					
-					const lectureRoom = document.createElement('td');
-					lectureRoom.innerText = lecture[i].lectureRoom;
-					
-					const currentNum = document.createElement('td');
-					currentNum.innerText = currentApplications;
-					
-					const lectureCapacity = document.createElement('td');
-					lectureCapacity.innerText = lecture[i].lectureCapacity;
-					
-					tr.append(lectureId);
-					tr.append(lectureName);
-					tr.append(lectureCredit);
-					tr.append(profName);
-					tr.append(lectureRoom);
-					tr.append(currentNum);
-					tr.append(lectureCapacity);
-					
-					searchResult.append(tr);
-				}
-			})
-		}
-		searchLectureBtn.addEventListener('click', () => searchLecture())
-		searchLectureId.addEventListener('keydown', event => {
-		if (event.key === 'Enter') searchLecture();
+			// 수강신청 성공
+			// 수강신청 후 목록 재호출
+			semesterCourseList();
 		})
-	</script>
+		.catch(error => console.error('error : ', error))
+	}
+	
+	applyBtn.addEventListener('click', () => applyCourse());
+	lectureId.addEventListener('keydown', event => {
+	if (event.key === 'Enter') applyCourse();
+	})
+	
+	// 수강신청 목록 출력
+	function semesterCourseList() {
+		
+		// 기존 수강신청 목록 삭제
+		applicationInfo.innerHTML = '';
+		
+		fetch('ajaxSemesterCourseList.do')
+		.then(response => response.text())
+		.then(result => {
+			
+			// 신청한 강의가 없을 경우
+			if (result === 'noResult') {
+				
+				const td = document.createElement('td');
+				td.setAttribute('colspan', '7');
+				td.setAttribute('align', 'center');
+				td.innerText = '신청한 강의가 없습니다.';
+				
+				applicationInfo.append(td);
+				return;
+			}
+			
+			// 수강신청 강의 목록, 교수명
+			const lectureList = JSON.parse(result.split('~')[0]);
+			const professorName = JSON.parse(result.split('~')[1]);
+			
+			// 결과 출력
+			for (let i=0; i<lectureList.length; i++) {
+				const tr = document.createElement('tr');
+				
+				const lectureId = document.createElement('input');
+				lectureId.setAttribute('type','hidden');
+				lectureId.value= lectureList[i].lectureId;
+				
+				const lectureName = document.createElement('td');
+				lectureName.innerText = lectureList[i].lectureName;
+				
+				const lectureCredit = document.createElement('td');
+				lectureCredit.innerText = lectureList[i].lectureCredit;
+				
+				const profName = document.createElement('td');
+				profName.innerText = professorName[i];
+				
+				const lectureRoom = document.createElement('td');
+				lectureRoom.innerText = lectureList[i].lectureRoom;
+				
+				const lectureCapacity = document.createElement('td');
+				lectureCapacity.innerText = lectureList[i].lectureCapacity;
+				
+				const cancel = document.createElement('td');
+				const cancelBtn = document.createElement('input');
+				cancelBtn.setAttribute('type', 'button');
+				cancelBtn.setAttribute('id', 'cancelBtn');
+				cancelBtn.setAttribute('value', '취소하기');
+				cancelBtn.setAttribute('class','btn btn-outline-secondary');
+				cancelBtn.setAttribute('data-bs-toggle','modal');
+				cancelBtn.setAttribute('data-bs-target','#modal');
+				cancelBtn.addEventListener('click', () => lectureToCancel.value = lectureList[i].lectureId)
+				cancel.append(cancelBtn);
+				
+				tr.append(lectureId);
+				tr.append(lectureName);
+				tr.append(lectureCredit);
+				tr.append(profName);
+				tr.append(lectureRoom);
+				tr.append(lectureCapacity);
+				tr.append(cancel);
+				
+				applicationInfo.append(tr);
+			}
+			
+		})
+	}
+	
+	cancelConfirmBtn.addEventListener('click', () => {
+		cancelCourse(lectureToCancel.value);
+	})
+	
+	
+	// 수강신청 취소
+	function cancelCourse(lectureId) {
+		
+		fetch('ajaxCourseDelete.do?', {
+			method: 'post',
+			headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+			body: 'lectureId=' + lectureId
+		})
+		.then(response => response.text())
+		.then(result => {
+			if (result != 'deleted') {
+				alert('수강신청 취소 중 오류가 발생했습니다.')
+				return;
+			}
+			
+			// 취소 후 수강신청 목록 재호출
+			semesterCourseList();
+		})
+	}
+	
+	
+	// 강의 검색
+	function searchLecture() {
+		const keyword = document.getElementById('searchLectureId').value
+		if (keyword == '') {
+			alert('강의명을 입력하세요.');
+			return;
+		}
+		
+		fetch('ajaxApplicationSearch.do?', {
+			method: 'post',
+			headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+			body: 'val=' + keyword
+		})
+		.then(response => response.text())
+		.then(result => {
+			// 기존 검색결과 삭제
+			searchResult.innerHTML = '';
+			
+			// 검색결과가 없을 경우
+			if (result === 'noResult') {
+				const td = document.createElement('td');
+				td.setAttribute('colspan', '7');
+				td.setAttribute('align', 'center');
+				td.innerText = '검색결과가 없습니다.';
+				
+				searchResult.append(td);
+				return;
+			}
+
+			// 검색 결과 출력
+			// 강의정보, 교수명, 현재 수강신청 인원 결과
+			
+			const lecture = JSON.parse(result.split('~')[0]);
+			const professorName = JSON.parse(result.split('~')[1]);
+			console.log(typeof professorName)
+			const currentApplications = result.split('~')[2];
+			
+			for(let i=0; i<lecture.length; i++) {
+				const tr = document.createElement('tr');
+				
+				const lectureId = document.createElement('td');
+				lectureId.innerText = lecture[i].lectureId;
+				
+				const lectureName = document.createElement('td');
+				lectureName.innerText = lecture[i].lectureName;
+				
+				const lectureCredit = document.createElement('td');
+				lectureCredit.innerText = lecture[i].lectureCredit;
+				
+				const profName = document.createElement('td');
+				profName.innerText = professorName[i];
+				
+				const lectureRoom = document.createElement('td');
+				lectureRoom.innerText = lecture[i].lectureRoom;
+				
+				const currentNum = document.createElement('td');
+				currentNum.innerText = currentApplications;
+				
+				const lectureCapacity = document.createElement('td');
+				lectureCapacity.innerText = lecture[i].lectureCapacity;
+				
+				tr.append(lectureId);
+				tr.append(lectureName);
+				tr.append(lectureCredit);
+				tr.append(profName);
+				tr.append(lectureRoom);
+				tr.append(currentNum);
+				tr.append(lectureCapacity);
+				
+				searchResult.append(tr);
+			}
+		})
+	}
+	searchLectureBtn.addEventListener('click', () => searchLecture())
+	searchLectureId.addEventListener('keydown', event => {
+	if (event.key === 'Enter') searchLecture();
+	})
+</script>

@@ -110,8 +110,6 @@
 		
 	</div>
 	
-	<div class="fixed-bottom">아래쪽 스티커</div>
-	
 </div>
 <script>
 	// 홈 화면 정보 출력

@@ -3,7 +3,7 @@
 <!-- LectureUpdateForm -->
 <div class="container-md">
 	<div class="fs-2 px-3 my-3">강의 수정</div>
-	<form action="lectureUpdate.do" method="post">
+	<form action="lectureUpdate.do" onsubmit="return confirm('수정하시겠습니까?')" method="post">
 		<div>
 			<input type="hidden" name="lectureId" id="lectureId"
 				value="${vo.lectureId}" required>
@@ -22,8 +22,7 @@
 					<th width="100">요일</th>
 					<td width="150">
 						<select name="lectureDay" id="lectureDay">
-								<option value="0" selected>선택</option>
-								<option value="MON">MON</option>
+								<option value="MON" selected>MON</option>
 								<option value="TUE">TUE</option>
 								<option value="WED">WED</option>
 								<option value="TUR">TUR</option>

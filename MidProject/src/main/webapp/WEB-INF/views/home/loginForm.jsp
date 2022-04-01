@@ -28,7 +28,7 @@
 </head>
 <body>
 
-<section class="vh-100">
+<section style="height: 90vh;">
   <div class="container-fluid h-custom">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-md-9 col-xl-5 d-none d-xl-block" align="center">
@@ -65,20 +65,15 @@
       </div>
     </div>
   </div>
-  <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-secondary">
-  	<input type="button" value="학생 2011001001 로그인" onclick="login('2011001001', '1234')">
-	<input type="button" value="학과장교수 001001 로그인" onclick="login('001001', '1234')">
-	<input type="button" value="일반교수 002002 로그인" onclick="login('002002', '1234')">
-    <!-- Copyright -->
-    <div class="text-white mb-3 mb-md-0">
-      Copyright © 2020. All rights reserved.
-    </div>
-  </div>
+  
+  <jsp:include page="/WEB-INF/views/layout/footerY.jsp"/>
+<!--   <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-secondary"> -->
+<!--     Copyright -->
+<!--     <div class="text-white mb-3 mb-md-0"> -->
+<!--       Copyright © 2020. All rights reserved. -->
+<!--     </div> -->
+<!--   </div> -->
 </section>
-
-	<input type="button" value="학생 2011001001 로그인" onclick="login('2011001001', '1234')">
-	<input type="button" value="학과장교수 001001 로그인" onclick="login('001001', '1234')">
-	<input type="button" value="일반교수 002002 로그인" onclick="login('002002', '1234')">
 	
 		
 	<script>

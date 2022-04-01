@@ -132,7 +132,6 @@
 			const lectureEnd = element.lectureEnd;
 			const lectureRoom = element.lectureRoom;
 
-			
 			for (let i=Number(lectureStart); i< Number(lectureEnd)+1; i++) {
 				const td = document.getElementById(lectureDay + i);
 				

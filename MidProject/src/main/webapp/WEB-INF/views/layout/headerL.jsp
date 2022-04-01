@@ -67,26 +67,3 @@
 </nav>
 
 
-<!-- <nav class="navbar navbar-expand-md bg-light navbar-light py-2 mb-4"> -->
-<!-- 	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" -->
-<!-- 		data-bs-target="#collapsibleNavbar"> -->
-<!-- 		<span class="navbar-toggler-icon"></span> -->
-<!-- 	</button> -->
-<!-- 	<div class="collapse navbar-collapse" id="collapsibleNavbar"> -->
-<!-- 		<ul class="navbar-nav fs-4 px-3 text-center"> -->
-<%-- 			<c:choose> --%>
-<%-- 				<c:when test='${role eq "student" }'> --%>
-<!-- 					<li class="nav-item px-3"><a class="nav-link px-3" href="studentCourseList.do">성적</a></li> -->
-<!-- 					<li class="nav-item px-3"><a class="nav-link px-3" href="courseApplicationForm.do">수강신청</a></li> -->
-<%-- 				</c:when> --%>
-<%-- 				<c:otherwise> --%>
-<!-- 					<li class="nav-item px-3"><a class="nav-link px-3" href="courseInsertList.do">성적</a></li> -->
-<%-- 				</c:otherwise> --%>
-<%-- 			</c:choose> --%>
-<!-- 			<li class="nav-item px-3"><a class="nav-link px-3" href="boardList.do">학과게시판</a></li> -->
-<!-- 			<li class="nav-item px-3"><a class="nav-link px-3" href="checkPasswordForm.do">마이페이지</a></li> -->
-<!-- 		</ul> -->
-<!-- 	</div> -->
-<!-- </nav> -->
-
-

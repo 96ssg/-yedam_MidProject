@@ -1,25 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<div class="col-lg-10 justify-content-center" >
-<div style="width: 100%; float:none; margin:0 auto">
+<div class="col-lg-10 justify-content-center" style="height:70vh;" >
+<div style="width: 100%; float:none; margin:0 auto" class="mt-5">
 	<form id="frm">
-		<div>
+		<div align="center" class="mt-5">
 			<h3>비밀번호 변경</h3>
 		</div>
-		<div class="input-group mb-3 col-lg-4">
-			<span class="input-group-text " style="width: 10%;">현재 비밀번호</span> <input type="password" name="currentPassword"
+		<div class="input-group mb-3 col-lg-4 justify-content-center">
+			<span class="input-group-text " style="width: 13%;">현재 비밀번호</span> <input type="password" name="currentPassword"
 					id="currentPassword" onkeyup="enterkey()" aria-label="First name" >
 		</div>
-		<div class="input-group mb-3 col-lg-4">
-			<span class="input-group-text " style="width: 10%;">새 비밀번호</span> <input type="password" name="password" id="password"
+		<div class="input-group mb-3 col-lg-4 justify-content-center">
+			<span class="input-group-text " style="width: 13%;">새 비밀번호</span> <input type="password" name="password" id="password"
 					onkeyup="enterkey()" aria-label="First name" >
 		</div>
-		<div class="input-group mb-3 col-lg-4">
-			<span class="input-group-text " style="width: 10%;">새 비밀번호 확인</span> <input type="password" name="password2"
+		<div class="input-group mb-3 col-lg-4 justify-content-center">
+			<span class="input-group-text " style="width: 13%;">새 비밀번호 확인</span> <input type="password" name="password2"
 					onkeyup="enterkey()" aria-label="First name" >
 		</div>
 		<br>
-		<div align="right">
+		<div align="center">
 		<button type="button" class="btn btn-outline-secondary"
 			onclick="passwordCheck" id="btn">변경하기</button>
 		&nbsp;&nbsp;&nbsp;

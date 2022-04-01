@@ -1,22 +1,31 @@
 package co.yedam.MidProject.lecture.command;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.google.gson.Gson;
 
 import co.yedam.MidProject.common.Command;
 import co.yedam.MidProject.lecture.service.LectureService;
 import co.yedam.MidProject.lecture.service.LectureVO;
 import co.yedam.MidProject.lecture.serviceImpl.LectureServiceImpl;
+import co.yedam.MidProject.professor.service.ProfessorVO;
+import co.yedam.MidProject.student.service.StudentVO;
 
 public class AjaxLectureDelete implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-			// 강의 리스트 삭제
-			LectureService lectureDAO = new LectureServiceImpl();
-			LectureVO vo = new LectureVO();
-			vo.setLectureId(Integer.parseInt(request.getParameter("lectureId")));
-			lectureDAO.deleteLecture(vo);
+
+		// 강의 리스트 삭제
+		LectureService lectureDAO = new LectureServiceImpl();
+		LectureVO vo = new LectureVO();
+		vo.setLectureId(Integer.parseInt(request.getParameter("lectureId")));
+		lectureDAO.deleteLecture(vo);
 
 		return "ajax:deleted";
 	}

@@ -20,14 +20,17 @@ public class AjaxChangePassword implements Command {
 		String role = (String) session.getAttribute("role");
 		String cPw = request.getParameter("currentPw");
 		String nPw = request.getParameter("password");
+		String nnPw = request.getParameter("password2");
 		if (role.equals("student")) {
 			// 학생 비밀번호 수정
 			StudentService sservice = new StudentServiceImpl();
 			StudentVO student = (StudentVO) session.getAttribute("user");
-			if (student.getStudentPassword().equals(cPw)) {
+			if (student.getStudentPassword().equals(cPw) && nPw.equals(nnPw)) {
+
 				student.setStudentPassword(nPw);
 				sservice.updateStudent(student);
 				return "ajax:success";
+
 			} else {
 				return "ajax:fail";
 			}
@@ -35,10 +38,12 @@ public class AjaxChangePassword implements Command {
 			// 교수 비밀번호 수정
 			ProfessorService pservice = new ProfessorServiceImpl();
 			ProfessorVO professor = (ProfessorVO) session.getAttribute("user");
-			if (professor.getProfPassword().equals(cPw)) {
+			if (professor.getProfPassword().equals(cPw) && nPw.equals(nnPw)) {
+
 				professor.setProfPassword(nPw);
 				pservice.updateProfessor(professor);
 				return "ajax:success";
+
 			} else {
 				return "ajax:fail";
 			}

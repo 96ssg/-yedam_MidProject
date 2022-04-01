@@ -20,6 +20,14 @@
 				<button class="btn btn-outline-secondary" id="searchBtn"
 					type="button">Search</button>
 			</div>
+			
+			<select style="width: 10%; margin-left: 20px;" id="pagesPerView">
+				<option value="10">10개씩 보기</option>
+				<option value="20">20개씩 보기</option>
+				<option value="30">30개씩 보기</option>
+				<option value="1">1개씩 보기</option>
+			</select>
+			
 			<div class="col-3">
 				<button class="btn btn-outline-secondary" id="deptLectureBtn"
 					type="button">학과 강의 목록</button>
@@ -42,23 +50,7 @@
 						</tr>
 					</thead>
 					<tbody id="lectureBody">
-						<c:if test="${empty lectures }">
-							<tr>
-								<td colspan="5">게시글이 존재하지 않아요</td>
-							</tr>
-						</c:if>
-						<c:if test="${not empty lectures }">
-							<c:forEach items="${lectures }" var="l" varStatus="status">
-								<tr align="center"
-									onclick='lectureContents(${l.lectureId},"${l.professorId }")'>
-									<td>${l.lectureId }</td>
-									<td>${l.lectureName}</td>
-									<td>${l.lectureCredit}</td>
-									<td class="profId">${l.professorId}</td>
-									<td onclick="event.stopPropagation()"></td>
-								</tr>
-							</c:forEach>
-						</c:if>
+						
 					</tbody>
 				</table>
 			</div>
@@ -67,23 +59,23 @@
 
 
 
+<div class="nnav">
+			 			<nav>
+						  <ul class="pagination justify-content-center">
+						    <li class="page-item" id="prevBtn" onclick="onPrevBtn()">
+						      <a class="page-link" aria-label="Previous">
+						        <span aria-hidden="true">&laquo;</span>
+						      </a>
+						    </li>
 
-<!-- 			 			<nav> -->
-<!-- 						  <ul class="pagination justify-content-center"> -->
-<!-- 						    <li class="page-item" id="prevBtn" onclick="onPrevBtn()"> -->
-<!-- 						      <a class="page-link" aria-label="Previous"> -->
-<!-- 						        <span aria-hidden="true">&laquo;</span> -->
-<!-- 						      </a> -->
-<!-- 						    </li> -->
-
-<!-- 						    <li class="page-item" id="nextBtn" onclick="onNextBtn()"> -->
-<!-- 						      <a class="page-link" aria-label="Next"> -->
-<!-- 						        <span aria-hidden="true">&raquo;</span> -->
-<!-- 						      </a> -->
-<!-- 						    </li> -->
-<!-- 						  </ul> -->
-<!-- 						</nav> -->
-
+						    <li class="page-item" id="nextBtn" onclick="onNextBtn()">
+						      <a class="page-link" aria-label="Next">
+						        <span aria-hidden="true">&raquo;</span>
+						      </a>
+						    </li>
+						  </ul>
+						</nav>
+</div>
 
 
 
@@ -139,7 +131,16 @@
 		dataType : "json",
 		success : function(result){
 			if(result.length > 0){
-				searchResult(result);  // json data => html
+				lectureBody.innerHTML = '';
+				
+				// 결과 출력
+				pageButton.innerHTML = '';
+				let pageGroup = document.createElement('pageGroup');
+				pageGroup.setAttribute('id','pageGroup-1');
+				pageGroup.setAttribute('data-status','on')
+				pageGroup.setAttribute('style','');
+				pageButton.append(pageGroup);
+				pagination(result);  // json data => html
 				profNames();
 			}else{
 				alert("검색한 결과가 존재하지 않아요!");
@@ -150,23 +151,23 @@
 	
 	/* 리스트 검색 결과 출력 */
 	function searchResult(data){
-	var tb = $("#lectureBody");
-	$("#lectureBody").empty();
-	
-	$.each(data, function(index, item){
-		var html = $("<tr align='center'></td>").attr({
-			'onclick' : 'lectureContents('+item.lectureId+', "'+item.professorId+'")'
-		}).append(
-				$("<td class='lId'></td>").text(item.lectureId),
-				$("<td/>").text(item.lectureName),
-				$("<td/>").text(item.lectureCredit),
-				$("<td class='profId'></td>").text(item.professorId),
-				$("<td onclick='event.stopPropagation()' class='delBtnTd'></td>")
-		);
-		tb.append(html)
-	});
-	
-	$("#contents").append(tb);
+		var tb = $("#lectureBody");
+		$("#lectureBody").empty();
+		
+		$.each(data, function(index, item){
+			var html = $("<tr align='center'></td>").attr({
+				'onclick' : 'lectureContents('+item.lectureId+', "'+item.professorId+'")'
+			}).append(
+					$("<td class='lId'></td>").text(item.lectureId),
+					$("<td/>").text(item.lectureName),
+					$("<td/>").text(item.lectureCredit),
+					$("<td class='profId'></td>").text(item.professorId),
+					$("<td onclick='event.stopPropagation()' class='delBtnTd'></td>")
+			);
+			tb.append(html)
+		});
+		
+		$("#contents").append(tb);
 	
 	}
 	
@@ -175,11 +176,12 @@
 	// 소속 학과 강의 출력 버튼
 	const deptLecture = ${deptLecture}
 	deptLectureBtn.addEventListener('click', printDeptLecture)
-	
+	const nnav = document.querySelectorAll('.nnav');
 	function printDeptLecture() {
+		pageButton.innerHTML = '';
+		nnav.remove;
 		searchResult(deptLecture);
 		profNames();
-		
 		const delBtnTd = document.querySelectorAll('.delBtnTd');
 		const lId = document.querySelectorAll('.lId');
 		for (let i=0; i< delBtnTd.length; i++) {
@@ -190,7 +192,7 @@
 			delBtn.setAttribute('class','btn btn-outline-secondary');
 			delBtn.addEventListener('click', () => deleteLectures(lId[i].innerText));
 			delBtnTd[i].append(delBtn);
-
+			
 		}
 	}
 	
@@ -224,120 +226,140 @@
 	}
 	
 	
+	// 페이지 버튼 그룹핑을 위한 태그
+	const pageButton = document.createElement('pagebutton');
+	pageButton.setAttribute('id', 'pagebutton')
+	prevBtn.after(pageButton);
 	
+	let pageGroup = document.createElement('pageGroup');
+	pageGroup.setAttribute('id','pageGroup-1');
+	pageGroup.setAttribute('style','');
+	pageButton.append(pageGroup);
 	
-// 	// 페이지 버튼 그룹핑을 위한 태그
-// 	const pageButton = document.createElement('pagebutton');
-// 	pageButton.setAttribute('id', 'pagebutton')
-// 	prevBtn.after(pageButton);
+	// 첫 화면 출력
+	window.onload = pagination(${llist});
 	
-// 	let pageGroup = document.createElement('pageGroup');
-// 	pageGroup.setAttribute('id','pageGroup-1');
-// 	pageGroup.setAttribute('style','');
-// 	pageButton.append(pageGroup);
-	
-// 	function pagination(lectureList) {
-// 		let pageNum = 1;	// 페이지 번호
-// 		let count = 0;		// 한 화면에 표시할 페이지 갯수
-// 		let group = 1;		// 페이지의 10단위 숫자
-// 		paintPageBtn(pageNum, group);
+	function pagination(llist) {
+		let pageNum = 1;	// 페이지 번호
+		let count = 0;		// 한 화면에 표시할 페이지 갯수
+		let group = 1;		// 페이지의 10단위 숫자
+		paintPageBtn(pageNum, group);
 		
-// 		for (let lecture of lectureList) {
-// 			const tr = document.createElement('tr');
-// 			tr.setAttribute('class','lecture pages page-'+ pageNum);
-// 			tr.setAttribute('style', '');
-// 			count++;
+		for (let lecture of llist) {
+			const tr = document.createElement('tr');
+			tr.setAttribute('class','lecture pages page-'+ pageNum);
+			tr.setAttribute('style', '');
+			count++;
 			
-// 			// 딱 맞게 끝나면 새 페이지 생성 안함 && 한 페이지에 count만큼 표시
-// 			if (!(pageNum * Number(pagesPerView.value) == lectureList.length)) {
-// 				if (count == Number(pagesPerView.value)) {
-// 					pageNum++;
-// 					paintPageBtn(pageNum, group);
-// 					count = 0;
+			// 딱 맞게 끝나면 새 페이지 생성 안함 && 한 페이지에 count만큼 표시
+			if (!(pageNum * Number(pagesPerView.value) == llist.length)) {
+				if (count == Number(pagesPerView.value)) {
+					pageNum++;
+					paintPageBtn(pageNum, group);
+					count = 0;
 					
-// 					// 페이지 번호가 10의 배수면 새 페이지 그룹 생성
-// 					if (parseInt(pageNum/10) === group) {
-// 						group++;
+					// 페이지 번호가 10의 배수면 새 페이지 그룹 생성
+					if (parseInt(pageNum/10) === group) {
+						group++;
 						
-// 						const newPageGroup = document.createElement('pageGroup');
-// 						newPageGroup.setAttribute('id','pageGroup-'+group);
-// 						newPageGroup.setAttribute('style','display: none');
+						const newPageGroup = document.createElement('pageGroup');
+						newPageGroup.setAttribute('id','pageGroup-'+group);
+						newPageGroup.setAttribute('style','display: none');
 						
-// 						// 이전 페이지 그룹 뒤에 추가
-// 						document.getElementById('pageGroup-'+(group-1)).after(newPageGroup);
-// 					}
-// 				}
-// 			}
+						// 이전 페이지 그룹 뒤에 추가
+						document.getElementById('pageGroup-'+(group-1)).after(newPageGroup);
+					}
+				}
+			}
 			
-// 			const lectureId = document.createElement('td');
-// 			lectureId.setAttribute('class', 'text-center');
-// 			lectureId.innerText = lecture.lectureId;
+			const lectureId = document.createElement('td');
+			lectureId.setAttribute('class', 'text-center');
+			lectureId.innerText = lecture.lectureId;
 
-// 			const lectureName = document.createElement('td');
-// 			lectureTitle.innerText = lecture.lectureName;
+			const lectureName = document.createElement('td');
+			lectureName.setAttribute('class', 'text-center');
+			lectureName.innerText = lecture.lectureName;
 			
+			const lectureCredit = document.createElement('td');
+			lectureCredit.setAttribute('class', 'text-center');
+			lectureCredit.innerText = lecture.lectureCredit;
 			
-// 			tr.appendChild(lectureId);
-// 			tr.appendChild(lectureName);
-// 			resultList.appendChild(tr);
-// 		}
+			const professorId = document.createElement('td');
+			professorId.setAttribute('class', 'profId');
+			professorId.setAttribute('align', 'center');
+			professorId.innerText = lecture.professorId;
+			
+			const lectureHoll = document.createElement('td');
+			lectureHoll.innerText = "";
+			
+			tr.addEventListener('click',() => {
+				location.href="lectureView.do?lectureId=" + lecture.lectureId +"&professorId="+lecture.professorId;
+			})
+			
+			tr.appendChild(lectureId);
+			tr.appendChild(lectureName);
+			tr.appendChild(lectureCredit);
+			tr.appendChild(professorId);
+			tr.appendChild(lectureHoll);
+			lectureBody.appendChild(tr);
+			profNames();
+		}
 		
-// 		const lastPageGroup = pagebutton.lastChild;
-// 		if (lastPageGroup.innerHTML == '') lastPageGroup.remove();
+		const lastPageGroup = pagebutton.lastChild;
+		if (lastPageGroup.innerHTML == '') lastPageGroup.remove();
 		
-// 		lectureView();
-// 		document.querySelector('#page-1').click();
-// 	}
+		document.querySelector('#page-1').click();
+	}
 	
-// 	// 페이지 버튼 생성
-// 	function paintPageBtn(pageNum, group) {
-// 		const li = document.createElement('li');
-// 		li.setAttribute('class', 'page-item mx-1');
-// 		li.setAttribute('style', 'display: inline-block');
-// 		li.setAttribute('id','page-'+pageNum);
+	// 페이지 버튼 생성
+	function paintPageBtn(pageNum, group) {
+		const li = document.createElement('li');
+		li.setAttribute('class', 'page-item mx-1');
+		li.setAttribute('style', 'display: inline-block');
+		li.setAttribute('id','page-'+pageNum);
 		
-// 		li.addEventListener('click', () => selectPage('page-'+pageNum))
+		li.addEventListener('click', () => selectPage('page-'+pageNum))
 		
-// 		const a = document.createElement('a'); 
-// 		a.setAttribute('class', 'page-link');
-// 		a.innerText = pageNum;
+		const a = document.createElement('a'); 
+		a.setAttribute('class', 'page-link');
+		a.innerText = pageNum;
 		
-// 		li.append(a);
+		li.append(a);
 		
-// 		// 해당하는 페이지 그룹에 추가
-// 		const id = 'pageGroup-'+group;
-// 		document.getElementById(id).append(li);
-// 	}
+		// 해당하는 페이지 그룹에 추가
+		const id = 'pageGroup-'+group;
+		console.log(id)
+		document.getElementById(id).append(li);
+	}
 	
-// 	// 클릭한 페이지 표시
-// 	function selectPage(pageNum) {
-// 		const pages = document.querySelectorAll('.pages');
-// 		pages.forEach(page => page.style = 'display: none')
+	// 클릭한 페이지 표시
+	function selectPage(pageNum) {
+		const pages = document.querySelectorAll('.pages');
+		pages.forEach(page => page.style = 'display: none')
 		
-// 		const selected = document.getElementsByClassName(pageNum);
-// 		for (let page of selected) {
-// 			page.style = '';
-// 		}
-// 	}
+		const selected = document.getElementsByClassName(pageNum);
+		for (let page of selected) {
+			page.style = '';
+		}
+	}
 	
-// 	// 이전 10개 페이지
-// 	function onPrevBtn() {
-// 		const currentPageGroup = document.querySelector('pageGroup[style=""]');
-// 		if (currentPageGroup.id != pageButton.firstChild.id) {
-// 			currentPageGroup.style = 'display: none';
-// 			currentPageGroup.previousSibling.style = '';
-// 			currentPageGroup.previousSibling.firstChild.click();
-// 		}
-// 	}
+	// 이전 10개 페이지
+	function onPrevBtn() {
+		const currentPageGroup = document.querySelector('pageGroup[style=""]');
+		if (currentPageGroup.id != pageButton.firstChild.id) {
+			currentPageGroup.style = 'display: none';
+			currentPageGroup.previousSibling.style = '';
+			currentPageGroup.previousSibling.firstChild.click();
+		}
+	}
 	
-// 	// 다음 10개 페이지
-// 	function onNextBtn() {
-// 		const currentPageGroup = document.querySelector('pageGroup[style=""]');
-// 		if (currentPageGroup.id != pageButton.lastChild.id) {
-// 			currentPageGroup.style = 'display: none';
-// 			currentPageGroup.nextSibling.style = '';
-// 			currentPageGroup.nextSibling.firstChild.click();
-// 		}
-// 	}
-	
+	// 다음 10개 페이지
+	function onNextBtn() {
+		const currentPageGroup = document.querySelector('pageGroup[style=""]');
+		if (currentPageGroup.id != pageButton.lastChild.id) {
+			currentPageGroup.style = 'display: none';
+			currentPageGroup.nextSibling.style = '';
+			currentPageGroup.nextSibling.firstChild.click();
+		}
+	}
 </script>
